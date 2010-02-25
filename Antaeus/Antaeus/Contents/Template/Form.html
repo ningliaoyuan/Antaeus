@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>The Template of Antaeus - The Main Frame Definate</title>
+<link href="../CSS/Common.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../CSS/Layout.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="/Plugins/UI.Stars-2.1/crystal-stars.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="/Plugins/Antaeus.UI.SeparateInput-1.0/Antaeus.UI.SeparateInput.css" rel="stylesheet" media="screen" type="text/css" />
+
+<style type="text/css">
+h1{ padding-left:15px; padding-right:15px; font-size:18px; font-weight:bolder; line-height:40px; height:40px; background-color:#333; color:#FFF;}
+.context{ padding:10px 15px 5px 15px;}
+</style>
+
+<script src="/Scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script src="/Plugins/jQuery.UI-1.7.2/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
+<script src="/Plugins/UI.Stars-2.1/ui.stars.min.js" type="text/javascript"></script>
+<script src="/Plugins/Antaeus.UI.Form-0.1/Antaeus.UI.Form.js" type="text/javascript"></script>
+<script type="text/javascript" src="/Plugins/CKEditor-3.0.1/ckeditor.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+								
+	//这是表单中星星评分部分的插件调用
+	$("#FormRate").stars({inputType: "select",captionEl: $("#FormRateCap"),cancelShow: false});	
+	//检索知识点部分拖拽的选择效果
+    $(".sortbox").sortable({connectWith: 'ul',placeholder: 'ui-state-highlight'});
+    $(".sortbox").disableSelection();	
+	//标签输入的效果
+	$(".separate").separateInput({width:548,insert:".separate-select",widthCssIE6:2,required:true,requiredEl:".separate-required"});	
+	//初始化富文本编辑框
+	CKEDITOR.replace("CKEditor",{width:545});	
+	//下拉框选到其它时显示文本输入框
+	$(".judge").dropdownToggle({judge:"other",class:"inp inp2"});
+	
+	//验证为空
+	$(":text[required='true']").checkRequired();
+	$("textarea[required='true']").checkRequired();
+	
+	//聚焦则去掉初始的文字提示
+	$("input.inp[value!='']").removeDefault();
+
+	
+});
+</script>
+
+</head>
+<body>
+	<div class="header">
+        <div class="wrap">
+            <div class="main">
+                <div class="logo"><img src="../../Contents/Images/Logo.png" alt="www.JINBU8.com" /></div>
+                <div class="login">
+                    <div class="exam">
+                        <span>当前关注考试</span>
+                        <img src="../../Contents/Images/Logo_GMAT.gif" alt="进步吧 — 每天进步一点点，我一定可以成功" />
+                    </div>
+                    <div class="loginform">
+                        <div class="email"><input type="text" value="电子邮件地址" /></div>
+                        <div class="password"><input type="text" value="用户密码" /></div>
+                        <div class="submit"><a href="#"></a></div>
+                        <div class="auto">
+                            <input type="checkbox" />
+                            <span>下次自动登录</span>
+                        </div>
+                        <div class="forgot"><a href="#">救救我！忘记密码了</a></div>
+                        <div class="register"><a href="#">注册新用户</a></div>
+                    </div>
+                </div>
+                <div class="quatotion">荀子曰：不积跬步，无以至千里</div>
+            </div>
+            <div class="navigation">
+                <div class="link">
+                    <a href="#" class="current">主页</a>
+                    <a href="/Question">题库</a>
+                    <a href="/Question">知识点</a>
+                    <a href="/Question">题库</a>
+                </div>
+                <div class="search">
+                    <input type="text" value="输入题目编号直接浏览题目" />
+                    <a href="#">搜索</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="wrap">
+        	<div class="column2">
+            	<div class="columnleft">
+                    <div class="blank10"></div>
+                    <div class="box2">
+                        <div class="bar1"><h1>表单的样式设置</h1></div>
+                        <div class="context">
+                            <form class="formstyle">
+                                <div class="item">
+                                    <div class="title">单个文本输入框<span>*</span></div>
+                                    <div class="detail">
+                                        <input type="text" class="inp inp1" value="这里输入输入例子" required="true" ajax="formCheckAvailable" ajaxurl="abc.html" />                                       
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item">
+                                    <div class="title">两个文本输入框<span>*</span></div>
+                                    <div class="detail">
+                                        <input type="text" class="inp inp2" value="" required="true" related="1" />
+                                        <div class="inp-between">分隔</div>
+                                        <input type="text" class="inp inp2" value="" required="true" related="1" />
+                                        
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="title">三个文本输入框<span>*</span></div>
+                                    <div class="detail">
+                                        <input type="text" class="inp inp3" value="" required="true" related="2" />
+                                        <div class="inp-between">分隔</div>
+                                        <input type="text" class="inp inp3" value="" required="true" related="2" />
+                                        <div class="inp-between">分隔</div>
+                                        <input type="text" class="inp inp3" value="" required="true" related="2" />
+                                        <div class="inp-between">后续说明文字</div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="title">长篇段落输入框<span>*</span></div>
+                                    <div class="detail">
+                                        <textarea class="textarea inp1" id="aaa" required="true"></textarea>
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item">
+                                    <div class="title">单个下拉选择框<span>*</span></div>
+                                    <div class="detail">
+                                        <select class="inp inp1">
+                                            <optgroup label="第一组分类名称">
+                                                <option>下拉选择一</option>
+                                                <option>下拉选择二</option>
+                                                <option>下拉选择三</option>
+                                                <option>下拉选择四</option>
+                                            </optgroup>
+                                            <optgroup label="第二组分类名称">
+                                                <option>下拉选择五</option>
+                                                <option>下拉选择六</option>
+                                                <option>下拉选择七</option>
+                                                <option>下拉选择八</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item">
+                                    <div class="title">两个下拉选择框<span>*</span></div>
+                                    <div class="detail">
+                                        <select class="inp inp2">
+                                            <optgroup label="第一组分类名称">
+                                                <option>下拉选择一</option>
+                                                <option>下拉选择二</option>
+                                                <option>下拉选择三</option>
+                                                <option>下拉选择四</option>
+                                            </optgroup>
+                                            <optgroup label="第二组分类名称">
+                                                <option>下拉选择五</option>
+                                                <option>下拉选择六</option>
+                                                <option>下拉选择七</option>
+                                                <option>下拉选择八</option>
+                                            </optgroup>
+                                        </select>
+                                        <div class="inp-between">分隔</div>
+                                        <select class="inp inp2">
+                                            <optgroup label="第一组分类名称">
+                                                <option>下拉选择一</option>
+                                                <option>下拉选择二</option>
+                                                <option>下拉选择三</option>
+                                                <option>下拉选择四</option>
+                                            </optgroup>
+                                            <optgroup label="第二组分类名称">
+                                                <option>下拉选择五</option>
+                                                <option>下拉选择六</option>
+                                                <option>下拉选择七</option>
+                                                <option>下拉选择八</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item">
+                                    <div class="title">文件上传框<span>*</span></div>
+                                    <div class="detail">            	
+                                        <input type="text" class="inp file-inp" value="" />
+                                        <input type="button" class="btn-form-blue file-btn" value="浏览..." />
+                                        <div class="file-wrap"><input type="file" class="file" size="69" /></div>
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item">
+                                    <div class="title">复选按钮组自由<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check">
+                                            <div><input type="checkbox" name="test1" value="1" checked="checked" /><span>选项一</span></div>
+                                            <div><input type="checkbox" name="test1" value="2" /><span>选项一</span></div>
+                                            <div><input type="checkbox" name="test1" value="3" /><span>选项一</span></div>
+                                            <div><input type="checkbox" name="test1" value="4" /><span>选项一</span></div>
+                                            <div><input type="checkbox" name="test1" value="5" /><span>选项一</span></div>
+                                            <div><input type="checkbox" name="test1" value="6" /><span>选项一</span></div>
+                                        </div>
+                                        <div class="blank5"></div>
+                                        <div class="tips">这里不可以超过一行，如果超过一行，请使用下面的整齐排列模式</div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">复选按钮组单列<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check check1">
+                                            <div><input type="checkbox" /><span>这里是超级长的文字说明，其所对应一个复选按钮。这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">复选按钮组双列<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check check2">
+                                            <div><input type="checkbox" /><span>这里对应一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里对应一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里对应一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里对应一个复选按钮。</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">复选按钮组三列<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check check3">
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="checkbox" /><span>这里一个复选按钮。</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">单选按钮组自由<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check">
+                                            <div><input type="radio" /><span>选项一</span></div>
+                                            <div><input type="radio" /><span>选项一</span></div>
+                                            <div><input type="radio" /><span>选项一</span></div>
+                                            <div><input type="radio" /><span>选项一</span></div>
+                                            <div><input type="radio" /><span>选项一</span></div>
+                                            <div><input type="radio" /><span>选项一</span></div>
+                                        </div>
+                                        <div class="blank5"></div>
+                                        <div class="tips">这里不可以超过一行，如果超过一行，请使用下面的整齐排列模式</div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">单选按钮组单列<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check check1">
+                                            <div><input type="radio" /><span>这里是超级长的文字说明，其所对应一个复选按钮。这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里是超级长的文字说明，其所对应一个复选按钮。</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">单选按钮组双列<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check check2">
+                                            <div><input type="radio" /><span>这里对应一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里对应一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里对应一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里对应一个复选按钮。</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">单选按钮组三列<span>*</span></div>
+                                    <div class="detail">
+                                        <div class="check check3">
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                            <div><input type="radio" /><span>这里一个复选按钮。</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                                <div class="item">
+                                    <div class="title">星星评分<span>*</span></div>
+                                    <div class="detail" id="FormRate">
+                                        <select class="inp inp2" name="Rate">
+                                            <option value="1">几乎没有价值</option>
+                                            <option value="2">没什么价值</option>
+                                            <option value="3" selected="selected">一般般吧</option>
+                                            <option value="4">需要做一下</option>
+                                            <option value="5">必须要做</option>
+                                        </select>
+                                        <div class="rate">我认为这道题<span id="FormRateCap"></span></div> 
+                                    </div> 
+                                    <div class="clear"></div>                                                          
+                                </div>
+                                <div class="item">
+                                    <div class="title">输入框单选组合<span>*</span></div>
+                                    <div class="detail">
+                                        <textarea class="textarea inp4"></textarea>
+                                        <div class="check check4"><div><input type="radio" /><span>选项A正确</span></div></div>
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item">
+                                	<div class="title">两列检索拖拽<span>*</span></div>
+                                    <div class="detail">
+                                        <input name="Knowledge" type="text" class="inp inp2 margin-right" value="请输入知识点标题或者标签" />
+                                        <input type="button" class="btn-form-blue" value="检索知识点" />
+                                        <div class="blank10 clear"></div>
+                                        <ul class="sortbox margin-right">
+                                            <li class="desc">检索结果（只显示头五个结果）</li>
+                                            <li class="sortitem">检索出来的知识点的标题名称啊</li>
+                                            <li class="sortitem">检索出来的知识点的标题名称啊题题...</li>
+                                            <li class="sortitem">检索出来的知识点的标题啊</li>
+                                            <li class="sortitem">检索出来的知识点的标题名称啊</li>
+                                            <li class="sortitem">检索出来的知识点的标题称啊</li>
+                                        </ul>
+                                        <ul class="sortbox">
+                                            <li class="desc">请把选中的结果拖拽到这里，并排序</li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="item">
+                                	<div class="title">标签特殊输入<span>*</span></div>
+                                    <div class="detail">
+                                    	<input type="text" class="inp inp1 separate" value="" />
+                                        <div class="blank5"></div>
+                                        <div class="tips">请使用英文半角逗号,分隔标签，你也可以点击下面的热门标签直接插入</div>
+                                        <div class="blank5 clear"></div>
+                                        <div class="separate-select">
+                                            <span>热门标签：</span>
+                                            <a>test</a>
+                                            <a>werr</a>
+                                            <a>23fd</a>
+                                            <a>vdfb</a>
+                                            <a>sdfew</a>
+                                            <a>cvedwf</a>
+                                            <a>ewwrds</a>
+                                            <a>cvdf</a>
+                                            <a>werfew</a>
+                                            <a>rthy</a>
+                                        </div>
+                                        <div class="blank5"></div>
+                                        <div class="warn separate-required">这里的输入不能为空啊！！！</div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="title">富文本编辑框<span>*</span></div>
+                                    <div class="detail">
+                                        <textarea class="textarea inp1" id="CKEditor"></textarea>
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item">
+                                    <div class="title">下拉判断框<span>*</span></div>
+                                    <div class="detail">
+                                        <select class="inp inp2 judge" name="judgeshsh">
+                                            <option>下拉选择一</option>
+                                            <option>下拉选择二</option>
+                                            <option>下拉选择三</option>
+                                            <option>下拉选择四</option>
+                                            <option>下拉选择五</option>
+                                            <option>下拉选择六</option>
+                                            <option>下拉选择七</option>
+                                            <option value="other">其它</option>
+                                        </select>
+                                        <div class="blank5"></div>
+                                        <div class="tips">这里是输入提示的信息</div>
+                                        <div class="blank5"></div>
+                                        <div class="warn">这里是输入错误的提示信息</div>
+                                        <div class="blank5"></div>
+                                        <div class="correct">这里是输入正确的提示信息</div>
+                                    </div>
+                                    <div class="clear"></div>                        
+                                </div>
+                                <div class="item noborder">
+                                    <div class="title">所有的提交按钮<span>*</span></div>
+                                    <div class="detail">
+                                        <input type="reset" class="btn-form-gray" value="取消" />
+                                        <input type="submit" class="btn-form-green" value="提交" />
+                                        <input type="submit" class="btn-form-blue" value="备用" />
+                                        <input type="button" class="btn-form-red" value="警告" />
+                                    </div>
+                                    <div class="clear"></div>  
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="blank10"></div>
+                    <div class="box2">
+                    	<div class="bar1"><h1>表格的样式设置</h1></div>
+                        <div class="context">
+                        	<table class="tablestyle" cellspacing="0" summary="The technical specifications of the Apple PowerMac G5 series">
+                                <caption>Table 1: Power Mac G5 tech specs </caption>
+                                <tr>
+                                    <th scope="col" abbr="Configurations" class="nobg">COMMUNICATION STATS</th>
+                                    <th scope="col" abbr="Dual 1.8GHz">Guestbook msg</th>
+                                    <th scope="col" abbr="Dual 2GHz">PRIVATE MSG</th>
+                                    <th scope="col" abbr="Dual 2.5GHz">BUBBLES</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="spec">TODAY</th>
+                                    <td>423</td>
+                                    <td>754</td>
+                                    <td>42</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="specalt">YESTERDAY</th>
+                                    <td class="alt">245</td>
+                                    <td class="alt">234</td>
+                                    <td class="alt">65</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="spec">2 DAYS AGO</th>
+                                    <td>673</td>
+                                    <td>3646</td>
+                                    <td>43</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="specalt">LAST WEEK</th>
+                                    <td class="alt">6235</td>
+                                    <td class="alt">646</td>
+                                    <td class="alt">23</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="spec">TOTAL</th>
+                                    <td>26346</td>
+                                    <td>235235</td>
+                                    <td>5325</td>
+                                </tr>   
+                            </table>
+                        </div>
+                        <div class="clear"></div>                  		
+                    </div>
+                    <div class="blank10"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="columnright">
+                	<div class="blank10"></div>
+                    <div class="box3">其它的说明指引</div>
+                </div>
+            	<div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="wrap">
+            <div class="copyright"></div>
+            <div class="links"></div>
+        </div>
+    </div>
+</body>
+</html>

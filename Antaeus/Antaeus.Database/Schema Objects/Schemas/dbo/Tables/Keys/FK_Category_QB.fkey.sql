@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[QB]
+    ADD CONSTRAINT [Category_QB] FOREIGN KEY ([CategoryID]) REFERENCES [dbo].[Category] ([CategoryID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

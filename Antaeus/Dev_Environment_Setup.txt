@@ -1,0 +1,19 @@
+﻿开发环境安装：
+Created by Lynn, 10/16/2009
+1. 安装Vs2008
+    地址自己找...
+
+2.安装VS2008 Web Deployment Projects， 用以打开web application的项目
+   Visual Studio® 2008 Web Deployment Projects - RTW
+   
+   http://www.microsoft.com/downloads/details.aspx?FamilyId=0AA30AE8-C73B-4BDD-BB1B-FE697256C459&displaylang=en
+
+3.安装mvc 
+   ASP.NET MVC 1.0
+
+   http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=53289097-73ce-43bf-b6a6-35e00103cb4b
+
+4.安装VS2008 Database Edition， 用来打开dbproject
+   Microsoft® Visual Studio Team System 2008 Database Edition GDR R2
+
+   http://www.microsoft.com/downloads/details.aspx?FamilyID=bb3ad767-5f69-4db9-b1c9-8f55759846ed&displaylang=en

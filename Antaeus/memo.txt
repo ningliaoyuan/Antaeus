@@ -1,0 +1,14 @@
+﻿http://dev.kaogmat.com:8080/trac/
+
+问：new一个ticket之后，怎么关联到我SVN的checkin呢？
+
+答：在SVN里面checkin时填写comments，在comment中包含 ticket id就行了格式： #ticket_id
+
+e.g.
+
+#10
+
+问：resolve ticket的时候怎么关联changeset呢？
+答：在comment里写 resolved by [changeset id]
+e.g.
+resolved by [10]

@@ -1,0 +1,6 @@
+D:\Antaeus\Code\Antaeus\Antaeus.ORM\bin\Debug\Antaeus.ORM.dll.config
+D:\Antaeus\Code\Antaeus\Antaeus.ORM\bin\Debug\Antaeus.ORM.dll
+D:\Antaeus\Code\Antaeus\Antaeus.ORM\bin\Debug\Antaeus.ORM.pdb
+D:\Antaeus\Code\Antaeus\Antaeus.ORM\obj\Debug\ResolveAssemblyReference.cache
+D:\Antaeus\Code\Antaeus\Antaeus.ORM\obj\Debug\Antaeus.ORM.dll
+D:\Antaeus\Code\Antaeus\Antaeus.ORM\obj\Debug\Antaeus.ORM.pdb

@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>The Template of Antaeus - The Layout Definate</title>
+    <link href="../CSS/Common.css" rel="stylesheet" media="screen" type="text/css" />
+    <link href="../CSS/Layout.css" rel="stylesheet" media="screen" type="text/css" />
+    <style>
+		.header{ background:#000 url(../Images/BG_GMAT.jpg) scroll repeat-x center top;}
+    	.template .context{ padding:15px; }
+		.template .context h1{ font-size:24px; font-weight:bold; padding-bottom:15px; padding-top:15px;}
+		
+    </style>
+</head>
+<body>
+	<div class="header">
+        <div class="wrap">
+            <div class="main">
+                <div class="logo"><img src="../../Contents/Images/Logo.png" alt="www.JINBU8.com" /></div>
+                <div class="login">
+                    <div class="exam">
+                        <span>当前关注考试</span>
+                        <img src="../../Contents/Images/Logo_GMAT.gif" alt="进步吧 — 每天进步一点点，我一定可以成功" />
+                    </div>
+                    <div class="loginform">
+                        <div class="email"><input type="text" value="电子邮件地址" /></div>
+                        <div class="password"><input type="text" value="用户密码" /></div>
+                        <div class="submit"><a href="#"></a></div>
+                        <div class="auto">
+                            <input type="checkbox" />
+                            <span>下次自动登录</span>
+                        </div>
+                        <div class="forgot"><a href="#">救救我！忘记密码了</a></div>
+                        <div class="register"><a href="#">注册新用户</a></div>
+                    </div>
+                </div>
+                <div class="quatotion">荀子曰：不积跬步，无以至千里</div>
+            </div>
+            <div class="navigation">
+                <div class="link">
+                    <a href="#" class="current">主页</a>
+                    <a href="/Question">题库</a>
+                    <a href="/Question">知识点</a>
+                    <a href="/Question">题库</a>
+                </div>
+                <div class="search">
+                    <input type="text" value="输入题目编号直接浏览题目" />
+                    <a href="#">搜索</a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="wrap">
+        	<div class="blank10"></div>
+            <div class="box1 template">
+                <div class="context">                	
+                    <h1>表单类按钮使用input[type=button,submit,reset]</h1>
+                    <div>
+                    	<input type="reset" class="btn-form-gray" value="取消" />
+                        <input type="submit" class="btn-form-green" value="提交" />
+                        <input type="submit" class="btn-form-blue" value="其它" />
+                        <input type="button" class="btn-form-red" value="警告" />
+                    </div>
+                    <h1>表单类按钮使用A标签</h1>
+                    <div>
+                    	<a class="btn-form-gray" href="#">取消</a>
+                        <a class="btn-form-green" href="#">提交</a>
+                        <a class="btn-form-blue" href="#">其它</a>
+                        <a class="btn-form-red" href="#">警告</a>
+                    </div>
+                    <h1>大型按钮，只能使用A标签</h1>
+                    <div>
+                    	<a class="btn-big-1" href="#"><p><b>点击这里</b><br /><span>马上去查看一道题目</span></p></a>
+                        <div class="clear"></div><div class="blank5"></div>
+                        <a class="btn-big-2" href="#"><p><b>点击这里</b><br /><span>马上去查看一道题目</span></p></a>
+                        <div class="clear"></div><div class="blank5"></div>
+                        <a class="btn-big-3" href="#"><p><b>点击这里</b><br /><span>马上去查看一道题目</span></p></a>
+                        <div class="clear"></div><div class="blank5"></div>
+                        <a class="btn-big-4" href="#"><p><b>点击这里</b><br /><span>马上去查看一道题目</span></p></a>
+                        <div class="clear"></div><div class="blank5"></div>
+                    </div>
+                    <h1>小型按钮使用A标签</h1>
+                    <div>
+                    	<a class="btn-tiny" href="#"><span>马上</span>告诉我们</a>
+                        <a class="btn-tiny" href="#">一般的文字内容</a>
+                        <div class="clear"></div>
+                    </div>
+                    <h1>功能性按钮使用A标签</h1>
+                    <div>
+                    	<a class="btn-small btn-history" href="#">查看历史版本</a>
+                        <a class="btn-small btn-comment" href="#">发表一个新的评论</a>
+                        <a class="btn-small btn-edit" href="#">编辑这个内容</a>
+                        <div class="clear"></div>
+                    </div>
+                    <h1>超大型功能性按钮使用A标签</h1>
+                    <div style="width:265px;">
+                        <a href="#" class="btn-huge btn-huge-favorite"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+                        <a href="#" class="btn-huge btn-huge-email"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+                        <a href="#" class="btn-huge btn-huge-print"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+                    </div>
+                    <h1>展开收缩按钮使用A标签</h1>
+                    <div>
+                    	<a href="#" class="btn-toggle-show">展开</a>
+                        <a href="#" class="btn-toggle-hide">收缩</a>
+                        <div class="clear"></div>
+                    </div>
+                    <h1>页码的按钮</h1>
+                    <div>
+                    	<a href="#" class="btn-page">1</a>
+                        <a href="#" class="btn-page">2</a>
+                        <a href="#" class="btn-page">3</a>
+                        <a href="#" class="btn-page">4</a>
+                        <a href="#" class="btn-page">5</a>
+                        <a href="#" class="btn-page">6</a>
+                        <a href="#" class="btn-page">7</a>
+                        <a href="#" class="btn-page">8</a>
+                        <a href="#" class="btn-page">9</a>
+                        <a href="#" class="btn-page">10</a>
+                        <a href="#" class="btn-page">128</a>
+                        <a href="#" class="btn-page">1023</a>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="blank10"></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="wrap">
+            <div class="copyright"></div>
+            <div class="links"></div>
+        </div>
+    </div>
+</body>
+</html>

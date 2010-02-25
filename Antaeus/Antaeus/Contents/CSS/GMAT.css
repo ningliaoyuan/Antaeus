@@ -1,0 +1,386 @@
+﻿/*==========================================================================
+ANTAEUS.Common.CSS
+This File is for all pages of site GMAT used and defined specific content
+Version 0.1, Created by Lanslot at 2009/6/14 0:19
+============================================================================*/
+
+.header{ background:#000 url(../Images/BG_GMAT.jpg) scroll repeat-x center top;}
+
+/* Define the bar use in box ============================================================================================================================================*/
+.bar1{ background-color:#f8f8f8; border-bottom:1px solid #dfdfdf; border-top:1px solid #dfdfdf; height:40px; line-height:40px;}
+.bar2{ border-bottom:3px solid #dfdfdf; padding-top:10px; padding-bottom:10px;}
+.bar3{ padding:10px 10px 10px 45px;background-repeat:no-repeat; background-position:15px 10px; height:24px; line-height:24px; color:#000; font-weight:bold; font-size:14px;}
+.bar4{ height:24px; line-height:24px; color:#FFF;}
+
+/* For bar's leftside - informations*/
+.barinfo,
+.barpage{padding-left:15px; float:left; color:#666;}
+.barpage a,
+.barpage span{ padding-right:5px; padding-left:5px; font-weight:bold;}
+.barpage a,
+.barpage a:link,
+.barpage a:visited{color:#666;}
+.barpage span.current{ background-color:#DDD;}
+.barinfo{ display:none;}
+/* For bar2's content*/
+.bar2{ padding-left:15px; padding-right:15px;}
+.bar2 h2{ font-size:24px; color:#000; font-weight:bolder; padding-bottom:5px; display:block;}
+.bar2 .information{ color:#888;}
+
+/*The Top Header of Question And Knowledge Begin========================================================================================================================*/
+.subheader .logo_question,
+.subheader .logo_knowledge,
+.subheader .logo_article{ width:60px; height:60px; float:left; padding:20px 10px 20px 20px; background-image:url(../Images/icon_logo_60.gif); background-repeat:no-repeat;}
+.subheader .logo_question  { background-position:20px -80px;}
+.subheader .logo_knowledge { background-position:20px 20px;}
+.subheader .logo_article   { background-position:20px -180px;}
+.subheader .left{ width:630px; padding-top:18px;}
+.subheader .left h1{ font-size:24px; line-height:30px; font-weight:bolder; color:#000;}
+.subheader .left span{ color:#000; padding-top:6px; padding-bottom:1px;}
+.subheader .left li{ float:left; padding-right:10px;}
+.subheader .left li a,
+.subheader .left li a:link,
+.subheader .left li a:visited,
+.subheader .left li a,hover
+.subheader .left li a:active{ color:#e99d00;}
+.subheader .create{ padding-right:15px; padding-top:12px;}
+.subheader .create span{ display:block; color:#666; line-height:20px;}
+.subheader .rateandnext{ width:249px; background-image:url(../Images/Question_TopRight_BG.jpg); background-repeat:no-repeat; padding-right:15px; background-color:Red;}
+.subheader .rateandnext .rate{ height:64px; overflow:hidden; float:right;}
+.subheader .rateandnext .rate span{ display:block; color:#666; padding-top:10px; text-align:right; padding-bottom:5px;}
+.subheader .rateandnext .rate .stars{ width:165px; height:28px; overflow:hidden; background-image:url(../Images/icon_star_big.png); background-position:0px -28px; margin-top:4px; float:right;}
+.subheader .rateandnext .rate .stars_yellow{ height:28px; overflow:hidden; background-image:url(../Images/icon_star_big.png);}
+.subheader .rateandnext .redirect a{ display:block; height:36px; line-height:36px; padding-left:15px; float:right; margin-left:10px; color:#333;}
+.subheader .rateandnext .redirect a:link,
+.subheader .rateandnext .redirect a:visited,
+.subheader .rateandnext .redirect a:hover{ color:#333; font-weight:bold;}
+.subheader .rateandnext .redirect .previous, .subheader .rateandnext .redirect .next{background:transparent url(../Images/icon_silk.png) no-repeat scroll 0px -199px;}
+.subheader .rateandnext .redirect .next{ background-position:0px -169px;} 
+
+/*The ListResult Begin (For Question/Index, Knowledge/Index, Search/Result, Tag/Detail)=================================================================================*/
+.listresult .listtop{ padding-left:15px;}
+.listresult .listtop .left{color:#666;}
+.listresult .listtop .left span{ color:#2e97ca;}
+.listresult .item{ padding:15px; cursor:pointer; border-bottom:1px solid #dfdfdf;}
+.listresult .item .left{ padding-right:20px;}
+.listresult .item .icon{ text-align:right;}
+.listresult .item .category{ color:#888; padding-top:5px; padding-bottom:5px; font-size:12px; text-align:right;}
+.listresult .item .stars_cover{ background-color:#666; padding:5px 5px 5px 8px;}
+.listresult .item .questionleft{ float:left; width:100px; background-image:url(../Images/Question.Item.gif); background-repeat:no-repeat; padding:10px;}
+.listresult .item .knowledgeleft{ float:left; width:100px; background-image:url(../Images/Knowledge.Item.gif); background-repeat:no-repeat; padding:10px;}
+.listresult .item .questionidtext{ color:#FFF; font-size:10px;}
+.listresult .item .questionid{ color:#FFF; font-size:18px; line-height:18px; font-weight:bolder; padding-bottom:10px; letter-spacing:3px;}
+.listresult .item .stars{ width:85px; height:14px; overflow:hidden; background-image:url(../Images/icon_star_gray.gif); background-position:0px 14px; margin-top:1px;}
+.listresult .item .stars_gery{ height:14px; overflow:hidden; background-image:url(../Images/icon_star_gray.gif);}
+.listresult .item .correct{ clear:both; font-size:12px; font-weight:bold; color:#888; padding-top:10px;}
+.listresult .item .correct span{ color:#f1bd1f;}
+.listresult .item .source{ color:#888;}
+.listresult .item .right{ float:left; width:550px;}
+.listresult .item h2{ font-size:16px; color:#000; font-weight:bold; }
+.listresult .item .parameter{ color:#888; padding-bottom:10px;}
+.listresult .item .parameter span{ color:#5b9401;}
+.listresult .item .text{ font-size:11px; line-height:14px; padding-bottom:5px;}
+.listresult .item .tag{ color:#667594;}
+.listresult .item .tag span{ color:#ffab00;}
+
+.listresult .item2{ padding:15px; cursor:pointer; border-bottom:1px solid #dfdfdf;}
+.listresult .item2 .left{ width:230px; padding-right:15px;}
+.listresult .item2 .right{ width:425px;}
+.listresult .item2 .left .note{ background-color:#def4ff; padding:5px; text-align:right;}
+.listresult .item2 .left .number div{ float:left; width:33%; text-align:center; padding-top:8px;}
+.listresult .item2 .left .number b{ display:block; font-size:24px;}
+.listresult .item2 .left .number span{ display:block; color:#666;}
+.listresult .item2 .right .parameter{ color:#666; padding:5px 0 5px 0;}
+.listresult .item2 .right .tags{ height:25px; overflow:hidden;}
+.listresult .item2 .right .tags span{ display:block; float:left; padding:3px 5px; background-color:#ECFFA3; border:1px solid #d7df01; margin-right:5px;}
+
+.comment .context{ padding:15px 15px 5px 15px;}
+.comment .comm_no{ padding:15px; font-size:14px; color:#F00; background-color:#FFDFDF; margin-bottom:10px;}
+.comment .comm_item{ background-color:#fff1ce; padding:10px; margin-bottom:10px;}
+.comment .comm_item p{ padding-top:10px; color:#666;}
+.comment .comm_form { height:150px;}
+.comment .comm_form textarea{ width:648px; border:1px solid #dbdbdb; display:block; height:80px; padding:10px; color:#888;}
+
+.wiki{ padding:15px; padding-bottom:0;}
+.wiki .nocontent{ font-size:16px; line-height:28px;}
+.wiki p{ font-size:16px; color:#555; line-height:22px; padding-bottom:15px; display:block;}
+.wiki .wiki-submit{ height:25px; padding-top:15px;}
+
+.report{font-size:10px; padding-right:15px; float:right;}
+.report span{ float:left;}
+.report a{ margin-top:10px;}
+
+/*Question and Knowledge Detail Page Begin========================================================================================================================================*/
+.ques_know .ques_content{ padding:20px; padding-bottom:0;}
+.ques_know .ques_content p,
+.ques_know .ques_content b{ font-size:16px; color:#555; line-height:22px; padding-bottom:15px; display:block;}
+.ques_know .ques_content span.highlight{ background-color:#F60; color:#FFF;}
+.ques_know .ques_content span.underline{ text-decoration:underline;}
+.ques_know .ques_options{ padding:20px; padding-top:0px;}
+.ques_know .ques_options .option{font-size:16px; color:#555; line-height:20px; padding-bottom:15px; display:block;}
+
+.ques_know .survey .context{ padding:15px;}
+.ques_know .survey .sur_form{ background-color:#F1F1F1;}
+.ques_know .survey .sur_form h4{ font-size:14px; color:#000; font-weight:bold; padding:10px; background-color:#CCC;}
+.ques_know .survey .sur_form span{ float:left; width:200px; padding:10px 0 0 10px;}
+
+.ques_know .list .bar4 .left{ margin-left:15px; padding-left:10px; padding-right:10px;}
+.ques_know .list .bar4 .right{ margin-right:15px;}
+.ques_know .list .bar4 .right a{ color:#666;}
+.ques_know .list .context{ padding:15px; padding-top:5px;}
+.ques_know .list .item{ border-bottom:1px dotted #888; padding-bottom:5px; padding-top:5px;}
+.ques_know .list .last{ border-bottom:none; padding-bottom:0px;}
+.ques_know .list .title{ font-size:14px; font-weight:bold; float:left;}
+.ques_know .list .value{ float:right;}
+.ques_know .list .excerpt{ font-size:10px; color:#666;}
+
+.ques_know .createform .context{ padding:15px;}
+
+/*Question and Knowledge Detail Page End========================================================================================================================================*/
+
+
+/*Account Begin========================================================================================================================================*/
+
+/*The Register and ForgetPassword Part of Account*/
+.subheader2{ height:135px; background-image:url(../Images/Account_Top.jpg); padding-top:55px; text-align:center; border-bottom:3px solid #DDD;}
+.subheader2 h1{ font-size:30px; font-weight:bolder; color:#000;}
+.subheader2 h3{ font-size:14px; font-weight:bold; color:#F60;}
+.account .form{ padding:15px 10px;}
+.account .form .item{ float:left; width:231px; margin-left:5px; margin-right:5px;}
+.account .form .item2{ float:none; margin-left:auto; margin-right:auto; width:500px;}
+.account .form label{ display:block; font-size:16px; color:#333; font-weight:bold; padding-bottom:5px; text-align:center;}
+.account .form input{ display:block; width:219px; border:1px solid #dbdbdb; background-color:#f1f1f1; height:25px; font-size:14px; padding:5px 5px 0px 5px; text-align:center;}
+.account .form .item2 input{ width:500px;}
+.account .form span{ display:block; color:#666; padding-top:5px; text-align:center;}
+.account .form span.alert{ color:#ff0000;}
+.account .submit { padding-top:10px;}
+.account .submit a.btn-big-2{ display:block; margin-left:370px; }
+.account .submit .terms{ width:250px; margin-left:auto; margin-right:auto; padding-top:5px; padding-bottom:15px; clear:both;}
+.account .submit input{ float:left; margin-top:2px; margin-right:5px;}
+.account .submit span{ float:left;}
+
+/* The base style definte of Account Content Header */
+.account .context{ padding:15px;}
+.account .columnleft .box2{ background:#FFF url(../Images/bg_blue.jpg) scroll no-repeat top right;}
+.account .thetitle{ padding-left:80px; background:transparent url(../Images/Account_Face.gif) scroll no-repeat 1px 1px; margin-top:5px;}
+.account .thetitle h1{ font-size:24px; font-weight:bolder; color:#AAA;}
+.account .thetitle p{ color:#666;}
+.account .nav{ height:17px; border:1px solid #c7c7c7; border-top-color:#dbdbdb; border-bottom-color:#b3b3b3; background:url(../Images/1px.gif) repeat-x 0 -650px; margin-top:15px; padding:10px 5px; -moz-border-radius-topleft:5px; -webkit-border-radius-topleft:5px; -moz-border-radius-topright:5px; -webkit-border-radius-topright:5px;}
+.account .nav a{ color:#000; float:left; display:block; padding-left:15px; padding-right:15px; font-size:14px; line-height:17px; border-right:1px solid #dbdbdb;}
+.account .nav a:link, .account .nav a:visited, .account .nav a:hover{ color:#000;}
+.account .nav a.current, .account .nav a.current:link, .account .nav a.current:visited, .account .nav a.current:hover,
+.account .subnav a.current, .account .subnav a.current:link, .account .subnav a.current:visited, .account .subnav a.current:hover{ color:#F60;}
+.account .nav a:hover{ text-decoration:underline;}
+.account .subnav{ background-color:#fffbe7; border:1px solid #d3d3d3; border-top:0; height:14px; line-height:14px; padding:8px 5px;}
+.account .subnav a{ color:#666; display:block; float:left; padding-left:15px; padding-right:15px; border-right:1px solid #e3e5e9;}
+
+.account h2{ height:39px; line-height:39px; background:url(../Images/1px.gif) repeat-x 0 -118px; border-bottom:2px solid #128dc3; font-size:16px; padding-left:15px; color:#FFF; font-weight:bolder; -moz-border-radius-topleft:5px; -webkit-border-radius-topleft:5px; -moz-border-radius-topright:5px; -webkit-border-radius-topright:5px;}
+
+.account .asetting .item{ padding:15px; border:1px solid #e0e0e0; border-bottom:0; background-color:#FFF; cursor:pointer;}
+.account .asetting .items .current{border:2px solid #128dc3;}
+.account .asetting .item .left-nickname,
+.account .asetting .item .left-password,
+.account .asetting .item .left-mail{ float:left; padding-right:15px; width:64px; height:64px; background-image:url(../Images/icon_account_64.gif); background-repeat:no-repeat;}
+.account .asetting .item .left-nickname { background-position:0 -200px;}
+.account .asetting .item .left-password{ background-position:0 -100px;}
+.account .asetting .item .right{ width:550px;}
+.account .asetting .item h4{ font-size:24px; color:#000;}
+.account .asetting .item p{ font-size:12px; color:#666;}
+.account .asetting .item .theform{ padding-top:15px;}
+.account .asetting .item input{ float:left; margin-bottom:10px;}
+.account .asetting .item label{ float:left; height:34px; font-size:14px; line-height:34px; color:#000; padding-right:5px;}
+.account .asetting .item input.inp{ width:434px; height:14px; font-size:12px; line-height:14px; padding:10px; background-color:#fffcee; border:1px solid #bababa; color:#888;}
+.account .asetting .item input.check{ margin-right:5px; margin-top:12px;}
+.account .asetting .item input.btn-form-green, .account .asetting .item input.btn-form-gray{ float:right;}
+
+.account .item_bottom{border-top:1px solid #e0e0e0; }
+
+.account .overview .item{ padding:15px; border:1px solid #e0e0e0; border-bottom:0; background-color:#FFF; clear:both;}
+.account .overview .item b{ display:block; float:left; font-size:16px; line-height:16px; width:100px;}
+.account .overview .item p{ display:block; float:right; width:535px; line-height:16px; color:#666;}
+
+.account .item_mail,
+.account .item_reply,
+.account .item_read,
+.account .item_unread,
+.account .item_comment,
+.account .item_question,
+.account .item_knowledge,
+.account .item_article{ padding:15px; padding-left:80px; border:1px solid #e0e0e0; border-bottom:0; background-color:#FFF; background-repeat:no-repeat; background-image:url(../Images/icon_account_48.gif);}
+
+.account .item_mail      { background-position:20px -200px;}
+.account .item_reply     { background-position:20px 10px;}
+.account .item_comment   { background-position:20px -130px;}
+.account .item_read      { background-position:20px -270px;}
+.account .item_unread    { background-position:20px -60px; background-color:#fdfbee;}
+.account .item_question  { background-position:20px -340px;}
+.account .item_knowledge { background-position:20px -410px;}
+.account .item_article   { background-position:20px -480px;}
+
+.account .item_question b,
+.account .item_knowledge b,
+.account .item_article b,
+.account .item_mail p,
+.account .item_reply p,
+.account .item_comment p,
+.account .item_read b,
+.account .item_unread b{ font-size:16px; padding-bottom:3px;}
+
+.account .item_action{ padding:15px; background-color:#f1f1f1; border:1px solid #e0e0e0;}
+.account .item_action input{ display:block; float:right;}
+.account .item_action label{ display:block; float:right; padding-left:5px; padding-right:20px; line-height:30px;}
+.account .item_action input[type="checkbox"]{ margin-top:10px;}
+.account .item_action .pageindex{ float:left; line-height:30px;}
+.account .item_action .pageindex a,
+.account .item_action .pageindex span{ display:block; float:left; padding-left:3px; padding-right:3px; margin-left:3px; margin-right:3px;}
+
+
+/*Account End========================================================================================================================================*/
+
+/*Article Begin========================================================================================================================================*/
+.article .category{ padding:15px;}
+.article .category h3{ display:block; background:transparent url(../Images/icon_silk.png) scroll no-repeat 0px -419px; font-size:14px; font-weight:bold; padding-left:20px;}
+.article .category .items{ padding-top:5px; padding-bottom:10px; padding-left:15px; width:235px;}
+.article .category a{ display:block; float:left; margin-right:5px; margin-left:5px;}
+.article .category a.more{ float:none; clear:both; background-color:#f1f1f1; padding:5px; color:#333;}
+
+.article .indexlist .indexlistbar div{ float:left; margin-left:15px; font-size:13px; font-weight:bold;}
+.article .indexlist .title{ width:330px;}
+.article .indexlist .cdate,
+.article .indexlist .udate{ width:80px;}
+.article .indexlist .view,
+.article .indexlist .comment{ width:60px;}
+.article .indexlist .item{ display:block; clear:both; line-height:40px; border-bottom:1px dotted #dbdbdb; height:40px;}
+.article .indexlist .item b{ display:block; float:left; padding-left:15px; width:330px; color:#000;}
+.article .indexlist .item i{ display:block; float:left; font-style:normal; padding-left:15px; width:80px; color:#09f;}
+.article .indexlist .item span{ display:block; float:left; width:60px; padding-left:15px; color:#F60;}
+.article .indexlist a.item:hover{ text-decoration:none; background-color:#f3f7ff;}
+
+/*Article End========================================================================================================================================*/
+
+
+/*Home Begin========================================================================================================================================*/
+.home .aggd{ width:700px; height:300px; overflow:hidden;}
+
+.home .thebox h2{ float:left; width:200px; height:40px; background-repeat:no-repeat; color:#F60; font-size:14px; font-weight:bold; padding-left:42px; line-height:40px; background-image:url(../Images/icon_24.png); background-repeat:no-repeat; margin-top:5px;}
+.home .thebox h2.question{ background-position:15px -152px;}
+.home .thebox h2.knowledge{ background-position:15px -112px;}
+.home .thebox h2.list{  background-position:15px -192px;}
+
+.home .thebox ul{padding-top:20px; padding-right:15px;}
+
+.home .thebox .tab-content{ clear:both; border:1px solid #dbdbdb; padding:10px; margin-left:15px; margin-right:15px; color:#666; border-bottom:0; padding-bottom:0;}
+.home .thebox .tab-content p,
+.home .thebox .tab-content b{ padding-bottom:10px; display:block; text-indent:24px;}
+.home .thebox .tab-content .form{ padding-left:24px;}
+.home .thebox .tab-content .form label{ float:left; display:block; width:605px; padding-left:5px; padding-bottom:10px;}
+.home .thebox .tab-content .form input{ float:left; display:block; margin-top:2px;}
+.home .thebox .items{ clear:both; border:1px solid #dbdbdb; margin-left:15px; margin-right:15px; color:#666; border-bottom:0; border-right:0; padding-left:1px;}
+.home .thebox .items .item{ float:left; padding:10px; width:146px; height:100px; overflow:hidden; border-right:1px solid #dbdbdb; border-bottom:1px solid #dbdbdb;}
+
+.home .thebox .bar{ border-top:1px solid #DDD; padding:10px 15px; background-color:#f8f8f8;}
+.home .thebox .bar .correct, .home .thebox .bar .wrong{ background:transparent url(../Images/icon_silk.png) scroll no-repeat 1px -119px;}
+.home .thebox .bar .wrong{ background-position:1px -149px;}
+.home .thebox .bar .left span{ display:block; padding-left:20px;}
+
+/*Home End========================================================================================================================================*/
+
+/*Search Begin========================================================================================================================================*/
+.search .box1{ background-image:url(../Images/bg_green.jpg); background-repeat:no-repeat; background-position:right;}
+.search .box1 h1{ font-size:18px; font-weight:bold; display:block; padding:15px 15px 10px 15px;}
+.search .box1 input.text{ display:block; float:left; width:350px; height:20px; padding:4px 5px; background-color:#f5f5f5; border:1px solid #dbdbdb; margin:0 10px 15px 15px; font-size:14px; color:#666;}
+.search .box1 h2{ font-size:14px; font-weight:bold; display:block; padding:15px 15px 10px 0; color:#F60;}
+.search .box1 .right { width:300px;}
+.search .box1 .right a{ display:block; float:left; padding-bottom:5px; padding-right:10px;}
+/*Search End==========================================================================================================================================*/
+
+/*Tag Begin========================================================================================================================================*/
+.tag h1{ font-size:24px; font-weight:bolder; padding:15px; padding-bottom:0;}
+.tag .hottag{ padding:15px; padding-top:5px;}
+.tag .box1{ background-image:url(../Images/bg_orange.jpg); background-repeat:no-repeat; background-position:right;}
+/*Tag End==========================================================================================================================================*/
+
+
+/*Widget Definte =====================================================================================================================================*/
+/* The Default Widget Used Definte */
+h3.box-title{padding:15px 15px 10px 45px; font-size:16px; font-weight:bold; line-height:25px; color:#333; background-image:url(../Images/icon_widget.gif); background-repeat:no-repeat;}
+.box-content{padding:15px; padding-top:0;}
+.box-bar{ text-align:right; background-color:#f8f8f8; border-bottom:1px solid #dfdfdf; border-top:1px solid #dfdfdf; height:40px; line-height:40px; padding-right:15px;}
+.box-bar a{ color:#666;}
+/* Widget's Color Bar, used by Home/Index/ */
+.box-bar-color{ padding-left:15px; background-image:url(../Images/bar_color.gif); color:#FFF; height:36px;}
+.box-bar-color h3.box-title-white{ display:block; line-height:36px; font-size:14px; font-weight:bold; padding-left:27px; background-image:url(../Images/icon_24.png); background-repeat:no-repeat;}
+.box-bar-blue{ border-bottom:1px solid #2093cc; background-position:0 -36px;}
+.box-bar-green{ border-bottom:1px solid #62ab01; background-position:0 -72px;}
+.box-bar-orange{ border-bottom:1px solid #d06406;}
+/* MiniFeed, used by Home/Index/ */
+.w-minifeed h3{ background-position:15px -144px;}
+.w-minifeed .line{ background-color:#fdfbee; border-bottom:2px solid #FFF; padding:6px 5px 6px 30px; background-image:url(../Images/icon_silk.png); background-repeat:no-repeat; background-position:10px 6px; color:#666;}
+.w-minifeed .inbox{ background-position:10px -744px;}
+.w-minifeed .ucomment{ background-position:10px -294px;}
+.w-minifeed .ask{ background-position:10px -354px;}
+/* Infomation, used by Home/Index/ */
+.w-info h3{ background-position:15px -144px;}
+.w-info p, .w-info a{ display:block;}
+.w-info p{ padding-bottom:5px; padding-top:5px;}
+.w-info .box-content{ padding-bottom:5px;}
+/* Latest Comment, used by Home/Index/ */
+.w-comment h3{ background-position:0px 7px;}
+.w-comment .box-content{ color:#888;}
+.w-comment h4{ font-weight:bold; padding:15px 0 5px 0;}
+.w-comment p{ font-size:10px; line-height:14px;}
+/* Question-Done Rank, used by Home/Index/ */
+.w-rank h3{ background-position:0px -33px;}
+.w-rank .line{ height:30px; line-height:30px; border-bottom:1px dotted #DDD;}
+.w-rank .line p{ display:block; float:left; color:#09F;}
+.w-rank .line b{ color:#F60;}
+.w-rank .line span{ display:block; float:right; color:#888;}
+.w-rank .line i{ font-style:normal; color:#090;}
+/* Tag Cloud, used by Home/Index/ */
+.w-tag h3{ background-position:0px -73px;}
+.w-tag .box-content{ padding-top:15px;}
+.w-tag a{ padding:2px 5px; height:22px; line-height:22px;}
+.w-tag a.tag1{ font-size:12px;}
+.w-tag a.tag2{ font-size:14px;}
+.w-tag a.tag3{ font-size:16px; font-weight:bold;}
+.w-tag a.tag4{ font-size:18px; font-weight:bolder;}
+/* Filter, used by Question/Index, Knowledge/Index, Search/Result, Tag/Detail */
+.w-filter .box-bar{ padding-left:15px; padding-right:15px; font-size:14px; color:#666; text-align:left;}
+.w-filter .box-main{ padding:15px; display:block;}
+.w-filter .box-main li{ cursor:pointer;}
+.w-filter li.now, .w-filter li.add, .w-filter li.delete, .w-filter li.up, .w-filter li.down, .w-filter li.upnow, .w-filter li.downnow{ background-image:url(../Images/icon_silk.png); background-repeat:no-repeat;}
+.w-filter .select .box-main li, .w-filter .sort .box-main li{ font-size:12px; color:#666; line-height:20px; height:20px; display:block; padding-left:20px;}
+.w-filter .select .box-main li.now, .w-filter .tag .box-main li.now{ background-position:2px -118px;}
+.w-filter .select .box-main li.add, .w-filter .tag .box-main li.add{ background-color:#ecffa3; background-position:2px 2px;}
+.w-filter .select .box-main li.delete, .w-filter .tag .box-main li.delete{ background-color:#ffd8cb; background-position:2px -28px;}
+.w-filter .sort .box-main li.upnow{ background-position:2px -58px;}
+.w-filter .sort .box-main li.downnow{ background-position:2px -88px;}
+.w-filter .sort .box-main li.up{ background-color:#ecffa3; background-position:2px -58px;}
+.w-filter .sort .box-main li.down{ background-color:#ffd8cb; background-position:2px -88px;}
+.w-filter .tag .box-main li{ font-size:12px; color:#666; line-height:20px; height:20px; display:block; padding-left:20px; padding-right:5px; float:left; margin:5px; margin-top:0px;}
+/* Related Content, used by Question/Details, Knowledge/Details */
+.w-related h3{ background-position:15px -185px;}
+.w-related .item{ background-color:#fff1ce; padding:10px; margin-left:15px; margin-right:15px; margin-bottom:5px;}
+.w-related .item b{ float:left; display:block; color:#2da2e0;}
+.w-related .item span{ float:right; display:block; color:#e25230}
+.w-related .item p{ font-size:10px; clear:both; color:#666;}
+/* Activate Account, used by Account/SideControl.ascx */
+.w-activate h3{ background-position:15px 15px;}
+.w-activate .line-text{ background-color:#f8f8f8; border:1px solid #d4d4d4; padding:12px; color:#888; margin-bottom:10px;}
+.w-activate .line-text a{ display:block; padding-top:5px;}
+.w-activate .line-email, .w-activate .line-time{padding-left:18px; background:transparent url(../Images/icon_silk.png) scroll no-repeat 0 -711px; line-height:30px; color:#666;}
+.w-activate .line-email{ background-position:0 -561px; border-bottom:1px solid #e4e5e9;}
+/* JinBu8 Today, used by Account/SideControl.ascx */
+.w-today h3{ background-position:15px -105px;}
+.w-today .line{ clear:both; line-height:25px; height:25px; padding-left:20px; background-repeat:no-repeat; background-image:url(../Images/icon_silk.png);}
+.w-today .line-add{ background-position:0 -386px;}
+.w-today .line-comment{ background-position:0 -296px;}
+.w-today .line-edit{ background-position:0 -476px;}
+.w-today .line-reply{ background-position:0 -356px;}
+/* User Progress, used by Account/SideControl.ascx */
+.w-progress h3{ background-position:15px -25px;}
+.w-progress .tab-content img{ display:block; float:left; margin:15px 15px 0 10px;}
+.w-progress .tab-content p{ font-size:14px; display:block; float:left; padding-top:15px; width:140px;}
+/* Precentage Chart Show, used by Components/Precentage.ascx */
+w-precentage h3{ background-position:15px -65px;}
+

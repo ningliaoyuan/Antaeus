@@ -1,0 +1,6 @@
+@charset "utf-8";
+#separate-container{ border:1px solid #999; padding-top:5px; overflow:hidden;}
+.separate-item{ float:left; font-size:14px; padding:0px 5px; background-color:#EEE; border:1px solid #DDD; margin-left:5px; margin-bottom:5px; height:20px; line-height:20px; *margin-bottom:0px;}
+.separate-item a{ color:#CCC; padding-left:5px; cursor:pointer;}
+.separate-item a:hover{ color:#F00;}
+#separate-inp-show{ display:block; float:left; padding:0px 5px 8px 5px; border:0; font-size:14px; *padding-bottom:2px;}

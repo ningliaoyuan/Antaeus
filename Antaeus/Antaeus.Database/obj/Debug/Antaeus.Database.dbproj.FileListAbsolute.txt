@@ -1,0 +1,9 @@
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Script.PreDeployment.sql
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Script.PostDeployment.sql
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Database.sqlsettings
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Database.sqldeployment
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Database.sqlcmdvars
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Antaeus.Database.deploymanifest
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Antaeus.Database.dbschema
+D:\Antaeus\Code\Antaeus\Antaeus.Database\sql\debug\Microsoft.SqlTypes.dbschema
+D:\Antaeus\Code\Antaeus\Antaeus.Database\obj\Debug\Antaeus.Database.dbschema

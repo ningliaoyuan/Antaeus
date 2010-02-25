@@ -1,0 +1,123 @@
+﻿/* ----------------------------------------------------------------------------*/ 
+html {color: #333;background: #FFF;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing: 0;}
+fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup {font-style:inherit;font-weight:inherit;}
+del,ins { text-decoration: none;}
+li {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight: normal;}
+q:before,q:after {content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+sup{vertical-align:baseline;}
+sub{vertical-align:baseline;}
+/*because legend doesn't inherit in IE */
+legend {color: #000;}
+input,button,textarea,select,optgroup,option {font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+/*@purpose To enable resizing for IE */
+/*@branch For IE6-Win, IE7-Win */
+input,button,textarea,select{*font-size: 100%;}
+/* YUI Reset End -------------------------------------------------------------*/
+
+
+body,td,th {color: #333;font-size: 12px;font-family: 微软雅黑;}
+body {background-color: #FFF; padding:0; margin:0;}
+
+.tablestyle {color: #4f6b72;background: #E6EAE9; width:100%;padding:0; margin:0 0 10px;}
+.tablestyle a {color: #c75f3e;}
+.tablestyle caption {padding: 0 0 5px 0; width:100%; font-style:italic; font-size:12px; text-align: right;}
+.tablestyle thead td { font-weight:bold; font-size:13px; color: #4f6b72;border-right: 1px solid #C1DAD7;border-bottom: 1px solid #C1DAD7;border-top: 1px solid #C1DAD7;letter-spacing: 2px;text-transform: uppercase;text-align: left;padding: 6px 6px 6px 12px;background: #CAE8EA url(Images/bg_header.jpg) no-repeat;}
+.tablestyle thead td.nobg {border-top: 0;border-left: 0;border-right: 1px solid #C1DAD7;background: none;}
+.tablestyle td { white-space:nowrap;border-right: 1px solid #C1DAD7;border-bottom: 1px solid #C1DAD7;background: #fff;padding: 6px 6px 6px 12px;color: #4f6b72;}
+.tablestyle td.alt {background: #F5FAFA;color: #797268;}
+.tablestyle td.spec{border-left: 1px solid #C1DAD7;}
+.tablestyle tfoot td { background: #666;color: #eee; border-right-color:#888;border-bottom-color:#888;}
+
+.homelogin{}
+.homelogin .top{ width:300px; height:21px; position:absolute; left:50%; margin-left:-150px; top:30px; color:#666;padding-top:45px; font-size:24px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;}
+.homelogin .content{ width:300px; height:320px; position:absolute; left:50%; margin-left:-150px; top:120px;}
+.homelogin .content .title{ background-color:#333; font-size:18px; line-height:50px; color:#FFF; padding-left:20px; height:50px;}
+.homelogin .content .left{ width:300px; float:left; background-color:#F1F1F1;}
+.homelogin .content span{ display:block; padding-top:15px; padding-bottom:5px;}
+.homelogin .content .inp{ display:block; height:30px; font-size:18px; background-color:#FFF; border:1px solid #CCC; width:255px; line-height:30px;}
+.homelogin .content input[type="submit"]{ display:block; margin-top:10px;}
+.homelogin .content form{ padding-left:20px;}
+
+.topheader{ background-color:#222; color:#FFF; height:40px; border-bottom:3px solid #CCC;}
+.topheader .logo{ background-image:url(Images/logo.gif); height:25px;background-position:left middle; background-repeat:no-repeat; width:50px; margin-left:10px; margin-top:7px; float:left;}
+.topheader .login{ float:left; margin-left:10px; height:40px; line-height:40px; color:#CCC;}
+.topheader .exam{ float:left; margin-left:10px;background:#ff8a00 url(Images/bullet_arrow_down.png) scroll no-repeat right; color:#EEE; height:40px; line-height:40px; font-weight:bold; padding-left:10px; padding-right:20px;}
+.topheader a{ display:block; float:right; padding-left:10px; padding-right:10px; height:40px; line-height:40px; text-align:center;}
+.topheader a:link{ color:#FFF; text-decoration:none;}
+.topheader a:visited{ color:#FFF; text-decoration:none;}
+.topheader a:hover{ color:#FFF; text-decoration:underline;}
+
+.wrap{ padding:20px;}
+.wrap .left{ float:left; width:200px; margin-right:15px; background-color:#f1f1f1; padding:15px 0 5px 0; overflow:hidden;}
+.wrap .left h2{ font-size:18px; font-weight:bolder; padding-bottom:15px; color:#000; padding-left:15px;}
+.wrap .left li{border-top:1px solid #fff; height:40px; line-height:40px;}
+.wrap .left li a{ display:block; padding-left:15px; padding-right:15px; font-size:14px;}
+.wrap .left li a:link,
+.wrap .left li a:visited{ color:#16799e; text-decoration:none;}
+.wrap .left li a:hover,
+.wrap .left li a:active{ color:#fff; text-decoration:underline; background-color:#16799e;}
+
+.wrap .right{ float:left; width:700px;}
+
+h1{ padding:0px 0px 20px 0px; margin:0px; font-size:22px; font-weight:bold;}
+.clear{ clear:both;}
+.blank1{ height:10px;}
+.blank2{ height:20px;}
+
+/* Define default form style ----------------------------------------------------------------------------------------------------------*/
+.formstyle{ background-color:#F0F8E0; padding:15px; border:1px dotted #B1DB5B;}
+.formstyle .item{ float:left; width:670px; margin-bottom:8px; border-bottom:1px dashed #d5d5d6; padding-bottom:8px;}
+.formstyle .item .margin{ margin-left:150px; _margin-left:75px;}
+.formstyle .item .rightfloat{ float:right; width:520px;}
+.formstyle .noborder{ border:0;}
+.formstyle .item label{ display:block; font-size:1.15em; width:140px; float:left; line-height:26px; font-weight:bold; color:#000; padding-right:10px; text-align:right;}
+.formstyle .item label span{ color:#F60; padding-right:5px;}
+.formstyle .item .inp{ display:block; float:left; font-size:1.15em; color:#555;border-top:1px solid #abadb3; border-left:1px solid #e2e3ea; border-bottom:1px solid #e3e9ef; border-right:1px solid #dbdfe6; padding:3px; -moz-border-radius:3px; background:#f9f9f9; margin-right:5px; *padding-top:1px; *padding-bottom:7px;}
+.formstyle .item .inp1{ width:450px;}
+.formstyle .item .inp2{ width:200px;}
+.formstyle .item .inp3{ width:50px;}
+.formstyle .item .correct{ padding-left:20px; background:transparent url(../Images/icon_silk.png) scroll no-repeat 0px -115px; line-height:26px; font-size:12px; color:#555; float:left;}
+.formstyle .item .wrong{ float:left; width:420px; line-height:normal; font-weight:normal; margin-top:8px; border:1px solid #d38989; color:#a82828; padding:6px 10px; background-color:#ffe9e9; -moz-border-radius:10px; -moz-border-radius-topleft:0; clear:both; padding-left:25px; background-image:url(../Images/icon_silk.png); background-repeat:no-repeat; background-position:5px -144px;}
+.formstyle .item .inp-between{ float:left; padding-left:5px; padding-right:5px; line-height:26px; color:#555;}
+.formstyle .item .description{ float:left; width:435px; line-height:normal; font-weight:normal; margin-top:8px; border:1px solid #95c1e3; color:#0e5f9c; padding:6px 10px; background-color:#edf2fa; -moz-border-radius:10px; -moz-border-radius-topleft:0; clear:both;}
+.formstyle .item .textarea_wrap{ width:520px; height:383px; overflow:hidden; float:left;}
+.formstyle .item .textarea_wrap textarea{ height:375px;}
+.formstyle .item select{ padding:1px 3px; margin-right:3px;}
+.formstyle .inp-file{ float:left; width:148px; height:28px; background:url(/Contents/buttons/input_file.gif) 0 0 no-repeat; display:block; overflow:hidden; cursor:pointer; margin-right:10px;}
+.formstyle .inp-file input.file{ position:relative; height:100%; width:auto; opacity:0; -moz-opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);}
+.formstyle .checkbox input,
+.formstyle .radio input{ float:left; display:block; height:27px; width:20px;}
+.formstyle .checkbox span,
+.formstyle .radio span{ float:left; display:block; padding:3px 10px 0px 5px; font-size:1.15em; color:#555;}
+.formstyle .checkbox .single,
+.formstyle .radio .single{ clear:both;}
+.formstyle .checkbox li,
+.formstyle .radio li{ display:block; width:480px; float:left; padding:3px 10px 0px 5px; font-size:1.15em; color:#555;}
+.formstyle .sortbox{ width:230px; float:left; margin-left:15px; padding:5px 10px; margin-top:10px;}
+.formstyle .desc{ height:30px; line-height:30px; color:#FFF; font-weight:bold;}
+.formstyle .sortitem{ height:30px; line-height:30px; background-color:#f1f1f1; padding-left:10px; padding-right:10px; margin-bottom:5px; border:1px dashed #AAA; cursor:move;}
+.formstyle .rate_wrap{ float:left; line-height:26px; font-size:14px; color:#666;}
+.formstyle .item .inline{ margin-top:0; margin-bottom:10px; width:500px;}
+
+/* Form Like Button ----------------------------------------------------------------------------------------------------------------------*/
+/* Provide 4 different color, using btn-form-color for class, support <input> and <a> */
+.btn-form-green, .btn-form-blue, .btn-form-red,
+.btn-form-gray{ margin-right:5px; padding:3px 10px 5px; font-weight:bold; cursor:pointer; font-size:12px; height:30px; font-weight:bold; background-image:url(../Images/1px.gif); background-repeat:repeat-x;}		
+input.btn-form-green, input.btn-form-blue, input.btn-form-gray,
+input.btn-form-red{ padding:2px 10px 4px; *padding:4px 10px 2px;}		
+a.btn-form-green, a.btn-form-blue, a.btn-form-gray,
+a.btn-form-red{ padding:6px 10px 5px;}		
+.btn-form-green { border:1px solid #588624; background-color:#80b91c; background-position:0 -830px; border-bottom:1px solid #455f08;  border-right:1px solid #455f08; color:#fff;}
+.btn-form-gray  { border:1px solid #c4c4c4; background-color:#f1f1f1; background-position:0 -890px; border-bottom:1px solid #8a8a8a;  border-right:1px solid #8a8a8a; color:#444;}
+.btn-form-blue  { border:1px solid #246686; background-color:#1c97b9; background-position:0 -800px; border-bottom:1px solid #08525f;  border-right:1px solid #08525f; color:#fff;}
+.btn-form-red   { border:1px solid #b23534; background-color:#ea1f34; background-position:0 -860px; border-bottom:1px solid #921615;  border-right:1px solid #921615; color:#fff;}		
+a.btn-form-gray:link,  a.btn-form-gray:visited,  a.btn-form-gray:hover   {color:#444;}
+a.btn-form-green:link, a.btn-form-green:visited, a.btn-form-green:hover,
+a.btn-form-blue:link,  a.btn-form-blue:visited,  a.btn-form-blue:hover,
+a.btn-form-red:link,   a.btn-form-red:visited,   a.btn-form-red:hover    {color:#fff;}

@@ -1,0 +1,240 @@
+﻿/*==========================================================================
+ANTAEUS.Common.CSS
+This File is for all page used and defined the common used
+Version 0.1, Created by Lanslot at 2009/6/14 0:19
+============================================================================*/
+
+/* YUI Reset ===========================================================================================
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.7.0
+--------------------------------------------------------------------------------------------------------*/ 
+html {color: #000;background: #F1F1F1;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing: 0;}
+fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup {font-style:inherit;font-weight:inherit;}
+del,ins { text-decoration: none;}
+li {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight: normal;}
+q:before,q:after {content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+sup{vertical-align:baseline;}
+sub{vertical-align:baseline;}
+/*because legend doesn't inherit in IE */
+legend {color: #000;}
+input,button,textarea,select,optgroup,option {font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+/*@purpose To enable resizing for IE */
+/*@branch For IE6-Win, IE7-Win */
+input,button,textarea,select{*font-size: 100%;}
+/* YUI Reset End =======================================================================================*/
+
+/* Define the tags' default style ====================================================================================== */
+body{ font-family:"微软雅黑","宋体", "Arial"; font-size:12px; color:666;}
+/* define default link style */
+a:link,a:visited{ color:#0479a7; text-decoration:none;}
+a:hover,a:active{ color:#FF0000; text-decoration:underline;}
+
+/* Define the most useful classes======================================================================================= */
+.clear{ clear:both; font-size:0px; line-height:0px; height:0px;}
+.hidden{ display:none;}
+.notvisable{ visibility:hidden;}
+.noborder{ border:0;}
+.nopadding{ padding:0;}
+.nomargin{ margin:0;}
+.blank5{ height:5px; font-size:5px; line-height:5px; clear:both;}
+.blank10{ height:10px; font-size:10px; line-height:10px; clear:both;}
+.blank15{ height:15px; font-size:15px; line-height:15px; clear:both;}
+.left{ float:left;}
+.right{ float:right;}
+#dialogCover{ display:none; position:absolute; left:0; top:0; width:100%; height:100%; background-color:#000; z-index:99;}
+
+/* Color Define =========================================================================================================================*/
+/* Define background-color type -------------------------------------------------------------------------------------------------------*/
+.bgc-red    { background-color:#df0101;}
+.bgc-orange { background-color:#df6901;}
+.bgc-gery   { background-color:#898989;}
+.bgc-green  { background-color:#368500;}
+.bgc-blue   { background-color:#0479a7;}
+.bgc-purple { background-color:#df0193;}
+.bgc-dark   { background-color:#333333;}
+.bgc-light  { background-color:#f1f1f1;}
+/* Define the Text colors*/
+.red    { color:#df0101;}
+.green  { color:#368500;}
+.blue   { color:#0479a7;}
+.purple { color:#df0193;}
+.orange { color:#df6901;}
+/* Define the Revert Text colors*/
+.rbgc-red    { background-color:#df0101; color:#FFF; font-weight:bold; font-size:14px;}
+.rbgc-blue   { background-color:#0479a7; color:#FFF; font-weight:bold; font-size:14px;}
+.rbgc-green  { background-color:#368500; color:#FFF; font-weight:bold; font-size:14px;}
+.rbgc-orange { background-color:#df6901; color:#FFF; font-weight:bold; font-size:14px;}
+
+/* Button Define =========================================================================================================================*/
+/* Form Like Button ----------------------------------------------------------------------------------------------------------------------*/
+/* Provide 4 different color, using btn-form-color for class, support <input> and <a> */
+.btn-form-green, .btn-form-blue, .btn-form-red,
+.btn-form-gray{ margin-right:5px; padding:3px 10px 5px; font-weight:bold; cursor:pointer; font-size:12px; height:30px; font-weight:bold; background-image:url(../Images/1px.gif); background-repeat:repeat-x;}		
+input.btn-form-green, input.btn-form-blue, input.btn-form-gray,
+input.btn-form-red{ padding:2px 10px 4px; *padding:4px 10px 2px;}		
+a.btn-form-green, a.btn-form-blue, a.btn-form-gray,
+a.btn-form-red{ padding:6px 10px 5px;}		
+.btn-form-green { border:1px solid #588624; background-color:#80b91c; background-position:0 -830px; border-bottom:1px solid #455f08;  border-right:1px solid #455f08; color:#fff; cursor:pointer;}
+.btn-form-gray  { border:1px solid #c4c4c4; background-color:#f1f1f1; background-position:0 -890px; border-bottom:1px solid #8a8a8a;  border-right:1px solid #8a8a8a; color:#444; cursor:pointer;}
+.btn-form-blue  { border:1px solid #246686; background-color:#1c97b9; background-position:0 -800px; border-bottom:1px solid #08525f;  border-right:1px solid #08525f; color:#fff; cursor:pointer;}
+.btn-form-red   { border:1px solid #b23534; background-color:#ea1f34; background-position:0 -860px; border-bottom:1px solid #921615;  border-right:1px solid #921615; color:#fff; cursor:pointer;}		
+a.btn-form-gray:link,  a.btn-form-gray:visited,  a.btn-form-gray:hover   {color:#444;}
+a.btn-form-green:link, a.btn-form-green:visited, a.btn-form-green:hover,
+a.btn-form-blue:link,  a.btn-form-blue:visited,  a.btn-form-blue:hover,
+a.btn-form-red:link,   a.btn-form-red:visited,   a.btn-form-red:hover    {color:#fff;}
+/* Big Button ---------------------------------------------------------------------------------------------------------------------*/
+/* Provide 4 different style, using btn-big-n for class, only support <a> */
+/* Require html: <a><p><b>text1</b><br /><span>text2</span></p></a> */
+.btn-big-1, .btn-big-2, .btn-big-3,
+.btn-big-4{ display:block; height:49px; float:left; background:url(../Images/1px.gif) repeat-x 0 -700px; border:1px solid #e5e5e5; padding-left:40px; padding-right:40px; -moz-border-radius:5px; -webkit-border-radius:5px; filter:progid:DXImageTransform.Microsoft.Shadow(Strength=3,Direction=135,color=#DDDDDD); -moz-box-shadow:#DDDDDD 1px 1px 3px; -webkit-box-shadow:#DDDDDD 1px 1px 3px;}
+a.btn-big-1, a.btn-big-1:link, a.btn-big-1:visited, a.btn-big-1:hover,
+a.btn-big-2, a.btn-big-2:link, a.btn-big-2:visited, a.btn-big-2:hover,
+a.btn-big-3, a.btn-big-3:link, a.btn-big-3:visited, a.btn-big-3:hover,
+a.btn-big-4, a.btn-big-4:link, a.btn-big-4:visited, a.btn-big-4:hover{ color:#000; text-decoration:none;}		
+.btn-big-1 p, .btn-big-2 p, .btn-big-3 p,
+.btn-big-4 p{ display:block; float:left; height:42px; padding-top:7px; background-image:url(../Images/btn_big.gif); background-repeat:no-repeat; padding-left:40px;}
+.btn-big-1 p{ background-position:0 0;}
+.btn-big-2 p{ background-position:0 -50px;}
+.btn-big-3 p{ background-position:0 -100px;}
+.btn-big-4 p{ background-position:0 -150px;}		
+.btn-big-1 b, .btn-big-2 b, .btn-big-3 b,
+.btn-big-4 b{ font-size:16px; line-height:18px; *line-height:20px;}		
+.btn-big-1 span, .btn-big-2 span, .btn-big-3 span,
+.btn-big-4 span{ font-size:12px; line-height:14px;}
+/* Tiny Button ---------------------------------------------------------------------------------------------------------------------*/
+/* Provide 2 different style, using btn_tidy for class, style2 would require <span>in html, only support <a> */
+.btn-tiny{ display:block; float:left; margin-right:5px; height:18px; font-size:10px; font-weight:bold; line-height:18px; background:url(../Images/1px.gif) repeat-x 0 -780px; padding-left:10px; padding-right:10px; border:1px solid #b8b8b8; -moz-border-radius:3px; -webkit-border-radius:3px; color:#000;}
+a.btn-tiny:link, a.btn-tiny:visited, a.btn-tiny:hover{ color:#000; text-decoration:none;}
+.btn-tiny span{ color:#d24a8a;}
+/* Small Button ---------------------------------------------------------------------------------------------------------------------*/
+/* Provide n different style, using btn-small, btn_function for class, only support <a> */
+.btn-small{ display:block; float:left; margin-right:5px; height:26px; font-size:12px; line-height:26px; cursor:pointer; color:#0479A7; background-color:#f1f6f8; padding-left:30px; padding-right:15px; border:1px solid #bdcbd0; -moz-border-radius:3px; -webkit-border-radius:3px; background-repeat:no-repeat; background-image:url(../Images/icon_silk.png); -moz-box-shadow:inset #DDDDDD 0px 0px 3px; -webkit-box-shadow:inset #DDDDDD 0px 0px 3px;}
+a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
+.btn-history{ background-position:10px -445px;}
+.btn-edit   { background-position:10px -475px;}
+.btn-comment{ background-position:10px -295px;}
+/* Huge Button ---------------------------------------------------------------------------------------------------------------------*/
+/* Provide 2 different style, using btn_tidy for class, style2 would require <span>in html, only support <a> */
+.btn-huge{ height:48px; padding:15px; display:block; border-top:1px solid #FFF; border-bottom:1px solid #FFF; color:#F60;}
+.btn-huge p{ display:block; background-image:url(../Images/icon_action_48.png); background-repeat:no-repeat; padding-left:55px; height:48px;}		
+.btn-huge-favorite p { background-position:0 -140px;}
+.btn-huge-email p    { background-position:0 -70px;}
+.btn-huge-print p    { background-position:0 0;}		
+.btn-huge:hover,
+.btn-huge:active{ text-decoration:none; background-color:#47b5ea; border-top:1px solid #1c78a4; border-bottom:1px solid #1c78a4; color:#FFF;}
+.btn-huge b{ display:block; font-size:16px; font-weight:bold;}
+.btn-huge span{ display:block; font-size:12px; color:#888;}
+.btn-huge:hover span{ color:#FFF;}
+/* Toggle Button ---------------------------------------------------------------------------------------------------------------------*/
+.btn-toggle-show,
+.btn-toggle-hide{ display:block; float:left; padding-left:20px; height:20px; line-height:20px; background:#eee url(../Images/icon_silk.png) scroll no-repeat 5px -267px; padding-right:10px;}
+.btn-toggle-show{ background-position:5px -237px;}
+/* Page Button -----------------------------------------------------------------------------------------------------------------------*/
+.btn-page{ display:block; float:left; background:url(../Images/1px.gif) repeat-x 0 -930px; line-height:21px; height:21px; border:1px solid #c5c5c5; border-bottom-color:#b6b6b6; border-top-color:#d3d3d3; padding-left:10px; padding-right:10px; margin-right:5px; font-size:13px; color:#000; font-weight:bolder;}
+a.btn-page:link, a.btn-page:visited, a.btn-page:hover{ color:#000; text-decoration:none;}
+
+/* Define default form style =========================================================================================================================*/
+.formstyle .item{ padding:10px 0px; border-bottom:1px dotted #CCC; font-size:14px; *padding-bottom:0;}
+.formstyle .noborder{ border:0;}
+.formstyle .title{ float:left; width:105px; font-weight:bold; text-align:right; line-height:30px;}
+.formstyle .title span{ color:#F00;}
+.formstyle .detail{ float:right; width:560px; overflow:hidden; }
+.formstyle .tips, .formstyle .warn, .formstyle .correct{ display:block; clear:both; padding:5px;}
+.formstyle .tips{ color:#0479a7; background-color:#cadfec; }
+.formstyle .warn{ color:#FFF; background-color:#df0101; }
+.formstyle .correct{ color:#368500; background-color:#e0ffb0; }
+.formstyle .inp{ float:left; font-size:14px; padding:5px;}
+.formstyle .textarea{ font-size:14px; padding:5px; height:200px; line-height:20px; display:block; float:left;}
+.formstyle .inp1{ width:548px; *width:546px;}
+.formstyle select.inp1{ width:560px;}
+.formstyle select.inp{*margin-top:3px;}
+.formstyle .inp2{ width:200px;}
+.formstyle .inp3{ width:50px;}
+.formstyle .inp4{ width:475px; height:60px;}
+.formstyle .inp-between{ float:left; line-height:30px; padding:0 5px;}
+/*这里的改变文件上传框的样式的原理是调整原有文件上传框透明度为0，然后再用margin负值压在另一个写好样式的东西上面*/
+/*这里有注意的地方就是FF控制文件上传框的宽度需要用到HTML属性size*/
+/*还有就是用js来控制用户选择文件地址的在文本框的显示*/
+.formstyle .file{ width:560px; height:30px;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);}
+.formstyle .file-wrap{ margin-top:-30px; position:absolute; *position:inherit;opacity:0;}
+.formstyle .file-inp{ width:482px; *width:455px;}
+.formstyle .file-btn{ margin:1px 0 0 5px; *margin-top:0;}
+.formstyle .check { padding-top:2px;}
+.formstyle .check div{ float:left;}
+.formstyle .check div input{ float:left; display:block; height:29px; width:20px; }
+.formstyle .check div span{ float:left; display:block; padding:4px 10px 0px 5px; font-size:1.15em; color:#555; }
+.formstyle .check1 div span{ width:525px;}
+.formstyle .check2 div span{ width:245px;}
+.formstyle .check3 div span{ width:151px;}
+.formstyle .check4{ float:right; width:70px; overflow:hidden;}
+.formstyle .check4 div span{ width:45px; padding-right:0; padding-left:0;}
+.formstyle .rate{ width:415px; float:right; line-height:28px;}
+
+.formstyle .margin-right{ margin-right:5px;}
+.formstyle ul.sortbox{ width:265px; background-color:#CCC; float:left; padding:5px; font-size:12px;}
+.formstyle ul.sortbox li.desc{ font-weight:bold;}
+.formstyle ul.sortbox li.sortitem{ line-height:20px; border:1px dotted #CCC; margin-top:5px; background-color:#EEE; padding:0 5px; cursor:pointer;}
+.formstyle .separate-select a{ color:#09F; cursor:pointer;}
+.formstyle .judge-target{ display:none;}
+
+/* Definte default table style ======================================================================================================== */
+.tablestyle {font: normal 12px auto;color: #4f6b72;background: #E6EAE9; width:100%; padding:0; margin:0 0 10px; float:left;}
+.tablestyle a {color: #c75f3e;}
+.tablestyle caption {padding: 0 0 5px 0;width:100%;font: italic 11px;text-align: right;}
+.tablestyle th {font: bold 11px;color: #4f6b72;border-right: 1px solid #C1DAD7;border-bottom: 1px solid #C1DAD7;border-top: 1px solid #C1DAD7;letter-spacing: 2px;text-transform: uppercase;text-align: left;padding: 6px 6px 6px 12px;background: #CAE8EA url(gfx/bg_header.jpg) no-repeat;}
+.tablestyle th.nobg {border: 1px solid #C1DAD7; background: none;}
+.tablestyle td {border-right: 1px solid #C1DAD7;border-bottom: 1px solid #C1DAD7;background: #fff;padding: 6px 6px 6px 12px;color: #4f6b72;}
+.tablestyle td.alt {background: #F5FAFA;color: #797268;}
+.tablestyle th.spec {border-left: 1px solid #C1DAD7;border-top: 0;background: #fff url(gfx/bullet1.gif) no-repeat;font: bold 10px;}
+.tablestyle th.specalt {border-left: 1px solid #C1DAD7;border-top: 0;background: #f5fafa url(gfx/bullet2.gif) no-repeat;font: bold 10px;color: #797268;}
+
+/* Tab Define =========================================================================================================================*/
+/* Define the base style of tab*/
+.tab ul li{ float:left; background-image:url(../Images/1px.gif); background-repeat:repeat-x; padding-right:15px; padding-left:15px; margin-right:10px; border:1px solid #d4d4d4; border-bottom:none; height:38px; line-height:38px; color:#000; cursor:pointer; -moz-border-radius-topleft:3px; -webkit-border-radius-topleft:3px; -moz-border-radius-topright:3px; -webkit-border-radius-topright:3px;}
+/* Define five different color style of tab*/
+.tab-gray ul li{ height:26px; line-height:26px; color:#666; background-position:0 -30px;}
+.tab-gray ul li.selected{ background-position:0 -60px;}
+.tab-gray ul li.hover{ background-position:0 -90px;}
+.tab-blue ul li{ height:29px; line-height:29px;}
+.tab-blue ul li.selected{ background-position:0 -118px; border:0; color:#FFF; height:30px;}
+.tab-blue ul li.hover{ background-color:#cadfec; border-color:#0e74b7;}
+.tab-green ul li.selected{ background-position:0 -280px; border:0; color:#FFF; height:39px; }
+.tab-green ul li.hover{ background-color:#eafffe; border-color:#2e9f9b;}
+.tab-red ul li.selected{ background-position:0 -440px; border:0; color:#FFF; height:39px;}
+.tab-red ul li.hover{ background-color:#ffe5de; border-color:#9f462e;}
+.tab-black ul li{ height:34px; line-height:34px; color:#000; background-image:none;}
+.tab-black ul li.selected{ background-color:#000; border:0; color:#FFF; height:35px;}
+.tab-black ul li.hover{ background-color:#DDD; border-color:#000;}
+/* Define colorful tab style, including 3 different color only support less than three tabs*/
+.tab-color ul li{ height:38px; line-height:38px; background-image:none;}
+.tab-color ul li.selected{color:#FFF; border:0; height:39px; line-height:39px; background-image:url(../Images/1px.gif); background-repeat:repeat-x;}
+.tab-color-blue[class~="selected"]{background-position:0 -118px;}
+.tab-color-green[class~="selected"]{background-position:0 -280px;}
+.tab-color-red[class~="selected"]{background-position:0 -440px;}
+.tab-color-blue{_background-position:0 -118px;}
+.tab-color-green{_background-position:0 -280px;}
+.tab-color-red{_background-position:0 -440px;}
+/* Define the inline mode, remember must set .tab-inline's padding-top for current show, and be careful with IE6,IE7 */
+.tab-inline ul{ float:right;}
+.tab-inline ul li{ float:right; margin-right:0px; margin-left:10px;}
+/* Define style of tab content, the border on the top*/
+.tab-content{ clear:both; padding-top:10px;}
+.tab-gray  .tab-content{ border:1px solid #dbdbdb; padding:10px;}
+.tab-blue  .tab-content{ border-top:3px solid #0e74b7; }
+.tab-green .tab-content{ border-top:3px solid #2e9f9b;}
+.tab-black .tab-content{ border-top:3px solid #000;}
+.tab-red   .tab-content{ border-top:3px solid #9f462e;}
+.tab-color .tab-content{ height:95px; overflow:hidden; padding:10px; color:#FFF; background-image:url(../Images/1px.gif); background-repeat:repeat-x;  -moz-border-radius-bottomleft:5px; -webkit-border-radius-bottomleft:5px; -moz-border-radius-bottomright:5px; -webkit-border-radius-bottomright:5px;}
+.tab-color .tab-content-blue  { border-top:3px solid #0e74b7; background-position:0 -160px;}
+.tab-color .tab-content-green { border-top:3px solid #2e9f9b; background-position:0 -320px;}
+.tab-color .tab-content-red   { border-top:3px solid #9f462e; background-position:0 -480px;}
+/* Define base of tab content*/
+.tab-content{ clear:both; color:#666;}

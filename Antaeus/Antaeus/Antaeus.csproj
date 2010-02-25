@@ -1,0 +1,479 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E2FBB8E7-B318-4863-9DE3-0F991250CB38}</ProjectGuid>
+    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Antaeus</RootNamespace>
+    <AssemblyName>Antaeus</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KnowledgeController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
+    <Compile Include="Controllers\WikiController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\MembershipHelper.cs" />
+    <Compile Include="Helpers\ViewDataHelper.cs" />
+    <Compile Include="Helpers\ViewHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Views\Shared\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Shared\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\CSS\Common.css" />
+    <Content Include="Contents\CSS\GMAT.css" />
+    <Content Include="Contents\CSS\Layout.css" />
+    <Content Include="Contents\Images\BG_GMAT.jpg" />
+    <Content Include="Contents\Images\Login_BG.gif" />
+    <Content Include="Contents\Images\Login_Form.gif" />
+    <Content Include="Contents\Images\Logo.png" />
+    <Content Include="Contents\Images\Logo_GMAT.gif" />
+    <Content Include="Contents\Images\Navigation_Hover.gif" />
+    <Content Include="Contents\Images\Question.Item.gif" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Views\Question\Edit.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\jquery-1.3.2.js" />
+    <Content Include="Scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.3.2.min-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\Images\1px.gif" />
+    <Content Include="Contents\Images\Account_Face.gif" />
+    <Content Include="Contents\Images\Account_Top.jpg" />
+    <Content Include="Contents\Images\bar_color.gif" />
+    <Content Include="Contents\Images\bg_blue.jpg" />
+    <Content Include="Contents\Images\bg_green.jpg" />
+    <Content Include="Contents\Images\bg_orange.jpg" />
+    <Content Include="Contents\Images\btn_big.gif" />
+    <Content Include="Contents\Images\icon_24.png" />
+    <Content Include="Contents\Images\icon_64.gif" />
+    <Content Include="Contents\Images\icon_account_48.gif" />
+    <Content Include="Contents\Images\icon_account_64.gif" />
+    <Content Include="Contents\Images\icon_action_48.png" />
+    <Content Include="Contents\Images\icon_down.gif" />
+    <Content Include="Contents\Images\icon_logo_60.gif" />
+    <Content Include="Contents\Images\icon_silk.png" />
+    <Content Include="Contents\Images\icon_star_big.png" />
+    <Content Include="Contents\Images\icon_star_gery.gif" />
+    <Content Include="Contents\Images\icon_up.gif" />
+    <Content Include="Contents\Images\icon_widget.gif" />
+    <Content Include="Contents\Images\Knowledge.Item.gif" />
+    <Content Include="Contents\Images\Question_TopRight_BG.jpg" />
+    <Content Include="Contents\Temp\DataCollection.jpg" />
+    <Content Include="Contents\Temp\Index.GMAT.jpg" />
+    <Content Include="Contents\Temp\IndexAD.jpg" />
+    <Content Include="Plugins\CKEditor-3.0.1\CHANGES.html" />
+    <Content Include="Plugins\CKEditor-3.0.1\ckeditor.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\ckeditor_basic.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\ckeditor_basic_source.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\ckeditor_source.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\config.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\contents.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\images\spacer.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\INSTALL.html" />
+    <Content Include="Plugins\CKEditor-3.0.1\lang\en.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\lang\zh-cn.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\lang\_languages.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\LICENSE.html" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\about\dialogs\about.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\about\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\basicstyles\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\blockquote\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\button\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\clipboard\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\colorbutton\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\colordialog\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\contextmenu\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\dialogui\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\dialog\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\domiterator\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\editingblock\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\elementspath\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\enterkey\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\entities\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\fakeobjects\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\filebrowser\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\find\dialogs\find.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\find\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\flash\dialogs\flash.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\flash\images\placeholder.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\flash\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\floatpanel\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\font\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\format\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\button.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\form.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\radio.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\select.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\textarea.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\dialogs\textfield.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\forms\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\horizontalrule\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\htmldataprocessor\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\htmlwriter\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\iframedialog\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\image\dialogs\image.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\image\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\indent\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\justify\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\keystrokes\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\link\dialogs\anchor.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\link\dialogs\link.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\link\images\anchor.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\link\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\listblock\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\list\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\maximize\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\menubutton\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\menu\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\newpage\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\pagebreak\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\panelbutton\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\panel\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\pastefromword\dialogs\pastefromword.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\pastefromword\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\pastetext\dialogs\pastetext.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\pastetext\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\popup\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\preview\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\print\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\removeformat\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\resize\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\richcombo\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\save\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\scayt\dialogs\options.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\scayt\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\selection\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_address.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_div.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_h1.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_h2.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_h3.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_h4.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_h5.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_h6.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_p.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\images\block_pre.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\showblocks\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\envelope.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\heart.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\kiss.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\smiley\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\sourcearea\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\specialchar\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\stylescombo\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\stylescombo\styles\default.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\styles\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\tabletools\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\table\dialogs\table.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\table\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\tab\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\templates\dialogs\templates.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\templates\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\templates\templates\default.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\templates\templates\images\template1.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\templates\templates\images\template2.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\templates\templates\images\template3.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\toolbar\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\dialogs\uicolor.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\lang\en.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\uicolor.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\yui\assets\hue_bg.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\yui\assets\hue_thumb.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\yui\assets\picker_mask.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\yui\assets\picker_thumb.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\yui\assets\yui.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\uicolor\yui\yui.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\undo\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\wsc\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\plugins\wysiwygarea\plugin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\dialog.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\editor.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\icons.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\dialog_sides.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\dialog_sides.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\dialog_sides_rtl.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\mini.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\noimage.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\sprites.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\sprites_ie6.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\images\toolbar_start.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\skin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\kama\templates.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\dialog.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\editor.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\icons.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\images\dialog_sides.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\images\dialog_sides.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\images\dialog_sides_rtl.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\images\mini.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\images\noimage.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\images\sprites.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\images\sprites_ie6.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\skin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\office2003\templates.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\dialog.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\editor.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\icons.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\dialog_sides.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\dialog_sides.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\dialog_sides_rtl.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\mini.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\noimage.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\sprites.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\sprites_ie6.png" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\images\toolbar_start.gif" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\skin.js" />
+    <Content Include="Plugins\CKEditor-3.0.1\skins\v2\templates.css" />
+    <Content Include="Plugins\CKEditor-3.0.1\themes\default\theme.js" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_glass_45_0078ae_1x400.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_glass_55_f8da4e_1x400.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_glass_75_79c9ec_1x400.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_gloss-wave_45_e14f1c_500x100.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_gloss-wave_50_6eac2c_500x100.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_gloss-wave_75_2191c0_500x100.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-icons_0078ae_256x240.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-icons_056b93_256x240.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-icons_f5e175_256x240.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\jquery-1.3.2.min.js" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\jquery-ui-1.7.2.custom.css" />
+    <Content Include="Plugins\jQuery.UI-1.7.2\jquery-ui-1.7.2.custom.min.js" />
+    <Content Include="Plugins\UI.Stars-2.1\ui.stars.css" />
+    <Content Include="Plugins\UI.Stars-2.1\ui.stars.gif" />
+    <Content Include="Plugins\UI.Stars-2.1\ui.stars.js" />
+    <Content Include="Plugins\UI.Stars-2.1\ui.stars.min.css" />
+    <Content Include="Plugins\UI.Stars-2.1\ui.stars.min.js" />
+    <Content Include="Scripts\Antaeus.js" />
+    <Content Include="Views\Account\AccountSetting.aspx" />
+    <Content Include="Views\Account\ContentRecord.aspx" />
+    <Content Include="Views\Account\Favorite.aspx" />
+    <Content Include="Views\Account\ForgetPassword.aspx" />
+    <Content Include="Views\Account\HeaderControl.ascx" />
+    <Content Include="Views\Account\Index.aspx" />
+    <Content Include="Views\Account\Logoff.aspx" />
+    <Content Include="Views\Account\Mail.aspx" />
+    <Content Include="Views\Account\SideControl.ascx" />
+    <Content Include="Views\Article\Create.aspx" />
+    <Content Include="Views\Article\Detail.aspx" />
+    <Content Include="Views\Article\Index.aspx" />
+    <Content Include="Views\Article\List.aspx" />
+    <Content Include="Views\Components\FilterComponent.ascx" />
+    <Content Include="Views\Knowledge\Create.aspx" />
+    <Content Include="Views\Knowledge\Details.aspx" />
+    <Content Include="Views\Knowledge\Index.aspx" />
+    <Content Include="Views\Knowledge\List.aspx" />
+    <Content Include="Views\PopUps\AddFavoritePopup.ascx" />
+    <Content Include="Views\PopUps\LoginPopUp.ascx" />
+    <Content Include="Views\PopUps\PrintPagePopup.ascx" />
+    <Content Include="Views\PopUps\QuestionReportPopup.ascx" />
+    <Content Include="Views\PopUps\SendEmailToFriendPopup.ascx" />
+    <Content Include="Views\PopUps\WikiHistoryPopup.ascx" />
+    <Content Include="Views\Question\Create.aspx" />
+    <Content Include="Views\Question\Details.aspx" />
+    <Content Include="Views\Question\DetailsTemp.aspx" />
+    <Content Include="Views\Question\Index.aspx" />
+    <Content Include="Views\Question\List.aspx" />
+    <Content Include="Views\Question\QuestionFormTypeChoice.ascx" />
+    <Content Include="Views\Question\QuestionFormTypeIssue.ascx" />
+    <Content Include="Views\Question\QuestionFormTypeReading.ascx" />
+    <Content Include="Views\Question\QuestionViewTypeChoice.ascx" />
+    <Content Include="Views\Question\QuestionViewTypeIssue.ascx" />
+    <Content Include="Views\Question\QuestionViewTypeReading.ascx" />
+    <Content Include="Views\Search\Result.aspx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Tag\Detail.aspx" />
+    <Content Include="Views\Wiki\Details.ascx" />
+    <Content Include="Views\Wiki\History.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Antaeus.BL\Antaeus.BL.csproj">
+      <Project>{176E0ECE-37C7-4587-A3AD-F403C800CE6A}</Project>
+      <Name>Antaeus.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Antaeus.ORM\Antaeus.ORM.csproj">
+      <Project>{90F2A1C6-6B02-45B5-890B-A765A287BB3F}</Project>
+      <Name>Antaeus.ORM</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Plugins\CKEditor-3.0.1\.htaccess" />
+    <None Include="Plugins\CKEditor-3.0.1\ckeditor.pack" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Contents\Flash\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>39242</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

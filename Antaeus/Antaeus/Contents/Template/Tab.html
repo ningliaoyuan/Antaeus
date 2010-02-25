@@ -1,0 +1,355 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>The Template of Antaeus - The Layout Definate</title>
+<link href="../CSS/Common.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="../CSS/Layout.css" rel="stylesheet" media="screen" type="text/css" />
+<script src="/Scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+								
+	function ActiveTab(data){
+		$(data.tabname+" li").mouseover(function(){$(this).addClass(data.hover);});
+		$(data.tabname+" li").mouseout(function(){$(this).removeClass(data.hover);});
+		$(data.tabname+" li").click(function(){
+			var target = $(this);
+			var current = $(this).parent().children("."+data.selected);
+			current.removeClass(data.selected);
+			target.addClass(data.selected);
+			if(current.attr("rel")!=target.attr("rel")){
+				$(current.attr("rel")).fadeOut("normal",function(){$(target.attr("rel")).show();});
+			}
+		});		
+	}
+	
+	var Tab = {
+		tabname:".tab",    //定义Tab最外面包含的类
+		selected:"selected",    //定义Tab选中的CSS样式
+		hover:"hover"           //定义Tab鼠标移上去时的鼠标样式
+	};
+	ActiveTab(Tab);
+
+});
+</script>
+<style>
+
+.header{ background:#000 url(../Images/BG_GMAT.jpg) scroll repeat-x center top;}
+.template .context{ padding:15px; }
+.template .context h1{ font-size:24px; font-weight:bold; padding-bottom:15px; padding-top:15px;}
+
+
+.tab-content p,
+.tab-content b{ padding-bottom:10px; display:block; text-indent:24px;}
+
+.tab-inline{ padding-top:34px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="wrap">
+        <div class="main">
+            <div class="logo"><img src="../../Contents/Images/Logo.png" alt="www.JINBU8.com" /></div>
+            <div class="login">
+                <div class="exam">
+                    <span>当前关注考试</span>
+                    <img src="../../Contents/Images/Logo_GMAT.gif" alt="进步吧 — 每天进步一点点，我一定可以成功" />
+                </div>
+                <div class="loginform">
+                    <div class="email"><input type="text" value="电子邮件地址" /></div>
+                    <div class="password"><input type="text" value="用户密码" /></div>
+                    <div class="submit"><a href="#"></a></div>
+                    <div class="auto">
+                        <input type="checkbox" />
+                        <span>下次自动登录</span>
+                    </div>
+                    <div class="forgot"><a href="#">救救我！忘记密码了</a></div>
+                    <div class="register"><a href="#">注册新用户</a></div>
+                </div>
+            </div>
+            <div class="quatotion">荀子曰：不积跬步，无以至千里</div>
+        </div>
+        <div class="navigation">
+            <div class="link">
+                <a href="#" class="current">主页</a>
+                <a href="/Question">题库</a>
+                <a href="/Question">知识点</a>
+                <a href="/Question">题库</a>
+            </div>
+            <div class="search">
+                <input type="text" value="输入题目编号直接浏览题目" />
+                <a href="#">搜索</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="content column2">
+    <div class="wrap">
+        <div class="blank10"></div>
+        <div class="columnleft">
+            <div class="box2 template">
+                <div class="context">
+                    <h1>灰色的Tab（大）</h1>
+                    <div class="tab tab-gray" id="Tab1">
+                    	<ul>
+                            <li rel="#Tab1-1" class="selected">数学</li>
+                            <li rel="#Tab1-2">阅读</li>
+                            <li rel="#Tab1-3">逻辑</li>
+                            <li rel="#Tab1-4">语法</li>
+                        </ul>
+                        <div class="tab-content" id="Tab1-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab1-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab1-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab1-4">
+                            <b>再到第四个Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blank10"></div>
+            <div class="box2 template">
+                <div class="context">
+                    <h1 style="float:left;">灰色的Tab（大）标题缩进</h1>
+                    <div class="tab tab-gray tab-inline" id="Tab3">
+                    	<ul>
+                            <li rel="#Tab3-1" class="selected">数学</li>
+                            <li rel="#Tab3-2">阅读</li>
+                            <li rel="#Tab3-3">逻辑</li>
+                            <li rel="#Tab3-4">语法</li>
+                        </ul>
+                        <div class="tab-content" id="Tab3-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab3-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab3-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab3-4">
+                            <b>再到第四个Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blank10"></div>
+            <div class="box2 template">
+                <div class="context">
+                    <h1>蓝色的Tab（大）</h1>
+                    <div class="tab tab-blue" id="Tab4">
+                    	<ul>
+                            <li rel="#Tab4-1" class="selected">数学</li>
+                            <li rel="#Tab4-2">阅读</li>
+                            <li rel="#Tab4-3">逻辑</li>
+                            <li rel="#Tab4-4">语法</li>
+                        </ul>
+                        <div class="tab-content" id="Tab4-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab4-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab4-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab4-4">
+                            <b>再到第四个Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blank10"></div>
+            <div class="box2 template">
+                <div class="context">
+                    <h1>绿色的Tab（大）</h1>
+                    <div class="tab tab-green" id="Tab5">
+                    	<ul>
+                            <li rel="#Tab5-1" class="selected">数学</li>
+                            <li rel="#Tab5-2">阅读</li>
+                            <li rel="#Tab5-3">逻辑</li>
+                            <li rel="#Tab5-4">语法</li>
+                        </ul>
+                        <div class="tab-content" id="Tab5-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab5-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab5-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab5-4">
+                            <b>再到第四个Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blank10"></div>
+            <div class="box2 template">
+                <div class="context">
+                    <h1>红色的Tab（大）</h1>
+                    <div class="tab tab-red" id="Tab7">
+                    	<ul>
+                            <li rel="#Tab7-1" class="selected">数学</li>
+                            <li rel="#Tab7-2">阅读</li>
+                            <li rel="#Tab7-3">逻辑</li>
+                            <li rel="#Tab7-4">语法</li>
+                        </ul>
+                        <div class="tab-content" id="Tab7-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab7-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab7-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab7-4">
+                            <b>再到第四个Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columnright">
+            <div class="box3 template">
+                <div class="context">
+                    <h1>灰色的Tab（小）</h1>
+                    <div class="tab tab-gray" id="Tab2">
+                    	<ul>
+                            <li rel="#Tab2-1" class="selected">数学</li>
+                            <li rel="#Tab2-2">阅读</li>
+                            <li rel="#Tab2-3">逻辑</li>
+                        </ul>
+                        <div class="tab-content" id="Tab2-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab2-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab2-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blank10"></div>
+            <div class="box3 template">
+                <div class="context">
+                    <h1>黑色的Tab（小）</h1>
+                    <div class="tab tab-black" id="Tab6">
+                    	<ul>
+                            <li rel="#Tab6-1" class="selected">数学</li>
+                            <li rel="#Tab6-2">阅读</li>
+                            <li rel="#Tab6-3">逻辑</li>
+                        </ul>
+                        <div class="tab-content" id="Tab6-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab6-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                        <div class="tab-content hidden" id="Tab6-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blank10"></div>
+            <div class="box3 template">
+                <div class="context">
+                    <h1>彩色的Tab（小）</h1>
+                    <div class="tab tab-color" id="Tab8">
+                        <ul>
+                            <li rel="#Tab8-1" class="tab-color-blue selected">题目</li>
+                            <li rel="#Tab8-2" class="tab-color-green">知识点</li>
+                            <li rel="#Tab8-3" class="tab-color-red">文章</li>
+                        </ul>
+                        <div class="tab-content tab-content-blue" id="Tab8-1">
+                            <b>看第一个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>                            
+                        </div>
+                        <div class="tab-content tab-content-green hidden" id="Tab8-2">
+                            <b>这里应该第二个字Contrary to popular belief, Lorem Ipsum is not simply random text.</b>                            
+                        </div>
+                        <div class="tab-content tab-content-red hidden" id="Tab8-3">
+                            <b>哈哈第三个字了Contrary to popular belief, Lorem Ipsum is not simply random text.</b>                            
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>                    
+        <div class="clear"></div>
+        <div class="blank10"></div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="wrap">
+        <div class="copyright"></div>
+        <div class="links"></div>
+    </div>
+</div>
+
+</body>
+</html>

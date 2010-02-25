@@ -1,0 +1,17 @@
+﻿
+CREATE TYPE [dbo].[TagId]
+	FROM INT NOT NULL
+	
+GO
+
+CREATE TYPE [dbo].[TagName]
+	FROM VARCHAR(64) NOT NULL
+GO
+	
+CREATE TYPE [dbo].[TagType]
+	FROM VARCHAR(64) NOT NULL
+GO
+	
+CREATE TYPE [dbo].[Count]
+	FROM INT NOT NULL
+GO

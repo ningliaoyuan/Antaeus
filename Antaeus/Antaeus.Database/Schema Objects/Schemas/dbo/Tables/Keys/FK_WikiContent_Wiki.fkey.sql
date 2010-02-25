@@ -1,0 +1,5 @@
+﻿ALTER TABLE [dbo].[WikiContent]
+    ADD CONSTRAINT [KF_WikiContent_Wiki] FOREIGN KEY ([KID]) REFERENCES [dbo].[Wiki] ([KID]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+

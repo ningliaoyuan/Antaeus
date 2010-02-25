@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ID]
+(
+	[Key] VARCHAR (500) NOT NULL, 
+	[MaxID] BIGINT NOT NULL,
+	[Cache] INT NOT NULL
+)

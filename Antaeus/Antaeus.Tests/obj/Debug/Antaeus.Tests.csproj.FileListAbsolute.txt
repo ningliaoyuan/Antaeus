@@ -1,0 +1,12 @@
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.Tests.dll.config
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.Tests.dll
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.Tests.pdb
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.dll
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.BL.dll
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.ORM.dll
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.BL.pdb
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.pdb
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\bin\Debug\Antaeus.ORM.pdb
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\obj\Debug\ResolveAssemblyReference.cache
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\obj\Debug\Antaeus.Tests.dll
+D:\Antaeus\Code\Antaeus\Antaeus.Tests\obj\Debug\Antaeus.Tests.pdb
