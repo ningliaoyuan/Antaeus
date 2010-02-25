@@ -13,7 +13,7 @@
         </div>
         <div class="blank10"></div>
         <div class="box2 thebox">
-        	<h2 class="question">马上做一道系统推荐的经典题目</h2>
+        	<h2 class="question">马上做一道推荐的经典题目</h2>
             <div class="tab tab-gray tab-inline">
                 <ul>
                     <li rel="#indexTab1-4">数学</li>
