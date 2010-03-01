@@ -139,6 +139,11 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Antaeus_DB.mdf">
+    </Content>
+    <Content Include="App_Data\Antaeus_DB_log.ldf">
+      <DependentUpon>Antaeus_DB.mdf</DependentUpon>
+    </Content>
     <Content Include="Contents\Images\1px.gif" />
     <Content Include="Contents\Images\Account_Face.gif" />
     <Content Include="Contents\Images\Account_Top.jpg" />
@@ -444,7 +449,6 @@
     <None Include="Plugins\CKEditor-3.0.1\ckeditor.pack" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Contents\Flash\" />
     <Folder Include="Models\" />
   </ItemGroup>

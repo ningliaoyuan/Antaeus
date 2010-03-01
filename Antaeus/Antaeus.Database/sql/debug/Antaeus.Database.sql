@@ -1,5 +1,5 @@
 ﻿/*
-Deployment script for Antaeus_DB
+Deployment script for Antaeus.Database
 */
 
 GO
@@ -9,7 +9,7 @@ SET NUMERIC_ROUNDABORT OFF;
 
 
 GO
-:setvar DatabaseName "Antaeus_DB"
+:setvar DatabaseName "Antaeus.Database"
 :setvar DefaultDataPath ""
 
 GO
@@ -194,8 +194,8 @@ CREATE TABLE [dbo].[Comment] (
     [KID]         VARCHAR (600)   NOT NULL,
     [Content]     NVARCHAR (4000) NOT NULL,
     [Floor]       INT             NOT NULL,
-    [ParentCID]   NVARCHAR (4000) NOT NULL,
-    [CrUserName]  NVARCHAR (4000) NOT NULL,
+    [ParentCID]   NVARCHAR (400)  NOT NULL,
+    [CrUserName]  NVARCHAR (400)  NOT NULL,
     [CreatedTime] DATETIME        NOT NULL
 );
 
