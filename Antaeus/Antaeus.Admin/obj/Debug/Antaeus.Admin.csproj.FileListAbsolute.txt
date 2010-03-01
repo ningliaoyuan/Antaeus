@@ -1,9 +1,0 @@
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\bin\Antaeus.Admin.dll
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\bin\Antaeus.Admin.pdb
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\bin\Antaeus.BL.dll
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\bin\Antaeus.ORM.dll
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\bin\Antaeus.BL.pdb
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\bin\Antaeus.ORM.pdb
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\obj\Debug\ResolveAssemblyReference.cache
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\obj\Debug\Antaeus.Admin.dll
-D:\Antaeus\Code\Antaeus\Antaeus.Admin\obj\Debug\Antaeus.Admin.pdb
