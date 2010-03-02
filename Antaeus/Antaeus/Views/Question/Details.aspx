@@ -42,8 +42,12 @@
                 <span>此题的价值为&nbsp;<b id="RateAverge"><%=Model.GetAverage().ToString("0.0")%></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
 
                 <div id="Rate" rel="<%=Model.QuestionID %>">
-                    <select class="inp inp2" name="Rate">
-                        
+                    <select class="inp inp2" name="Rate" id="Rate">
+                        <option value="1">非常好</option>
+                        <option value="2">非常好</option>
+                        <option value="3" selected="selected">非常好</option>
+                        <option value="4">非常好</option>
+                        <option value="5">非常好</option>
                     </select>
                 </div>
                 <div id="Rating" class="hidden">Rating...</div>               
