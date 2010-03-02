@@ -14,6 +14,13 @@
     	<div class="box2 mail">
 			<div class="context"> 	
         		<uc2:HeaderControl ID="HeaderControl1" runat="server" />
+                <div class="subnav">
+                    <a href="/Account/Mail/New/">发新的邮件</a>
+                    <a href="/Account/Mail/Inbox/" class="current">收件箱</a>
+                    <a href="/Account/Mail/Outbox">发件箱</a>
+                    <a href="/Account/Mail/Trash/">垃圾箱</a>
+                    <a href="/Account/Mail/Draft/" style="border:0;">草稿箱</a>
+                </div>
             	<div class="blank15"></div>
                 <h2>我的收件箱</h3>
             	<div class="items">                	

@@ -11,26 +11,3 @@
     <a href="/Account/Favorite/">收藏夹</a>
     <a href="/Account/ContentRecord/" style="border:0;">内容管理</a>
 </div>
-
-<!-- 一览和设置均没有二级菜单 -->
-
-<div class="subnav">
-    <a href="/Account/Mail/New/">发新的邮件</a>
-    <a href="/Account/Mail/Inbox/" class="current">收件箱</a>
-    <a href="/Account/Mail/Outbox">发件箱</a>
-    <a href="/Account/Mail/Trash/">垃圾箱</a>
-    <a href="/Account/Mail/Draft/" style="border:0;">草稿箱</a>
-</div>
-
-<!--<div class="subnav">
-    <a href="/Account/Favorite/Incorrected/" class="current">我做错的题目</a>
-    <a href="/Account/Favorite/Question/">题目收藏</a>
-    <a href="/Account/Favorite/Knowledge/">知识点收藏</a>
-    <a href="/Account/Favorite/Article/" style="border:0;">文章收藏</a>
-</div>-->
-
-<!--<div class="subnav">
-    <a href="/Account/ContentRecord/Publish/" class="current">我发布的内容</a>
-    <a href="/Account/ContentRecord/Edit/">我参与编辑的内容</a>
-    <a href="/Account/ContentRecord/Comment/" style="border:0;">我发表的讨论</a>
-</div>-->

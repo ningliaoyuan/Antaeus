@@ -14,6 +14,13 @@
     	<div class="box2 content">
 			<div class="context"> 	
         		<uc2:HeaderControl ID="HeaderControl1" runat="server" />
+                <div class="subnav">
+                    <a href="/Account/Favorite/Incorrected/" class="current">我做错的题目</a>
+                    <a href="/Account/ContentRecord/Publish/">我的浏览记录</a>
+                    <a href="/Account/ContentRecord/Publish/">我发布的内容</a>
+                    <a href="/Account/ContentRecord/Edit/">我参与编辑的内容</a>
+                    <a href="/Account/ContentRecord/Comment/" style="border:0;">我发表的讨论</a>
+                </div>
             	<div class="blank15"></div>
                 <h2>我参与编辑的内容</h3>
                 <div class="items">
