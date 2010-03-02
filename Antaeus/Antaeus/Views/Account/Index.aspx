@@ -12,7 +12,7 @@
     <div class="columnleft">
     	<div class="box2 overview">
 			<div class="context"> 	
-                <uc2:HeaderControl ID="HeaderControl1" runat="server" />
+                <uc2:HeaderControl ID="HeaderControl1" runat="server" p="Index"/>
                 <div class="blank15"></div>
                 <h2>账号基本信息</h2>
                 <div class="items">

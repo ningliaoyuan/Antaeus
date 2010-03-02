@@ -13,7 +13,7 @@
     <div class="columnleft">
     	<div class="box2 mail">
 			<div class="context"> 	
-        		<uc2:HeaderControl ID="HeaderControl1" runat="server" />
+        		<uc2:HeaderControl ID="HeaderControl1" runat="server" p="Mail"/>
                 <div class="subnav">
                     <a href="/Account/Mail/New/">发新的邮件</a>
                     <a href="/Account/Mail/Inbox/" class="current">收件箱</a>

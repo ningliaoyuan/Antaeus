@@ -13,7 +13,7 @@
     <div class="columnleft">
     	<div class="box2 asetting">
 			<div class="context"> 	
-        		<uc2:HeaderControl ID="HeaderControl1" runat="server" />
+        		<uc2:HeaderControl ID="HeaderControl1" runat="server" p="AccountSetting"/>
                 <div class="blank15"></div>            
                 <h2>我的账户设置</h2>
                 <div class="items" id="accountSetting">

@@ -12,7 +12,7 @@
     <div class="columnleft">
     	<div class="box2 favorite">
 			<div class="context"> 	
-        		<uc2:HeaderControl ID="HeaderControl1" runat="server" />
+        		<uc2:HeaderControl ID="HeaderControl1" runat="server" p="Favorite" />
                 <div class="subnav">
                     <a href="/Account/Favorite/" class="current">全部收藏</a>
                     <a href="/Account/Favorite/Question/">题目收藏</a>
