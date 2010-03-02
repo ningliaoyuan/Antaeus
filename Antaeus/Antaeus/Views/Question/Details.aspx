@@ -97,9 +97,9 @@
                 <div class="clear"></div>
             </div>
             <div class="wiki" id="WikiContent">
-            	
-                <div class="nocontent">这道题目目前还没有题目解答，你如果正确地完成了这道题目，我们欢迎你把你的解答过程分享给大家。<a href="#">点击这里立即编辑题目</a></div>
-                
+            	<%if(string.IsNullOrEmpty(anwser.WikiContent.Content)){ %>
+                    <div class="nocontent">这道题目目前还没有题目解答，你如果正确地完成了这道题目，我们欢迎你把你的解答过程分享给大家。<a href="#">点击这里立即编辑题目</a></div>
+                <%} %>>
             	<div id="WikiContentEditArea">
                 	<p><%= anwser.WikiContent.Content%></p>
             	</div>
@@ -152,8 +152,7 @@
                 <div class="clear"></div>
             </div>
             
-            <div class="context">
-            	<div class="comm_no">目前还没有人对这个题目提出问题和讨论，您如果对于这道题有任何的问题，请一定在下面提出来，热心的其它用户们一定会马上为您解答的。</div>
+            <div class="context">            
             <%
                 int floor = 0;
                 foreach (var com in Model.GetComments())
@@ -166,7 +165,11 @@
                     <div class="clear"></div>
                     <p><%=Html.Encode(com.Content) %></p>
                 </div>
-             <%} %>
+             <%}
+                if (floor == 0)
+                { %>
+            	<div class="comm_no">目前还没有人对这个题目提出问题和讨论，您如果对于这道题有任何的问题，请一定在下面提出来，热心的其它用户们一定会马上为您解答的。</div>
+              <%} %>             
                 <div class="comm_form">
                 	<textarea id="CommentContent" name="content"></textarea>
                     <br /><a class="btn-form-green" id="CommentSubmit" rel="/Question/comment/<%=Model.QuestionID %>?content=">提交新的讨论发言</a>
