@@ -66,7 +66,7 @@
                         <p>我在&nbsp;<span class="orange">2007-12-12 11:23</span>&nbsp;编辑了这篇文章</p>
                     </div>
                     <div class="item_action">
-						<div class="pageindex"><span>翻页：</span><%=Html.ShowPageIndex(11,40,"#","rbgc-orange")%></div>
+						<div class="pageindex"><span>翻页：</span></div>
                         <div class="clear"></div>
                     </div>
                 </div>

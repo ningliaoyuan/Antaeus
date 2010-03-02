@@ -114,7 +114,7 @@
                         <div class="clear"></div>
                     </div>
                     <div class="item_action">
-						<div class="pageindex"><span>翻页：</span><%=Html.ShowPageIndex(11,40,"#","rbgc-orange")%></div>
+						<div class="pageindex"><span>翻页：</span></div>
                     	<input type="button" class="btn-form-green" value="将选中的邮件删除到垃圾箱" />
                         <label>全选</label>
                         <input type="checkbox" />
