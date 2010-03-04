@@ -60,3 +60,5 @@
 /Antaeus/Antaeus.Common/obj/Debug/Antaeus.Common.pdb
 /Antaeus/Antaeus.Tests/obj/Debug/ResolveAssemblyReference.cache
 /Antaeus/Antaeus.Database/Antaeus.Database.dbmdl
+/Antaeus/Antaeus.Database/Schema Objects/Schemas/dbo/Tables/Tag.table.sql
+/Antaeus/Antaeus.ORM/obj/Debug/TempPE/JB8ORM.designer.cs.dll
