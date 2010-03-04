@@ -8,6 +8,7 @@ String.prototype.replaceAll=function(s1,s2){
 
 //函数用于执行顶端导航的AJAX提交表单
 function FormLoginSubmit(place) {
+	sPopup = "#PopupLoginForm";
 	sUsername = $("#FormLogin" + place + " #Username").attr("value");
 	sPassword = $("#FormLogin" + place + " #Password").attr("value");
 	sRememberMe = $("#FormLogin" + place + " #RememberMe").attr("value");
@@ -22,21 +23,21 @@ function FormLoginSubmit(place) {
 				//如果是顶端的用户登陆
 				if (place == "Header") {
 					if (data.indexOf("error:") >= 0) {
-						$("#popup_logon_form #LogonErrorMessage").html(data.replace("LoginErrorMessage:", ""));
-						$("#popup_logon_form input#Username").attr("value", sUsername);
-						DialogLoad("popup_logon_form");
-						$("#popup_logon_form").dialog("open");
+						$(sPopup+" #LoginErrorMessage").html(data.replace("error:", ""));
+						$(sPopup+" input#Username").attr("value", sUsername);
+						DialogLoad(sPopup.replace("#",""));
+						$(sPopup).dialog("open");
 						return false;
 					} else {
 						$("#logon").html(data);
 					}
-					//如果是Popup登陆
+				//如果是Popup登陆
 				} else {
 					if (data.indexOf("LoginErrorMessage") >= 0) {
 						alert("登录失败：" + data.replace("error:", ""));
 					} else {
 						$("#logon").html(data);
-						$("#popup_logon_form").dialog('close');
+						$(sPopup).dialog('close');
 						return false;
 					}
 				}
@@ -54,7 +55,7 @@ function DialogLoad(ID){
         buttons: {
             "Ok": function() {
                 //获取Popup的ID值，通过不同的ID值来判断对应的是什么PopUp从而做出相应的操作
-                if (ID == "popup_logon_form") FormLoginSubmit("Popup");
+                //if (ID == "popup_logon_form") FormLoginSubmit("Popup");
             },
             "Cancel": function() {
                 $(this).dialog("close");
@@ -168,57 +169,6 @@ jQuery(document).ready(function($) {
         jQuery(this).parent().parent().parent().css("cursor", "pointer");
     });
 
-    //==============================================================================
-    //Wigdet-Filter的效果
-    $("#WidgetFilter .select ul li, #WidgetFilter .tag ul li").mouseover(function() {
-        if ($(this).hasClass("now")) {
-            if (!$(this).hasClass("all")) $(this).addClass("delete");
-        } else {
-            $(this).addClass("add");
-        }
-    });
-
-    $("#WidgetFilter .select ul li, #WidgetFilter .tag ul li").mouseout(function() {
-        if ($(this).hasClass("add")) $(this).removeClass("add");
-        if ($(this).hasClass("delete")) $(this).removeClass("delete");
-    });
-
-    $("#WidgetFilter .select ul li, #WidgetFilter .tag ul li").click(function() {
-        if ($(this).hasClass("all")) {
-            $(this).siblings(".now").removeClass("now");
-            $(this).addClass("now");
-        } else {
-            $(this).siblings(".all").removeClass("now");
-            if ($(this).hasClass("now")) {
-                $(this).removeClass("now");
-                if (!$(this).siblings().is(".now")) $(this).siblings(".all").addClass("now");
-            } else {
-                $(this).addClass("now");
-            }
-        }
-        //这里最终还需要一个判断当前选择了什么参数并且做出AJAX操作的代码
-
-    });
-
-    $("#WidgetFilter .sort ul li").mouseover(function() {
-        if ($(this).hasClass("upnow")) $(this).addClass("down");
-        if ($(this).hasClass("downnow")) $(this).addClass("up");
-
-    });
-
-    $("#WidgetFilter .sort ul li").mouseout(function() {
-        if ($(this).hasClass("up")) $(this).removeClass("up");
-        if ($(this).hasClass("down")) $(this).removeClass("down");
-    });
-
-    $("#WidgetFilter .sort ul li").click(function() {
-        if ($(this).hasClass("upnow")) {
-            $(this).attr("class", "downnow");
-        } else {
-            $(this).attr("class", "upnow");
-        }
-    });
-
     //函数用于当表单项重载入时的验证代码重载入
     function FormReload() {
         //1.onfocus时内置提示文字消失，需要此项操作的项必须有class=FormOnFocusClear
@@ -251,10 +201,10 @@ jQuery(document).ready(function($) {
 
     //1.FormLogin登录表单的特殊操作
     //当聚焦在顶端导航部分的密码框内时，按回车键提交表单
-    $("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
-    $("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
-    //AJAX方式触发表单，仅用在Master页面中的顶端登录
-    $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
+//    $("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
+//    $("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
+//    //AJAX方式触发表单，仅用在Master页面中的顶端登录
+//    $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 
     //2.FormQuestionCreate题目创建表单的特殊操作
     //CSS原因，这里修正一下SourceOther的显示
@@ -423,4 +373,23 @@ jQuery(document).ready(function($) {
 		if(c!="")  window.location=$(this).attr("rel")+c;
 	});
 
+// =========================================================================================================
+// 整理后的代码
+// =========================================================================================================
+
+//1.顶端登陆，每个页面都要初始载入的------------------------------------------------
+//1.1.对文本输入框载入聚焦后的提示去除
+$("#FormLoginHeader #Username, #FormLoginHeader #Password").removeDefault();
+//1.2.当聚焦在顶端导航部分的密码框内时，按回车键提交表单
+$("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
+//1.3.当聚焦在PopUp部分的密码框内时，按回车键提交表单
+$("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
+//1.4.顶部登陆区域点击“登录”按钮提交表单
+$("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
+//1.5.Popup登陆区域点击“登录”按钮提交表单
+$("#FormLoginPopupSubmit").click(function() { FormLoginSubmit("Popup"); });
+
+//2.WidgetFilter
+$("#WidgetFilter").filter();
+	
 });
