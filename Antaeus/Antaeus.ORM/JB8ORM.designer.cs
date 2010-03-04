@@ -69,7 +69,7 @@ namespace Antaeus.ORM
     #endregion
 		
 		public JB8ORMDataContext() : 
-				base(global::Antaeus.ORM.Properties.Settings.Default.Antaeus_DBConnectionString2, mappingSource)
+				base(global::Antaeus.ORM.Properties.Settings.Default.Antaeus_DBConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -191,6 +191,14 @@ namespace Antaeus.ORM
 			get
 			{
 				return this.GetTable<Comment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Tag> Tags
+		{
+			get
+			{
+				return this.GetTable<Tag>();
 			}
 		}
 	}
@@ -2339,6 +2347,87 @@ namespace Antaeus.ORM
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Tag")]
+	public partial class Tag
+	{
+		
+		private string _KID;
+		
+		private string _CrUserName;
+		
+		private System.DateTime _CreatedTime;
+		
+		private string _Tags;
+		
+		public Tag()
+		{
+		}
+		
+		[Column(Storage="_KID", DbType="VarChar(600) NOT NULL", CanBeNull=false)]
+		public string KID
+		{
+			get
+			{
+				return this._KID;
+			}
+			set
+			{
+				if ((this._KID != value))
+				{
+					this._KID = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_CrUserName", DbType="NVarChar(400) NOT NULL", CanBeNull=false)]
+		public string CrUserName
+		{
+			get
+			{
+				return this._CrUserName;
+			}
+			set
+			{
+				if ((this._CrUserName != value))
+				{
+					this._CrUserName = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_CreatedTime", DbType="DateTime NOT NULL")]
+		public System.DateTime CreatedTime
+		{
+			get
+			{
+				return this._CreatedTime;
+			}
+			set
+			{
+				if ((this._CreatedTime != value))
+				{
+					this._CreatedTime = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Tags", DbType="VarChar(600) NOT NULL", CanBeNull=false)]
+		public string Tags
+		{
+			get
+			{
+				return this._Tags;
+			}
+			set
+			{
+				if ((this._Tags != value))
+				{
+					this._Tags = value;
+				}
 			}
 		}
 	}

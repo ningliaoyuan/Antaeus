@@ -201,6 +201,9 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Role.table.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Tag.table.sql">
+      <SubType>Code</SubType>
+    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\UserAnswerQB.table.sql">
       <SubType>Code</SubType>
     </Build>

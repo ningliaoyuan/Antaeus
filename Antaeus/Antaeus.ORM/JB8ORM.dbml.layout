@@ -102,5 +102,11 @@
         <elementListCompartment Id="77092002-69b1-4889-bdfb-c457c6040c5a" absoluteBounds="9.89, 5.835, 1.9700000000000002, 1.0641805181900661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="1c7123e1-f457-4117-bb9b-992625ef2e69" absoluteBounds="0.75, 7, 2, 1.2348006294171017">
+      <DataClassMoniker Name="/JB8ORMDataContext/Tag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9ecd320-b2fb-47a8-a414-9cc51a0f5b8b" absoluteBounds="0.765, 7.46, 1.9700000000000002, 0.67480062941710162" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
