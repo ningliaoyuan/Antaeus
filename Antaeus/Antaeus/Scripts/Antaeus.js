@@ -1,76 +1,7 @@
 ﻿// Javascript For Default Antaeus Used
 // Version 0.1, Created by Lanslot
 
-
-
-//Popup类型载入的函数
-//function DialogLoad(ID,fun){
-//    $("#"+ID).dialog({ //这是对话框的基本设置
-//        autoOpen: false,
-//        width: 600,
-//        buttons: {
-//            "Ok": function() {
-//                //获取Popup的ID值，通过不同的ID值来判断对应的是什么PopUp从而做出相应的操作
-//                //if (ID == "popup_logon_form") FormLoginSubmit("Popup");
-//				fun();
-//            },
-//            "Cancel": function() {
-//                $(this).dialog("close");
-//            }
-//        },
-//		draggable: true,
-//		modal: true,
-//		resizable:false,
-//		show:"slide"
-//    });
-//}
-
 jQuery(document).ready(function($) {
-
-    //============================================================================
-    //如果一个链接点击时需要激发Dialog，请在这个链接的HTML代码标签内加入rel='dialog'
-	//下面是这个操作的代码，激发后将动态产生一个DIV层，来载入Dialog
-	//关于Dialog的设置属性，请参见前面的DialogLoad函数的设定，这个函数将再次判断ID来确定“OK”按钮和“Cancel”按钮的操作
-//    $("*[rel='dialog']").click(function() {  //这是点击相关链接触发对话框事件的定义
-//        var target = jQuery(this).attr("href");
-//		
-//		//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
-//		var divID="Dialog"+String(parseInt(Math.random()*100000));		
-//		$("body").append("<div id='"+divID+"' class='hidden'></div>");
-//		var divObj = $("#"+divID);
-//		
-//		//判断是直接性DIV载入还是AJAX载入
-//		if(target[1]!="#"){ //直接DIV载入
-//			divObj.html($(target).html());
-//			divObj.attr("title",$(target).attr("title"));
-//			var Dialog = DialogLoad(divID);
-//			divObj.dialog("open");
-//		}else{ //AJAX载入
-//			//为了避免网速问题，加入载入中的显示
-//			divObj.attr("title","内容载入中...");
-//			divObj.html("内容载入中...");
-//			divObj.load(target.substring(2), {}, function() {
-//				//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
-//				divObj.attr("title",divObj.children().attr("title"));
-//				$(".ui-dialog-title").html(divObj.children().attr("title"));				
-//            });
-//			//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
-//			var Dialog = DialogLoad(divID, function(){ FormLoginSubmit("Popup");} );
-//			divObj.dialog("open");
-//		}
-//        return false;
-//    });
-	
-	//============================================================================
-    //如果一个链接点击时需要激发Popdown，请在这个链接的HTML代码标签内加入rel='popdown'
-//	$("a[rel='popdown']").click(function(){
-//		var target = jQuery(this).attr("href");
-//		
-//		//获取当前Dialog的ID
-//		temp = $(this).parent(".popup").attr("title");
-//		alert(temp);
-//		
-//	});
 	
     //==============================================================================
     //Tab的调用函数
@@ -342,13 +273,15 @@ $("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.k
 $("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
 //1.4.顶部登陆区域点击“登录”按钮提交表单
 $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
-//1.5.Popup登陆区域点击“登录”按钮提交表单
-$("#FormLoginPopupSubmit").click(function() { FormLoginSubmit("Popup"); });
+
 
 //2.WidgetFilter
 $("#WidgetFilter").filter();
 
-//3.Dialog/Popup
-$("#PopupFavorite").click(function(){dialogRun($(this).attr("id"),function(){alert("haha");});});
+//3.具体题目页给题目加Tag
+$("#PopupFavorite").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
+
+//4.具体题目页的历史记录查看
+$("#PopupHistory").click(function(){PopupAJAX($(this).attr("href"));});
 
 });

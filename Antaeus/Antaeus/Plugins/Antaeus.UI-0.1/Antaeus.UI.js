@@ -24,7 +24,7 @@ function FormLoginSubmit(place) {
 					if (data.indexOf("error:") >= 0) {
 						$(sPopup+" #LoginErrorMessage").html(data.replace("error:", ""));
 						$(sPopup+" input#Username").attr("value", sUsername);
-						DialogLoad(sPopup.replace("#",""),function(){FormLoginSubmit("Popup");});
+						Popup(sPopup.replace("#",""),function(){FormLoginSubmit("Popup");});
 						$(sPopup).dialog("open");
 						return false;
 					} else {
@@ -113,14 +113,18 @@ function FormLoginSubmit(place) {
 	});      
 })(jQuery); 
 
-//DialogLoad函数用于执行基本的Dialog调用设置
-function DialogLoad(ID,fun){
-    $("#"+ID).dialog({ //这是对话框的基本设置
+//Popup函数用于执行基本的Dialog调用设置
+function Popup(id,fun){
+    $("#"+id).dialog({ //这是对话框的基本设置
         autoOpen: false,
         width: 600,
         buttons: {
             "Ok": function() {
-				fun();
+				if(fun==null){
+					$(this).dialog("close");
+				}else{
+					fun();
+				}
             },
             "Cancel": function() {
                 $(this).dialog("close");
@@ -139,8 +143,60 @@ function DialogLoad(ID,fun){
 //如果一个链接点击时需要激发Dialog，请在这个链接的HTML代码标签内加入rel='dialog'
 //下面是这个操作的代码，激发后将动态产生一个DIV层，来载入Dialog
 //关于Dialog的设置属性，请参见前面的DialogLoad函数的设定，这个函数将再次判断ID来确定“OK”按钮和“Cancel”按钮的操作
-function dialogRun(ID,fun) {  //这是点击相关链接触发对话框事件的定义
-	var target = $("#"+ID).attr("href");
+//function dialogRun(ID,fun) {  //这是点击相关链接触发对话框事件的定义
+//	var target = $("#"+ID).attr("href");
+//	
+//	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
+//	var divID="Dialog"+String(parseInt(Math.random()*100000));		
+//	$("body").append("<div id='"+divID+"' class='hidden'></div>");
+//	var divObj = $("#"+divID);
+//	
+//	//判断是直接性DIV载入还是AJAX载入
+//	if(target[1]!="#"){ //直接DIV载入
+//		divObj.html($(target).html());
+//		divObj.attr("title",$(target).attr("title"));
+//		var Dialog = Popup(divID,fun);
+//		divObj.dialog("open");
+//	}else{ //AJAX载入
+//		//为了避免网速问题，加入载入中的显示
+//		divObj.attr("title","内容载入中...");
+//		divObj.html("内容载入中...");
+//		divObj.load(target.substring(2), {}, function() {
+//			//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
+//			divObj.attr("title",divObj.children().attr("title"));
+//			$(".ui-dialog-title").html(divObj.children().attr("title"));				
+//		});
+//		//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
+//		var Dialog = Popup(divID,fun);
+//		divObj.dialog("open");
+//	}
+//	return false;
+//}
+
+//FavoriteTagAdd函数用于添加Tag
+function FavoriteTagAdd(popupid){
+	Popup(popupid,function(){
+		var tags = $.trim($("#FavoriteTagsInput").val());
+		if(tags==""){
+			alert("标签输入不能为空！");
+		}else{
+			$.get(
+				"/tag/add/Question/1/"+tags,
+				function(data){
+					if($.trim(data)=="ok"){
+						$("#PopupFavoriteAdd").dialog("close");
+					}else{
+						alert("有错误发生，你的操作没有被执行！");
+					}
+				}
+			);
+		}
+	});
+	$("#PopupFavoriteAdd").dialog("open");
+}
+
+//PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
+function PopupAJAX(target,fun){
 	
 	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
 	var divID="Dialog"+String(parseInt(Math.random()*100000));		
@@ -148,26 +204,30 @@ function dialogRun(ID,fun) {  //这是点击相关链接触发对话框事件的
 	var divObj = $("#"+divID);
 	
 	//判断是直接性DIV载入还是AJAX载入
-	if(target[1]!="#"){ //直接DIV载入
-		divObj.html($(target).html());
-		divObj.attr("title",$(target).attr("title"));
-		var Dialog = DialogLoad(divID,fun);
-		divObj.dialog("open");
-	}else{ //AJAX载入
+//	if(target[1]!="#"){ //直接DIV载入
+//		divObj.html($(target).html());
+//		divObj.attr("title",$(target).attr("title"));
+//		var Dialog = Popup(divID,fun);
+//		divObj.dialog("open");
+//	}else{ //AJAX载入
 		//为了避免网速问题，加入载入中的显示
 		divObj.attr("title","内容载入中...");
 		divObj.html("内容载入中...");
-		divObj.load(target.substring(2), {}, function() {
+		divObj.load(target.substring(1), {}, function() {
 			//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
 			divObj.attr("title",divObj.children().attr("title"));
 			$(".ui-dialog-title").html(divObj.children().attr("title"));				
 		});
 		//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
-		var Dialog = DialogLoad(divID,fun);
+		var Dialog = Popup(divID,fun);
 		divObj.dialog("open");
-	}
+	//}
 	return false;
 }
-			
+
+
+
+
+
 
 

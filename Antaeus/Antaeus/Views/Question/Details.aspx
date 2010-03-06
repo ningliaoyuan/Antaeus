@@ -92,7 +92,7 @@
                 <div class="right">
                 	<a class="btn-small btn-edit" id="ButtonWikiEdit">编辑此题的解答过程</a>
                     <div class="clear"></div><div class="blank10"></div>
-                    <a class="btn-small btn-history"  href="##/wiki/history/<%= anwser.KID%>" rel="dialog">查看历史版本</a>                   
+                    <a class="btn-small btn-history" id="PopupHistory"  href="#/wiki/history/<%= anwser.KID%>">查看历史版本</a>                   
                 </div>
                 <div class="clear"></div>
             </div>
@@ -190,7 +190,7 @@
     <div class="columnright">
     	<div class="blank10"></div>
         <div class="box3">
-            <a href="#popup_add_favorite" class="btn-huge btn-huge-favorite" rel="dialog" id="PopupFavorite"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+            <a href="#popup_add_favorite" class="btn-huge btn-huge-favorite" id="PopupFavorite"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
             <a href="#" class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
             <a href="#" class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
         </div>
