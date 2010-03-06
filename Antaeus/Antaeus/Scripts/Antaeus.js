@@ -1,51 +1,7 @@
 ﻿// Javascript For Default Antaeus Used
 // Version 0.1, Created by Lanslot
 
-//全替换的ReplaceAll的定义
-String.prototype.replaceAll=function(s1,s2){   
-	return this.replace(new RegExp(s1,"gm"),s2);   
-}
 
-//函数用于执行顶端导航的AJAX提交表单
-function FormLoginSubmit(place) {
-	sPopup = "#PopupLoginForm";
-	sUsername = $("#FormLogin" + place + " #Username").attr("value");
-	sPassword = $("#FormLogin" + place + " #Password").attr("value");
-	sRememberMe = $("#FormLogin" + place + " #RememberMe").attr("value");
-	//alert(sUsername+","+sPassword+","+sRememberMe);
-	if (sUsername == "" || sUsername == "昵称或邮箱地址" || sPassword == "") {
-		alert("用户名和密码都不能为空！");
-	} else {
-		$.post(
-			"/Account/Logon/",
-			{ Username: sUsername, Password: sPassword, RememberMe: sRememberMe },
-			function(data) {
-				//如果是顶端的用户登陆
-				if (place == "Header") {
-					if (data.indexOf("error:") >= 0) {
-						$(sPopup+" #LoginErrorMessage").html(data.replace("error:", ""));
-						$(sPopup+" input#Username").attr("value", sUsername);
-						DialogLoad(sPopup.replace("#",""));
-						$(sPopup).dialog("open");
-						return false;
-					} else {
-						$("#logon").html(data);
-					}
-				//如果是Popup登陆
-				} else {
-					if (data.indexOf("LoginErrorMessage") >= 0) {
-						alert("登录失败：" + data.replace("error:", ""));
-					} else {
-						$("#logon").html(data);
-						$(sPopup).dialog('close');
-						return false;
-					}
-				}
-			},
-			"html"
-		);
-	}
-}
 
 //Popup类型载入的函数
 function DialogLoad(ID){
@@ -61,11 +17,10 @@ function DialogLoad(ID){
                 $(this).dialog("close");
             }
         },
-        open: function(event, ui) { //这里开始设置了当对话框打开和关闭时的一个黑色半透明覆盖层效果
-            $("#dialogCover").css("height", String(window.document.body.offsetHeight) + "px");
-            $("#dialogCover").show(1, function() { $("#dialogCover").fadeTo("normal", 0.5); });
-        },
-        beforeclose: function(event, ui) { $("#dialogCover").fadeOut("normal"); }
+		draggable: true,
+		modal: true,
+		resizable:false,
+		show:"slide"
     });
 }
 
