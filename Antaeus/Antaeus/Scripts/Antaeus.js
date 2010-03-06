@@ -1,72 +1,29 @@
 ﻿// Javascript For Default Antaeus Used
 // Version 0.1, Created by Lanslot
 
-//全替换的ReplaceAll的定义
-String.prototype.replaceAll=function(s1,s2){   
-	return this.replace(new RegExp(s1,"gm"),s2);   
-}
 
-//函数用于执行顶端导航的AJAX提交表单
-function FormLoginSubmit(place) {
-	sUsername = $("#FormLogin" + place + " #Username").attr("value");
-	sPassword = $("#FormLogin" + place + " #Password").attr("value");
-	sRememberMe = $("#FormLogin" + place + " #RememberMe").attr("value");
-	//alert(sUsername+","+sPassword+","+sRememberMe);
-	if (sUsername == "" || sUsername == "昵称或邮箱地址" || sPassword == "") {
-		alert("用户名和密码都不能为空！");
-	} else {
-		$.post(
-			"/Account/Logon/",
-			{ Username: sUsername, Password: sPassword, RememberMe: sRememberMe },
-			function(data) {
-				//如果是顶端的用户登陆
-				if (place == "Header") {
-					if (data.indexOf("error:") >= 0) {
-						$("#popup_logon_form #LogonErrorMessage").html(data.replace("LoginErrorMessage:", ""));
-						$("#popup_logon_form input#Username").attr("value", sUsername);
-						DialogLoad("popup_logon_form");
-						$("#popup_logon_form").dialog("open");
-						return false;
-					} else {
-						$("#logon").html(data);
-					}
-					//如果是Popup登陆
-				} else {
-					if (data.indexOf("LoginErrorMessage") >= 0) {
-						alert("登录失败：" + data.replace("error:", ""));
-					} else {
-						$("#logon").html(data);
-						$("#popup_logon_form").dialog('close');
-						return false;
-					}
-				}
-			},
-			"html"
-		);
-	}
-}
 
 //Popup类型载入的函数
-function DialogLoad(ID){
-    $("#"+ID).dialog({ //这是对话框的基本设置
-        autoOpen: false,
-        width: 600,
-        buttons: {
-            "Ok": function() {
-                //获取Popup的ID值，通过不同的ID值来判断对应的是什么PopUp从而做出相应的操作
-                if (ID == "popup_logon_form") FormLoginSubmit("Popup");
-            },
-            "Cancel": function() {
-                $(this).dialog("close");
-            }
-        },
-        open: function(event, ui) { //这里开始设置了当对话框打开和关闭时的一个黑色半透明覆盖层效果
-            $("#dialogCover").css("height", String(window.document.body.offsetHeight) + "px");
-            $("#dialogCover").show(1, function() { $("#dialogCover").fadeTo("normal", 0.5); });
-        },
-        beforeclose: function(event, ui) { $("#dialogCover").fadeOut("normal"); }
-    });
-}
+//function DialogLoad(ID,fun){
+//    $("#"+ID).dialog({ //这是对话框的基本设置
+//        autoOpen: false,
+//        width: 600,
+//        buttons: {
+//            "Ok": function() {
+//                //获取Popup的ID值，通过不同的ID值来判断对应的是什么PopUp从而做出相应的操作
+//                //if (ID == "popup_logon_form") FormLoginSubmit("Popup");
+//				fun();
+//            },
+//            "Cancel": function() {
+//                $(this).dialog("close");
+//            }
+//        },
+//		draggable: true,
+//		modal: true,
+//		resizable:false,
+//		show:"slide"
+//    });
+//}
 
 jQuery(document).ready(function($) {
 
@@ -74,35 +31,35 @@ jQuery(document).ready(function($) {
     //如果一个链接点击时需要激发Dialog，请在这个链接的HTML代码标签内加入rel='dialog'
 	//下面是这个操作的代码，激发后将动态产生一个DIV层，来载入Dialog
 	//关于Dialog的设置属性，请参见前面的DialogLoad函数的设定，这个函数将再次判断ID来确定“OK”按钮和“Cancel”按钮的操作
-    $("*[rel='dialog']").click(function() {  //这是点击相关链接触发对话框事件的定义
-        var target = jQuery(this).attr("href");
-		
-		//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
-		var divID="Dialog"+String(parseInt(Math.random()*100000));		
-		$("body").append("<div id='"+divID+"' class='hidden'></div>");
-		var divObj = $("#"+divID);
-		
-		//判断是直接性DIV载入还是AJAX载入
-		if(target[1]!="#"){ //直接DIV载入
-			divObj.html($(target).html());
-			divObj.attr("title",$(target).attr("title"));
-			var Dialog = DialogLoad(divID);
-			divObj.dialog("open");
-		}else{ //AJAX载入
-			//为了避免网速问题，加入载入中的显示
-			divObj.attr("title","内容载入中...");
-			divObj.html("内容载入中...");
-			divObj.load(target.substring(2), {}, function() {
-				//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
-				divObj.attr("title",divObj.children().attr("title"));
-				$(".ui-dialog-title").html(divObj.children().attr("title"));				
-            });
-			//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
-			var Dialog = DialogLoad(divID);
-			divObj.dialog("open");
-		}
-        return false;
-    });
+//    $("*[rel='dialog']").click(function() {  //这是点击相关链接触发对话框事件的定义
+//        var target = jQuery(this).attr("href");
+//		
+//		//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
+//		var divID="Dialog"+String(parseInt(Math.random()*100000));		
+//		$("body").append("<div id='"+divID+"' class='hidden'></div>");
+//		var divObj = $("#"+divID);
+//		
+//		//判断是直接性DIV载入还是AJAX载入
+//		if(target[1]!="#"){ //直接DIV载入
+//			divObj.html($(target).html());
+//			divObj.attr("title",$(target).attr("title"));
+//			var Dialog = DialogLoad(divID);
+//			divObj.dialog("open");
+//		}else{ //AJAX载入
+//			//为了避免网速问题，加入载入中的显示
+//			divObj.attr("title","内容载入中...");
+//			divObj.html("内容载入中...");
+//			divObj.load(target.substring(2), {}, function() {
+//				//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
+//				divObj.attr("title",divObj.children().attr("title"));
+//				$(".ui-dialog-title").html(divObj.children().attr("title"));				
+//            });
+//			//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
+//			var Dialog = DialogLoad(divID, function(){ FormLoginSubmit("Popup");} );
+//			divObj.dialog("open");
+//		}
+//        return false;
+//    });
 	
 	//============================================================================
     //如果一个链接点击时需要激发Popdown，请在这个链接的HTML代码标签内加入rel='popdown'
@@ -168,57 +125,6 @@ jQuery(document).ready(function($) {
         jQuery(this).parent().parent().parent().css("cursor", "pointer");
     });
 
-    //==============================================================================
-    //Wigdet-Filter的效果
-    $("#WidgetFilter .select ul li, #WidgetFilter .tag ul li").mouseover(function() {
-        if ($(this).hasClass("now")) {
-            if (!$(this).hasClass("all")) $(this).addClass("delete");
-        } else {
-            $(this).addClass("add");
-        }
-    });
-
-    $("#WidgetFilter .select ul li, #WidgetFilter .tag ul li").mouseout(function() {
-        if ($(this).hasClass("add")) $(this).removeClass("add");
-        if ($(this).hasClass("delete")) $(this).removeClass("delete");
-    });
-
-    $("#WidgetFilter .select ul li, #WidgetFilter .tag ul li").click(function() {
-        if ($(this).hasClass("all")) {
-            $(this).siblings(".now").removeClass("now");
-            $(this).addClass("now");
-        } else {
-            $(this).siblings(".all").removeClass("now");
-            if ($(this).hasClass("now")) {
-                $(this).removeClass("now");
-                if (!$(this).siblings().is(".now")) $(this).siblings(".all").addClass("now");
-            } else {
-                $(this).addClass("now");
-            }
-        }
-        //这里最终还需要一个判断当前选择了什么参数并且做出AJAX操作的代码
-
-    });
-
-    $("#WidgetFilter .sort ul li").mouseover(function() {
-        if ($(this).hasClass("upnow")) $(this).addClass("down");
-        if ($(this).hasClass("downnow")) $(this).addClass("up");
-
-    });
-
-    $("#WidgetFilter .sort ul li").mouseout(function() {
-        if ($(this).hasClass("up")) $(this).removeClass("up");
-        if ($(this).hasClass("down")) $(this).removeClass("down");
-    });
-
-    $("#WidgetFilter .sort ul li").click(function() {
-        if ($(this).hasClass("upnow")) {
-            $(this).attr("class", "downnow");
-        } else {
-            $(this).attr("class", "upnow");
-        }
-    });
-
     //函数用于当表单项重载入时的验证代码重载入
     function FormReload() {
         //1.onfocus时内置提示文字消失，需要此项操作的项必须有class=FormOnFocusClear
@@ -251,10 +157,10 @@ jQuery(document).ready(function($) {
 
     //1.FormLogin登录表单的特殊操作
     //当聚焦在顶端导航部分的密码框内时，按回车键提交表单
-    $("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
-    $("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
-    //AJAX方式触发表单，仅用在Master页面中的顶端登录
-    $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
+//    $("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
+//    $("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
+//    //AJAX方式触发表单，仅用在Master页面中的顶端登录
+//    $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 
     //2.FormQuestionCreate题目创建表单的特殊操作
     //CSS原因，这里修正一下SourceOther的显示
@@ -422,5 +328,27 @@ jQuery(document).ready(function($) {
 
 		if(c!="")  window.location=$(this).attr("rel")+c;
 	});
+
+// =========================================================================================================
+// 整理后的代码
+// =========================================================================================================
+
+//1.顶端登陆，每个页面都要初始载入的------------------------------------------------
+//1.1.对文本输入框载入聚焦后的提示去除
+$("#FormLoginHeader #Username, #FormLoginHeader #Password").removeDefault();
+//1.2.当聚焦在顶端导航部分的密码框内时，按回车键提交表单
+$("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
+//1.3.当聚焦在PopUp部分的密码框内时，按回车键提交表单
+$("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
+//1.4.顶部登陆区域点击“登录”按钮提交表单
+$("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
+//1.5.Popup登陆区域点击“登录”按钮提交表单
+$("#FormLoginPopupSubmit").click(function() { FormLoginSubmit("Popup"); });
+
+//2.WidgetFilter
+$("#WidgetFilter").filter();
+
+//3.Dialog/Popup
+$("#PopupFavorite").click(function(){dialogRun($(this).attr("id"),function(){alert("haha");});});
 
 });

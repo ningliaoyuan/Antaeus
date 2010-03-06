@@ -1,7 +1,7 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div class="hidden">
-	<div id="popup_logon_form" class="popup" title="用户登陆">
-    	<b id="LogonErrorMessage"></b>
+	<div id="PopupLoginForm" class="popup" title="用户登陆">
+    	<b id="LoginErrorMessage"></b>
 		<%using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { id = "FormLoginPopup" }))  {%>
         <div class="loginform">
             <div class="email">
@@ -19,6 +19,7 @@
             <div class="register">
                 <a href="<%=Url.Action("Register","Account")%>">注册新用户</a></div>
         </div>
+        <a id="FormLoginPopupSubmit">登录</a>
         <%}%>
     </div>
 </div>
