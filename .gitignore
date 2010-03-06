@@ -63,3 +63,5 @@
 /Antaeus/Antaeus.Database/Schema Objects/Schemas/dbo/Tables/Tag.table.sql
 /Antaeus/Antaeus.ORM/obj/Debug/TempPE/JB8ORM.designer.cs.dll
 /Antaeus/Antaeus.ORM/obj/Debug/Refactor/Antaeus.ORM.dll
+/Antaeus/Antaeus/App_Data/Antaeus_DB.mdf
+/Antaeus/Antaeus/App_Data/Antaeus_DB_log.ldf
