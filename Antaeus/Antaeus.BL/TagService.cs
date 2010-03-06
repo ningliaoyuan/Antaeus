@@ -18,14 +18,15 @@ namespace Antaeus.BL
 
             foreach (var tag in tags.Split(','))
             {
-                if (!string.IsNullOrEmpty(tag))
+                string tagTrim = tag.Trim();
+                if (!string.IsNullOrEmpty(tagTrim))
                 {
                     Tag tagItem = new Tag()
                     {
                         KID = keyId.ToString(),
                         CrUserName = userName,
                         CreatedTime = TimeProvider.Now,
-                        Tags = tag,
+                        Tags = tagTrim,
                         TagID = IDProvider.GetNewId("Tag")
                     };
                     con.Tags.InsertOnSubmit(tagItem);
@@ -50,6 +51,8 @@ namespace Antaeus.BL
 
         public IQueryable<string> GetKIs(string tag)
         {
+            tag = tag.Trim();
+
             var con = ContextFactory.GetNewContext();
             var list = from t in con.Tags
                        where t.Tags == tag

@@ -33,7 +33,7 @@
                 <li>题目标签：</li>
                 <%foreach (var tag in Model.GetTags(6).Split(','))
                   {%>
-                     <li><a href="#"><%=tag%></a></li>
+                     <li><a href="/tag/detail/<%=tag%>"><%=tag%></a></li>
                 <%}%>
             </ul>
         </div>
