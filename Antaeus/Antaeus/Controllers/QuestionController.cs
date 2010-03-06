@@ -67,9 +67,10 @@ namespace Antaeus.Controllers
             {
                 string source = collection.GetString("Source");
                 string categoryIDString = collection.GetString("CategoryID");
+                string username = HttpContext.GetUserName();
 
                 Question question;
-                Result res = QuestionModel.CreateQuestion(categoryIDString, source, HttpContext.GetUserName(), meta, out question);
+                Result res = QuestionModel.CreateQuestion(categoryIDString, source, username, meta, out question);
 
                 if (!res.IsSuccess)
                 {
@@ -82,6 +83,8 @@ namespace Antaeus.Controllers
                 //Related
                 //Knowledge
                 //Tag
+                string tags = collection["Tag"];
+                new TagService().Add(username, question.GetKeyId(), tags);
 
                 //Answer
 
