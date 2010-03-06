@@ -118,6 +118,7 @@
   </Table>
   <Table Name="dbo.Tag" Member="Tags">
     <Type Name="Tag">
+      <Column Name="TagID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="KID" Type="System.String" DbType="VarChar(600) NOT NULL" CanBeNull="false" />
       <Column Name="CrUserName" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
       <Column Name="CreatedTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />

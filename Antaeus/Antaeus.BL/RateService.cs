@@ -133,7 +133,11 @@ namespace Antaeus.BL
         }
     }
 
-    public interface IWithRate
+    public interface IWithRate : IHasKEYID
+    {
+    }
+        
+    public interface IHasKEYID
     {
         KEYID GetKeyId();
     }

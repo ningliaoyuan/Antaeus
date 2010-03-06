@@ -72,7 +72,12 @@
                     <div class="right">
                     	<div class="summy"><b class="blue"><%= Html.Encode(item.Category.Name) %>:</b> <%=Html.Encode(item.GetAbstract()) %> </div>
                         <div class="parameter">来自<%= Html.Encode(item.Source) %>，<%= Html.Encode(item.ViewedCount)%> 浏览，<%= Html.Encode(item.CommentCount)%> 讨论，更新于 <%= Html.Encode(item.ModifiedTime.ToStr())%></div>
-                        <div class="tags"><span>More Than</span><span>More Than</span><span>More Than</span><span>More Than</span><span>More Than</span><span>More Than</span></div>
+                        <div class="tags">
+                         <%foreach (var tag in item.GetTags(6).Split(','))
+                           {%>
+                                <span><%=tag%></span>
+                         <%}%>
+                         </div>
                     </div>
                     <div class="clear"></div>
                 </div>

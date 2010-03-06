@@ -66,6 +66,9 @@ namespace Antaeus.ORM
     partial void InsertComment(Comment instance);
     partial void UpdateComment(Comment instance);
     partial void DeleteComment(Comment instance);
+    partial void InsertTag(Tag instance);
+    partial void UpdateTag(Tag instance);
+    partial void DeleteTag(Tag instance);
     #endregion
 		
 		public JB8ORMDataContext() : 
@@ -2352,8 +2355,12 @@ namespace Antaeus.ORM
 	}
 	
 	[Table(Name="dbo.Tag")]
-	public partial class Tag
+	public partial class Tag : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _TagID;
 		
 		private string _KID;
 		
@@ -2363,8 +2370,45 @@ namespace Antaeus.ORM
 		
 		private string _Tags;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTagIDChanging(long value);
+    partial void OnTagIDChanged();
+    partial void OnKIDChanging(string value);
+    partial void OnKIDChanged();
+    partial void OnCrUserNameChanging(string value);
+    partial void OnCrUserNameChanged();
+    partial void OnCreatedTimeChanging(System.DateTime value);
+    partial void OnCreatedTimeChanged();
+    partial void OnTagsChanging(string value);
+    partial void OnTagsChanged();
+    #endregion
+		
 		public Tag()
 		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_TagID", DbType="BigInt NOT NULL", IsPrimaryKey=true)]
+		public long TagID
+		{
+			get
+			{
+				return this._TagID;
+			}
+			set
+			{
+				if ((this._TagID != value))
+				{
+					this.OnTagIDChanging(value);
+					this.SendPropertyChanging();
+					this._TagID = value;
+					this.SendPropertyChanged("TagID");
+					this.OnTagIDChanged();
+				}
+			}
 		}
 		
 		[Column(Storage="_KID", DbType="VarChar(600) NOT NULL", CanBeNull=false)]
@@ -2378,7 +2422,11 @@ namespace Antaeus.ORM
 			{
 				if ((this._KID != value))
 				{
+					this.OnKIDChanging(value);
+					this.SendPropertyChanging();
 					this._KID = value;
+					this.SendPropertyChanged("KID");
+					this.OnKIDChanged();
 				}
 			}
 		}
@@ -2394,7 +2442,11 @@ namespace Antaeus.ORM
 			{
 				if ((this._CrUserName != value))
 				{
+					this.OnCrUserNameChanging(value);
+					this.SendPropertyChanging();
 					this._CrUserName = value;
+					this.SendPropertyChanged("CrUserName");
+					this.OnCrUserNameChanged();
 				}
 			}
 		}
@@ -2410,7 +2462,11 @@ namespace Antaeus.ORM
 			{
 				if ((this._CreatedTime != value))
 				{
+					this.OnCreatedTimeChanging(value);
+					this.SendPropertyChanging();
 					this._CreatedTime = value;
+					this.SendPropertyChanged("CreatedTime");
+					this.OnCreatedTimeChanged();
 				}
 			}
 		}
@@ -2426,8 +2482,32 @@ namespace Antaeus.ORM
 			{
 				if ((this._Tags != value))
 				{
+					this.OnTagsChanging(value);
+					this.SendPropertyChanging();
 					this._Tags = value;
+					this.SendPropertyChanged("Tags");
+					this.OnTagsChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
