@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<List<string>>" %>
 <%@ Register src="../Components/FilterComponent.ascx" tagname="FilterComponent" tagprefix="uc1" %>
 <%@ Import Namespace="Antaeus.Helpers" %>
 
@@ -48,27 +48,12 @@
                 <div class="clear"></div>
             </div>
             <div class="context">
-            	<div class="item" onclick="window.location='/Question/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/Question.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
+            <%foreach (var ki in Model)
+              { %>
+              <div><%=ki %></div>
+            
+              <%} %>
+            	      <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
                     <div class="left">
                         <div class="icon"><img src="../../Contents/Icons/knowledge.gif" width="60" height="60" /></div>
                         <div class="category">类别：阅读RC</div>

@@ -47,6 +47,17 @@ namespace Antaeus.BL
                        select t2.Key;
             return string.Join(",", list.Take(count).ToArray());
         }
+
+        public IQueryable<string> GetKIs(string tag)
+        {
+            var con = ContextFactory.GetNewContext();
+            var list = from t in con.Tags
+                       where t.Tags == tag
+                       group t by t.KID into ki
+                       orderby ki.Count()
+                       select ki.Key;
+            return list; 
+        }
     }
     
     public interface IWithTag : IHasKEYID
