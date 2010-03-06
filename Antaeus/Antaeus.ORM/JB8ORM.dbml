@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="Antaeus_DB" Class="JB8ORMDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=211.99.2.167;Initial Catalog=Antaeus_DB;Persist Security Info=True;User ID=ans" SettingsObjectName="Antaeus.ORM.Properties.Settings" SettingsPropertyName="Antaeus_DBConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=D:\github\Antaeus\Antaeus\Antaeus\App_Data\Antaeus_DB.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="Antaeus.ORM.Properties.Settings" SettingsPropertyName="Antaeus_DBConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ID" Member="IDs">
     <Type Name="ID">
       <Column Name="[Key]" Member="Key" Type="System.String" DbType="NVarChar(500) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -114,6 +114,15 @@
       <Column Name="ParentCID" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
       <Column Name="CrUserName" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
       <Column Name="CreatedTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tag" Member="Tags">
+    <Type Name="Tag">
+      <Column Name="TagID" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KID" Type="System.String" DbType="VarChar(600) NOT NULL" CanBeNull="false" />
+      <Column Name="CrUserName" Type="System.String" DbType="NVarChar(400) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Tags" Type="System.String" DbType="VarChar(600) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

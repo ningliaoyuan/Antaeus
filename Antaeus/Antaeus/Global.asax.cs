@@ -27,6 +27,11 @@ namespace Antaeus
                 "{controller}/{action}/{id}",                           // URL with parameters
                 new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
             );
+            // "/Tag/Add/Question/1001/tag1,tag2"
+            routes.MapRoute(
+                "Tag",
+                "{Controller}/{action}/{key}/{id}/{tags}"
+            );
         }
 
         protected void Application_Start()

@@ -1,0 +1,4 @@
+﻿ALTER TABLE [dbo].[Tag]
+	ADD CONSTRAINT [PK_Tag]
+	PRIMARY KEY (TagID)
+	

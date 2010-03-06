@@ -31,10 +31,10 @@
             <span><%= Html.Encode(Model.CreatedUserName) %>&nbsp;创建于&nbsp;<%= Html.Encode(Model.CreatedTime.ToStr())%>；&nbsp;浏览量<%= Html.Encode(Model.ViewedCount) %>；题目来自于<%= Html.Encode(Model.Source) %></span>
             <ul>
                 <li>题目标签：</li>
-                <li><a href="#">必做经典难题</a></li>
-                <li><a href="#">Top100</a></li>
-                <li><a href="#">最新机经</a></li>
-                <li><a href="#">最有争议题目</a></li>
+                <%foreach (var tag in Model.GetTags(6).Split(','))
+                  {%>
+                     <li><a href="#"><%=tag%></a></li>
+                <%}%>
             </ul>
         </div>
         <div class="rateandnext right">

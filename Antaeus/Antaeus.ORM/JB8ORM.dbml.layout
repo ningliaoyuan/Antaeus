@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.125, 8.5" name="JB8ORM">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.125, 8.75" name="JB8ORM">
   <DataContextMoniker Name="/JB8ORMDataContext" />
   <nestedChildShapes>
     <classShape Id="5c585a8b-6b5b-441b-89d6-c5a42c13cb2f" absoluteBounds="9.875, 0.625, 2, 1.1050073331594468">
@@ -100,6 +100,12 @@
       <DataClassMoniker Name="/JB8ORMDataContext/Comment" />
       <nestedChildShapes>
         <elementListCompartment Id="77092002-69b1-4889-bdfb-c457c6040c5a" absoluteBounds="9.89, 5.835, 1.9700000000000002, 1.0641805181900661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fd2de65a-305c-4a0c-b7fb-c2c00b78ca29" absoluteBounds="0.75, 7.125, 2, 1.3645939256747566">
+      <DataClassMoniker Name="/JB8ORMDataContext/Tag" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7c2e1090-d680-442c-be7c-f0dafc9fcf2e" absoluteBounds="0.76500000000000012, 7.585, 1.9700000000000002, 0.80459392567475652" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -17,8 +17,9 @@ CREATE USER [ans] FOR LOGIN [ans] WITH DEFAULT_SCHEMA=[dbo]
 GO
 EXEC sp_addrolemember N'db_owner', N'ans'
 GO
-
-INSERT INTO [Antaeus_DB].[dbo].[Category]
+IF NOT EXISTS (SELECT * from dbo.Category)
+BEGIN 
+INSERT INTO [dbo].[Category]
            ([CategoryID]
            ,[Name]
            ,[ShortName]
@@ -31,7 +32,7 @@ INSERT INTO [Antaeus_DB].[dbo].[Category]
            ,N'选择题'
            ,N'<meta><i key="meta.ChoiceNumber" val="5" /><i key="meta.IsMultiple" val="0" /></meta>')
   
-INSERT INTO [Antaeus_DB].[dbo].[Category]
+INSERT INTO [dbo].[Category]
            ([CategoryID]
            ,[Name]
            ,[ShortName]
@@ -44,7 +45,7 @@ INSERT INTO [Antaeus_DB].[dbo].[Category]
            ,N'阅读题'
            ,'<meta><i key="meta.QuestionNumber" val="0" /><i key="meta.ChoiceNumber" val="5" /><i key="meta.IsMultiple" val="0" /></meta>')   
            
-INSERT INTO [Antaeus_DB].[dbo].[Category]
+INSERT INTO [dbo].[Category]
            ([CategoryID]
            ,[Name]
            ,[ShortName]
@@ -57,7 +58,7 @@ INSERT INTO [Antaeus_DB].[dbo].[Category]
            ,N'选择题'
            ,'<meta><i key="meta.ChoiceNumber" val="5" /><i key="meta.IsMultiple" val="0" /><i key="meta.QuestionPlace" val="2" /></meta>')       
 
-INSERT INTO [Antaeus_DB].[dbo].[Category]
+INSERT INTO [dbo].[Category]
            ([CategoryID]
            ,[Name]
            ,[ShortName]
@@ -70,7 +71,7 @@ INSERT INTO [Antaeus_DB].[dbo].[Category]
            ,N'选择题'
            ,'<meta><i key="meta.ChoiceNumber" val="5" /><i key="meta.IsMultiple" val="0" /><i key="meta.QuestionPlace" val="2" /></meta>')       
 
-INSERT INTO [Antaeus_DB].[dbo].[Category]
+INSERT INTO [dbo].[Category]
            ([CategoryID]
            ,[Name]
            ,[ShortName]
@@ -83,7 +84,7 @@ INSERT INTO [Antaeus_DB].[dbo].[Category]
            ,N'选择题'
            ,'<meta><i key="meta.ChoiceNumber" val="4" /><i key="meta.IsMultiple" val="0" /><i key="meta.QuestionPlace" val="2" /></meta>')       
 
-INSERT INTO [Antaeus_DB].[dbo].[Category]
+INSERT INTO [dbo].[Category]
            ([CategoryID]
            ,[Name]
            ,[ShortName]
@@ -96,7 +97,7 @@ INSERT INTO [Antaeus_DB].[dbo].[Category]
            ,N'作文题'
            ,'<meta><i key="meta.QuestionPlace" val="2" /></meta>')       
 
-INSERT INTO [Antaeus_DB].[dbo].[Category]
+INSERT INTO [dbo].[Category]
            ([CategoryID]
            ,[Name]
            ,[ShortName]
@@ -109,7 +110,7 @@ INSERT INTO [Antaeus_DB].[dbo].[Category]
            ,N'作文题'
            ,'<meta><i key="meta.QuestionPlace" val="1" /></meta>')       
            
-INSERT INTO [Antaeus_DB].[dbo].[ID]
+INSERT INTO [dbo].[ID]
            ([Key]
            ,[MaxID]
            ,[Cache])
@@ -117,3 +118,4 @@ INSERT INTO [Antaeus_DB].[dbo].[ID]
            ('Category'
            ,20
            ,20)
+END

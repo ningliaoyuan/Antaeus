@@ -8,7 +8,7 @@ using Antaeus.BL.Helpers;
 
 namespace Antaeus.BL.Model
 {
-    public class Question : IWithRate
+    public class Question : IWithRate, IWithTag
     {
         public RateService RateService = new RateService();
         public QuestionRepository QuestionRepository = new QuestionRepository();
@@ -95,7 +95,7 @@ namespace Antaeus.BL.Model
         public string GetAbstract()
         {
             string c = Meta["Content"];
-            c = cleanTag(c);
+            c = cleanHtmlTag(c);
             if (string.IsNullOrEmpty(c))
             {
                 return "no content";
@@ -110,7 +110,7 @@ namespace Antaeus.BL.Model
             }
         }
 
-        string cleanTag(string source)
+        string cleanHtmlTag(string source)
         {
             return source.Replace("<p>", string.Empty).Replace("</p>",string.Empty);
         }

@@ -58,5 +58,13 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=211.99.2.167;Initial Catalog=Antaeus_DB;Persist Security Info=True;User ID=ans;Password=123456</Value>
     </Setting>
+    <Setting Name="Antaeus_DBConnectionString3" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.\SQLEXPRESS;AttachDbFilename=D:\github\Antaeus\Antaeus\Antaeus\App_Data\Antaeus_DB.mdf;Integrated Security=True;User Instance=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.\SQLEXPRESS;AttachDbFilename=D:\github\Antaeus\Antaeus\Antaeus\App_Data\Antaeus_DB.mdf;Integrated Security=True;User Instance=True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
