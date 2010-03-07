@@ -3,80 +3,6 @@
 
 jQuery(document).ready(function($) {
 	
-
-//    //函数用于当表单项重载入时的验证代码重载入
-//    function FormReload() {
-//        //1.onfocus时内置提示文字消失，需要此项操作的项必须有class=FormOnFocusClear
-//        $(".FormOnFocusClear").focus(function() { this.value = ""; });
-//        //2.对于文本输入的东西，当onBlur时要验证是否为空并给出提示信息，需要此项操作的项必须有class=FormOnBlurCheck
-//        $(".FormOnBlurCheck").blur(function() {
-//            var obj = $(this);
-//            if (obj.attr("value") == "") {
-//                obj.siblings(".wrong").html("这项内容不能为空的！！！");
-//                obj.siblings(".wrong").show();
-//            } else {
-//                obj.siblings(".wrong").hide();
-//            }
-//        });
-//    }
-//    //初始载入表单验证操作==========================================================================
-//    FormReload();
-//    //------------------------------------------------------------------------------
-//    //提交表单的触发代码
-//    //这是正常提交表单的模式，只不过是原来需要一个Button来提交表单，现在任何一个class名为FormSubmit的东西都可以提交ID为FormSubmit的表单了
-//    $(".FormSubmit").click(function() { $("#FormSubmit").submit(); });
-//    //------------------------------------------------------------------------------
-//    //这是表单中星星评分部分的插件调用
-//    $("#FormRate").stars({
-//        inputType: "select",
-//        captionEl: $("#FormRateCap"),
-//        cancelShow: false
-//    });
-//    //特殊表单的特殊操作==========================================================================
-//
-//    //1.FormLogin登录表单的特殊操作
-//    //当聚焦在顶端导航部分的密码框内时，按回车键提交表单
-////    $("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
-////    $("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
-////    //AJAX方式触发表单，仅用在Master页面中的顶端登录
-////    $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
-//
-//    //2.FormQuestionCreate题目创建表单的特殊操作
-//    //CSS原因，这里修正一下SourceOther的显示
-//    $("#FormQuestionCreate .hidden").hide();
-//    //当选择其它时，出现文本输入框
-//    $("#FormQuestionCreateSource").change(function() {
-//        var obj = $("#FormQuestionCreateSourceOther");
-//        if ($(this).attr("value") == "其它") {
-//            obj.attr("value", "");
-//            obj.show();
-//        } else {
-//            obj.hide();
-//            obj.attr("value", "");
-//        }
-//    });
-//    //七种不同题型的不同操作
-//    $("#FormQuestionCreateType").change(function() {
-//        var obj = $(this);
-//        obj.next().show();
-//        var QCT = obj.attr("value")
-//        $.get("/Question/Form/" + QCT, function(data) {
-//            //alert(data);
-//            if (data != null) {
-//                $("#FormQuestionCreateLoad").html(data);
-//                FormReload();
-//            }
-//            obj.next().hide();
-//        });
-//    });
-//    //检索知识点部分拖拽的选择效果
-//    $(".FormQuestionCreateSort").sortable({
-//        connectWith: 'ul',
-//        placeholder: 'ui-state-highlight'
-//    });
-//    $("#FormQuestionCreateSortResult, #FormQuestionCreateSortSelect").disableSelection();
-
-
     //============================================================================
     //Question/Details页面代码
     //定义编辑器的全局变量
@@ -235,6 +161,45 @@ TabActive();
 
 //6.AccountSetting中的下滑效果
 $("#accountSetting .item").dropdownMenu();
+
+//7.QuestionCreate页面的复杂表单调用汇总代码
+if($("#FormQuestionCreate").length>0){
+	
+	//这是表单中星星评分部分的插件调用
+	$("#FormRate").stars({inputType: "select",captionEl: $("#FormRateCap"),cancelShow: false});	
+	//检索知识点部分拖拽的选择效果
+    $(".sortbox").sortable({connectWith: 'ul',placeholder: 'ui-state-highlight'});
+    $(".sortbox").disableSelection();	
+	//标签输入的效果
+	$(".separate[name='Tag']").separateInput({width:548,insert:".separate-select",widthCssIE6:2,required:false});
+	//初始化富文本编辑框
+	CKEDITOR.replace("CKEditor",{width:545});	
+	//下拉框选到其它时显示文本输入框
+	$(".formstyle .judge").dropdownToggle({judge:"other",class:"inp inp2"});
+	
+	//验证为空
+	$(":text[required='true']").checkRequired();
+	$("textarea[required='true']").checkRequired();
+	
+	//聚焦则去掉初始的文字提示
+	$("input.inp[value!='']").removeDefault();	
+	
+	//七种不同题型的不同操作
+    $("#FormQuestionCreateType").change(function() {
+        var obj = $(this);
+        obj.next().show();
+        var QCT = obj.attr("value")
+        $.get("/Question/Form/" + QCT, function(data) {
+            if (data != null) $("#FormQuestionCreateLoad").html(data);
+            obj.next().hide();
+        });
+    });
+	
+}
+
+
+
+
 
 
 

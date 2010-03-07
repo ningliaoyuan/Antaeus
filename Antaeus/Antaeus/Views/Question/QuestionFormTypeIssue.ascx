@@ -2,13 +2,16 @@
 <%@ Import Namespace="Antaeus.BL.Helpers" %>
 
 <div class="item">
-    <label><span>*</span>题目内容</label>
-    <textarea class="inp inp1 inp4 FormOnBlurCheck" name="Content"></textarea>
-    <div class="wrong margin hidden"></div>
-    <div class="clear"></div>
+    <div class="title">题目内容<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp1" name="Content" required="true"></textarea>
+    </div>
+    <div class="clear"></div>                        
 </div>
 <div class="item">
-	<label><span>*</span>题目问题</label>
-    <textarea class="inp inp1 FormOnBlurCheck" name="Question"></textarea>
-    <div class="wrong margin hidden"></div>
+    <div class="title">题目问题<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp1" name="Question" required="true"></textarea>
+    </div>
+    <div class="clear"></div>                        
 </div>

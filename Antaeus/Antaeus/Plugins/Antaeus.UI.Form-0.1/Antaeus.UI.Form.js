@@ -31,6 +31,7 @@
 					target.show();				
 				}else{
 					target.hide();
+					target.siblings(".warn").hide();
 				}
 			});		
 		});  

@@ -2,57 +2,67 @@
 <%@ Import Namespace="Antaeus.BL.Helpers" %>
 
 <div class="item">
-    <label>添加模式</label>
-    <select class="inp inp1">
-        <option value="0" selected="selected">新添一篇阅读文章和题目</option>
-        <option value="1">为已有的阅读文章添加一个题目</option>
-    </select>
+    <div class="title">添加模式<span>*</span></div>
+    <div class="detail">
+        <select class="inp inp2 judge" name="judgeshsh">
+            <option value="0" selected="selected">新添一篇阅读文章和题目</option>
+            <option value="other">为已有的阅读文章添加一个题目</option>
+        </select>
+    </div>
+    <div class="clear"></div>                        
+</div>
+                                
+<div class="item">
+    <div class="title">题目内容<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp1" name="Content" required="true"></textarea>
+    </div>
+    <div class="clear"></div>                        
 </div>
 <div class="item">
-    <label><span>*</span>题目内容</label>
-    <textarea class="inp inp1 inp4 FormOnBlurCheck" name="Content"></textarea>
-    <div class="wrong margin hidden"></div>
-    <div class="clear"></div>
+    <div class="title">题目问题<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp1" name="Question" required="true"></textarea>
+    </div>
+    <div class="clear"></div>                        
 </div>
 <div class="item">
-	<label><span>*</span>题目问题</label>
-    <textarea class="inp inp1 FormOnBlurCheck" name="Question"></textarea>
-    <div class="wrong margin hidden"></div>
+    <div class="title">选项A<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp4" name="OptionA" required="true"></textarea>
+        <div class="check check4"><div><input type="radio" name="CorrectMark" value="A" checked="checked" /><span>正确</span></div></div>
+    </div>
+    <div class="clear"></div>                        
 </div>
-<div class="item" id="QuesCreate_Options">
-    <label><span>*</span>题目的五个选项</label>                            
-    <textarea class="inp inp1 FormOnBlurCheck" name="OptionA"></textarea><div class="inp-between">选项A</div>
-    <div class="wrong margin hidden"></div>
-    <div class="blank5"></div>
-    <div class="margin">
-        <input type="radio" name="CorrectMark" value="A" checked="checked" /><span>&nbsp;这是正确选项</span>
+<div class="item">
+    <div class="title">选项B<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp4" name="OptionB" required="true"></textarea>
+        <div class="check check4"><div><input type="radio" name="CorrectMark" value="B" /><span>正确</span></div></div>
     </div>
-    <div class="blank5"></div>
-    <div class="margin">                                                        
-        <textarea class="inp inp1 FormOnBlurCheck" name="OptionB"></textarea><div class="inp-between">选项B</div>
-        <div class="wrong hidden"></div>
-        <div class="blank5"></div>
-        <input type="radio" name="CorrectMark" value="B" /><span>&nbsp;这是正确选项</span>
-    </div>
-    <div class="blank5"></div>
-    <div class="margin">                                  
-        <textarea class="inp inp1 FormOnBlurCheck" name="OptionC"></textarea><div class="inp-between">选项C</div>
-        <div class="wrong hidden"></div>
-        <div class="blank5"></div>
-        <input type="radio" name="CorrectMark" value="C" /><span>&nbsp;这是正确选项</span>
-    </div>
-    <div class="blank5"></div>
-    <div class="margin">                                  
-        <textarea class="inp inp1 FormOnBlurCheck" name="OptionD"></textarea><div class="inp-between">选项D</div>
-        <div class="wrong hidden"></div>
-        <div class="blank5"></div>
-        <input type="radio" name="CorrectMark" value="D" /><span>&nbsp;这是正确选项</span>
-    </div>
-    <div class="blank5"></div>
-    <div class="margin">                                  
-        <textarea class="inp inp1 FormOnBlurCheck" name="OptionE"></textarea><div class="inp-between">选项E</div>
-        <div class="wrong hidden"></div>
-        <div class="blank5"></div>
-        <input type="radio" name="CorrectMark" value="E" /><span>&nbsp;这是正确选项</span>
-    </div>
+    <div class="clear"></div>                        
 </div>
+<div class="item">
+    <div class="title">选项C<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp4" name="OptionC" required="true"></textarea>
+        <div class="check check4"><div><input type="radio" name="CorrectMark" value="C" /><span>正确</span></div></div>
+    </div>
+    <div class="clear"></div>                        
+</div>
+<div class="item">
+    <div class="title">选项D<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp4" name="OptionD" required="true"></textarea>
+        <div class="check check4"><div><input type="radio" name="CorrectMark" value="D" /><span>正确</span></div></div>
+    </div>
+    <div class="clear"></div>                        
+</div>
+<div class="item">
+    <div class="title">选项E<span>*</span></div>
+    <div class="detail">
+        <textarea class="textarea inp4" name="OptionE" required="true"></textarea>
+        <div class="check check4"><div><input type="radio" name="CorrectMark" value="E" /><span>正确</span></div></div>
+    </div>
+    <div class="clear"></div>                        
+</div>					
