@@ -137,42 +137,6 @@ function Popup(id,fun){
     });
 }
 
-//DialogRun函数用于执行Dialog的全部行为
-// 关联于DialogLoad函数		
-//============================================================================
-//如果一个链接点击时需要激发Dialog，请在这个链接的HTML代码标签内加入rel='dialog'
-//下面是这个操作的代码，激发后将动态产生一个DIV层，来载入Dialog
-//关于Dialog的设置属性，请参见前面的DialogLoad函数的设定，这个函数将再次判断ID来确定“OK”按钮和“Cancel”按钮的操作
-//function dialogRun(ID,fun) {  //这是点击相关链接触发对话框事件的定义
-//	var target = $("#"+ID).attr("href");
-//	
-//	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
-//	var divID="Dialog"+String(parseInt(Math.random()*100000));		
-//	$("body").append("<div id='"+divID+"' class='hidden'></div>");
-//	var divObj = $("#"+divID);
-//	
-//	//判断是直接性DIV载入还是AJAX载入
-//	if(target[1]!="#"){ //直接DIV载入
-//		divObj.html($(target).html());
-//		divObj.attr("title",$(target).attr("title"));
-//		var Dialog = Popup(divID,fun);
-//		divObj.dialog("open");
-//	}else{ //AJAX载入
-//		//为了避免网速问题，加入载入中的显示
-//		divObj.attr("title","内容载入中...");
-//		divObj.html("内容载入中...");
-//		divObj.load(target.substring(2), {}, function() {
-//			//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
-//			divObj.attr("title",divObj.children().attr("title"));
-//			$(".ui-dialog-title").html(divObj.children().attr("title"));				
-//		});
-//		//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
-//		var Dialog = Popup(divID,fun);
-//		divObj.dialog("open");
-//	}
-//	return false;
-//}
-
 //FavoriteTagAdd函数用于添加Tag
 function FavoriteTagAdd(popupid){
 	Popup(popupid,function(){
@@ -196,38 +160,98 @@ function FavoriteTagAdd(popupid){
 }
 
 //PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
-function PopupAJAX(target,fun){
-	
+function PopupAJAX(target,fun){	
 	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
 	var divID="Dialog"+String(parseInt(Math.random()*100000));		
 	$("body").append("<div id='"+divID+"' class='hidden'></div>");
 	var divObj = $("#"+divID);
-	
-	//判断是直接性DIV载入还是AJAX载入
-//	if(target[1]!="#"){ //直接DIV载入
-//		divObj.html($(target).html());
-//		divObj.attr("title",$(target).attr("title"));
-//		var Dialog = Popup(divID,fun);
-//		divObj.dialog("open");
-//	}else{ //AJAX载入
-		//为了避免网速问题，加入载入中的显示
-		divObj.attr("title","内容载入中...");
-		divObj.html("内容载入中...");
-		divObj.load(target.substring(1), {}, function() {
-			//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
-			divObj.attr("title",divObj.children().attr("title"));
-			$(".ui-dialog-title").html(divObj.children().attr("title"));				
-		});
-		//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
-		var Dialog = Popup(divID,fun);
-		divObj.dialog("open");
-	//}
+	//为了避免网速问题，加入载入中的显示
+	divObj.attr("title","内容载入中...");
+	divObj.html("内容载入中...");
+	divObj.load(target.substring(1), {}, function() {
+		//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
+		divObj.attr("title",divObj.children().attr("title"));
+		$(".ui-dialog-title").html(divObj.children().attr("title"));				
+	});
+	//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
+	var Dialog = Popup(divID,fun);
+	divObj.dialog("open");
 	return false;
 }
 
+//TabActive方法用于Tab效果
+function TabActive(data) {
+	if(data==null){
+		//默认的初始参数设置
+		var data = {
+			tabname: ".tab",    //定义Tab最外面包含的类
+			selected: "selected",    //定义Tab选中的CSS样式
+			hover: "hover"           //定义Tab鼠标移上去时的鼠标样式
+		};
+	}
+	$(data.tabname + " li").mouseover(function() { $(this).addClass(data.hover); });
+	$(data.tabname + " li").mouseout(function() { $(this).removeClass(data.hover); });
+	$(data.tabname + " li").click(function() {
+		var target = $(this);
+		var current = $(this).parent().children("." + data.selected);
+		current.removeClass(data.selected);
+		target.addClass(data.selected);
+		if (current.attr("rel") != target.attr("rel")) {
+			$(current.attr("rel")).fadeOut("normal", function() { $(target.attr("rel")).show(); });
+		}
+	});
+}
 
+//dropdownMenu方法用于下滑式显示内容
+//Parameters:
+//[必须]childObj - 字符 - 要显示的子集内容的obj选择器
+//[必须]mouseoverColor - 字符 - 鼠标移上去时变化的背景色
+//[必须]mouseoutColor - 字符 - 鼠标移开后的原始背景色
+//[必须]currentClass - 字符 - 当前所在的css class
+//[必须]cancelButton - 字符 - 取消按钮的obj选择器
 
-
-
-
-
+(function($){  
+	$.fn.extend({   
+	dropdownMenu: function(options){
+		//默认参数设置
+		var defaults = {  
+			childObj:".theform",
+			mouseoverColor:"#cadfec",
+			mouseoutColor:"#fff",
+			currentClass:"current",
+			cancelButton:".cancel-button"
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);			
+			obj.mouseover(function() {
+				if (jQuery(this).children(".right").children(opt.childObj).css("display") == "none") {
+					jQuery(this).css("background-color", opt.mouseoverColor);
+				} else {
+					jQuery(this).css("cursor", "auto");
+				}
+			});
+			obj.mouseout(function() {
+				jQuery(this).css("background-color", opt.mouseoutColor);
+			});
+			obj.click(function() {
+				if (jQuery(this).children(".right").children(opt.childObj).css("display") == "none") {
+					obj.each(function(n) {
+						jQuery(this).removeClass(opt.currentClass);
+						jQuery(this).children(".right").children(opt.childObj).hide();
+						jQuery(this).css("cursor", "pointer");
+					});
+					jQuery(this).children(".right").children(opt.childObj).slideDown("slow");
+					jQuery(this).addClass(opt.currentClass);
+				}
+			});
+			$(opt.cancelButton).click(function() {
+				jQuery(this).parent().slideUp("slow");
+				jQuery(this).parent().parent().parent().removeClass(opt.currentClass);
+				jQuery(this).parent().parent().parent().css("cursor", "pointer");
+			});
+		});  
+	}
+	});      
+})(jQuery); 

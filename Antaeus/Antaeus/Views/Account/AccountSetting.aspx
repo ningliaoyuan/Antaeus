@@ -27,7 +27,7 @@
                                 <input type="text" class="inp" value="兰斯洛特" />
                                 <div class="clear"></div>
                                 <input type="button" class="btn-form-green" value="修改" />
-                                <input type="button" class="btn-form-gray" value="取消" />
+                                <input type="button" class="btn-form-gray cancel-button" value="取消" />
                             </div>                   
                         </div>
                         <div class="clear"></div>
@@ -48,7 +48,7 @@
                                 <input type="password" class="inp" value="" />
                                 <div class="clear"></div>
                                 <input type="button" class="btn-form-green" value="修改" />
-                                <input type="button" class="btn-form-gray" value="取消" />
+                                <input type="button" class="btn-form-gray cancel-button" value="取消" />
                             </div>                 
                         </div>
                         <div class="clear"></div>
@@ -72,7 +72,7 @@
                                 <label>我希望当我参与编辑的内容发生任何新的讨论时收到邮件通知</label>
                                 <div class="clear"></div>
                                 <input type="button" class="btn-form-green" value="修改" />
-                                <input type="button" class="btn-form-gray" value="取消" />
+                                <input type="button" class="btn-form-gray cancel-button" value="取消" />
                             </div>                  
                         </div>
                         <div class="clear"></div>
