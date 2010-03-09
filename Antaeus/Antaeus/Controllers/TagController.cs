@@ -15,9 +15,14 @@ namespace Antaeus.Controllers
         //
         // GET: /Tag/
 
-        public ActionResult Detail()
+        public ActionResult Detail(string tag,int? page, int? pagecount)
         {
-            return View();
+            int count = pagecount.HasValue ? pagecount.Value : 10;
+            int start = page.HasValue ? (page.Value - 1)*count: 0;
+
+            List<string> kiList = tagService.GetKIs(tag).Skip(start).Take(count).ToList();
+
+            return View(kiList);
         }
 
         // /Tag/Question/1001/tag1,tag2

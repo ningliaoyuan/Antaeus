@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<List<string>>" %>
 <%@ Register src="../Components/FilterComponent.ascx" tagname="FilterComponent" tagprefix="uc1" %>
 <%@ Import Namespace="Antaeus.Helpers" %>
 
@@ -48,6 +48,17 @@
                 <div class="clear"></div>
             </div>
             <div class="context">
+            <%foreach (var ki in Model)
+              { %>
+              <div><%=ki %></div>
+            
+              <%} %>
+            	      <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
+                    <div class="left">
+                        <div class="icon"><img src="../../Contents/Icons/knowledge.gif" width="60" height="60" /></div>
+                        <div class="category">类别：阅读RC</div>
+                        <div class="stars_cover"><div class="stars"></div></div>
+                    </div>
                 <div class="item2" onclick="window.location='/Question/Details/1';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
                 	<div class="left">
                     	<div class="cat cat1"><b>题目</b><span>七日内刚刚更新了解答</span><div class="clear"></div></div>
