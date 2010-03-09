@@ -57,7 +57,7 @@
 					<div class="item">
                         <div class="title">题目来源<span>*</span></div>
                         <div class="detail">
-                            <select class="inp inp2 judge" name="SourceSelect">
+                            <select class="inp inp2 judge" name="Source">
                                 <option value="GWD" selected="selected">GWD</option>
                                 <option value="PREP">PREP</option>
                                 <option value="OG 11th">OG 11th</option>
