@@ -49,34 +49,36 @@
             </div>
             <div class="context">
             <%foreach (var ki in Model)
-              { %>
-              <div><%=ki %></div>
-            
-              <%} %>
-            	      <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/knowledge.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                <div class="item2" onclick="window.location='/Question/Details/1';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
+              {
+                  var keyid = new KEYID(ki);
+                  if (keyid.KEY != "Question") continue;
+                  Antaeus.BL.Model.Question item = new Antaeus.BL.Model.QuestionModel().Find(keyid.ID);
+                  %>
+            	      
+                <div class="item2" onclick="window.location='/Question/Details/<%= Html.Encode(item.QuestionID) %>';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
                 	<div class="left">
                     	<div class="cat cat1"><b>题目</b><span>七日内刚刚更新了解答</span><div class="clear"></div></div>
                         <div class="number">
-                        	<div class="n1"><b class="blue">15616</b><span>题目编号</span></div>
-                            <div class="n2"><b class="green">3.5</b><span>题目价值</span></div>
-                            <div class="n3"><b class="orange">44%</b><span>正确率</span></div>
+                        	<div class="n1"><b class="blue"><%= Html.Encode(item.QuestionID) %></b><span>题目编号</span></div>
+                            <div class="n2"><b class="green"><%= Html.Encode(item.GetAverage().ToString("0.0"))%></b><span>题目价值</span></div>
+                            <div class="n3"><b class="orange"><%= Html.Encode(item.CorrectRate) %></b><span>正确率</span></div>
                         </div>
                     </div>
                     <div class="right">
-                    	<div class="summy"><b class="blue">Sentences Corrected:</b> dojsdosdjo,fjdfofjofjd dfhsojaojd dsdhio dhon ddho daowe dihd eaioh dhoa dhojod honsd </div>
-                        <div class="parameter">来自GWD，16159 浏览，469 讨论，更新于 2010-3-10 19:34</div>
+                    	<div class="summy"><b class="blue"><%= Html.Encode(item.Category.Name) %>:</b> <%=Html.Encode(item.GetAbstract()) %> </div>
+                        <div class="parameter">来自<%= Html.Encode(item.Source) %>，<%= Html.Encode(item.ViewedCount)%> 浏览，<%= Html.Encode(item.CommentCount)%> 讨论，更新于 <%= Html.Encode(item.ModifiedTime.ToStr())%></div>
                         <div class="tags">
-                        	<span>tag1</span>
-                        </div>
+                         <%foreach (var tag in item.GetTags(6).Split(','))
+                           {%>
+                                <span><%=tag%></span>
+                         <%}%>
+                         </div>
                     </div>
                     <div class="clear"></div>
                 </div>
+                
+              <%} %>
+            
                 <div class="item2" onclick="window.location='/Question/Details/1';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
                 	<div class="left">
                     	<div class="cat cat2"><b>知识点</b><span>七日内刚刚更新了内容</span><div class="clear"></div></div>
