@@ -52,44 +52,21 @@
             
             <div class="context">
                 
-                <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="knowledgeleft">
-                        <div class="questionidtext">知识点类别：</div>
-                        <div class="questionid">阅读RC</div>
-                        <div class="stars"><%= Html.GetStars(3.5,"gery")%></div>
+               <div class="item2" onclick="window.location='/Question/Details/1';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
+                	<div class="left">
+                    	<div class="cat cat2"><b>知识点</b><span>七日内刚刚更新了内容</span><div class="clear"></div></div>
+                        <div class="number">
+                        	<div class="n1"><b class="blue">15616</b><span>知识点收藏</span></div>
+                            <div class="n2"><b class="green">3.5</b><span>知识点价值</span></div>
+                            <div class="n3"><b class="orange">466</b><span>相关题目</span></div>                            
+                        </div>
                     </div>
                     <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
+                    	<div class="title green">如何比较MoreThan结构中的主客体两方</div>
+                        <div class="parameter">lanslot创建，16159 浏览，469 讨论，更新于 2010-3-10 19:34</div>
+                        <div class="tags">
+                        	<span>tag1</span>
                         </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                
-                <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="knowledgeleft">
-                        <div class="questionidtext">知识点类别：</div>
-                        <div class="questionid">阅读RC</div>
-                        <div class="stars"><%= Html.GetStars(3.5,"gery")%></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -98,7 +75,7 @@
             
             <div class="bar1">
                 <div class="barpage">
-                    <%=Html.ShowPageIndex(11,40,"#","current")%>
+                    <%//Html.ShowPageIndex( 10,"current")%>
                 </div>
                 <div class="report">
                     <span>找不到题目？</span>

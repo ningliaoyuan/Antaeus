@@ -87,9 +87,15 @@ Version 0.1, Created by Lanslot at 2009/6/14 0:19
 .listresult .item2 .left{ width:230px; padding-right:15px;}
 .listresult .item2 .right{ width:425px;}
 .listresult .item2 .left .note{ background-color:#def4ff; padding:5px; text-align:right;}
+.listresult .item2 .left .cat b{ display:block; float:left; padding:5px; width:40px; background-color:#666; color:#FFF; text-align:center;}
+.listresult .item2 .left .cat span{ display:block; float:right; padding:5px; width:170px; text-align:right;}
+.listresult .item2 .left .cat1{ background-color:#cadfec; color:#0479a7;}
+.listresult .item2 .left .cat2{ background-color:#e0ffb0; color:#368500;}
+.listresult .item2 .left .cat3{ background-color:#ffeedf; color:#df6901;}
 .listresult .item2 .left .number div{ float:left; width:33%; text-align:center; padding-top:8px;}
 .listresult .item2 .left .number b{ display:block; font-size:24px;}
 .listresult .item2 .left .number span{ display:block; color:#666;}
+.listresult .item2 .right .title{ font-weight:bold; font-size:18px;}
 .listresult .item2 .right .parameter{ color:#666; padding:5px 0 5px 0;}
 .listresult .item2 .right .tags{ height:25px; overflow:hidden;}
 .listresult .item2 .right .tags span{ display:block; float:left; padding:3px 5px; background-color:#ECFFA3; border:1px solid #d7df01; margin-right:5px;}

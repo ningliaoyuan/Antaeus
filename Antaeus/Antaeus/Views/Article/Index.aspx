@@ -241,7 +241,7 @@ Article
             </a>
             <div class="bar1">
                 <div class="barpage">
-                    <%=Html.ShowPageIndex(11,40,"#","current")%>
+                    <%//Html.ShowPageIndex(11,40,"#","current")%>
                 </div>
                 <div class="right">
                      共找到&nbsp;<span>29384</span>&nbsp;篇文章，每页显示&nbsp;

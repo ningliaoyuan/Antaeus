@@ -48,187 +48,60 @@
                 <div class="clear"></div>
             </div>
             <div class="context">
-            	<div class="item" onclick="window.location='/Question/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/Question.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
+                <div class="item2" onclick="window.location='/Question/Details/1';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
+                	<div class="left">
+                    	<div class="cat cat1"><b>题目</b><span>七日内刚刚更新了解答</span><div class="clear"></div></div>
+                        <div class="number">
+                        	<div class="n1"><b class="blue">15616</b><span>题目编号</span></div>
+                            <div class="n2"><b class="green">3.5</b><span>题目价值</span></div>
+                            <div class="n3"><b class="orange">44%</b><span>正确率</span></div>
+                        </div>
                     </div>
                     <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
+                    	<div class="summy"><b class="blue">Sentences Corrected:</b> dojsdosdjo,fjdfofjofjd dfhsojaojd dsdhio dhon ddho daowe dihd eaioh dhoa dhojod honsd </div>
+                        <div class="parameter">来自GWD，16159 浏览，469 讨论，更新于 2010-3-10 19:34</div>
+                        <div class="tags">
+                        	<span>tag1</span>
                         </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
                     </div>
                     <div class="clear"></div>
                 </div>
-                <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/knowledge.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
+                <div class="item2" onclick="window.location='/Question/Details/1';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
+                	<div class="left">
+                    	<div class="cat cat2"><b>知识点</b><span>七日内刚刚更新了内容</span><div class="clear"></div></div>
+                        <div class="number">
+                        	<div class="n1"><b class="blue">15616</b><span>知识点收藏</span></div>
+                            <div class="n2"><b class="green">3.5</b><span>知识点价值</span></div>
+                            <div class="n3"><b class="orange">466</b><span>相关题目</span></div>                            
+                        </div>
                     </div>
                     <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
+                    	<div class="title green">如何比较MoreThan结构中的主客体两方</div>
+                        <div class="parameter">lanslot创建，16159 浏览，469 讨论，更新于 2010-3-10 19:34</div>
+                        <div class="tags">
+                        	<span>tag1</span>
                         </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
                     </div>
                     <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Article/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/Article.gif" width="60" height="60" /></div>
-                        <div class="category">类别：备考经验</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
+                </div> 
+                <div class="item2" onclick="window.location='/Question/Details/1';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
+                	<div class="left">
+                    	<div class="cat cat3"><b>文章</b><span>七日内刚刚更新了内容</span><div class="clear"></div></div>
+                        <div class="number">
+                        	<div class="n1"><b class="blue">15616</b><span>文章收藏</span></div>
+                            <div class="n2"><b class="green">3.5</b><span>文章价值</span></div>
+                            <div class="n3"><b class="orange">46</b><span>文章评论</span></div>                            
+                        </div>
                     </div>
                     <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
+                    	<div class="title orange">如何比较MoreThan结构中的主客体两方</div>
+                        <div class="parameter">lanslot创建，16159 浏览，469 讨论，更新于 2010-3-10 19:34</div>
+                        <div class="tags">
+                        	<span>tag1</span>
                         </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
                     </div>
                     <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Question/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/Question.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/knowledge.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Article/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/Article.gif" width="60" height="60" /></div>
-                        <div class="category">类别：备考经验</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Question/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/Question.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Knowledge/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/knowledge.gif" width="60" height="60" /></div>
-                        <div class="category">类别：阅读RC</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="item" onclick="window.location='/Article/Details/';" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                    <div class="left">
-                        <div class="icon"><img src="../../Contents/Icons/Article.gif" width="60" height="60" /></div>
-                        <div class="category">类别：备考经验</div>
-                        <div class="stars_cover"><div class="stars"></div></div>
-                    </div>
-                    <div class="right">
-                        <h2>知识点的超级长可能的一种标题的方式啊</h2>
-                        <div class="parameter">
-                            <span>Lanslot</span>&nbsp;更新于&nbsp;
-                            <span>2008/11/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;创建于&nbsp;
-                            <span>2009/6/23</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>6487</span>&nbsp;次浏览&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <span>12</span>&nbsp;个评论
-                        </div>
-                        <div class="text">Windows Azure Storage allows application developers to store their data in the cloud, so the application can access its data from anywhere at any time, store any amount of data an for any length of time, and be confident that the data is durable and will not be lost.</div>
-                        <div class="tag"><span>标签：</span>More Than, 超级难题, 其他标签, As ... As</div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                
+                </div>               
             </div>
             <div class="bar1">
                 <div class="barpage">

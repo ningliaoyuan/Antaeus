@@ -99,7 +99,7 @@
             <div class="wiki" id="WikiContent">
             	<%if(string.IsNullOrEmpty(anwser.WikiContent.Content)){ %>
                     <div class="nocontent">这道题目目前还没有题目解答，你如果正确地完成了这道题目，我们欢迎你把你的解答过程分享给大家。<a href="#">点击这里立即编辑题目</a></div>
-                <%} %>>
+                <%} %>
             	<div id="WikiContentEditArea">
                 	<p><%= anwser.WikiContent.Content%></p>
             	</div>
@@ -199,20 +199,16 @@
         	<h3 class="box-title">
             	题目统计数据
                 <div class="right">
-                	<span>正确率</span>
+                	<span>最终正确率</span>
                     <b>45%</b>
                 </div>
             </h3>
-            <div class="box-content">
-            	<div class="cbars">
-                    <div class="cbar1" style="height:25%;"></div>
-                    <div class="cbar2" style="height:45%;"></div>
-                    <div class="cbar3" style="height:100%;"></div>
-                    <div class="cbar4" style="height:70%;"></div>
-                    <div class="cbar5" style="height:30%;"></div>
-                </div>
-                <div class="number"><span>25%</span><span>45%</span><span>100%</span><span>70%</span><span>30%</span></div>
-                <div class="choices"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span></div>
+            <div class="context">
+            	<div class="col1"><div style="height:45px;"></div><span>45%</span><b>选A</b></div>
+				<div class="col2"><div style="height:5px;"></div><span>5%</span><b>选B</b></div>
+                <div class="col3"><div style="height:20px;"></div><span>20%</span><b>选C</b></div>
+                <div class="col4"><div style="height:13px;"></div><span>13%</span><b>选D</b></div>
+                <div class="col5"><div style="height:17px;"></div><span>17%</span><b>选E</b></div>
             </div>
         </div>
         <div class="blank10"></div>
