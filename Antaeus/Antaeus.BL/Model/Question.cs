@@ -53,6 +53,7 @@ namespace Antaeus.BL.Model
                 return _commentCount;
             }
         }
+
         public string CorrectRate = "100%";
 
         public DateTime ModifiedTime
@@ -123,5 +124,54 @@ namespace Antaeus.BL.Model
         }
         
         #endregion
+    }
+
+    public class QuestionStatistics
+    {
+        public JB8ORMDataContextFactory ContextFactory = EnvironmentHelper.Current.ContextFactory;
+
+        public QuestionStatistics(long qid)
+        {
+            var con = ContextFactory.GetNewContext();
+
+            Data.Add("A", 0);
+            Data.Add("B", 0);
+            Data.Add("C", 0);
+            Data.Add("D", 0);
+            Data.Add("E", 0);
+            int sum = 0;
+
+            var list = from item in con.UserAnswerQBs
+                       where item.QuestionID == qid
+                       group item by item.Answer  into ans
+                       select new { answer = ans.Key, count = ans.Count()};
+
+            foreach (var item in list)
+            {
+                Data[item.answer] = item.count;
+                sum += item.count;
+            }
+
+            if (sum > 0)
+            {
+                Sum = sum;
+                var correctAnswer = (from item in con.UserAnswerQBs
+                                     where item.Correct == true
+                                     select item.Answer).SingleOrDefault();
+
+                if (!string.IsNullOrEmpty(correctAnswer))
+                {
+                    int correctCount = Data[correctAnswer];
+                    if (correctCount > 0)
+                    {
+                        CorrectRate = correctCount * 100 / sum;
+                    }
+                }
+            }
+        }
+        public int Sum = 0;
+        public int CorrectRate = 0;
+
+        public Dictionary<string, int> Data;
     }
 }
