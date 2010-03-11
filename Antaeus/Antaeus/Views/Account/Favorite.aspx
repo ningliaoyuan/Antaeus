@@ -22,6 +22,7 @@
             	<div class="blank15"></div>
                 <h2>我收藏的题目</h2>
                 <div class="tag-clone">
+                	<a href="#" class="current">全部(123)</a>
                 	<a href="#">标签名字(3)</a>
                     <a href="#">标签名字(3)</a>
                     <a href="#">标签名字(3)</a>

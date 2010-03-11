@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div class="hidden">
-    <div id="popup_add_favorite" class="popup" title="编辑收藏使用的标签">
+    <div id="PopupFavoriteEdit" class="popup" title="编辑收藏使用的标签">
     	<p>请更改你对这道题的收藏标签：</p>
         <span>标签之间请用英文逗号隔开</span>
         <div><input type="text" /></div>

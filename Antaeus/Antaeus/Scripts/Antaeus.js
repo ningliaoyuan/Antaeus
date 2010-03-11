@@ -9,13 +9,9 @@ jQuery(document).ready(function($) {
     var WikiEditor;
     //定义初始的WIKI内容，用于用户提交判断
     var WikiInitContent;
-
-
     //激发编辑模式
     $("#ButtonWikiEdit").click(function() {
-        //$("#WikiContent").wrapInner("<textarea name='Wiki' id='WikiContentTextarea' style='width: 670px; height: 300px'></textarea>");
-        //$("#WikiContent").append("<div class='clear blank10'></div>");
-        WikiInitContent = $("#WikiContentEditArea").html().replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "").replaceAll("&nbsp;", "").toLowerCase().replaceAll("<p></p>", "");
+        WikiInitContent = $("#WikiContentEditArea").html().replaceSpecial();
         if (!WikiEditor) WikiEditor = CKEDITOR.replace(document.getElementById("WikiContentEditArea"));
         $(".wiki-submit").show();
     });
@@ -30,7 +26,7 @@ jQuery(document).ready(function($) {
     $("#WikiEditDestroy").click(function() { WikiEditDestory(); });
     //用户提交编辑内容
     $("#WikiEditSubmit").click(function() {
-        content = WikiEditor.getData().replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "").replaceAll("&nbsp;", "").toLowerCase().replaceAll("<p></p>", "");
+        content = WikiEditor.getData().replaceSpecial();
         if (content == WikiInitContent) {
             alert("你没有修改任何内容，将不会提交新的版本！");
             WikiEditDestory();
@@ -41,7 +37,7 @@ jQuery(document).ready(function($) {
 				"/Question/EditAnswer/" + id,
 				{ WikiContent: content },
 				function(data) {
-				    if (data == "ok") {
+				    if ($.trim(data) == "obsolete:ok") {
 				        alert("你的修改已经成功提交，感谢你的贡献。");
 				        WikiEditDestory();
 				    } else {
@@ -51,7 +47,6 @@ jQuery(document).ready(function($) {
 			);
         }
     });
-
     //更新历史版本内容
     $(".WikiHistoryView").click(function() {
         var obj = $(this);
@@ -60,15 +55,12 @@ jQuery(document).ready(function($) {
             WikiEditor = null;
             $(".wiki-submit").hide();
         }
-
         var version = obj.attr("title");
         //缺少一个AJAX来调用对应版本的数据：wiki内容的html
-
         $("#WikiVersion").html(version);
         $("#WikiAuthor").html(obj.parent().prev().prev().html());
         $("#WikiTime").html(obj.parent().prev().html());
         //$("#WikiContentEditArea").html(data);
-
         $("#popup_wiki_history").dialog('close');
     });
 
@@ -99,36 +91,33 @@ jQuery(document).ready(function($) {
 	//用户做题
 	
 	//记录载入时间
-	var CurrentTime = new Date();
-	var QuestionChoiceSelect = true;
-	$(".QuestionChoiceSelect").click(function(){
-		//只判断第一次点击
-		if(QuestionChoiceSelect){		
-			var correct = $("#QuestionChoiceCorrected").html();
-			var DoTime = new Date();
-			var TheTime = parseInt((DoTime-CurrentTime)/1000);
-			var Correct = 0;
-			var id=$("#Rate").attr("title");
-			var Answer = $(this).attr("value");
-			
-			if (Answer==correct) {
-				$("#QuestionChoiceCorrectShow").show();
-				Correct = 1;
-			}else{
-				$("#QuestionChoiceWrongShow").show();
-			}
-			QuestionChoiceSelect = false;
-			$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime},function(data){alert(data);});
-			
-		}
-	});
+//	var CurrentTime = new Date();
+//	var QuestionChoiceSelect = true;
+//	$(".QuestionChoiceSelect").click(function(){
+//		//只判断第一次点击
+//		if(QuestionChoiceSelect){		
+//			var correct = $("#QuestionChoiceCorrected").html();
+//			var DoTime = new Date();
+//			var TheTime = parseInt((DoTime-CurrentTime)/1000);
+//			var Correct = 0;
+//			var id=$("#Rate").attr("title");
+//			var Answer = $(this).attr("value");
+//			
+//			if (Answer==correct) {
+//				$("#QuestionChoiceCorrectShow").show();
+//				Correct = 1;
+//			}else{
+//				$("#QuestionChoiceWrongShow").show();
+//			}
+//			QuestionChoiceSelect = false;
+//			$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime},function(data){alert(data);});
+//			
+//		}
+//	});
 	
 	//评论的提交
 	$("#CommentSubmit").click(function(){
-		//alert("haha");
-		//$("#CommentForm").submit();
 		var c = $("#CommentContent").attr("value");
-
 		if(c!="")  window.location=$(this).attr("rel")+c;
 	});
 
@@ -151,7 +140,7 @@ $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 $("#WidgetFilter").filter();
 
 //3.具体题目页给题目加Tag
-$("#PopupFavorite").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
+$("#PopupFavoriteAdd").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
 
 //4.具体题目页的历史记录查看
 $("#PopupHistory").click(function(){PopupAJAX($(this).attr("href"));});
@@ -196,6 +185,9 @@ if($("#FormQuestionCreate").length>0){
     });
 	
 }
+
+//8.管理收藏夹改Tag
+$("#PopupFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
 
 
 

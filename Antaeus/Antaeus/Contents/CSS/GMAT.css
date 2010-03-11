@@ -108,7 +108,7 @@ Version 0.1, Created by Lanslot at 2009/6/14 0:19
 .comment .comm_form textarea{ width:648px; border:1px solid #dbdbdb; display:block; height:80px; padding:10px; color:#888;}
 
 .wiki{ padding:15px; padding-bottom:0;}
-.wiki .nocontent{ font-size:16px; line-height:28px;}
+.wiki .nocontent{ padding:15px; font-size:14px; color:#F00; background-color:#FFDFDF; }
 .wiki p{ font-size:16px; color:#555; line-height:22px; padding-bottom:15px; display:block;}
 .wiki .wiki-submit{ height:25px; padding-top:15px;}
 
@@ -245,7 +245,7 @@ Version 0.1, Created by Lanslot at 2009/6/14 0:19
 .account .listresult .item2 .right{ width:393px;}
 .account .tag-clone{ border:1px solid #dfdfdf; background-color:#ffeedf; padding:15px 5px 10px 15px;}
 .account .tag-clone a{ display:block; float:left; padding-bottom:5px; padding-right:10px;}
-
+.account .tag-clone a.current{ color:#FF0000;}
 /*Account End========================================================================================================================================*/
 
 /*Article Begin========================================================================================================================================*/
@@ -393,5 +393,7 @@ h3.box-title{padding:15px 15px 10px 45px; font-size:16px; font-weight:bold; line
 .w-progress .tab-content img{ display:block; float:left; margin:15px 15px 0 10px;}
 .w-progress .tab-content p{ font-size:14px; display:block; float:left; padding-top:15px; width:140px;}
 /* Precentage Chart Show, used by Components/Precentage.ascx */
-w-precentage h3{ background-position:15px -65px;}
+.w-precentage h3{ background-position:15px -65px;}
+.w-precentage .right{ float:right; font-size:14px;}
+.w-precentage .right span, .w-precentage .right b{ display:block; text-align:center;}
 

@@ -5,6 +5,10 @@
 String.prototype.replaceAll=function(s1,s2){   
 	return this.replace(new RegExp(s1,"gm"),s2);   
 }
+//用于全替换特殊字符
+String.prototype.replaceSpecial=function(){
+	return this.replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "").replaceAll("&nbsp;", "").toLowerCase().replaceAll("<p></p>", "");
+}
 
 //函数用于执行顶端导航的AJAX提交表单
 function FormLoginSubmit(place) {
@@ -209,7 +213,6 @@ function TabActive(data) {
 //[必须]mouseoutColor - 字符 - 鼠标移开后的原始背景色
 //[必须]currentClass - 字符 - 当前所在的css class
 //[必须]cancelButton - 字符 - 取消按钮的obj选择器
-
 (function($){  
 	$.fn.extend({   
 	dropdownMenu: function(options){
@@ -255,3 +258,5 @@ function TabActive(data) {
 	}
 	});      
 })(jQuery); 
+
+

@@ -75,9 +75,7 @@
             	<div class="left">
                 	<h2>题目解答过程</h2>
                     <div class="information">
-                    	当前版本&nbsp;<span class="green" id="WikiVersion"><%=Html.Encode(anwser.WikiContent.Reversion)%></span>
-                        &nbsp;由&nbsp;<span class="blue" id="WikiAuthor"><%= Html.Encode(anwser.WikiContent.CrUserName)%></span>
-                        &nbsp;更新于&nbsp;<span class="orange" id="WikiTime"><%= Html.Encode(String.Format("{0:g}",  anwser.WikiContent.CreatedTime))%></span>
+                    	当前版本&nbsp;<span class="red" id="WikiVersion"><%=Html.Encode(anwser.WikiContent.Reversion)%></span>&nbsp;由&nbsp;<span class="blue" id="WikiAuthor"><%= Html.Encode(anwser.WikiContent.CrUserName)%></span>&nbsp;更新于&nbsp;<span class="orange" id="WikiTime"><%= Html.Encode(String.Format("{0:g}",  anwser.WikiContent.CreatedTime))%></span>&nbsp;最新版本是&nbsp;<span class="green" id="WikiVersion"><%=Html.Encode(anwser.WikiContent.Reversion)%></span>
                     </div>
                 	<div class="information">感谢&nbsp;
                 	<%for (int i=0;i<anwser.Contributors.Count; i++)
@@ -98,7 +96,7 @@
             </div>
             <div class="wiki" id="WikiContent">
             	<%if(string.IsNullOrEmpty(anwser.WikiContent.Content)){ %>
-                    <div class="nocontent">这道题目目前还没有题目解答，你如果正确地完成了这道题目，我们欢迎你把你的解答过程分享给大家。<a href="#">点击这里立即编辑题目</a></div>
+                    <div class="nocontent">这道题目目前还没有题目解答，你如果正确地完成了这道题目，我们非常欢迎你把你的解答过程分享给大家。<a href="#" id="LinkWikiEdit">点击这里立即编辑题目</a></div>
                 <%} %>
             	<div id="WikiContentEditArea">
                 	<p><%= anwser.WikiContent.Content%></p>
@@ -190,7 +188,7 @@
     <div class="columnright">
     	<div class="blank10"></div>
         <div class="box3">
-            <a href="#popup_add_favorite" class="btn-huge btn-huge-favorite" id="PopupFavorite"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+            <a href="#popup_add_favorite" class="btn-huge btn-huge-favorite" id="PopupFavoriteAdd"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
             <a href="#" class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
             <a href="#" class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
         </div>
@@ -199,7 +197,7 @@
         	<h3 class="box-title">
             	题目统计数据
                 <div class="right">
-                	<span>最终正确率</span>
+                	<span>正确率</span>
                     <b>45%</b>
                 </div>
             </h3>
