@@ -42,6 +42,9 @@ namespace Antaeus.Controllers
         public ActionResult Details(long id)
         {
             Question question = QuestionModel.Find(id);
+
+            string username =  HttpContext.GetUserName();
+            ViewData["tagged"] = new TagService().HasBeenTagged(username, question.GetKeyId());
       
             return View(question);
         }

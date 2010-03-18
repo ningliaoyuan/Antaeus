@@ -74,6 +74,16 @@ namespace Antaeus.BL
 
             return string.Join(",", list.Take(count).ToArray());
         }
+
+        public bool HasBeenTagged(string username, KEYID kEYID)
+        {
+            var con = ContextFactory.GetNewContext();
+
+            var list = from t in con.Tags
+                       where t.CrUserName == username && t.KID == kEYID.ToString()
+                       select t;
+            return list.Any();
+        }
     }
     
     public interface IWithTag : IHasKEYID
