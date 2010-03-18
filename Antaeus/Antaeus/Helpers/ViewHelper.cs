@@ -137,5 +137,19 @@ namespace Antaeus.Helpers
         {
             return dt.ToString("yyyy-MM-dd HH:mm:ss");
         }
+
+        public static string RateSelect(this HtmlHelper Html,decimal v) {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<select>");
+            int val = Convert.ToInt32(v);
+            
+            string pattern = "<option value=\"1\" {1}>非常好</option> <option value=\"2\" {2}>非常好</option> <option value=\"3\" {3}>非常好</option> <option value=\"4\" {4}>非常好</option> <option value=\"5\" {5}>非常好</option>";
+            
+            string res = pattern.Replace("{" + val + "}", "selected=\"selected\"");
+            sb.Append(string.Format(res, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty));
+
+            sb.Append("</select>");
+            return sb.ToString();
+        }
     }
 }
