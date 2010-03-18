@@ -4,7 +4,7 @@
 // dropdownToggle方法用于当用户在下拉菜单中选择“其它”时显示文本输入框让用户输入其它的内容
 // Parameters:
 // [必须]judge - 字符 - 在HTML中定义的“其它”这一项的
-// [必须]class - 字符 - 要新添加的input的class样式
+// [必须]styleClass - 字符 - 要新添加的input的class样式
 // [可选]beforeHtml - Html - 前置的html代码
 // [可选]afterHtml - Html - 后置的html代码
 // [必须]required - 是否 - 是否可以为空
@@ -14,7 +14,7 @@
 		//默认参数设置
 		var defaults = {  
 			judge:"other",
-			class:"",
+			styleClass:"",
 			beforeHtml:"<div class='inp-between'>&nbsp;</div>",
 			afterHtml:"",
 			required:true
@@ -24,7 +24,7 @@
 			var opt = options;
 			var obj = $(this);
 			var requiredStr = opt.required?"required='true'":"";
-			obj.after(opt.beforeHtml+"<input type='text' class='"+opt.class+"' id='dropdownToggle-target' value='' name='"+opt.judge+"' style='display:none;' "+requiredStr+" />"+opt.afterHtml);
+			obj.after(opt.beforeHtml+"<input type='text' class='"+opt.styleClass+"' id='dropdownToggle-target' value='' name='"+opt.judge+"' style='display:none;' "+requiredStr+" />"+opt.afterHtml);
 			var target = $("#dropdownToggle-target");
 			obj.change(function(){
 				if(obj.val()==opt.judge){
@@ -41,7 +41,7 @@
 
 // checkRequired方法用于判断是否输入为空
 // [必须]text - 字符 - 出错的文字提示
-// [必须]class - 字符 - 要新添加的出错信息的class样式
+// [必须]styleClass - 字符 - 要新添加的出错信息的class样式
 // [可选]beforeHtml - Html - 前置的html代码
 // [可选]afterHtml - Html - 后置的html代码
 (function($){  
@@ -50,7 +50,7 @@
 		//默认参数设置
 		var defaults = {  
 			text:"这里的输入不能为空！",
-			class:"warn",
+			styleClass:"warn",
 			beforeHtml:"<div class=\"blank5\"></div>",
 			afterHtml:""
 		}                   
@@ -58,10 +58,10 @@
 		return this.each(function(){
 			var opt = options;
 			var obj = $(this);
-			var str = opt.beforeHtml+"<div class=\""+opt.class+"\">"+opt.text+"</div>"+opt.afterHtml;
+			var str = opt.beforeHtml+"<div class=\""+opt.styleClass+"\">"+opt.text+"</div>"+opt.afterHtml;
 			obj.blur(function(){
 				var obj1=$(this);
-				var obj2 = obj1.parent().children("."+opt.class);
+				var obj2 = obj1.parent().children("."+opt.styleClass);
 				var related = obj1.attr("related");
 				//这里这个定义用来判断是否真的为空
 				var whether = false;
