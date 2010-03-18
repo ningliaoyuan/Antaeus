@@ -133,6 +133,14 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-huge b{ display:block; font-size:16px; font-weight:bold;}
 .btn-huge span{ display:block; font-size:12px; color:#888;}
 .btn-huge:hover span{ color:#FFF;}
+
+.btn-huge-already{filter:alpha(opacity=50);-moz-opacity:0.5;opacity: 0.5; cursor:text;}
+.btn-huge-already p,
+.btn-huge-already span{ color:#000;}
+.btn-huge-already:hover,
+.btn-huge-already:active{ text-decoration:none; background-color:#fff; border-top:1px solid #fff; border-bottom:1px solid #fff; color:#000;}
+.btn-huge-already:hover span{ color:#000;}
+
 /* Toggle Button ---------------------------------------------------------------------------------------------------------------------*/
 .btn-toggle-show,
 .btn-toggle-hide{ display:block; float:left; padding-left:20px; height:20px; line-height:20px; background:#eee url(../Images/icon_silk.png) scroll no-repeat 5px -267px; padding-right:10px;}
