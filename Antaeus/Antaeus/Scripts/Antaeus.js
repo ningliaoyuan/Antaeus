@@ -140,7 +140,7 @@ $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 $("#WidgetFilter").filter();
 
 //3.具体题目页给题目加Tag
-$("#PopupFavoriteAdd").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
+$("#LinkFavoriteAdd").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
 
 //4.具体题目页的历史记录查看
 $("#PopupHistory").click(function(){PopupAJAX($(this).attr("href"));});
