@@ -61,6 +61,19 @@ namespace Antaeus.BL
                        select ki.Key;
             return list; 
         }
+
+        public string GetTagsByUserName(string username, int count)
+        {
+            var con = ContextFactory.GetNewContext();
+
+            var list = from t in con.Tags
+                       where t.CrUserName == username
+                       group t by t.Tags into t2
+                       orderby t2.Count()
+                       select string.Format("{0}({1})", t2.Key,t2.Count());
+
+            return string.Join(",", list.Take(count).ToArray());
+        }
     }
     
     public interface IWithTag : IHasKEYID

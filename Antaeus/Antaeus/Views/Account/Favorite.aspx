@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<string>" %>
 <%@ Register src="SideControl.ascx" tagname="SideControl" tagprefix="uc1" %>
 <%@ Register src="HeaderControl.ascx" tagname="HeaderControl" tagprefix="uc2" %>
 <%@ Register src="../PopUps/EditFavoritePopup.ascx" tagname="EditFavoritePopup" tagprefix="uc3" %>
@@ -23,27 +23,13 @@
                 <h2>我收藏的题目</h2>
                 <div class="tag-clone">
                 	<a href="#" class="current">全部(123)</a>
-                	<a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
-                    <a href="#">标签名字(3)</a>
+                    <%if (!string.IsNullOrEmpty(Model))
+                      {
+                          foreach (var tag in Model.Split(','))
+                          {%>
+                	       <a href="#"><%=tag%></a>
+                           <%}
+                      } %>                
                     <div class="clear"></div>
                 </div>
                 <div class="listresult">

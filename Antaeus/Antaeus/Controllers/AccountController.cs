@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI;
+using Antaeus.Helpers;
 using Antaeus.BL;
 
 namespace Antaeus.Controllers
@@ -209,12 +210,14 @@ namespace Antaeus.Controllers
         }
         public ActionResult Favorite()
         {
+            string username = HttpContext.GetUserName();
 
-            return View();
-        }
+            var tags = new TagService().GetTagsByUserName(username, 20);
+
+            return View((object)tags);
+        } 
         public ActionResult ContentRecord()
         {
-
             return View();
         }
 
