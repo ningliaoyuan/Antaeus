@@ -164,7 +164,7 @@ if($("#FormQuestionCreate").length>0){
 	//初始化富文本编辑框
 	CKEDITOR.replace("CKEditor",{width:545});	
 	//下拉框选到其它时显示文本输入框
-	$(".formstyle .judge").dropdownToggle({judge:"other",class:"inp inp2"});
+	$(".formstyle .judge").dropdownToggle({judge:"other",styleClass:"inp inp2"});
 	
 	//验证为空
 	$(":text[required='true']").checkRequired();

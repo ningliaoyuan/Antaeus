@@ -160,7 +160,7 @@ function FavoriteTagAdd(popupid){
 			);
 		}
 	});
-	$("#PopupFavoriteAdd").dialog("open");
+	$("#"+popupid).dialog("open");
 }
 
 //PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
