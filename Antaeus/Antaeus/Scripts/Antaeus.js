@@ -152,8 +152,7 @@ TabActive();
 $("#accountSetting .item").dropdownMenu();
 
 //7.QuestionCreate页面的复杂表单调用汇总代码
-if($("#FormQuestionCreate").length>0){
-	
+if($("#FormQuestionCreate").length>0){	
 	//这是表单中星星评分部分的插件调用
 	$("#FormRate").stars({inputType: "select",captionEl: $("#FormRateCap"),cancelShow: false});	
 	//检索知识点部分拖拽的选择效果
@@ -164,15 +163,12 @@ if($("#FormQuestionCreate").length>0){
 	//初始化富文本编辑框
 	CKEDITOR.replace("CKEditor",{width:545});	
 	//下拉框选到其它时显示文本输入框
-	$(".formstyle .judge").dropdownToggle({judge:"other",styleClass:"inp inp2"});
-	
+	$(".formstyle .judge").dropdownToggle({judge:"other",styleClass:"inp inp2"});	
 	//验证为空
 	$(":text[required='true']").checkRequired();
-	$("textarea[required='true']").checkRequired();
-	
+	$("textarea[required='true']").checkRequired();	
 	//聚焦则去掉初始的文字提示
-	$("input.inp[value!='']").removeDefault();	
-	
+	$("input.inp[value!='']").removeDefault();		
 	//七种不同题型的不同操作
     $("#FormQuestionCreateType").change(function() {
         var obj = $(this);
@@ -182,8 +178,7 @@ if($("#FormQuestionCreate").length>0){
             if (data != null) $("#FormQuestionCreateLoad").html(data);
             obj.next().hide();
         });
-    });
-	
+    });	
 }
 
 //8.管理收藏夹改Tag
