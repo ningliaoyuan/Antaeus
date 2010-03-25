@@ -45,6 +45,7 @@ jQuery(document).ready(function($) {
 				    }
 				}
 			);
+			//runAJAX(url.wiki,[$("#QuestionID").html(),encodeURI(WikiEditor.getData())],fun.wiki);
         }
     });
     //更新历史版本内容
@@ -73,15 +74,9 @@ jQuery(document).ready(function($) {
         cancelShow: false,
 		callback: function(ui, type, value){
 			$("#Rate").hide();
-			$("#Rating").show();
-			var id=$("#Rate").attr("rel");
-			//alert(id);
-			$.get("/Question/Rate/"+id,{rate:value},function(data){
-				if(data=="ok"){
-					//alert("投票成功");
-				}else{
-					alert("投票失败");
-				}
+			$("#Rating").show();			
+			$.get("/Question/Rate/"+$("#Rate").attr("rel"),{rate:value},function(data){
+				if(data!="ok")	alert("投票失败");
 				$("#Rate").show();
 				$("#Rating").hide();
 			});
@@ -115,11 +110,7 @@ jQuery(document).ready(function($) {
 //		}
 //	});
 	
-	//评论的提交
-	$("#CommentSubmit").click(function(){
-		var c = $("#CommentContent").attr("value");
-		if(c!="")  window.location=$(this).attr("rel")+c;
-	});
+
 
 // =========================================================================================================
 // 整理后的代码
@@ -182,10 +173,13 @@ if($("#FormQuestionCreate").length>0){
 }
 
 //8.管理收藏夹改Tag
-$("#PopupFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
+$("#LinkFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteEdit");});
 
-
-
+//9.评论的提交
+$("#CommentSubmit").click(function(){
+	var c = $("#CommentContent").attr("value");
+	if(c!="")  window.location=$(this).attr("rel")+c;
+});
 
 
 

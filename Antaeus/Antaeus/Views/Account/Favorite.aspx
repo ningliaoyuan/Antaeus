@@ -35,7 +35,7 @@
                 <div class="listresult">
                 	<div class="item2" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
                         <div class="left">
-                            <div class="note blue"><input type="checkbox" value="" /><span>选中</span>&nbsp;&nbsp; <a href="#popup_add_favorite" rel="dialog">编辑收藏标签</a></div>
+                            <div class="note blue"><input type="checkbox" value="" /><span>选中</span>&nbsp;&nbsp; <a href="#" id="LinkFavoriteEdit" rel="dialog">编辑收藏标签</a></div>
                             <div class="number">
                                 <div class="n1"><b class="blue">13244</b><span>题目编号</span></div>
                                 <div class="n2"><b class="green">3.5</b><span>题目价值</span></div>
