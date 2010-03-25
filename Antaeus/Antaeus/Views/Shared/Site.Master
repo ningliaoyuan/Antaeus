@@ -17,6 +17,7 @@
     
 	<asp:ContentPlaceHolder ID="ScriptContent" runat="server" />   
     <script src="/Scripts/antaeus.js" type="text/javascript"></script>
+    <script src="/Scripts/antaeus_ajax.js" type="text/javascript"></script>
     
     <link href="/Contents/CSS/Common.css" rel="stylesheet" media="screen" type="text/css" />
     <link href="/Contents/CSS/Layout.css" rel="stylesheet" media="screen" type="text/css" />

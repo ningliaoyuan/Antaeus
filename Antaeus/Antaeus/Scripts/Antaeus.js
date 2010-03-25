@@ -2,7 +2,7 @@
 // Version 0.1, Created by Lanslot
 
 jQuery(document).ready(function($) {
-	
+
     //============================================================================
     //Question/Details页面代码
     //定义编辑器的全局变量
@@ -65,124 +65,121 @@ jQuery(document).ready(function($) {
     });
 
 
-	//Rate部分代码
-	$("#Rate").stars({
-		oneVoteOnly: true,
+    //Rate部分代码
+    $("#Rate").stars({
+        oneVoteOnly: true,
         inputType: "select",
         captionEl: $("#RateCap"),
         cancelShow: false,
-		callback: function(ui, type, value){
-			$("#Rate").hide();
-			$("#Rating").show();
-			var id=$("#Rate").attr("rel");
-			//alert(id);
-			$.get("/Question/Rate/"+id,{rate:value},function(data){
-				if(data=="ok"){
-					//alert("投票成功");
-				}else{
-					alert("投票失败");
-				}
-				$("#Rate").show();
-				$("#Rating").hide();
-			});
-		}
+        callback: function(ui, type, value) {
+            $("#Rate").hide();
+            $("#Rating").show();
+            var qid = $("#Rate").attr("rel");
+            var context = {qid: qid, rate:value};
+            //alert(id);
+            RateQuestion(context, function() {
+                $("#Rate").show();
+                $("#Rating").hide();
+                Refresh($("#RateAverge"),context);
+            });
+        }
     });
-	
-	//用户做题
-	
-	//记录载入时间
-//	var CurrentTime = new Date();
-//	var QuestionChoiceSelect = true;
-//	$(".QuestionChoiceSelect").click(function(){
-//		//只判断第一次点击
-//		if(QuestionChoiceSelect){		
-//			var correct = $("#QuestionChoiceCorrected").html();
-//			var DoTime = new Date();
-//			var TheTime = parseInt((DoTime-CurrentTime)/1000);
-//			var Correct = 0;
-//			var id=$("#Rate").attr("title");
-//			var Answer = $(this).attr("value");
-//			
-//			if (Answer==correct) {
-//				$("#QuestionChoiceCorrectShow").show();
-//				Correct = 1;
-//			}else{
-//				$("#QuestionChoiceWrongShow").show();
-//			}
-//			QuestionChoiceSelect = false;
-//			$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime},function(data){alert(data);});
-//			
-//		}
-//	});
-	
-	//评论的提交
-	$("#CommentSubmit").click(function(){
-		var c = $("#CommentContent").attr("value");
-		if(c!="")  window.location=$(this).attr("rel")+c;
-	});
 
-// =========================================================================================================
-// 整理后的代码
-// =========================================================================================================
+    //用户做题
 
-//1.顶端登陆，每个页面都要初始载入的------------------------------------------------
-//1.1.对文本输入框载入聚焦后的提示去除
-$("#FormLoginHeader #Username, #FormLoginHeader #Password").removeDefault();
-//1.2.当聚焦在顶端导航部分的密码框内时，按回车键提交表单
-$("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
-//1.3.当聚焦在PopUp部分的密码框内时，按回车键提交表单
-$("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
-//1.4.顶部登陆区域点击“登录”按钮提交表单
-$("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
+    //记录载入时间
+    //	var CurrentTime = new Date();
+    //	var QuestionChoiceSelect = true;
+    //	$(".QuestionChoiceSelect").click(function(){
+    //		//只判断第一次点击
+    //		if(QuestionChoiceSelect){		
+    //			var correct = $("#QuestionChoiceCorrected").html();
+    //			var DoTime = new Date();
+    //			var TheTime = parseInt((DoTime-CurrentTime)/1000);
+    //			var Correct = 0;
+    //			var id=$("#Rate").attr("title");
+    //			var Answer = $(this).attr("value");
+    //			
+    //			if (Answer==correct) {
+    //				$("#QuestionChoiceCorrectShow").show();
+    //				Correct = 1;
+    //			}else{
+    //				$("#QuestionChoiceWrongShow").show();
+    //			}
+    //			QuestionChoiceSelect = false;
+    //			$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime},function(data){alert(data);});
+    //			
+    //		}
+    //	});
+
+    //评论的提交
+    $("#CommentSubmit").click(function() {
+        var c = $("#CommentContent").attr("value");
+        if (c != "") window.location = $(this).attr("rel") + c;
+    });
+
+    // =========================================================================================================
+    // 整理后的代码
+    // =========================================================================================================
+
+    //1.顶端登陆，每个页面都要初始载入的------------------------------------------------
+    //1.1.对文本输入框载入聚焦后的提示去除
+    $("#FormLoginHeader #Username, #FormLoginHeader #Password").removeDefault();
+    //1.2.当聚焦在顶端导航部分的密码框内时，按回车键提交表单
+    $("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
+    //1.3.当聚焦在PopUp部分的密码框内时，按回车键提交表单
+    $("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
+    //1.4.顶部登陆区域点击“登录”按钮提交表单
+    $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 
 
-//2.WidgetFilter
-$("#WidgetFilter").filter();
+    //2.WidgetFilter
+    $("#WidgetFilter").filter();
 
-//3.具体题目页给题目加Tag
-$("#LinkFavoriteAdd").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
+    //3.具体题目页给题目加Tag
+    $("#LinkFavoriteAdd").click(function() { FavoriteTagAdd("PopupFavoriteAdd"); });
 
-//4.具体题目页的历史记录查看
-$("#PopupHistory").click(function(){PopupAJAX($(this).attr("href"));});
+    //4.具体题目页的历史记录查看
+    $("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });
 
-//5.Tab的代码
-TabActive();
+    //5.Tab的代码
+    TabActive();
 
-//6.AccountSetting中的下滑效果
-$("#accountSetting .item").dropdownMenu();
+    //6.AccountSetting中的下滑效果
+    $("#accountSetting .item").dropdownMenu();
 
-//7.QuestionCreate页面的复杂表单调用汇总代码
-if($("#FormQuestionCreate").length>0){	
-	//这是表单中星星评分部分的插件调用
-	$("#FormRate").stars({inputType: "select",captionEl: $("#FormRateCap"),cancelShow: false});	
-	//检索知识点部分拖拽的选择效果
-    $(".sortbox").sortable({connectWith: 'ul',placeholder: 'ui-state-highlight'});
-    $(".sortbox").disableSelection();	
-	//标签输入的效果
-	$(".separate[name='Tag']").separateInput({width:548,insert:".separate-select",widthCssIE6:2,required:false});
-	//初始化富文本编辑框
-	CKEDITOR.replace("CKEditor",{width:545});	
-	//下拉框选到其它时显示文本输入框
-	$(".formstyle .judge").dropdownToggle({judge:"other",styleClass:"inp inp2"});	
-	//验证为空
-	$(":text[required='true']").checkRequired();
-	$("textarea[required='true']").checkRequired();	
-	//聚焦则去掉初始的文字提示
-	$("input.inp[value!='']").removeDefault();		
-	//七种不同题型的不同操作
-    $("#FormQuestionCreateType").change(function() {
-        var obj = $(this);
-        obj.next().show();
-        var QCT = obj.attr("value")
-        $.get("/Question/Form/" + QCT, function(data) {
-            if (data != null) $("#FormQuestionCreateLoad").html(data);
-            obj.next().hide();
+    //7.QuestionCreate页面的复杂表单调用汇总代码
+    if ($("#FormQuestionCreate").length > 0) {
+        //这是表单中星星评分部分的插件调用
+        $("#FormRate").stars({ inputType: "select", captionEl: $("#FormRateCap"), cancelShow: false });
+        //检索知识点部分拖拽的选择效果
+        $(".sortbox").sortable({ connectWith: 'ul', placeholder: 'ui-state-highlight' });
+        $(".sortbox").disableSelection();
+        //标签输入的效果
+        $(".separate[name='Tag']").separateInput({ width: 548, insert: ".separate-select", widthCssIE6: 2, required: false });
+        //初始化富文本编辑框
+        CKEDITOR.replace("CKEditor", { width: 545 });
+        //下拉框选到其它时显示文本输入框
+        $(".formstyle .judge").dropdownToggle({ judge: "other", styleClass: "inp inp2" });
+        //验证为空
+        $(":text[required='true']").checkRequired();
+        $("textarea[required='true']").checkRequired();
+        //聚焦则去掉初始的文字提示
+        $("input.inp[value!='']").removeDefault();
+        //七种不同题型的不同操作
+        $("#FormQuestionCreateType").change(function() {
+            var obj = $(this);
+            obj.next().show();
+            var QCT = obj.attr("value")
+            $.get("/Question/Form/" + QCT, function(data) {
+                if (data != null) $("#FormQuestionCreateLoad").html(data);
+                obj.next().hide();
+            });
         });
-    });	
-}
+    }
 
-//8.管理收藏夹改Tag
-$("#PopupFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteAdd");});
+    //8.管理收藏夹改Tag
+    $("#PopupFavoriteEdit").click(function() { FavoriteTagAdd("PopupFavoriteAdd"); });
 
 
 
