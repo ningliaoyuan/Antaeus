@@ -39,7 +39,7 @@
         </div>
         <div class="rateandnext right">
             <div class="rate">
-                <span>此题的价值为&nbsp;<b id="RateAverge" rel="GetAverage" class="ajaxload"></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
+                <span>此题的价值为&nbsp;<b id="RateAverge" remy="GetAverage" class="ajaxload"></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
 
                 <div id="Rate" rel="<%=Model.QuestionID %>">
 	                <%=Html.RateSelect(Model.GetAverage())%>

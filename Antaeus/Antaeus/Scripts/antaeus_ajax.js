@@ -8,12 +8,11 @@
                 alert("投票失败");
             }
         });
-
 };
 
 function Refresh(eid, context) {
-   
-    var f = eid.attr("rel");
+
+    var f = eid.attr("remy");
     
     //var oHtml = $(eid).html();
     
@@ -23,15 +22,22 @@ function Refresh(eid, context) {
 
 var refresh_functions = {};
 
-refresh_functions["GetAverage"] = function GetAverage(context, callback) {
+refresh_functions["GetAverage"] = function (context, callback) {
     var qid = context.qid;
     $.get("/Question/GetAverage/" + context.qid, callback);
 };
 
+refresh_functions["LogOnUserControl"] = function (context, callback) {
+    $.get("/Account/LogOnUserControl", callback);
+};
+
+
+
 jQuery(document).ready(function($) {
     var context = { qid: 1 };
-    //var s = $(".ajaxload").each(function(i){ Refresh($(this));});
-    Refresh($(".ajaxload"), context);
+    //var s = $(".ajaxload").each(});
 
-
+    $(".ajaxload").each(function(i) {
+        Refresh(this, context);
+    });
 });
