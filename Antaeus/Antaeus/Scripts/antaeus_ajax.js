@@ -24,7 +24,7 @@ var refresh_functions = {};
 
 refresh_functions["GetAverage"] = function (context, callback) {
     var qid = context.qid;
-    $.get("/Question/GetAverage/" + context.qid, callback);
+    $.get("/Question/GetAverage/" + qid, callback);
 };
 
 refresh_functions["LogOnUserControl"] = function (context, callback) {
@@ -34,10 +34,9 @@ refresh_functions["LogOnUserControl"] = function (context, callback) {
 
 
 jQuery(document).ready(function($) {
-    var context = { qid: 1 };
     //var s = $(".ajaxload").each(});
 
     $(".ajaxload").each(function(i) {
-        Refresh(this, context);
+        Refresh(this, g_context);
     });
 });

@@ -11,6 +11,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
 	<script type="text/javascript" src="/Plugins/CKEditor-3.0.1/ckeditor.js"></script>
+	<script type="text/javascript">
+	    g_context.qid = <%= Html.Encode(Model.QuestionID)%>;
+	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">
 
