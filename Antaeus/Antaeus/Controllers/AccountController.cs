@@ -75,16 +75,22 @@ namespace Antaeus.Controllers
 
             if (this.Request.IsAjaxRequest())
             {
-                if (result.IsSuccess)
-                {
-                    return PartialView("~/Views/Shared/LogOnUserControl.ascx", userName);
-                }
-                else
-                {
-                    return Content(result.ToAjaxMessage());
-                }
+                return Content(result.ToAjaxMessage());
+                //if (result.IsSuccess)
+                //{
+                //    return PartialView("~/Views/Shared/LogOnUserControl.ascx", userName);
+                //}
+                //else
+                //{
+                //    return Content(result.ToAjaxMessage());
+                //}
             }
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult LogOnUserControl()
+        {
+            return PartialView("~/Views/Shared/LogOnUserControl.ascx");
         }
 
         public ActionResult LogOff()

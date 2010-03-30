@@ -11,6 +11,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
 	<script type="text/javascript" src="/Plugins/CKEditor-3.0.1/ckeditor.js"></script>
+	<script type="text/javascript">
+	    g_context.qid = <%= Html.Encode(Model.QuestionID)%>;
+	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">
 
@@ -40,11 +43,10 @@
         <div class="rateandnext right">
             <div class="rate">
                 <span>此题的价值为&nbsp;<b id="RateAverge"><%=Model.GetAverage().ToString("0.0")%></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
-
                 <div id="Rate" rel="<%=Model.QuestionID %>">
 	                <%=Html.RateSelect(Model.GetAverage())%>
                 </div>
-                <div id="Rating" class="hidden">正在投票中...</div>               
+                <!--<div id="Rating" class="hidden">正在投票中...</div> -->              
             </div>
             <div class="redirect">
                 <a href="#" class="next">下一题（随机抽取）</a>
@@ -188,7 +190,7 @@
         <%}
           else
           { %>        
-            <a href="#popup_add_favorite" class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+            <a href="#" class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
         <%} %>
             <a href="#" class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
             <a href="#" class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
