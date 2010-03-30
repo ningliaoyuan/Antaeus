@@ -41,7 +41,7 @@
                         <span>当前关注考试</span>
                         <img src="/Contents/Images/Logo_GMAT.gif" alt="进步吧 — 每天进步一点点，我一定可以成功" />
                     </div>
-                    <div id="logon" refreshme="LogonContent">
+                    <div id="LogonContent" refreshme="LogonContent">
                         <% Html.RenderPartial("~/Views/Shared/LogOnUserControl.ascx", string.Empty); %>
                     </div>
                     

@@ -33,7 +33,7 @@ function FormLoginSubmit(place) {
 						return false;
 					} else {
 					    //$("#logon").html(data);
-					    Refresh($("#logon"));
+					    Refresh($("#LogonContent"));
 					}
 				//如果是Popup登陆
 				} else {
@@ -41,7 +41,7 @@ function FormLoginSubmit(place) {
 						alert("登录失败：" + data.replace("error:", ""));
 					} else {
 					    //$("#logon").html(data);
-					    Refresh($("#logon"));
+					    Refresh($("#LogonContent"));
 						$(sPopup).dialog('close');
 						return false;
 					}
