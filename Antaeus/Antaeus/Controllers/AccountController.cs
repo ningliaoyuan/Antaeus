@@ -218,7 +218,7 @@ namespace Antaeus.Controllers
         {
             string username = HttpContext.GetUserName();
 
-            var tags = new TagService().GetTagsByUserName(username, 20);
+            var tags = TagService.GetTagProvider().GetTagsByUserName(username, 20);
 
             return View((object)tags);
         } 

@@ -11,7 +11,9 @@ namespace Antaeus.Controllers
 {
     public class TagController : Controller
     {
-        TagService tagService = new TagService();
+        ITagProvider TagProvider = TagService.GetTagProvider();
+ 
+
         //
         // GET: /Tag/
 
@@ -20,7 +22,7 @@ namespace Antaeus.Controllers
             int count = pagecount.HasValue ? pagecount.Value : 10;
             int start = page.HasValue ? (page.Value - 1)*count: 0;
 
-            List<string> kiList = tagService.GetKIs(tag).Skip(start).Take(count).ToList();
+            List<string> kiList = TagProvider.GetKIs(tag).Skip(start).Take(count).ToList();
 
             return View(kiList);
         }
@@ -30,7 +32,7 @@ namespace Antaeus.Controllers
         {
             var username = HttpContext.GetUserName();
 
-            var res = tagService.Add(username, new KEYID(key, id), tags);
+            var res = TagProvider.Add(username, new KEYID(key, id), tags);
 
             return Content(res.ToAjaxMessage());
         }

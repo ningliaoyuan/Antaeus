@@ -6,7 +6,7 @@ using Antaeus.ORM;
 
 namespace Antaeus.BL
 {
-    public class TagService
+    public class TagProviderDB : ITagProvider
     {
         public JB8ORMDataContextFactory ContextFactory = EnvironmentHelper.Current.ContextFactory;
         public IIDProvider IDProvider = new DBIDProvider();
@@ -86,17 +86,5 @@ namespace Antaeus.BL
         }
     }
     
-    public interface IWithTag : IHasKEYID
-    {
-    }
-
-    public static class TagHelper
-    {
-        static TagService TagService = new TagService();
-        public static string GetTags(this IWithTag model, int count)
-        {
-            KEYID ki = model.GetKeyId();
-            return TagService.GetTags(ki, count);
-        }
-    }
+  
 }

@@ -44,7 +44,7 @@ namespace Antaeus.Controllers
             Question question = QuestionModel.Find(id);
 
             string username =  HttpContext.GetUserName();
-            ViewData["tagged"] = new TagService().HasBeenTagged(username, question.GetKeyId());
+            ViewData["tagged"] = TagService.GetTagProvider().HasBeenTagged(username, question.GetKeyId());
       
             return View(question);
         }
@@ -87,7 +87,7 @@ namespace Antaeus.Controllers
                 //Knowledge
                 //Tag
                 string tags = collection["Tag"];
-                new TagService().Add(username, question.GetKeyId(), tags);
+                TagService.GetTagProvider().Add(username, question.GetKeyId(), tags);
 
                 //Answer
 
