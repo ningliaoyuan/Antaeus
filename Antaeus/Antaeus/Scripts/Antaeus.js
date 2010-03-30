@@ -73,7 +73,6 @@ jQuery(document).ready(function($) {
         captionEl: $("#RateCap"),
         cancelShow: false,
         callback: function(ui, type, value) {
-
             var qid = $("#Rate").attr("rel");
 			runAJAX(url.rate,[qid,String(value)]);
 			runAJAX(url.rateAverage,[qid],null,["#RateAverge"]);
@@ -197,7 +196,7 @@ jQuery(document).ready(function($) {
         $("#FormQuestionCreateType").change(function() {
             var obj = $(this);
             obj.next().show();
-            var QCT = obj.attr("value")
+            var QCT = obj.attr("value");
             $.get("/Question/Form/" + QCT, function(data) {
                 if (data != null) $("#FormQuestionCreateLoad").html(data);
                 obj.next().hide();
