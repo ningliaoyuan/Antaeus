@@ -32,14 +32,16 @@ function FormLoginSubmit(place) {
 						$(sPopup).dialog("open");
 						return false;
 					} else {
-						$("#logon").html(data);
+					    //$("#logon").html(data);
+					    Refresh($("#logon"));
 					}
 				//如果是Popup登陆
 				} else {
 					if (data.indexOf("error:") >= 0) {
 						alert("登录失败：" + data.replace("error:", ""));
 					} else {
-						$("#logon").html(data);
+					    //$("#logon").html(data);
+					    Refresh($("#logon"));
 						$(sPopup).dialog('close');
 						return false;
 					}

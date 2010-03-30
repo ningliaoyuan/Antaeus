@@ -393,6 +393,7 @@
     <Content Include="Plugins\UI.Stars-2.1\ui.stars.min.css" />
     <Content Include="Plugins\UI.Stars-2.1\ui.stars.min.js" />
     <Content Include="Scripts\Antaeus.js" />
+    <Content Include="Scripts\antaeus_ajax.js" />
     <Content Include="Views\Account\AccountSetting.aspx" />
     <Content Include="Views\Account\ContentRecord.aspx" />
     <Content Include="Views\Account\Favorite.aspx" />

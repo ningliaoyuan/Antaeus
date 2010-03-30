@@ -4,37 +4,42 @@
 //{n}参数名称[n]参数值
 
 var url = {
-	login            : "/Account/Logon/?Username=[0]&Password=[1]&RememberMe=[2]",
-	logout           : "/Account/Logout/",
-	favoriteTagAdd   : "/Tag/Add/Question/[0]/[1]",
-	favoriteTagEdit  : "/Tag/Edit/Question/[0]/[1]",
-	rate             : "/Question/Rate/[0]?rate=[1]",
-	wiki             : "/Question/EditAnswer/[0]?WikiContent=[1]",
-	questionFormType : "/Question/Form/[0]" 
+	login            : ["POST", "/Account/Logon/?Username=[0]&Password=[1]&RememberMe=[2]"],
+	logout           : ["GET" , "/Account/Logout/"],
+	favoriteTagAdd   : ["POST", "/Tag/Add/Question/[0]/[1]"],
+	favoriteTagEdit  : ["POST", "/Tag/Edit/Question/[0]/[1]"],
+	rate             : ["POST", "/Question/Rate/[0]?rate=[1]"],
+	rateAverage      : ["GET" , "/Question/GetAverage/[0]"], 
+	wiki             : ["POST", "/Question/EditAnswer/[0]?WikiContent=[1]"],
+	questionFormType : ["GET" , "/Question/Form/[0]"] 
 };
 
-var fun = {
-	wiki : function(){
-		alert("你的修改已经成功提交，感谢你的贡献。");
-		WikiEditDestory();
-	}
+//=============================================================================================
+var fun = {};
+
+fun["wiki"] = function(){
+	alert("你的修改已经成功提交，感谢你的贡献。");
+	WikiEditDestory();
 };
 
-function runAJAX(url,para,fun){
+
+//=============================================================================================
+//函数runAJAX
+function runAJAX(url,para,fun,fun_para){
 	
 	var errorMessage = "";
 	var finalData;
 	
 	//首先判断url有没有
-	if(url==null || url==""){
+	if(url[1]==null || url[1]==""){
 		errorMessage = "你不能够请求一个空的URL";
 		return false;
 	}
 		
 	//然后判断是post还是get方法
-	var ajaxType = (url.indexOf("?")>0) ? "POST" : "GET";
+	var ajaxType = url[0];
 	
-	var targetURL = url;
+	var targetURL = url[1];
 	var targetPara = "";
 	
 	//判断有没有参数，如果有参数的话，则要循环替换参数
@@ -50,8 +55,6 @@ function runAJAX(url,para,fun){
 		targetURL = targetURL.split("?")[0];
 	}
 	
-	//alert(ajaxType+" | "+targetURL+"?"+targetPara);
-	
 	//开始进行核心的AJAX操作
 	$.ajax({
 		async    : true,
@@ -59,7 +62,7 @@ function runAJAX(url,para,fun){
 		url      : targetURL,
 		data     : targetPara,
 		cache    : false,
-		dataType : "json",
+		dataType : "text",
 		timeout  : 5000,
 		error    : function(XMLHttpRequest, textStatus, errorThrown){
     		var s1 = "";
@@ -69,26 +72,25 @@ function runAJAX(url,para,fun){
 			if(textStatus=="notmodified") s1="因为请求页面无变化，";
 			if(textStatus=="parsererror") s1="因为请求地址不存在，";
 			errorMessage = s1+s2;
-			//alert(this.data);
 		},
 		success  : function(data, textStatus, XMLHttpRequest){
-			alert("haha2");
-			//定义判断请求返回是不是正确需要的数值
-			if(data.status=="error"){
-				errorMessage = data.errorMessage;
-			}else if(data.status=="success"){
-				finalData = data.htmlText;
+			//alert(this.type);
+			//首先判断是POST还是GET			
+			if(this.type=="POST" && data.split(":")[1]=="error"){
+				alert("发生了错误！错误原因是："+data.split(":")[1]);
+				return false;
 			}else{
-				errorMessage = "服务器端没有返回预想的结果！";
+				if(this.type=="GET"){
+					//alert(fun_para[0]);
+					$(fun_para[0]).html(data);
+				}else{
+					if(fun!=null) fun(fun_para);
+				}
+				return true;
+					//fun(fun_para,data);
+//				}
 			}
 		}
 	});
-	
-	//最终返回调用结果
-	if(errorMessage!=""){
-		alert(errorMessage);
-	}else{
-		fun(finalData);
-	}	
-	//return false;
+
 }

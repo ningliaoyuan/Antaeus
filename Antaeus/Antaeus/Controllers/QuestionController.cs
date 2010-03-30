@@ -168,6 +168,16 @@ namespace Antaeus.Controllers
             return Content(res.ToAjaxMessage());
         }
 
+        public ActionResult GetAverage(long id)
+        {
+            var username = HttpContext.GetUserName();
+
+            Question question = QuestionModel.Find(id);
+
+            return Content(question.GetAverage().ToString("0.0"));
+        }
+
+
         [Authorize]
         public ActionResult Comment(long id, string content)
         {
