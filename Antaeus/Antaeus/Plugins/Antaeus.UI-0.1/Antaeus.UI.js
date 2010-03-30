@@ -261,4 +261,16 @@ function TabActive(data) {
 	});      
 })(jQuery); 
 
-
+//rateQuestion函数用于执行投票操作
+function rateQuestion(param, uiCallback) {
+    $.get("/Question/Rate/" + param.qID, { rate: param.qValue },
+        function(data) {
+            if (data == "ok") {
+                uiCallback();
+                alert("投票成功！灰常感谢你的支持！");
+            } else {
+                alert("投票失败");
+            }
+        }
+	);
+};

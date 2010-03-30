@@ -48,9 +48,8 @@
                             <select class="inp inp2" id="FormQuestionCreateType" name="CategoryID">
 								<%foreach (var category in CommonDataHelper.AllCategory()) {%>
                                 <option <%= category.CategoryID == 1? "selected=\"selected\"" : string.Empty%> value="<%=category.CategoryID%>"><%=category.Name%></option>
-                            <%}%>
+                            	<%}%>
                             </select>
-                            <div class="inp-between red hidden">题型信息载入中...请不要进行操作</div>
                         </div>
                         <div class="clear"></div>                        
                     </div>                   
@@ -68,7 +67,7 @@
                         <div class="clear"></div>                        
                     </div>                                
 					<!--这里开始非通用内容-->
-                    <div id="FormQuestionCreateLoad">
+                    <div id="FormQuestionCreateLoad" refreshme="FormQuestionCreateLoad">
                     	<div class="item">
                             <div class="title">题目内容<span>*</span></div>
                             <div class="detail">

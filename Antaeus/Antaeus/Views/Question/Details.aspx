@@ -12,7 +12,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
 	<script type="text/javascript" src="/Plugins/CKEditor-3.0.1/ckeditor.js"></script>
 	<script type="text/javascript">
-	    g_context.qid = <%= Html.Encode(Model.QuestionID)%>;
+	    g_param.qid = <%= Html.Encode(Model.QuestionID)%>;
 	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">
@@ -42,7 +42,7 @@
         </div>
         <div class="rateandnext right">
             <div class="rate">
-                <span>此题的价值为&nbsp;<b id="RateAverge"><%=Model.GetAverage().ToString("0.0")%></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
+                <span>此题的价值为&nbsp;<b id="RateAverge" refreshme="RateAverge"><%=Model.GetAverage().ToString("0.0")%></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
                 <div id="Rate" rel="<%=Model.QuestionID %>">
 	                <%=Html.RateSelect(Model.GetAverage())%>
                 </div>
