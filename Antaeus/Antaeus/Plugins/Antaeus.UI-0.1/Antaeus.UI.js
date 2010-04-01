@@ -1,6 +1,9 @@
 // Antaeus.UI.Form
 // Version 0.1 by lanslot.liu@gmail.com
 
+// Code Standard
+// 1.命名全部统一使用firstSecondThird
+
 //全替换的ReplaceAll的定义
 String.prototype.replaceAll=function(s1,s2){   
 	return this.replace(new RegExp(s1,"gm"),s2);   

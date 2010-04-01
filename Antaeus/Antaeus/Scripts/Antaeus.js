@@ -173,7 +173,7 @@ $("#CommentSubmit").click(function(){
 });
 
 
-
+$("#PopupFavoriteAdd .separate").separateInput({ width: 548, insert: ".separate-select", widthCssIE6: 2, required: false });
 
 
 

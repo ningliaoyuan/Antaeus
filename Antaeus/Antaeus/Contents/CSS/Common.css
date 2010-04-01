@@ -151,6 +151,8 @@ a.btn-page:link, a.btn-page:visited, a.btn-page:hover{ color:#000; text-decorati
 
 /* Define default form style =========================================================================================================================*/
 .formstyle .item{ padding:10px 0px; border-bottom:1px dotted #CCC; font-size:14px; *padding-bottom:0;}
+.formstyle .item-one{ padding:0; border:0;}
+.formstyle .item-one .detail{ float:none;}
 .formstyle .noborder{ border:0;}
 .formstyle .title{ float:left; width:105px; font-weight:bold; text-align:right; line-height:30px;}
 .formstyle .title span{ color:#F00;}
