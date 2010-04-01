@@ -31,8 +31,9 @@
                            <%}
                       } %>                
                     <div class="clear"></div>
-                </div>
-                <div class="listresult">
+                </div>                
+            </div>
+            <div class="listresult">
                 	<div class="item2" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
                         <div class="left">
                             <div class="note blue"><input type="checkbox" value="" /><span>选中</span>&nbsp;&nbsp; <a href="#" id="LinkFavoriteEdit" rel="dialog">编辑收藏标签</a></div>
@@ -57,7 +58,6 @@
                         <div class="clear"></div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     <div class="columnright">

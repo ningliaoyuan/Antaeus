@@ -241,8 +241,8 @@ Version 0.1, Created by Lanslot at 2009/6/14 0:19
 .account .item_action .pageindex span{ display:block; float:left; padding-left:3px; padding-right:3px; margin-left:3px; margin-right:3px;}
 
 /*temp fix the show bug, need to to rewrite~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-.account .listresult{ border-left:1px solid #dfdfdf; border-right:1px solid #dfdfdf;}
-.account .listresult .item2 .right{ width:393px;}
+/*.account .listresult{ border-left:1px solid #dfdfdf; border-right:1px solid #dfdfdf;}
+.account .listresult .item2 .right{ width:393px;}*/
 .account .tag-clone{ border:1px solid #dfdfdf; background-color:#ffeedf; padding:15px 5px 10px 15px;}
 .account .tag-clone a{ display:block; float:left; padding-bottom:5px; padding-right:10px;}
 .account .tag-clone a.current{ color:#FF0000;}
