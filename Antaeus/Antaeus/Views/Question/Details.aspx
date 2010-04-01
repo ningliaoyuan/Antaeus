@@ -12,7 +12,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
 	<script type="text/javascript" src="/Plugins/CKEditor-3.0.1/ckeditor.js"></script>
 	<script type="text/javascript">
-	    g_param.qid = <%= Html.Encode(Model.QuestionID)%>;
+	    g_param.qid = <%= Html.Encode(Model.QuestionID)%>; //题目的ID
+		g_param.qCorrect = "<%=Html.Encode(Model.Meta["CorrectMark"])%>";  //题目的正确选项
+		g_param.currentTime = new Date(); //记录页面载入当前的时间
 	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">

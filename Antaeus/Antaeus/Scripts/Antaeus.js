@@ -83,29 +83,7 @@ jQuery(document).ready(function($) {
 	//用户做题
 	
 	//记录载入时间
-//	var CurrentTime = new Date();
-//	var QuestionChoiceSelect = true;
-//	$(".QuestionChoiceSelect").click(function(){
-//		//只判断第一次点击
-//		if(QuestionChoiceSelect){		
-//			var correct = $("#QuestionChoiceCorrected").html();
-//			var DoTime = new Date();
-//			var TheTime = parseInt((DoTime-CurrentTime)/1000);
-//			var Correct = 0;
-//			var id=$("#Rate").attr("title");
-//			var Answer = $(this).attr("value");
-//			
-//			if (Answer==correct) {
-//				$("#QuestionChoiceCorrectShow").show();
-//				Correct = 1;
-//			}else{
-//				$("#QuestionChoiceWrongShow").show();
-//			}
-//			QuestionChoiceSelect = false;
-//			$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime},function(data){alert(data);});
-//			
-//		}
-//	});
+	$(".QuestionChoiceSelect").questionRecord({qid:g_param.qid,currentTime:g_param.currentTime,correct:g_param.qCorrect});
 
 
 // =========================================================================================================

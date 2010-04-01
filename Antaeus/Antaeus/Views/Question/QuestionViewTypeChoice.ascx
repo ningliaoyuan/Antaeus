@@ -37,7 +37,7 @@
 </div>
 <div class="bar1">
     <div class="barinfo" id="QuestionChoiceWrongShow">
-        你答错了。。。正确答案&nbsp;&nbsp;<span class="rbgc-red" id="QuestionChoiceCorrected"><%=Html.Encode(Model.Meta["CorrectMark"])%></span>&nbsp;&nbsp;
+        你答错了。。。正确答案&nbsp;&nbsp;<span class="rbgc-red"><%=Html.Encode(Model.Meta["CorrectMark"])%></span>&nbsp;&nbsp;
     </div>
     <div class="barinfo" id="QuestionChoiceCorrectShow">恭喜你答对了！</div>
     <div class="report">

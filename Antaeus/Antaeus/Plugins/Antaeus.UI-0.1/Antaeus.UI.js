@@ -277,3 +277,50 @@ function rateQuestion(param, uiCallback) {
         }
 	);
 };
+
+//questionRecord方法用于记录用户的做题时间
+//Parameters:
+//[必须]currentTime - 时间 - 页面载入时间
+//[必须]rightIDr - 字符 - 正确时的显示DIV ID
+//[必须]wrongID - 字符 - 错误时的显示DIV ID
+//[必须]qid - 字符 - 要控制的题目的ID
+//[必须]correct - 字符 - 正确选项
+//[必须]unbindSelecter - 字符 - 解除绑定的选择器
+(function($){  
+	$.fn.extend({   
+	questionRecord: function(options){
+		//默认参数设置
+		var defaults = {  
+			currentTime    : new Date(),
+			rightID        : "#QuestionChoiceCorrectShow",
+			wrongID        : "#QuestionChoiceWrongShow",
+			qid            : "",
+			correct        : "",
+			unbindSelecter : ".QuestionChoiceSelect"
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);			
+			
+			obj.bind("click",function(){
+				var DoTime = new Date();
+				var TheTime = parseInt((DoTime-opt.currentTime)/1000);
+				var Correct = 0;
+				var id=opt.qid;
+				var Answer = $(this).attr("value");				
+				if (Answer==opt.correct) {
+					$(opt.rightID).show();
+					Correct = 1;
+				}else{
+					$(opt.wrongID).show();
+				}
+	
+				$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime});
+				
+				$(opt.unbindSelecter).unbind("click");
+			});
+		});  
+	}
+	});      
+})(jQuery); 
