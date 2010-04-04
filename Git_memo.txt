@@ -1,0 +1,3 @@
+git@github.com:ningliaoyuan/Antaeus.git
+
+http://wiki.github.com/multitheftauto/multitheftauto/how-to-use-tortoisegit
