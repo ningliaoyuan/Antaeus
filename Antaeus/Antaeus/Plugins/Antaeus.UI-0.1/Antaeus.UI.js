@@ -36,7 +36,7 @@ function FormLoginSubmit(place) {
 						return false;
 					} else {
 					    //$("#logon").html(data);
-					    Refresh($("#LogonContent"));
+					    ajaxRefresh($("#LogonContent"));
 					}
 				//如果是Popup登陆
 				} else {
@@ -44,7 +44,7 @@ function FormLoginSubmit(place) {
 						alert("登录失败：" + data.replace("error:", ""));
 					} else {
 					    //$("#logon").html(data);
-					    Refresh($("#LogonContent"));
+					    ajaxRefresh($("#LogonContent"));
 						$(sPopup).dialog('close');
 						return false;
 					}
@@ -167,9 +167,44 @@ function Popup(id,fun){
 //	});
 //	$("#"+popupid).dialog("open");
 //}
-function FavoriteTagAdd(id){
-	$("#LinkFavoriteAdd").addClass("btn-huge-hover");
-	$(id).slideDown("slow");
+function FavoriteTagAdd(div){
+	
+	//首先执行将题目添加到收藏夹
+	dFunction["FavoriteAdd"]({qID:g_param.qid,qType:"question"},function(){
+		//添加到收藏夹操作成功后
+		//首先改变提示文字
+		$("#LinkFavoriteAdd #FA1").hide();
+		$("#LinkFavoriteAdd #FA2").show();
+		//显示收藏夹设置
+		$(div.father).addClass(div.hoverClass);
+		$(div.content).slideDown("slow");
+		//取消按钮的设置
+		$(div.cancel).click(function(){								 
+			$(div.content).slideUp("fast");
+			$(div.father).removeClass(div.hoverClass);
+			//改变显示状态
+			$("#FavoriteNot").hide();
+			$("#FavoriteAlready").show();
+			g_param.favorite = true;
+		});
+		$(div.save).click(function(){
+			var tags = $.trim($(div.input).val());
+			if(tags==""){
+				alert("标签输入不能为空！");
+			}else{	
+				dFunction["FavoriteAddTags"]({qID:g_param.qid,qType:"question",tags:tags}, function(){
+					$(div.content).slideUp("fast");
+					$(div.father).removeClass(div.hoverClass);
+					//改变显示状态
+					$("#FavoriteNot").hide();
+					$("#FavoriteAlready").show();
+					g_param.favorite = true;
+				});			
+			}
+		});
+		
+	});
+	
 }
 
 //PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
@@ -267,20 +302,6 @@ function TabActive(data) {
 	}
 	});      
 })(jQuery); 
-
-//rateQuestion函数用于执行投票操作
-function rateQuestion(param, uiCallback) {
-    $.get("/Question/Rate/" + param.qID, { rate: param.qValue },
-        function(data) {
-            if (data == "ok") {
-                uiCallback();
-                alert("投票成功！灰常感谢你的支持！");
-            } else {
-                alert("投票失败");
-            }
-        }
-	);
-};
 
 //questionRecord方法用于记录用户的做题时间
 //Parameters:

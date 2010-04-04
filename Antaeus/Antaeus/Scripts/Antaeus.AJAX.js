@@ -113,7 +113,7 @@ $.ajaxSetup({
 });
 
 
-//rFunction系列函数用于执行各项AJAX的操作
+//rFunction系列函数用于执行各项refresh的AJAX操作
 var rFunction = {};
 rFunction["RateAverge"] = function(param, callback){
     $.get("/Question/GetAverage/" + param.qID, callback);
@@ -124,16 +124,53 @@ rFunction["LogonContent"] = function (param, callback) {
 rFunction["FormQuestionCreateLoad"] = function (param, callback) {
 	$.get("/Question/Form/" + param.type, callback);
 };
+rFunction["FavoriteAlready"] = function (param, callback) {
+	//传入参数param.qID=1234,param.qType="question"
+	$.get("", callback);
+};
+
+//dFunction系列函数用于执行各项post类执行的AJAX操作
+var dFunction = {};
+dFunction["RateQuestion"] = function(param, callback){
+	$.get("/Question/Rate/" + param.qID, { rate: param.qValue },
+        function(data){ajaxCallback(data,callback);}
+	);
+}
+dFunction["FavoriteAdd"] = function(param, callback){
+	//传入参数param.qID=1234,param.qType="question"
+	$.get("",
+        function(data){ajaxCallback(data,callback);}
+	);
+}
+dFunction["FavoriteRemove"] = function(param, callback){
+	//传入参数param.qID=1234,param.qType="question"
+	$.get("",
+        function(data){ajaxCallback(data,callback);}
+	);
+}
+dFunction["FavoriteAddTags"] = function(param, callback){
+	//传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
+	$.get("",
+        function(data){ajaxCallback(data,callback);}
+	);
+}
 
 
 //Refresh函数用于调用AJAX来自我刷新
-function Refresh(eid, param) {
+function ajaxRefresh(eid, param) {
     var f = eid.attr("refreshme");
     $(eid).html("loading...");
     rFunction[f](param, function(data) { $(eid).html(data); });
 }
 
-
+function ajaxCallback(data,callback){
+//	if (data == "ok") {
+//		callback();
+//	} else {
+//		alert("操作失败！请重试，如果还是失败请联系管理员！");
+//	}
+	callback();
+}
 
 
 

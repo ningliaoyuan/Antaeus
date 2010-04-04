@@ -15,6 +15,7 @@
 	    g_param.qid = <%= Html.Encode(Model.QuestionID)%>; //题目的ID
 		g_param.qCorrect = "<%=Html.Encode(Model.Meta["CorrectMark"])%>";  //题目的正确选项
 		g_param.currentTime = new Date(); //记录页面载入当前的时间
+		g_param.favorite = <%=Convert.ToBoolean(this.ViewData["Tagged"]).ToString().ToLower()%>;
 	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">
@@ -186,35 +187,42 @@
     <div class="columnright">
     	<div class="blank10"></div>
         <div class="box3">
-        <%if (Convert.ToBoolean(this.ViewData["Tagged"]))
-          { %>
-            <div class="btn-huge btn-huge-favorite btn-huge-already"><p><b>你已经收藏了此题目</b><span><a href="#">x&nbsp;将此题从收藏夹移除</a></span></p></div>
-        <%}
-          else
-          { %>        
-            <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
-            <div class="favorite-setting hidden" id="FavoriteAddSetting">
-            	<div class="content">
-                    <p>收藏设置：输入标签</p>
-                    <input type="text" value="使用逗号(,)分隔标签" id="FavoriteTagAddInput">
-                    <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
-                    <p>常用标签推荐：</p>
-                    <div class="tags" id="FavoriteTagRecommend">
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <div class="clear"></div>
-                    </div>                    
-                </div>
-                <div class="clear"></div>
-                <div class="btns">
-                    <a href="#" class="btn-form-blue">保存</a>
-                    <a href="#">取消</a>
+			
+            <div id="FavoriteAlready" class="hidden">
+            	<div class="btn-huge btn-huge-favorite btn-huge-already"><p><b>你已经收藏了此题目</b><span><a id="LinkFavoriteRemove">将此题从收藏夹移除</a><br /><a id="LinkFavoriteEdit">编辑收藏标签</a></span></p></div>
+       		</div>
+			<div id="FavoriteNot">
+                <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p>
+                	<b>加入到收藏夹</b>
+                    <span>
+                    	<font id="FA1">整理出一个自己的小题库，以后可以随时不断复习强化</font>
+                        <font id="FA2" class="red hidden">题目已经成功添加到收藏夹！</font>
+                    </span>
+                </p></a>
+                <div class="favorite-setting hidden" id="FavoriteAddSetting">
+                    <div class="content">
+                        <p>收藏设置：输入标签</p>
+                        <input type="text" value="使用逗号(,)分隔标签" id="FavoriteTagAddInput">
+                        <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
+                        <p>常用标签推荐：</p>
+                        <div class="tags" id="FavoriteTagRecommend">
+                            <a title="点击添加到标签输入框">考前必看</a>
+                            <a title="点击添加到标签输入框">考前必看</a>
+                            <a title="点击添加到标签输入框">考前必看</a>
+                            <a title="点击添加到标签输入框">考前必看</a>
+                            <a title="点击添加到标签输入框">考前必看</a>
+                            <div class="clear"></div>
+                        </div>                    
+                    </div>
+                    <div class="clear"></div>
+                    <div class="btns">
+                        <a id="FavoriteTagSave" class="btn-form-blue">保存</a>
+                        <a id="FavoriteTagCancel">取消</a>
+                    </div>
                 </div>
             </div>
-        <%} %>
+
+
             <a class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
             <a class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
         </div>

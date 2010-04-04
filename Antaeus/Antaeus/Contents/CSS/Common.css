@@ -34,6 +34,7 @@ input,button,textarea,select{*font-size: 100%;}
 /* Define the tags' default style ====================================================================================== */
 body{ font-family:"微软雅黑","宋体", "Arial"; font-size:12px; color:666;}
 /* define default link style */
+a{ cursor:pointer;}
 a:link,a:visited{ color:#0479a7; text-decoration:none;}
 a:hover,a:active{ color:#FF0000; text-decoration:underline;}
 

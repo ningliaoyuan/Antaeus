@@ -73,9 +73,9 @@ jQuery(document).ready(function($) {
         captionEl: $("#RateCap"),
         cancelShow: false,
         callback: function(ui, type, value) {
-			rateQuestion(
+			dFunction["RateQuestion"](
 				{qID:g_param.qid,qValue:value},
-				function(){Refresh($("#RateAverge"),{qID:g_param.qid});}
+				function(){ajaxRefresh($("#RateAverge"),{qID:g_param.qid});}
 			);			
         }
     });
@@ -108,8 +108,34 @@ $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 //2.WidgetFilter
 $("#WidgetFilter").filter();
 
-//3.具体题目页给题目加Tag
-$("#LinkFavoriteAdd").click(function() { FavoriteTagAdd("#FavoriteAddSetting"); });
+
+//3.Details那里的Tag部分的全部操作
+//3.1初始状态的判断显示
+if(g_param.favorite){
+	$("#FavoriteAlready").show();
+	$("#FavoriteNot").hide();
+}
+//3.2点击添加到收藏夹的操作
+$("#LinkFavoriteAdd").click(function(){
+	FavoriteTagAdd({
+		content:"#FavoriteAddSetting",
+		father:"#LinkFavoriteAdd",
+		save:"#FavoriteTagSave",
+		cancel:"#FavoriteTagCancel",
+		input:"#FavoriteTagAddInput",
+		hoverClass:"btn-huge-hover"
+	});
+});
+$("#LinkFavoriteRemove").click(function(){
+	dFunction["FavoriteRemove"]({qID:g_param.qid,qType:"question"}, function(){
+		//改变显示状态
+		$("#FavoriteNot").show();
+		$("#FavoriteAlready").hide();
+		$("#LinkFavoriteAdd #FA1").show();
+		$("#LinkFavoriteAdd #FA2").hide();
+		g_param.favorite = false;
+	});
+});
 
 //4.具体题目页的历史记录查看
 $("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });
@@ -154,7 +180,7 @@ $("#CommentSubmit").click(function(){
 });
 
 
-$("#PopupFavoriteAdd .separate").separateInput({ width: 548, insert: ".separate-select", widthCssIE6: 2, required: false });
+//$("#PopupFavoriteAdd .separate").separateInput({ width: 548, insert: ".separate-select", widthCssIE6: 2, required: false });
 
 
 
