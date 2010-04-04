@@ -147,26 +147,6 @@ function Popup(id,fun){
 }
 
 //FavoriteTagAdd函数用于添加Tag
-//function FavoriteTagAdd(popupid){
-//	Popup(popupid,function(){
-//		var tags = $.trim($("#FavoriteTagsInput").val());
-//		if(tags==""){
-//			alert("标签输入不能为空！");
-//		}else{
-//			$.get(
-//				"/tag/add/Question/1/"+tags,
-//				function(data){
-//					if($.trim(data)=="ok"){
-//						$("#PopupFavoriteAdd").dialog("close");
-//					}else{
-//						alert("有错误发生，你的操作没有被执行！");
-//					}
-//				}
-//			);
-//		}
-//	});
-//	$("#"+popupid).dialog("open");
-//}
 function FavoriteTagAdd(div){
 	
 	//首先执行将题目添加到收藏夹

@@ -189,7 +189,7 @@
         <div class="box3">
 			
             <div id="FavoriteAlready" class="hidden">
-            	<div class="btn-huge btn-huge-favorite btn-huge-already"><p><b>你已经收藏了此题目</b><span><a id="LinkFavoriteRemove">将此题从收藏夹移除</a><br /><a id="LinkFavoriteEdit">编辑收藏标签</a></span></p></div>
+            	<div class="btn-huge btn-huge-favorite btn-huge-already"><p><b>你已经收藏了此题目</b><span><a id="LinkFavoriteRemove">将此题从收藏夹移除</a><br /><a href="/Account/Favorite/" target="_blank">去个人中心编辑收藏标签</a></span></p></div>
        		</div>
 			<div id="FavoriteNot">
                 <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p>

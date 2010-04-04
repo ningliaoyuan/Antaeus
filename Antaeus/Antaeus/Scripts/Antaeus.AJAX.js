@@ -124,10 +124,6 @@ rFunction["LogonContent"] = function (param, callback) {
 rFunction["FormQuestionCreateLoad"] = function (param, callback) {
 	$.get("/Question/Form/" + param.type, callback);
 };
-rFunction["FavoriteAlready"] = function (param, callback) {
-	//传入参数param.qID=1234,param.qType="question"
-	$.get("", callback);
-};
 
 //dFunction系列函数用于执行各项post类执行的AJAX操作
 var dFunction = {};
@@ -164,12 +160,12 @@ function ajaxRefresh(eid, param) {
 }
 
 function ajaxCallback(data,callback){
-//	if (data == "ok") {
-//		callback();
-//	} else {
-//		alert("操作失败！请重试，如果还是失败请联系管理员！");
-//	}
-	callback();
+	if (data == "ok") {
+		callback();
+	} else {
+		alert("操作失败！请重试，如果还是失败请联系管理员！");
+	}
+	//callback();
 }
 
 
