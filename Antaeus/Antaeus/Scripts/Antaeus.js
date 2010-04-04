@@ -84,6 +84,9 @@ jQuery(document).ready(function($) {
 	
 	//记录载入时间
 	$(".QuestionChoiceSelect").questionRecord({qid:g_param.qid,currentTime:g_param.currentTime,correct:g_param.qCorrect});
+	
+	//datail页面收藏夹的显示
+	$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false });
 
 
 // =========================================================================================================
@@ -106,7 +109,7 @@ $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 $("#WidgetFilter").filter();
 
 //3.具体题目页给题目加Tag
-$("#LinkFavoriteAdd").click(function() { FavoriteTagAdd("PopupFavoriteAdd"); });
+$("#LinkFavoriteAdd").click(function() { FavoriteTagAdd("#FavoriteAddSetting"); });
 
 //4.具体题目页的历史记录查看
 $("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });

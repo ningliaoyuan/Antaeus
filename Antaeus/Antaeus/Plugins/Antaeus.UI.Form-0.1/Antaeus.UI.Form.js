@@ -138,8 +138,10 @@
 			var opt = options;			
 			//外包一个显示的DIV
 			$(this).wrap("<div id='separate-container'></div>");
+			//定义原标签的默认提示文字
+			var tip = $(this).val();
 			//增加一个inp用于显示并且执行所有操作
-			$(this).after("<input type='text' id='separate-inp-show' style='width:"+opt.width+"px' />");
+			$(this).after("<input type='text' id='separate-inp-show' style='width:"+opt.width+"px' value='"+tip+"' />");
 			//将原有的作为不可见元素
 			$(this).css("display","none");
 			//定义主控元素
@@ -239,7 +241,12 @@
 					}
 				}
 			}
-			
+			//聚焦时删除提示文字
+			obj.focus(function(){
+				if(obj.val()==tip) obj.val("");
+				obj.css("color","#000");
+			});
+			//当键盘输入文字时
 			obj.keyup(function(){
 				var str = obj.val();
 				var len = str.length;
@@ -258,6 +265,7 @@
 			//如果定义了链接的点击插入模式的话，执行相应的操作
 			if(opt.insert!=null){
 				$(opt.insert).children("a").bind("click",function(){
+					if(obj.val()==tip) obj.val("");
 					doInsert($.trim($(this).html()));
 				});
 			}			

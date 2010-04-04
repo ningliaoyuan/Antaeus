@@ -188,14 +188,35 @@
         <div class="box3">
         <%if (Convert.ToBoolean(this.ViewData["Tagged"]))
           { %>
-            <a class="btn-huge btn-huge-favorite btn-huge-already"><p><b>此题已在收藏夹</b><span>你已经将此题加入到收藏夹了</span></p></a>
+            <div class="btn-huge btn-huge-favorite btn-huge-already"><p><b>你已经收藏了此题目</b><span><a href="#">x&nbsp;将此题从收藏夹移除</a></span></p></div>
         <%}
           else
           { %>        
-            <a href="#" class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+            <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p></a>
+            <div class="favorite-setting hidden" id="FavoriteAddSetting">
+            	<div class="content">
+                    <p>收藏设置：输入标签</p>
+                    <input type="text" value="使用逗号(,)分隔标签" id="FavoriteTagAddInput">
+                    <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
+                    <p>常用标签推荐：</p>
+                    <div class="tags" id="FavoriteTagRecommend">
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <div class="clear"></div>
+                    </div>                    
+                </div>
+                <div class="clear"></div>
+                <div class="btns">
+                    <a href="#" class="btn-form-blue">保存</a>
+                    <a href="#">取消</a>
+                </div>
+            </div>
         <%} %>
-            <a href="#" class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
-            <a href="#" class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
+            <a class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
+            <a class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
         </div>
         <div class="blank10"></div>
         <div class="box3 w-precentage">

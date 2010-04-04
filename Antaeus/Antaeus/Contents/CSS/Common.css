@@ -123,7 +123,7 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-comment{ background-position:10px -295px;}
 /* Huge Button ---------------------------------------------------------------------------------------------------------------------*/
 /* Provide 2 different style, using btn_tidy for class, style2 would require <span>in html, only support <a> */
-.btn-huge{ height:48px; padding:15px; display:block; border-top:1px solid #FFF; border-bottom:1px solid #FFF; color:#F60;}
+.btn-huge{ height:48px; padding:15px; display:block; border-top:1px solid #FFF; border-bottom:1px solid #FFF; color:#0479c5; cursor:pointer;}
 .btn-huge p{ display:block; background-image:url(../Images/icon_action_48.png); background-repeat:no-repeat; padding-left:55px; height:48px;}		
 .btn-huge-favorite p { background-position:0 -140px;}
 .btn-huge-email p    { background-position:0 -70px;}
@@ -140,6 +140,9 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-huge-already:hover,
 .btn-huge-already:active{ text-decoration:none; background-color:#fff; border-top:1px solid #fff; border-bottom:1px solid #fff; color:#000;}
 .btn-huge-already:hover span{ color:#000;}
+
+.btn-huge-hover{ text-decoration:none; background-color:#47b5ea; border-top:1px solid #1c78a4; border-bottom:1px solid #1c78a4; color:#FFF;}
+.btn-huge-hover b, .btn-huge-hover span{ color:#FFF;}
 
 /* Toggle Button ---------------------------------------------------------------------------------------------------------------------*/
 .btn-toggle-show,
@@ -254,4 +257,4 @@ a.btn-page:link, a.btn-page:visited, a.btn-page:hover{ color:#000; text-decorati
 .separate-item{ float:left; font-size:14px; padding:0px 5px; background-color:#EEE; border:1px solid #DDD; margin-left:5px; margin-bottom:5px; height:20px; line-height:20px; *margin-bottom:0px;}
 .separate-item a{ color:#CCC; padding-left:5px; cursor:pointer;}
 .separate-item a:hover{ color:#F00;}
-#separate-inp-show{ display:block; float:left; padding:0px 5px 8px 5px; border:0; font-size:14px; *padding-bottom:2px;}
+#separate-inp-show{ display:block; float:left; padding:0px 5px 8px 5px; border:0; font-size:14px; *padding-bottom:2px; color:#CCC;}

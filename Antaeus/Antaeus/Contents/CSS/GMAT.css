@@ -144,6 +144,13 @@ Version 0.1, Created by Lanslot at 2009/6/14 0:19
 
 /*Question and Knowledge Detail Page End========================================================================================================================================*/
 
+.favorite-setting .content{ padding:10px; background-color:#e2f6ff;}
+.favorite-setting p{ font-size:14px; color:#0479a7; font-weight:bold; display:block; padding-bottom:5px;}
+.favorite-setting span.tips{ display:block; color:#666; line-height:20px; padding-bottom:5px;}
+.favorite-setting .tags a{ background-color:#EEE; border:1px solid #DDD; display:block; float:left; margin-right:5px; padding:3px; margin-bottom:5px; cursor:pointer; color:#666;}
+.favorite-setting .btns{ text-align:right; background-color:#c0c0c0; padding-top:15px; height:30px; border-bottom:1px solid #0479a7; padding-right:10px;}
+
+.favorite-setting #separate-container{ background-color:#FFF; border:1px solid #0479a7;}
 
 /*Account Begin========================================================================================================================================*/
 
