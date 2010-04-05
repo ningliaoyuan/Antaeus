@@ -160,12 +160,12 @@ function ajaxRefresh(eid, param) {
 }
 
 function ajaxCallback(data,callback){
-	if (data == "ok") {
-		callback();
-	} else {
-		alert("操作失败！请重试，如果还是失败请联系管理员！");
-	}
-	//callback();
+//	if (data == "ok") {
+//		callback();
+//	} else {
+//		alert("操作失败！请重试，如果还是失败请联系管理员！");
+//	}
+	callback();
 }
 
 

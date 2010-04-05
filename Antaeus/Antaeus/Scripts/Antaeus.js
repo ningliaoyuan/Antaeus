@@ -85,8 +85,7 @@ jQuery(document).ready(function($) {
 	//记录载入时间
 	$(".QuestionChoiceSelect").questionRecord({qid:g_param.qid,currentTime:g_param.currentTime,correct:g_param.qCorrect});
 	
-	//datail页面收藏夹的显示
-	$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false });
+
 
 
 // =========================================================================================================
@@ -110,12 +109,15 @@ $("#WidgetFilter").filter();
 
 
 //3.Details那里的Tag部分的全部操作
-//3.1初始状态的判断显示
+//3.1datail页面收藏夹的显示
+//$("#FavoriteTagAddInput").separateInput("init",{ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false });
+$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false,tags:"a,b,c" });
+//3.2初始状态的判断显示
 if(g_param.favorite){
 	$("#FavoriteAlready").show();
 	$("#FavoriteNot").hide();
 }
-//3.2点击添加到收藏夹的操作
+//3.3点击添加到收藏夹的操作
 $("#LinkFavoriteAdd").click(function(){
 	FavoriteTagAdd({
 		content:"#FavoriteAddSetting",
@@ -126,6 +128,7 @@ $("#LinkFavoriteAdd").click(function(){
 		hoverClass:"btn-huge-hover"
 	});
 });
+//3.4从收藏夹移除
 $("#LinkFavoriteRemove").click(function(){
 	dFunction["FavoriteRemove"]({qID:g_param.qid,qType:"question"}, function(){
 		//改变显示状态
@@ -136,6 +139,7 @@ $("#LinkFavoriteRemove").click(function(){
 		g_param.favorite = false;
 	});
 });
+
 
 //4.具体题目页的历史记录查看
 $("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });
@@ -171,7 +175,7 @@ if ($("#FormQuestionCreate").length > 0) {
 }
 
 //8.管理收藏夹改Tag
-$("#LinkFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteEdit");});
+//$("#LinkFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteEdit");});
 
 //9.评论的提交
 $("#CommentSubmit").click(function(){

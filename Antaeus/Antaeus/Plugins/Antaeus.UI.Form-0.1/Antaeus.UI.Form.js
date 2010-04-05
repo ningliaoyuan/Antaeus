@@ -121,6 +121,7 @@
 // [可选]widthCssIE6 - 数字 - CSS中用于调整子父级元素magrin会翻倍的bug，为定义的CSS中的margin的一半
 // [可选]insert - 字符串 - 用于插入的链接们的父级元素选择容器，CSS选择器标准填写，例如#selector
 // [必选]different - 是否 - 是否必须不一样
+// [可选]tags - 字符串 - 初始载入的tag
 (function($){  
 	$.fn.extend({   
 	separateInput: function(options){
@@ -136,14 +137,14 @@
 		var options = $.extend(defaults, options);
 		return this.each(function(){  
 			var opt = options;			
-			//外包一个显示的DIV
-			$(this).wrap("<div id='separate-container'></div>");
 			//定义原标签的默认提示文字
 			var tip = $(this).val();
+			//外包一个显示的DIV
+			$(this).wrap("<div id='separate-container'></div>");
 			//增加一个inp用于显示并且执行所有操作
 			$(this).after("<input type='text' id='separate-inp-show' style='width:"+opt.width+"px' value='"+tip+"' />");
 			//将原有的作为不可见元素
-			$(this).css("display","none");
+			$(this).css("display","none");		
 			//定义主控元素
 			var obj = $(this).next("#separate-inp-show");
 			//为了CSS调整增加一个html
@@ -211,7 +212,7 @@
 				width = width - widthItem - opt.widthCss;				
 				//判断是否需要折行
 				if(width<opt.widthMin){
-					obj.before("<div style='clear:both;'></div>");
+					obj.before("<div class='separate-item-clear' style='clear:both;'></div>");
 					lineFirst = true;
 					width = opt.width;
 				}
@@ -286,6 +287,30 @@
 				//清空红色的边框
 				$(".separate-item").css("border-color","");
 			});
+			
+			if(opt.tags!="" && opt.tags!=null){				
+				var tag=opt.tags.split(opt.separator);
+				for(var i=0;i<tag.length;i++) {coreInsert(tag[i]);}
+			}
+			
+			
+			//这里的方法写得还是很有问题，咱时先不写了
+//			if(operate=="tag" || (opt.tags!="" && opt.tags!=null)){
+//				var tag=opt.tags.split(opt.separator);
+//				for(var i=0;i<tag.length;i++) coreInsert(tag[i]);
+//				if(obj_return.val()!=""){
+//					obj_return.val(obj_return.val()+opt.separator+opt.tags);
+//				}else{
+//					obj_return.val(opt.tags);
+//				}
+//			}
+			//用于清除所有已输入的标签
+//			if(operate=="clear"){
+//				$("#separate-container .separate-item").remove();
+//				$("#separate-container .separate-item-clear").remove();
+//				obj_return.val("");
+//			}
+			
 		});  
 	}  
 	});      
