@@ -1,6 +1,60 @@
 // Antaeus.UI.Form
 // Version 1.0 by lanslot.liu@gmail.com
 
+// checkAll方法用于当用户在下拉菜单中选择“其它”时显示文本输入框让用户输入其它的内容
+// Parameters:
+// [必须]name - 字符 - 要控制的checkbox的name
+(function($){  
+	$.fn.extend({   
+	checkAll: function(options){
+		//默认参数设置
+		var defaults = {  
+			name:""
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);
+			obj.click(function(){
+				if(obj.attr("checked")==true){
+					$("input[name='"+opt.name+"']").attr("checked",true);
+				}else{
+					$("input[name='"+opt.name+"']").attr("checked",false);
+				}
+			});
+		});  
+	}
+	});      
+})(jQuery); 
+
+// dropdownNext方法用于当用户在下拉菜单中选择某个选项时显示某一个obj
+// Parameters:
+// [必须]value - 字符 - 触发事件的值
+// [必须]object - 对象 - 要显示的对象
+(function($){  
+	$.fn.extend({   
+	dropdownNext: function(options){
+		//默认参数设置
+		var defaults = {  
+			value:"",
+			object:null
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);
+			obj.change(function(){
+				if(obj.val()==opt.value){
+					opt.object.show();
+				}else{
+					opt.object.hide();
+				}
+			});
+		});  
+	}
+	});      
+})(jQuery); 
+
 // dropdownToggle方法用于当用户在下拉菜单中选择“其它”时显示文本输入框让用户输入其它的内容
 // Parameters:
 // [必须]judge - 字符 - 在HTML中定义的“其它”这一项的

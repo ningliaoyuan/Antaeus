@@ -74,7 +74,7 @@
                     </div>
                     <div class="operate">
                     	<div class="left"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
-                        <div class="right"><a class="btn-action">修改收藏设置</a><a href="#">移除收藏</a></div>
+                        <div class="right"><a class="btn-action" class="LinkFavoriteEdit" quesid="34354">修改收藏设置</a><a href="#" class="LinkFavoriteRemove" quesid="34354">移除收藏</a></div>
                         <div class="clear"></div>
                     </div>                    
                 </div>
@@ -97,12 +97,12 @@
                     </div>
                     <div class="operate">
                     	<div class="left"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
-                        <div class="right"><a class="btn-action">修改收藏设置</a><a href="#">移除收藏</a></div>
+                        <div class="right"><a class="btn-action" class="LinkFavoriteEdit" quesid="34355">修改收藏设置</a><a href="#" class="LinkFavoriteRemove" quesid="34355">移除收藏</a></div>
                         <div class="clear"></div>
                     </div>                    
                 </div>
-                <div class="item4">
-                	<div class="content">题目&nbsp;<a href="#">Sentences Corrected-34355</a>&nbsp;已取消收藏，重新收藏请点击&nbsp;<a href="#">恢复收藏</a></div>
+                <div class="item4 hidden" id="AfterFavoriteRemove">
+                	<div class="content">题目&nbsp;<a href="/Question/Details/%ID%/">Sentences Corrected-%ID%</a>&nbsp;已取消收藏，重新收藏请点击&nbsp;<a href="#" class="ReAddFavorite" quesid="%ID%">恢复收藏</a></div>
                 </div>
                 <div class="bar1">
                 	<div class="left">
@@ -110,14 +110,15 @@
                         <input type="checkbox" id="ItemQuestion" />
                         <span>全选</span>&nbsp;&nbsp;&nbsp;&nbsp;
                         <b>批量操作</b>
-                        <select>
-                            <option selected="selected">取消收藏</option>
-                            <option>修改标签</option>
+                        <select id="ItemOperate">
+                            <option selected="selected" value="cancel">取消收藏</option>
+                            <option value="tag">修改标签</option>
                         </select>
-                        <select>
+                        <select id="ItemTagChange" class="hidden">
                             <option selected="selected">考前必看</option>
                             <option>真TMD难</option>
                         </select>
+                        <a class="btn-action">执行</a>
                     </div>
                     <div class="right">
                     	<div class="barpage"><%=Html.ShowPageIndex( this.ViewData.GetPager(),"current")%></div>

@@ -125,6 +125,13 @@ rFunction["FormQuestionCreateLoad"] = function (param, callback) {
 	$.get("/Question/Form/" + param.type, callback);
 };
 
+rFunction["FavoriteTagsGet"] = function (param, callback) {
+	//传入参数param.qID=1234,param.qType="question"
+	$.get("",
+        function(data){ajaxCallback(data,callback);}
+	);
+};
+
 //dFunction系列函数用于执行各项post类执行的AJAX操作
 var dFunction = {};
 dFunction["RateQuestion"] = function(param, callback){
