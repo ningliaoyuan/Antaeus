@@ -80,9 +80,7 @@ jQuery(document).ready(function($) {
         }
     });
 	
-	//用户做题
-	
-	//记录载入时间
+	//记录用户做题载入时间
 	$(".QuestionChoiceSelect").questionRecord({qid:g_param.qid,currentTime:g_param.currentTime,correct:g_param.qCorrect});
 	
 
