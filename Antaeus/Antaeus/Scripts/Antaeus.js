@@ -116,8 +116,34 @@ $(".LinkFavoriteEdit").click(function(){
 	//首先请求这个题目的tags
 	//rFunction["FavoriteTagsGet"]({qID:qid,qType:"question"},function(data){
 		//请求到tags后，要载入到popup显示
+		
+//		$("#PopupFavoriteEdit").dialog({ //这是对话框的基本设置
+//			autoOpen: false,
+//			width: 600,
+//			buttons: {
+//				"Ok": function() {
+//					if(fun==null){
+//						$(this).dialog("close");
+//					}else{
+//						fun();
+//					}
+//				},
+//				"Cancel": function() {
+//					$(this).dialog("close");
+//				}
+//			},
+//			open:function(){
+//				
+//			},
+//			draggable: true,
+//			modal: true,
+//			resizable:true,
+//			show:"slide"
+//		});
+//		$("#PopupFavoriteEdit").dialog("open");
+		
+		$("#FavoriteTagsInput").separateInput({insert: ".separate-select", required: false,tags:"测试,测试22222,fsdfsd,ghghrthrt,js" });
 		Popup("PopupFavoriteEdit");
-		//$("#InputFavoriteTagEdit").separateInput({insert: "#FavoriteTagEditRecommend", required: false,tags:data });
 	//});
 });
 
