@@ -55,11 +55,11 @@
     <Compile Include="Helpers\CommonDataHelper.cs" />
     <Compile Include="Helpers\MetaData.cs" />
     <Compile Include="IIDProvider.cs" />
-    <Compile Include="ITimeProvider.cs" />
     <Compile Include="JB8MembershipProvider.cs" />
     <Compile Include="Model\BaseRepository.cs" />
     <Compile Include="Model\CategoryRepository.cs" />
     <Compile Include="Model\IRepository.cs" />
+    <Compile Include="Model\NormalUser.cs" />
     <Compile Include="Model\Question.cs" />
     <Compile Include="Model\QuestionFactory.cs" />
     <Compile Include="Model\QuestionModel.cs" />
@@ -74,6 +74,10 @@
     <Compile Include="WikiService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Antaeus.Common\Antaeus.Common.csproj">
+      <Project>{157703CE-C1BA-4375-AA94-3C46A8B12255}</Project>
+      <Name>Antaeus.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Antaeus.ORM\Antaeus.ORM.csproj">
       <Project>{90F2A1C6-6B02-45B5-890B-A765A287BB3F}</Project>
       <Name>Antaeus.ORM</Name>

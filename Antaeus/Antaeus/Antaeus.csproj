@@ -81,6 +81,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KnowledgeController.cs" />
+    <Compile Include="Controllers\NormalUserController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TagController.cs" />
@@ -438,6 +439,10 @@
     <ProjectReference Include="..\Antaeus.BL\Antaeus.BL.csproj">
       <Project>{176E0ECE-37C7-4587-A3AD-F403C800CE6A}</Project>
       <Name>Antaeus.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Antaeus.Common\Antaeus.Common.csproj">
+      <Project>{157703CE-C1BA-4375-AA94-3C46A8B12255}</Project>
+      <Name>Antaeus.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Antaeus.ORM\Antaeus.ORM.csproj">
       <Project>{90F2A1C6-6B02-45B5-890B-A765A287BB3F}</Project>
