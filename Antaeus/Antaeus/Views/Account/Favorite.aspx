@@ -1,5 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<string>" %>
-<%@ Register src="SideControl.ascx" tagname="SideControl" tagprefix="uc1" %>
+<%@ Register src="../Components/FilterComponent.ascx" tagname="FilterComponent" tagprefix="uc1" %>
 <%@ Register src="HeaderControl.ascx" tagname="HeaderControl" tagprefix="uc2" %>
 <%@ Register src="../PopUps/EditFavoritePopup.ascx" tagname="EditFavoritePopup" tagprefix="uc3" %>
 <%@ Import Namespace="Antaeus.Helpers" %>
@@ -7,9 +7,13 @@
 	Favorite
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
 <div class="account column2">    
+
     <div class="blank10"></div> 
+    
     <div class="columnleft">
+    
     	<div class="box2 favorite">
 			<div class="context"> 	
         		<uc2:HeaderControl ID="HeaderControl1" runat="server" p="Favorite" />
@@ -19,7 +23,7 @@
                     <a href="/Account/Favorite/Knowledge/">知识点收藏</a>
                     <a href="/Account/Favorite/Article/" style="border:0;">文章收藏</a>
                 </div>
-            	<div class="blank15"></div>
+<!--            	<div class="blank15"></div>
                 <h2>我收藏的题目</h2>
                 <div class="tag-clone">
                 	<a href="#" class="current">全部(123)</a>
@@ -31,40 +35,109 @@
                            <%}
                       } %>                
                     <div class="clear"></div>
-                </div>
-                <div class="listresult">
-                	<div class="item2" onmouseover="this.style.backgroundColor='#f3f7ff';" onmouseout="this.style.backgroundColor='transparent';">
-                        <div class="left">
-                            <div class="note blue"><input type="checkbox" value="" /><span>选中</span>&nbsp;&nbsp; <a href="#" id="LinkFavoriteEdit" rel="dialog">编辑收藏标签</a></div>
-                            <div class="number">
-                                <div class="n1"><b class="blue">13244</b><span>题目编号</span></div>
-                                <div class="n2"><b class="green">3.5</b><span>题目价值</span></div>
-                                <div class="n3"><b class="orange">55%</b><span>正确率</span></div>
-                            </div>
-                        </div>
-                        <div class="right">
-                            <div class="summy"><a href="#"><b class="blue">Sentences Corrected:</b> test test test test test test test test test test test test test test test test test test test test test test test</a></div>
-                            <div class="parameter">来自GWD，46465浏览，45讨论，更新于2010-2-28 14:00</div>
-                            <div class="tags"><span>More Than</span><span>More Than</span><span>More Than</span><span>More Than</span><span>More Than</span><span>More Than</span></div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="item_action">
-						<div class="pageindex"><span>翻页：</span></div>
-                    	<input type="button" class="btn-form-green" value="将选中收藏删除" />
-                        <label>全选</label>
-                        <input type="checkbox" />
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
+                </div>  -->              
+            </div>            
         </div>
-    </div>
-    <div class="columnright">
-        <uc1:SideControl ID="SideControl1" runat="server" />
+        
         <div class="blank10"></div>
+        
+        <div class="box2 favorite">
+			<div class="listresult">
+                <div class="bar1 listtop">
+                    <div class="left">
+                        当前标签&nbsp;<span>考前必看</span>&nbsp;，共&nbsp;<span>23</span>&nbsp;个收藏，每页显示&nbsp;
+                        <select>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                        </select>
+                        &nbsp;个收藏
+                    </div>
+                </div>
+                
+                <div class="item3">
+                	<div class="title">
+                    	<div class="left"><input type="checkbox" value="" name="ItemQuestion" />&nbsp;&nbsp;<a href="#">Sentences Corrected:&nbsp;34355</a></div>
+                        <div class="right"><span>来自：</span><b>GWD</b></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="main">
+                    	<div class="left number"><b class="green">3.5<i>/5</i></b><span>题目价值</span></div>
+                        <div class="left number"><b class="orange">34.5%</b><span>做题正确率</span></div>
+                        <div class="right">
+                        	<div class="summy">test test test test test test test test test test test test test test test test test test test test test test test</div>
+                            <div class="points"><span>考点：</span><a href="#">more than</a>&nbsp;&nbsp;<a href="#">in which</a>&nbsp;&nbsp;<a href="#">定语从句</a></div>
+                            <div class="update">更新于2010-04-04 13:57</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="operate">
+                    	<div class="left"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
+                        <div class="right"><a class="btn-action" class="LinkFavoriteEdit" quesid="34354">修改收藏设置</a><a href="#" class="LinkFavoriteRemove" quesid="34354">移除收藏</a></div>
+                        <div class="clear"></div>
+                    </div>                    
+                </div>
+                
+                <div class="item3">
+                	<div class="title">
+                    	<div class="left"><input type="checkbox" value="" name="ItemQuestion" />&nbsp;&nbsp;<a href="#">Sentences Corrected:&nbsp;34355</a></div>
+                        <div class="right"><span>来自：</span><b>GWD</b></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="main">
+                    	<div class="left number"><b class="green">3.5<i>/5</i></b><span>题目价值</span></div>
+                        <div class="left number"><b class="orange">34.5%</b><span>做题正确率</span></div>
+                        <div class="right">
+                        	<div class="summy">test test test test test test test test test test test test test test test test test test test test test test test</div>
+                            <div class="points"><span>考点：</span><a href="#">more than</a>&nbsp;&nbsp;<a href="#">in which</a>&nbsp;&nbsp;<a href="#">定语从句</a></div>
+                            <div class="update">更新于2010-04-04 13:57</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="operate">
+                    	<div class="left"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
+                        <div class="right"><a class="btn-action" class="LinkFavoriteEdit" quesid="34355">修改收藏设置</a><a href="#" class="LinkFavoriteRemove" quesid="34355">移除收藏</a></div>
+                        <div class="clear"></div>
+                    </div>                    
+                </div>
+                <div class="item4 hidden" id="AfterFavoriteRemove">
+                	<div class="content">题目&nbsp;<a href="/Question/Details/%ID%/">Sentences Corrected-%ID%</a>&nbsp;已取消收藏，重新收藏请点击&nbsp;<a href="#" class="ReAddFavorite" quesid="%ID%">恢复收藏</a></div>
+                </div>
+                <div class="bar1">
+                	<div class="left">
+                    	&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="ItemQuestion" />
+                        <span>全选</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>批量操作</b>
+                        <select id="ItemOperate">
+                            <option selected="selected" value="cancel">取消收藏</option>
+                            <option value="tag">修改标签</option>
+                        </select>
+                        <select id="ItemTagChange" class="hidden">
+                            <option selected="selected">考前必看</option>
+                            <option>真TMD难</option>
+                        </select>
+                        <a class="btn-action">执行</a>
+                    </div>
+                    <div class="right">
+                    	<div class="barpage"><%=Html.ShowPageIndex( this.ViewData.GetPager(),"current")%></div>
+                    </div>
+                </div>
+                
+            </div>
+    	</div>
     </div>
     
+    <div class="columnright">
+        <div class="box3 ggarea" style="height:168px;">Advertisement Area</div>
+        <div class="blank10"></div>
+        <div class="box3 w-filter" id="WidgetFilter">
+        	<uc1:FilterComponent ID="FilterComponent1" runat="server" />
+        </div>
+        <div class="blank10"></div>
+    </div>
+    <div class="clear blank10"></div>
 </div>       
 <uc3:EditFavoritePopup ID="EditFavoritePopup" runat="server" />
 </asp:Content>

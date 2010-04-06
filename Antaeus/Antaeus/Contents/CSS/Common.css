@@ -34,6 +34,7 @@ input,button,textarea,select{*font-size: 100%;}
 /* Define the tags' default style ====================================================================================== */
 body{ font-family:"微软雅黑","宋体", "Arial"; font-size:12px; color:666;}
 /* define default link style */
+a{ cursor:pointer;}
 a:link,a:visited{ color:#0479a7; text-decoration:none;}
 a:hover,a:active{ color:#FF0000; text-decoration:underline;}
 
@@ -123,7 +124,7 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-comment{ background-position:10px -295px;}
 /* Huge Button ---------------------------------------------------------------------------------------------------------------------*/
 /* Provide 2 different style, using btn_tidy for class, style2 would require <span>in html, only support <a> */
-.btn-huge{ height:48px; padding:15px; display:block; border-top:1px solid #FFF; border-bottom:1px solid #FFF; color:#F60;}
+.btn-huge{ height:48px; padding:15px; display:block; border-top:1px solid #FFF; border-bottom:1px solid #FFF; color:#0479c5; cursor:pointer;}
 .btn-huge p{ display:block; background-image:url(../Images/icon_action_48.png); background-repeat:no-repeat; padding-left:55px; height:48px;}		
 .btn-huge-favorite p { background-position:0 -140px;}
 .btn-huge-email p    { background-position:0 -70px;}
@@ -141,6 +142,9 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-huge-already:active{ text-decoration:none; background-color:#fff; border-top:1px solid #fff; border-bottom:1px solid #fff; color:#000;}
 .btn-huge-already:hover span{ color:#000;}
 
+.btn-huge-hover{ text-decoration:none; background-color:#47b5ea; border-top:1px solid #1c78a4; border-bottom:1px solid #1c78a4; color:#FFF;}
+.btn-huge-hover b, .btn-huge-hover span{ color:#FFF;}
+
 /* Toggle Button ---------------------------------------------------------------------------------------------------------------------*/
 .btn-toggle-show,
 .btn-toggle-hide{ display:block; float:left; padding-left:20px; height:20px; line-height:20px; background:#eee url(../Images/icon_silk.png) scroll no-repeat 5px -267px; padding-right:10px;}
@@ -149,8 +153,12 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-page{ display:block; float:left; background:url(../Images/1px.gif) repeat-x 0 -930px; line-height:21px; height:21px; border:1px solid #c5c5c5; border-bottom-color:#b6b6b6; border-top-color:#d3d3d3; padding-left:10px; padding-right:10px; margin-right:5px; font-size:13px; color:#000; font-weight:bolder;}
 a.btn-page:link, a.btn-page:visited, a.btn-page:hover{ color:#000; text-decoration:none;}
 
+.btn-action{ background:url(../Images/btn_small_new.gif) repeat-x; height:20px; line-height:20px; border:1px solid #22698b; color:#FFF; padding:0 5px;}
+a.btn-action:link, a.btn-action:visited, a.btn-action:hover{ color:#FFF; text-decoration:none; cursor:pointer;}
 /* Define default form style =========================================================================================================================*/
 .formstyle .item{ padding:10px 0px; border-bottom:1px dotted #CCC; font-size:14px; *padding-bottom:0;}
+.formstyle .item-one{ padding:0; border:0;}
+.formstyle .item-one .detail{ float:none;}
 .formstyle .noborder{ border:0;}
 .formstyle .title{ float:left; width:105px; font-weight:bold; text-align:right; line-height:30px;}
 .formstyle .title span{ color:#F00;}
@@ -252,4 +260,4 @@ a.btn-page:link, a.btn-page:visited, a.btn-page:hover{ color:#000; text-decorati
 .separate-item{ float:left; font-size:14px; padding:0px 5px; background-color:#EEE; border:1px solid #DDD; margin-left:5px; margin-bottom:5px; height:20px; line-height:20px; *margin-bottom:0px;}
 .separate-item a{ color:#CCC; padding-left:5px; cursor:pointer;}
 .separate-item a:hover{ color:#F00;}
-#separate-inp-show{ display:block; float:left; padding:0px 5px 8px 5px; border:0; font-size:14px; *padding-bottom:2px;}
+#separate-inp-show{ display:block; float:left; padding:0px 5px 8px 5px; border:0; font-size:14px; *padding-bottom:2px; color:#CCC;}

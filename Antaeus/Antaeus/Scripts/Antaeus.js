@@ -73,39 +73,32 @@ jQuery(document).ready(function($) {
         captionEl: $("#RateCap"),
         cancelShow: false,
         callback: function(ui, type, value) {
-			rateQuestion(
+			dFunction["RateQuestion"](
 				{qID:g_param.qid,qValue:value},
-				function(){Refresh($("#RateAverge"),{qID:g_param.qid});}
+				function(){ajaxRefresh($("#RateAverge"),{qID:g_param.qid});}
 			);			
         }
     });
 	
-	//用户做题
-	
-	//记录载入时间
-//	var CurrentTime = new Date();
-//	var QuestionChoiceSelect = true;
-//	$(".QuestionChoiceSelect").click(function(){
-//		//只判断第一次点击
-//		if(QuestionChoiceSelect){		
-//			var correct = $("#QuestionChoiceCorrected").html();
-//			var DoTime = new Date();
-//			var TheTime = parseInt((DoTime-CurrentTime)/1000);
-//			var Correct = 0;
-//			var id=$("#Rate").attr("title");
-//			var Answer = $(this).attr("value");
-//			
-//			if (Answer==correct) {
-//				$("#QuestionChoiceCorrectShow").show();
-//				Correct = 1;
-//			}else{
-//				$("#QuestionChoiceWrongShow").show();
-//			}
-//			QuestionChoiceSelect = false;
-//			$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime},function(data){alert(data);});
-//			
-//		}
+//Favorite页面的全选
+$("#ItemQuestion").checkAll({name:"ItemQuestion"});
+$("#ItemOperate").dropdownNext({value:"tag",object:$("#ItemTagChange")});
+$(".LinkFavoriteRemove").click(function(){
+	var qid = $(this).attr("quesid");
+	var obj = $(this).parent().parent().parent();	
+	dFunction["FavoriteRemove"]({qID:qid,qType:"question"}, function(){		
+		obj.after("<div class='item4'>"+$("#AfterFavoriteRemove").html().replaceAll("%ID%",qid)+"</div>");
+		obj.remove();
+	});
+});	
+//这里还很有问题，明天写·~~
+//$(".LinkFavoriteEdit").click(function(){
+//	var qid = $(this).attr("quesid");
+//	//首先请求这个题目的tags
+//	rFunction["FavoriteTagsGet"]({qID:qid,qType:"question"},function(data){
+//		$("#InputFavoriteTagEdit").separateInput({insert: "#FavoriteTagEditRecommend", required: false,tags:data });
 //	});
+//});
 
 
 // =========================================================================================================
@@ -127,8 +120,39 @@ $("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
 //2.WidgetFilter
 $("#WidgetFilter").filter();
 
-//3.具体题目页给题目加Tag
-$("#LinkFavoriteAdd").click(function() { FavoriteTagAdd("PopupFavoriteAdd"); });
+
+//3.Details那里的Tag部分的全部操作
+//3.1datail页面收藏夹的显示
+//$("#FavoriteTagAddInput").separateInput("init",{ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false });
+$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false,tags:"a,b,c" });
+//3.2初始状态的判断显示
+if(g_param.favorite){
+	$("#FavoriteAlready").show();
+	$("#FavoriteNot").hide();
+}
+//3.3点击添加到收藏夹的操作
+$("#LinkFavoriteAdd").click(function(){
+	FavoriteTagAdd({
+		content:"#FavoriteAddSetting",
+		father:"#LinkFavoriteAdd",
+		save:"#FavoriteTagSave",
+		cancel:"#FavoriteTagCancel",
+		input:"#FavoriteTagAddInput",
+		hoverClass:"btn-huge-hover"
+	});
+});
+//3.4从收藏夹移除
+$("#LinkFavoriteRemove").click(function(){
+	dFunction["FavoriteRemove"]({qID:g_param.qid,qType:"question"}, function(){
+		//改变显示状态
+		$("#FavoriteNot").show();
+		$("#FavoriteAlready").hide();
+		$("#LinkFavoriteAdd #FA1").show();
+		$("#LinkFavoriteAdd #FA2").hide();
+		g_param.favorite = false;
+	});
+});
+
 
 //4.具体题目页的历史记录查看
 $("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });
@@ -164,7 +188,7 @@ if ($("#FormQuestionCreate").length > 0) {
 }
 
 //8.管理收藏夹改Tag
-$("#LinkFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteEdit");});
+//$("#LinkFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteEdit");});
 
 //9.评论的提交
 $("#CommentSubmit").click(function(){
@@ -173,9 +197,10 @@ $("#CommentSubmit").click(function(){
 });
 
 
+//$("#PopupFavoriteAdd .separate").separateInput({ width: 548, insert: ".separate-select", widthCssIE6: 2, required: false });
 
-
-
+//10.记录用户做题载入时间
+$(".QuestionChoiceSelect").questionRecord({qid:g_param.qid,currentTime:g_param.currentTime,correct:g_param.qCorrect});
 
 
 });

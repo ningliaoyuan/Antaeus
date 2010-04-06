@@ -1,6 +1,9 @@
 // Antaeus.UI.Form
 // Version 0.1 by lanslot.liu@gmail.com
 
+// Code Standard
+// 1.命名全部统一使用firstSecondThird
+
 //全替换的ReplaceAll的定义
 String.prototype.replaceAll=function(s1,s2){   
 	return this.replace(new RegExp(s1,"gm"),s2);   
@@ -33,7 +36,7 @@ function FormLoginSubmit(place) {
 						return false;
 					} else {
 					    //$("#logon").html(data);
-					    Refresh($("#logon"));
+					    ajaxRefresh($("#LogonContent"));
 					}
 				//如果是Popup登陆
 				} else {
@@ -41,7 +44,7 @@ function FormLoginSubmit(place) {
 						alert("登录失败：" + data.replace("error:", ""));
 					} else {
 					    //$("#logon").html(data);
-					    Refresh($("#logon"));
+					    ajaxRefresh($("#LogonContent"));
 						$(sPopup).dialog('close');
 						return false;
 					}
@@ -144,25 +147,44 @@ function Popup(id,fun){
 }
 
 //FavoriteTagAdd函数用于添加Tag
-function FavoriteTagAdd(popupid){
-	Popup(popupid,function(){
-		var tags = $.trim($("#FavoriteTagsInput").val());
-		if(tags==""){
-			alert("标签输入不能为空！");
-		}else{
-			$.get(
-				"/tag/add/Question/1/"+tags,
-				function(data){
-					if($.trim(data)=="ok"){
-						$("#PopupFavoriteAdd").dialog("close");
-					}else{
-						alert("有错误发生，你的操作没有被执行！");
-					}
-				}
-			);
-		}
+function FavoriteTagAdd(div){
+	
+	//首先执行将题目添加到收藏夹
+	dFunction["FavoriteAdd"]({qID:g_param.qid,qType:"question"},function(){
+		//添加到收藏夹操作成功后
+		//首先改变提示文字
+		$("#LinkFavoriteAdd #FA1").hide();
+		$("#LinkFavoriteAdd #FA2").show();
+		//显示收藏夹设置
+		$(div.father).addClass(div.hoverClass);
+		$(div.content).slideDown("slow");
+		//取消按钮的设置
+		$(div.cancel).click(function(){								 
+			$(div.content).slideUp("fast");
+			$(div.father).removeClass(div.hoverClass);
+			//改变显示状态
+			$("#FavoriteNot").hide();
+			$("#FavoriteAlready").show();
+			g_param.favorite = true;
+		});
+		$(div.save).click(function(){
+			var tags = $.trim($(div.input).val());
+			if(tags==""){
+				alert("标签输入不能为空！");
+			}else{	
+				dFunction["FavoriteAddTags"]({qID:g_param.qid,qType:"question",tags:tags}, function(){
+					$(div.content).slideUp("fast");
+					$(div.father).removeClass(div.hoverClass);
+					//改变显示状态
+					$("#FavoriteNot").hide();
+					$("#FavoriteAlready").show();
+					g_param.favorite = true;
+				});			
+			}
+		});
+		
 	});
-	$("#"+popupid).dialog("open");
+	
 }
 
 //PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
@@ -261,16 +283,49 @@ function TabActive(data) {
 	});      
 })(jQuery); 
 
-//rateQuestion函数用于执行投票操作
-function rateQuestion(param, uiCallback) {
-    $.get("/Question/Rate/" + param.qID, { rate: param.qValue },
-        function(data) {
-            if (data == "ok") {
-                uiCallback();
-                alert("投票成功！灰常感谢你的支持！");
-            } else {
-                alert("投票失败");
-            }
-        }
-	);
-};
+//questionRecord方法用于记录用户的做题时间
+//Parameters:
+//[必须]currentTime - 时间 - 页面载入时间
+//[必须]rightIDr - 字符 - 正确时的显示DIV ID
+//[必须]wrongID - 字符 - 错误时的显示DIV ID
+//[必须]qid - 字符 - 要控制的题目的ID
+//[必须]correct - 字符 - 正确选项
+//[必须]unbindSelecter - 字符 - 解除绑定的选择器
+(function($){  
+	$.fn.extend({   
+	questionRecord: function(options){
+		//默认参数设置
+		var defaults = {  
+			currentTime    : new Date(),
+			rightID        : "#QuestionChoiceCorrectShow",
+			wrongID        : "#QuestionChoiceWrongShow",
+			qid            : "",
+			correct        : "",
+			unbindSelecter : ".QuestionChoiceSelect"
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);			
+			
+			obj.bind("click",function(){
+				var DoTime = new Date();
+				var TheTime = parseInt((DoTime-opt.currentTime)/1000);
+				var Correct = 0;
+				var id=opt.qid;
+				var Answer = $(this).attr("value");				
+				if (Answer==opt.correct) {
+					$(opt.rightID).show();
+					Correct = 1;
+				}else{
+					$(opt.wrongID).show();
+				}
+	
+				$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime});
+				
+				$(opt.unbindSelecter).unbind("click");
+			});
+		});  
+	}
+	});      
+})(jQuery); 
