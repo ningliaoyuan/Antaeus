@@ -121,6 +121,8 @@ Version 0.1, Created by Lanslot at 2009/6/14 0:19
 .listresult .item4{ padding:15px; border-bottom:1px solid #dfdfdf;}
 .listresult .item4 .content{ padding:5px; background-color:#fffbd5; border:1px solid #ff8a00; color:#000; text-align:center;}
 
+.listresult-more{ height:38px; line-height:38px; background:url(../Images/btn_more.gif) repeat-x; border:1px solid #c4c5a6; font-size:18px; font-weight:bold; color:#eb7e26; text-align:center; cursor:pointer;}
+
 .comment .context{ padding:15px 15px 5px 15px;}
 .comment .comm_no{ padding:15px; font-size:14px; color:#F00; background-color:#FFDFDF; margin-bottom:10px;}
 .comment .comm_item{ background-color:#fff1ce; padding:10px; margin-bottom:10px;}
