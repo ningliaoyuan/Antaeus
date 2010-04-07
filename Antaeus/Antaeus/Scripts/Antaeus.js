@@ -142,7 +142,7 @@ $(".LinkFavoriteEdit").click(function(){
 //		});
 //		$("#PopupFavoriteEdit").dialog("open");
 		
-		$("#FavoriteTagsInput").separateInput({insert: ".separate-select", required: false,tags:"测试,测试22222,fsdfsd,ghghrthrt,js" });
+		$("#FavoriteTagsInput").separateInput({insert: ".separate-select", required: false });
 		Popup("PopupFavoriteEdit");
 	//});
 });
