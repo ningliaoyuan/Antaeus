@@ -9,6 +9,7 @@ using System.Web.Security;
 using System.Web.UI;
 using Antaeus.Helpers;
 using Antaeus.BL;
+using Antaeus.BL.Model;
 
 namespace Antaeus.Controllers
 {
@@ -214,13 +215,18 @@ namespace Antaeus.Controllers
 
             return View();
         }
-        public ActionResult Favorite()
+        public ActionResult Favorite(string key, int? count, long? minId)
         {
-            string username = MembershipHelper.GetUserName();
+            minId = minId ?? int.MaxValue;
+            count = count ?? 20;
+            key = string.IsNullOrEmpty(key)? "question": key;
 
-            var tags = TagService.GetTagProvider().GetTagsByUserName(username, 20);
+            List<long> ids = MembershipHelper.GetNormalUser().GetIds(key, minId.Value, count.Value);
 
-            return View((object)tags);
+            var qr = new QuestionRepository();
+            List<Question> res = ids.Select(id => qr.Find(id)).ToList();
+
+            return View(res);
         } 
         public ActionResult ContentRecord()
         {

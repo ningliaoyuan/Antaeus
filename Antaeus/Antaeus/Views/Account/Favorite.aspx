@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<string>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<Antaeus.BL.Model.Question>>" %>
 <%@ Register src="../Components/FilterComponent.ascx" tagname="FilterComponent" tagprefix="uc1" %>
 <%@ Register src="HeaderControl.ascx" tagname="HeaderControl" tagprefix="uc2" %>
 <%@ Register src="../PopUps/EditFavoritePopup.ascx" tagname="EditFavoritePopup" tagprefix="uc3" %>
@@ -23,19 +23,6 @@
                     <a href="/Account/Favorite/Knowledge/">知识点收藏</a>
                     <a href="/Account/Favorite/Article/" style="border:0;">文章收藏</a>
                 </div>
-<!--            	<div class="blank15"></div>
-                <h2>我收藏的题目</h2>
-                <div class="tag-clone">
-                	<a href="#" class="current">全部(123)</a>
-                    <%if (!string.IsNullOrEmpty(Model))
-                      {
-                          foreach (var tag in Model.Split(','))
-                          {%>
-                	       <a href="#"><%=tag%></a>
-                           <%}
-                      } %>                
-                    <div class="clear"></div>
-                </div>  -->              
             </div>            
         </div>
         
@@ -46,52 +33,37 @@
                 <div class="bar1 listtop">
                     <div class="left">当前标签&nbsp;<span>考前必看</span>&nbsp;，共&nbsp;<span>23</span>&nbsp;个收藏</div>
                 </div>
-                
-                <div class="item3" quesid="11111">
+                <%foreach (var item in Model)
+                  {%>
+                       <div class="item3" quesid="<%= Html.Encode(item.QuestionID) %>">
                 	<div class="title">
-                    	<div class="left"><a href="#">Sentences Corrected:&nbsp;11111</a></div>
-                        <div class="right"><span>来自：</span><b>GWD</b></div>
+                    	<div class="left"><a href="#">Sentences Corrected:&nbsp;<%= Html.Encode(item.QuestionID) %></a></div>
+                        <div class="right"><span>来自：</span><b><%= Html.Encode(item.Source) %></b></div>
                         <div class="clear"></div>
                     </div>
                     <div class="main">
-                    	<div class="left number"><b class="green">3.5<i>/5</i></b><span>题目价值</span></div>
-                        <div class="left number"><b class="orange">34.5%</b><span>做题正确率</span></div>
+                    	<div class="left number"><b class="green"><%= Html.Encode(item.GetAverage().ToString("0.0")) %><i>/5</i></b><span>题目价值</span></div>
+                        <div class="left number"><b class="orange"><%= Html.Encode(item.CorrectRate) %></b><span>做题正确率</span></div>
                         <div class="right">
-                        	<div class="summy">test test test test test test test test test test test test test test test test test test test test test test test</div>
+                        	<div class="summy"><%=Html.Encode(item.GetAbstract()) %></div>
                             <div class="points"><span>考点：</span><a href="#">more than</a>&nbsp;&nbsp;<a href="#">in which</a>&nbsp;&nbsp;<a href="#">定语从句</a></div>
-                            <div class="update">更新于2010-04-04 13:57</div>
+                            <div class="update">更新于<%= Html.Encode(item.ModifiedTime.ToStr())%></div>
                         </div>
                         <div class="clear"></div>
                     </div>
                     <div class="operate">
-                    	<div class="left FavoriteItemTags"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
+                    	<div class="left FavoriteItemTags"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span>
+                    	<%foreach (var tag in MembershipHelper.GetNormalUser().GetTags("question",item.QuestionID).Split(','))
+	                      {%>
+		                    <i><%=Html.Encode(tag) %></i>
+	                    <%}%>
+                    	</div>
                         <div class="right"><a class="btn-action btn-action-blue LinkFavoriteEdit">修改收藏设置</a><a class="LinkFavoriteRemove">移除收藏</a></div>
                         <div class="clear"></div>
                     </div>                    
                 </div>
+                <%} %>
                 
-                <div class="item3" quesid="99999">
-                	<div class="title">
-                    	<div class="left"><a href="#">Sentences Corrected:&nbsp;99999</a></div>
-                        <div class="right"><span>来自：</span><b>GWD</b></div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="main">
-                    	<div class="left number"><b class="green">3.5<i>/5</i></b><span>题目价值</span></div>
-                        <div class="left number"><b class="orange">34.5%</b><span>做题正确率</span></div>
-                        <div class="right">
-                        	<div class="summy">test test test test test test test test test test test test test test test test test test test test test test test</div>
-                            <div class="points"><span>考点：</span><a href="#">more than</a>&nbsp;&nbsp;<a href="#">in which</a>&nbsp;&nbsp;<a href="#">定语从句</a></div>
-                            <div class="update">更新于2010-04-04 13:57</div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="operate">
-                    	<div class="left FavoriteItemTags"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
-                        <div class="right"><a class="btn-action btn-action-blue LinkFavoriteEdit">修改收藏设置</a><a class="LinkFavoriteRemove">移除收藏</a></div>
-                        <div class="clear"></div>
-                    </div>                    
-                </div>
                 <div class="item4 hidden" id="AfterFavoriteRemove">
                 	<div class="content">题目&nbsp;<a href="/Question/Details/%ID%/">Sentences Corrected-%ID%</a>&nbsp;已取消收藏，重新收藏请点击&nbsp;<a href="#" class="ReAddFavorite" quesid="%ID%">恢复收藏</a></div>
                 </div>
