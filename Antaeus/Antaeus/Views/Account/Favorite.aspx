@@ -42,23 +42,14 @@
         <div class="blank10"></div>
         
         <div class="box2 favorite">
-			<div class="listresult">
+			<div class="listresult" id="FavoriteItems">
                 <div class="bar1 listtop">
-                    <div class="left">
-                        当前标签&nbsp;<span>考前必看</span>&nbsp;，共&nbsp;<span>23</span>&nbsp;个收藏，每页显示&nbsp;
-                        <select>
-                            <option>10</option>
-                            <option>20</option>
-                            <option>30</option>
-                            <option>40</option>
-                        </select>
-                        &nbsp;个收藏
-                    </div>
+                    <div class="left">当前标签&nbsp;<span>考前必看</span>&nbsp;，共&nbsp;<span>23</span>&nbsp;个收藏</div>
                 </div>
                 
-                <div class="item3">
+                <div class="item3" quesid="11111">
                 	<div class="title">
-                    	<div class="left"><input type="checkbox" value="" name="ItemQuestion" />&nbsp;&nbsp;<a href="#">Sentences Corrected:&nbsp;34355</a></div>
+                    	<div class="left"><a href="#">Sentences Corrected:&nbsp;11111</a></div>
                         <div class="right"><span>来自：</span><b>GWD</b></div>
                         <div class="clear"></div>
                     </div>
@@ -73,15 +64,15 @@
                         <div class="clear"></div>
                     </div>
                     <div class="operate">
-                    	<div class="left"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
-                        <div class="right"><a class="btn-action" class="LinkFavoriteEdit" quesid="34354">修改收藏设置</a><a href="#" class="LinkFavoriteRemove" quesid="34354">移除收藏</a></div>
+                    	<div class="left FavoriteItemTags"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
+                        <div class="right"><a class="btn-action btn-action-blue LinkFavoriteEdit">修改收藏设置</a><a class="LinkFavoriteRemove">移除收藏</a></div>
                         <div class="clear"></div>
                     </div>                    
                 </div>
                 
-                <div class="item3">
+                <div class="item3" quesid="99999">
                 	<div class="title">
-                    	<div class="left"><input type="checkbox" value="" name="ItemQuestion" />&nbsp;&nbsp;<a href="#">Sentences Corrected:&nbsp;34355</a></div>
+                    	<div class="left"><a href="#">Sentences Corrected:&nbsp;99999</a></div>
                         <div class="right"><span>来自：</span><b>GWD</b></div>
                         <div class="clear"></div>
                     </div>
@@ -96,37 +87,23 @@
                         <div class="clear"></div>
                     </div>
                     <div class="operate">
-                    	<div class="left"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
-                        <div class="right"><a class="btn-action" class="LinkFavoriteEdit" quesid="34355">修改收藏设置</a><a href="#" class="LinkFavoriteRemove" quesid="34355">移除收藏</a></div>
+                    	<div class="left FavoriteItemTags"><span>收藏于</span><b>2010-04-04 13:57</b><span>收藏标签</span><i>考前必看</i><i>不是人做的</i><i>真TMD难</i></div>
+                        <div class="right"><a class="btn-action btn-action-blue LinkFavoriteEdit">修改收藏设置</a><a class="LinkFavoriteRemove">移除收藏</a></div>
                         <div class="clear"></div>
                     </div>                    
                 </div>
                 <div class="item4 hidden" id="AfterFavoriteRemove">
                 	<div class="content">题目&nbsp;<a href="/Question/Details/%ID%/">Sentences Corrected-%ID%</a>&nbsp;已取消收藏，重新收藏请点击&nbsp;<a href="#" class="ReAddFavorite" quesid="%ID%">恢复收藏</a></div>
                 </div>
-                <div class="bar1">
-                	<div class="left">
-                    	&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="checkbox" id="ItemQuestion" />
-                        <span>全选</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <b>批量操作</b>
-                        <select id="ItemOperate">
-                            <option selected="selected" value="cancel">取消收藏</option>
-                            <option value="tag">修改标签</option>
-                        </select>
-                        <select id="ItemTagChange" class="hidden">
-                            <option selected="selected">考前必看</option>
-                            <option>真TMD难</option>
-                        </select>
-                        <a class="btn-action">执行</a>
-                    </div>
-                    <div class="right">
-                    	<div class="barpage"><%=Html.ShowPageIndex( this.ViewData.GetPager(),"current")%></div>
-                    </div>
-                </div>
-                
+                               
             </div>
+            
+            
     	</div>
+        
+        <div class="blank5"></div>
+        <div class="listresult-more" id="GetMoreFavoriteItems">查看更多收藏&nbsp;▼</div>
+    
     </div>
     
     <div class="columnright">

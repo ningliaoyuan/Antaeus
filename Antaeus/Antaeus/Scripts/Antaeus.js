@@ -81,24 +81,71 @@ jQuery(document).ready(function($) {
     });
 	
 //Favorite页面的全选
-$("#ItemQuestion").checkAll({name:"ItemQuestion"});
-$("#ItemOperate").dropdownNext({value:"tag",object:$("#ItemTagChange")});
-$(".LinkFavoriteRemove").click(function(){
-	var qid = $(this).attr("quesid");
-	var obj = $(this).parent().parent().parent();	
+//$("#ItemQuestion").checkAll({name:"ItemQuestion"});
+//$("#ItemOperate").dropdownNext({value:"tag",object:$("#ItemTagChange")});
+$(".LinkFavoriteRemove").live("click",function(){
+	var qid = $(this).parent().parent().parent().attr("quesid");
+	var obj = $("#FavoriteItems div[quesid='"+qid+"']");
 	dFunction["FavoriteRemove"]({qID:qid,qType:"question"}, function(){		
 		obj.after("<div class='item4'>"+$("#AfterFavoriteRemove").html().replaceAll("%ID%",qid)+"</div>");
-		obj.remove();
+		obj.slideUp();
 	});
 });	
-//这里还很有问题，明天写·~~
-//$(".LinkFavoriteEdit").click(function(){
-//	var qid = $(this).attr("quesid");
-//	//首先请求这个题目的tags
-//	rFunction["FavoriteTagsGet"]({qID:qid,qType:"question"},function(data){
-//		$("#InputFavoriteTagEdit").separateInput({insert: "#FavoriteTagEditRecommend", required: false,tags:data });
-//	});
+
+$(".ReAddFavorite").live("click",function(){
+	var qid = $(this).attr("quesid");
+	var obj = $(this).parent().parent();
+	var tag = "";	
+	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
+	tag = tag.substring(1);
+	dFunction["FavoriteAddWithTags"]({qID:qid,qType:"question",tags:tag},function(){
+		$("#FavoriteItems div[quesid='"+qid+"']").slideDown();
+		obj.remove();
+	});	
+});
+
+//$("#GetMoreFavoriteItems").live("click",function(){
+//	var init = $(this).html();
+//	$(this).html("更多收藏读取中...请稍后...");
+//	rFunction["FavoriteItemsGet"]();
 //});
+
+//这里还很有问题，明天写·~~
+$(".LinkFavoriteEdit").click(function(){
+	var qid = $(this).attr("quesid");
+	//首先请求这个题目的tags
+	//rFunction["FavoriteTagsGet"]({qID:qid,qType:"question"},function(data){
+		//请求到tags后，要载入到popup显示
+		
+//		$("#PopupFavoriteEdit").dialog({ //这是对话框的基本设置
+//			autoOpen: false,
+//			width: 600,
+//			buttons: {
+//				"Ok": function() {
+//					if(fun==null){
+//						$(this).dialog("close");
+//					}else{
+//						fun();
+//					}
+//				},
+//				"Cancel": function() {
+//					$(this).dialog("close");
+//				}
+//			},
+//			open:function(){
+//				
+//			},
+//			draggable: true,
+//			modal: true,
+//			resizable:true,
+//			show:"slide"
+//		});
+//		$("#PopupFavoriteEdit").dialog("open");
+		
+		$("#FavoriteTagsInput").separateInput({insert: ".separate-select", required: false });
+		Popup("PopupFavoriteEdit");
+	//});
+});
 
 
 // =========================================================================================================
@@ -123,8 +170,8 @@ $("#WidgetFilter").filter();
 
 //3.Details那里的Tag部分的全部操作
 //3.1datail页面收藏夹的显示
-//$("#FavoriteTagAddInput").separateInput("init",{ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false });
-$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false,tags:"a,b,c" });
+$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false });
+//$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false,tags:"a,b,c" });
 //3.2初始状态的判断显示
 if(g_param.favorite){
 	$("#FavoriteAlready").show();
@@ -183,7 +230,7 @@ if ($("#FormQuestionCreate").length > 0) {
 	$("input.inp[value!='']").removeDefault();
 	//七种不同题型的不同操作
 	$("#FormQuestionCreateType").change(function() {
-		Refresh($("#FormQuestionCreateLoad"),{type:$(this).attr("value")});
+		ajaxRefresh($("#FormQuestionCreateLoad"),{type:$(this).attr("value")});
 	});
 }
 

@@ -153,8 +153,10 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-page{ display:block; float:left; background:url(../Images/1px.gif) repeat-x 0 -930px; line-height:21px; height:21px; border:1px solid #c5c5c5; border-bottom-color:#b6b6b6; border-top-color:#d3d3d3; padding-left:10px; padding-right:10px; margin-right:5px; font-size:13px; color:#000; font-weight:bolder;}
 a.btn-page:link, a.btn-page:visited, a.btn-page:hover{ color:#000; text-decoration:none;}
 
-.btn-action{ background:url(../Images/btn_small_new.gif) repeat-x; height:20px; line-height:20px; border:1px solid #22698b; color:#FFF; padding:0 5px;}
+.btn-action{ background-repeat:repeat-x; height:20px; line-height:20px; color:#FFF; padding:0 5px;}
 a.btn-action:link, a.btn-action:visited, a.btn-action:hover{ color:#FFF; text-decoration:none; cursor:pointer;}
+.btn-action-blue{ background-image:url(../Images/btn_small_blue.gif); border:1px solid #22698b;}
+.btn-action-orange{ background-image:url(../Images/btn_small_orange.gif); border:1px solid #eb7e26;}
 /* Define default form style =========================================================================================================================*/
 .formstyle .item{ padding:10px 0px; border-bottom:1px dotted #CCC; font-size:14px; *padding-bottom:0;}
 .formstyle .item-one{ padding:0; border:0;}

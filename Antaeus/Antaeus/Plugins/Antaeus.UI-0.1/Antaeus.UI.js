@@ -144,6 +144,7 @@ function Popup(id,fun){
 		resizable:true,
 		show:"slide"
     });
+	$("#"+id).dialog("open");
 }
 
 //FavoriteTagAdd函数用于添加Tag

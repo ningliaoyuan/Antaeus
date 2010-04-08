@@ -179,6 +179,7 @@
 (function($){  
 	$.fn.extend({   
 	separateInput: function(options){
+		
 		//默认参数设置
 		var defaults = {  
 			separator:',',  
@@ -187,182 +188,225 @@
 			widthCss:17,
 			required:true,
 			different:true
-		}                   
-		var options = $.extend(defaults, options);
-		return this.each(function(){  
-			var opt = options;			
-			//定义原标签的默认提示文字
-			var tip = $(this).val();
-			//外包一个显示的DIV
-			$(this).wrap("<div id='separate-container'></div>");
-			//增加一个inp用于显示并且执行所有操作
-			$(this).after("<input type='text' id='separate-inp-show' style='width:"+opt.width+"px' value='"+tip+"' />");
-			//将原有的作为不可见元素
-			$(this).css("display","none");		
-			//定义主控元素
-			var obj = $(this).next("#separate-inp-show");
-			//为了CSS调整增加一个html
-			obj.after("<div style='clear:both; font-size:1px; line-height:1px; font-size:1px;'></div>");
-			//定义各种全局变量
-			var width = opt.width;
-			var lineFirst = true;
+		};
+		//将传入参数与默认参数对比，确定最终的参数
+		var opt = $.extend(defaults, options);
+		
+		//定义控件中所有用到ID和Class属性名
+		var attr = {
+			father : "separate-container",
+			main   : "separate-inp-show",
+			item   : "separate-item",
+			clear  : "separate-item-clear",
+			fix    : "separate-inp-fix"
+		};
+		
+		//全局变量定义
+		var _obj = $(this);    //用于获得返回值控制返回值的地方		
+		var tip = _obj.val();  //定义原标签的默认提示文字
+		var width = opt.width; //用于随时获取当前宽度
+		var lineFirst = true;       //定义是否第一行		
+		
+		
+		//初始载入时要执行的函数
+		var _init = function(obj,tip){
 			//在每次程序执行前清除一遍内容，避免刷新导致的缓存
-			$(this).val("");
-			var final = $(this).val();
-			//定义获得最终值的地方
-			var obj_return = $(this);
+			_obj.val("");
+			//外包一个显示的DIV
+			obj.wrap("<div id='"+attr.father+"'></div>");
+			//增加一个inp用于显示并且执行所有操作
+			obj.after("<input type='text' id='"+attr.main+"' style='width:"+opt.width+"px' value='"+tip+"' />");
+			//将原有的作为不可见元素
+			obj.hide();			
+			//为了CSS调整增加一个html
+			$("#"+attr.main).after("<div id='"+attr.fix+"' style='clear:both; font-size:1px; line-height:1px; font-size:1px;'></div>");
 			//如果设置了为空的话，将为空信息的element隐藏
-			if(opt.requiredEl!=null) $(opt.requiredEl).hide();
-			
-			//这里是最核心的一个操作，因为要用两次，所以用函数包起来
-			function coreInsert(str){
-				//为了万恶的IE6，要专门做个修正，这个修正还是导致有1px的不完美，而且
-				if(lineFirst && opt.widthCssIE6!=null){
-					obj.before("<div class='separate-item' style='_margin-left:"+opt.widthCssIE6+"px;'><span>"+str+"</span><a>x</a></div>");
+			if(opt.requiredEl!=null) $(opt.requiredEl).hide();	
+		};
+		
+		//摧毁所有设置，让一切重回原样
+		var _destory = function(){
+			$(this).show();
+			$("#"+attr.father).before($(this).clone());
+			$("#"+attr.father).remove();
+			$(opt.insert).children("a").unbind();
+		};
+
+		//删除元素的函数
+		var _delete = function(){
+			var obj1=$(this).parent();
+			var lineChange = false;					
+			//判断当前删除元素与input之间有没有折行
+			do{
+				obj1 = obj1.next();
+				//通过折行标签判断是否折行
+				if(obj1.css("clear")=="both") lineChange = true;
+			}while(obj1.attr("id")!=$("#"+attr.main).attr("id"))			
+			//如果没有折行的话，还要进行宽度的重新计算
+			if(!lineChange){
+				//获得宽度
+				widthItem = $(this).parent().width();						
+				//重新算一下宽度
+				width = width + widthItem + opt.widthCss;				
+				//执行宽度的重置
+				$("#"+attr.main).css("width",String(width)+"px");
+			}					
+			//删除最终值
+			var temp = $(this).prev().html();					
+			//针对只有唯一的元素时的特殊判断
+			if(_obj.val().indexOf(opt.separator)<0) {
+				_obj.val("");
+			}else{
+				//针对尾部元素进行特殊的判断删除
+				if(_obj.val().indexOf(temp+opt.separator)<0){
+					_obj.val(_obj.val().replace(opt.separator+temp,""));
 				}else{
-					obj.before("<div class='separate-item'><span>"+str+"</span><a>x</a></div>");
-				}
-				lineFirst = false;
-				//计算字符占位宽度
-				var widthItem = obj.prev().width();				
-				//给新添加的html绑定事件			
-				obj.prev().children("a").bind("click",function(){				
-					var obj1=$(this).parent();
-					var lineChange = false;					
-					//判断当前删除元素与input之间有没有折行
-					do{
-						obj1 = obj1.next();
-						//通过折行标签判断是否折行
-						if(obj1.css("clear")=="both") lineChange = true;
-					}while(obj1.attr("id")!=obj.attr("id"))			
-					//如果没有折行的话，还要进行宽度的重新计算
-					if(!lineChange){
-						//获得宽度
-						widthItem = $(this).parent().width();						
-						//重新算一下宽度
-						width = width + widthItem + opt.widthCss;				
-						//执行宽度的重置
-						obj.css("width",String(width)+"px");
-					}					
-					//删除最终值
-					var temp = $(this).prev().html();					
-					//针对只有唯一的元素时的特殊判断
-					if(final.indexOf(opt.separator)<0) {
-						final="";
-					}else{
-						//针对尾部元素进行特殊的判断删除
-						if(final.indexOf(temp+opt.separator)<0){
-							final = final.replace(opt.separator+temp,"");
-						}else{
-							//常规删除
-							final = final.replace(temp+opt.separator,"");
-						}
-					}
-					obj_return.val(final);
-					//删除元素
-					$(this).parent().remove();
-				});
-				//重新计算宽度
-				width = width - widthItem - opt.widthCss;				
-				//判断是否需要折行
-				if(width<opt.widthMin){
-					obj.before("<div class='separate-item-clear' style='clear:both;'></div>");
-					lineFirst = true;
-					width = opt.width;
-				}
-				//调整位置来显示
-				obj.css("width",String(width)+"px");
-				//将最终结果写入指定的地方
-				if(final!=""){
-					final = final+opt.separator+str;					
-				}else{
-					final = final+str;
-				}
-				obj_return.val(final);
-			}
-			
-			//加了排重判断后在外面再包一个函数
-			function doInsert(str){
-				//判断是否为空的字符
-				if(str!=""){
-					//判读是否有排重
-					if(opt.different && final.indexOf(str)>=0){
-						//如果有重复的则标红提示
-						$(".separate-item").each(function(i){
-							if($.trim($(this).children().html())==str) $(this).css("border-color","#ff0000");
-						});
-					}else{
-						 coreInsert(str);
-					}
+					//常规删除
+					_obj.val(_obj.val().replace(temp+opt.separator,""));
 				}
 			}
+			//删除元素
+			$(this).parent().remove();
+		};
+		
+		//聚焦的相关操作
+		var _focus = function(){
+			if($(this).val()==tip) $(this).val("");
+			$(this).css("color","#000");
+		}
+		
+		var _keyup = function(){
+			var str = $(this).val();
+			var len = str.length;
+			//获取最后一个输入的字符
+			var str1 = str.substring(len-1,len);
+			//如果输入的是指定的分隔符
+			if(str1==opt.separator){
+				//往前面插入一个div
+				var str2 = $.trim(str.substring(0,len-1));
+				//执行函数进行操作
+				_judge(str2);					
+				//清除原来的输入框中的内容
+				$(this).val("");					
+			}
+		};
+		
+		var _blur = function(){
+			//如果用户输入了标签但是只是输入一个并没有输入分隔符的时候
+			if($(this).val()!="") {
+				_judge($.trim($(this).val()));
+				$(this).val("");
+			}
+			//如果此项输入不能为空
+			if(opt.required){
+				if(_obj.val()==""){
+					$(opt.requiredEl).show();
+				}else{
+					$(opt.requiredEl).hide();
+				}
+			}
+			//清空红色的边框
+			$("."+attr.item).css("border-color","");
+		};
+		
+		//这里是最核心的一个操作，因为要用两次，所以用函数包起来
+		function _core(obj,str){
+			
+			//如果还有默认提示的话则去除
+			if($("#"+attr.main).val()==tip) $("#"+attr.main).val("");
+			
+			//为了万恶的IE6，要专门做个修正，这个修正还是导致有1px的不完美，而且
+			if(lineFirst && opt.widthCssIE6!=null){
+				obj.before("<div class='"+attr.item+"' style='_margin-left:"+opt.widthCssIE6+"px;'><span>"+str+"</span><a>x</a></div>");
+			}else{
+				obj.before("<div class='"+attr.item+"'><span>"+str+"</span><a>x</a></div>");
+			}
+			lineFirst = false;
+			//计算字符占位宽度
+			var widthItem = obj.prev().width();				
+			//给新添加的html绑定事件			
+			$("."+attr.item+" a").bind("click",_delete);
+			//重新计算宽度
+			width = width - widthItem - opt.widthCss;				
+			//判断是否需要折行
+			if(width<opt.widthMin){
+				obj.before("<div class='"+attr.clear+"' style='clear:both;'></div>");
+				lineFirst = true;
+				width = opt.width;
+			}
+			//调整位置来显示
+			obj.css("width",String(width)+"px");
+			//将最终结果写入指定的地方
+			if(_obj.val()!=""){
+				_obj.val(_obj.val()+opt.separator+str);					
+			}else{
+				_obj.val(_obj.val()+str);
+			}
+		}		
+		
+		//加了排重判断后在外面再包一个函数
+		function _judge(str){
+			//判断是否为空的字符
+			if(str!=""){
+				//判读是否有排重
+				//var temp = _obj.val().indexOf(str);
+				//TODO：这个排重算法错了555要好好想想
+				if(opt.different && _obj.val().indexOf(str)>=0 && $.trim(_obj.val().replace(str,""))!=""){
+					
+					//if(_obj.val().substring())
+					
+					//如果有重复的则标红提示
+					$("."+attr.item).each(function(i){
+						if($.trim($(this).children().html())==str) $(this).css("border-color","#ff0000");
+					});
+				}else{
+					 _core($("#"+attr.main),str);
+				}
+			}
+		}
+		
+		
+		return this.each(function(){  	
+			
+			//执行初始化函数
+			_init(_obj,tip);					
+
 			//聚焦时删除提示文字
-			obj.focus(function(){
-				if(obj.val()==tip) obj.val("");
-				obj.css("color","#000");
-			});
+			$("#"+attr.main).bind("focus",_focus);
 			//当键盘输入文字时
-			obj.keyup(function(){
-				var str = obj.val();
-				var len = str.length;
-				//获取最后一个输入的字符
-				var str1 = str.substring(len-1,len);
-				//如果输入的是指定的分隔符
-				if(str1==opt.separator){
-					//往前面插入一个div
-					var str2 = $.trim(str.substring(0,len-1));
-					//执行函数进行操作
-					doInsert(str2);					
-					//清除原来的输入框中的内容
-					obj.val("");					
-				}			
-			});	
+			$("#"+attr.main).bind("keyup",_keyup);
+			//当输入框失去聚焦
+			$("#"+attr.main).bind("blur",_blur);
+			
 			//如果定义了链接的点击插入模式的话，执行相应的操作
 			if(opt.insert!=null){
-				$(opt.insert).children("a").bind("click",function(){
-					if(obj.val()==tip) obj.val("");
-					doInsert($.trim($(this).html()));
-				});
-			}			
-			obj.blur(function(){
-				//如果用户输入了标签但是只是输入一个并没有输入分隔符的时候
-				if(obj.val()!="") {
-					doInsert($.trim(obj.val()));
-					obj.val("");
-				}
-				//如果此项输入不能为空
-				if(opt.required){
-					if(obj_return.val()==""){
-						$(opt.requiredEl).show();
-					}else{
-						$(opt.requiredEl).hide();
-					}
-				}
-				//清空红色的边框
-				$(".separate-item").css("border-color","");
-			});
-			
-			if(opt.tags!="" && opt.tags!=null){				
-				var tag=opt.tags.split(opt.separator);
-				for(var i=0;i<tag.length;i++) {coreInsert(tag[i]);}
+				$(opt.insert).children("a").bind("click",function(){_judge($.trim($(this).html()));});
 			}
+			
+			
+
+			
+//			if(opt.tags!="" && opt.tags!=null){				
+//				var tag=opt.tags.split(opt.separator);
+//				for(var i=0;i<tag.length;i++) {coreInsert(tag[i]);}
+//			}
 			
 			
 			//这里的方法写得还是很有问题，咱时先不写了
 //			if(operate=="tag" || (opt.tags!="" && opt.tags!=null)){
 //				var tag=opt.tags.split(opt.separator);
 //				for(var i=0;i<tag.length;i++) coreInsert(tag[i]);
-//				if(obj_return.val()!=""){
-//					obj_return.val(obj_return.val()+opt.separator+opt.tags);
+//				if(_obj.val()!=""){
+//					_obj.val(_obj.val()+opt.separator+opt.tags);
 //				}else{
-//					obj_return.val(opt.tags);
+//					_obj.val(opt.tags);
 //				}
 //			}
 			//用于清除所有已输入的标签
 //			if(operate=="clear"){
 //				$("#separate-container .separate-item").remove();
-//				$("#separate-container .separate-item-clear").remove();
-//				obj_return.val("");
+//				$("#separate-container ."+attr.clear).remove();
+//				_obj.val("");
 //			}
 			
 		});  

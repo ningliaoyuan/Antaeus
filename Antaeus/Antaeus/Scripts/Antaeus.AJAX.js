@@ -131,6 +131,12 @@ rFunction["FavoriteTagsGet"] = function (param, callback) {
         function(data){ajaxCallback(data,callback);}
 	);
 };
+rFunction["FavoriteItemsGet"] = function (param, callback) {
+	//传入参数param.qType="question"
+	$.get("",
+        function(data){ajaxCallback(data,callback);}
+	);
+};
 
 //dFunction系列函数用于执行各项post类执行的AJAX操作
 var dFunction = {};
@@ -152,6 +158,12 @@ dFunction["FavoriteRemove"] = function(param, callback){
 	);
 }
 dFunction["FavoriteAddTags"] = function(param, callback){
+	//传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
+	$.get("",
+        function(data){ajaxCallback(data,callback);}
+	);
+}
+dFunction["FavoriteAddWithTags"] = function(param, callback){
 	//传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
 	$.get("",
         function(data){ajaxCallback(data,callback);}
