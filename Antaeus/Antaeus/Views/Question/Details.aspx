@@ -15,7 +15,7 @@
 	    g_param.qid = <%= Html.Encode(Model.QuestionID)%>; //题目的ID
 		g_param.qCorrect = "<%=Html.Encode(Model.Meta["CorrectMark"])%>";  //题目的正确选项
 		g_param.currentTime = new Date(); //记录页面载入当前的时间
-		g_param.favorite = "<%= MembershipHelper.GetNormalUser().HasFavorite("question", Model.QuestionID).ToString().ToLower()%>";
+		g_param.favorite = <%= MembershipHelper.GetNormalUser().HasFavorite("question", Model.QuestionID).ToString().ToLower()%>;
 	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">
