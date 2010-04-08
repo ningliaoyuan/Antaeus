@@ -37,8 +37,10 @@ namespace Antaeus.BL.Model
 
 
 
-        public void GetTags()
+        public string GetTags(string key)
         {
+            return Favorite.GetTags(key);
+
         }
 
 

@@ -211,11 +211,10 @@
                         <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
                         <p>常用标签推荐：</p>
                         <div class="tags" id="FavoriteTagRecommend">
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
+                            <%foreach (var tag in MembershipHelper.GetNormalUser().GetTags("question").Split(','))
+                              {%>
+                                  <a title="点击添加到标签输入框"><%=Html.Encode(tag) %></a>
+                            <%  } %>
                             <div class="clear"></div>
                         </div>                    
                     </div>
