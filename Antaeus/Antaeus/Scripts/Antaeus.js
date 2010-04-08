@@ -168,7 +168,7 @@ $("#WidgetFilter").filter();
 
 //3.Details那里的Tag部分的全部操作
 //3.1datail页面收藏夹的显示
-$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false });
+$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50, insert: "#FavoriteTagRecommend", required: false });
 //$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false,tags:"a,b,c" });
 //3.2初始状态的判断显示
 if(g_param.favorite){
