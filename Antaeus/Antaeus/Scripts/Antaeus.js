@@ -80,9 +80,7 @@ jQuery(document).ready(function($) {
         }
     });
 	
-//Favorite页面的全选
-//$("#ItemQuestion").checkAll({name:"ItemQuestion"});
-//$("#ItemOperate").dropdownNext({value:"tag",object:$("#ItemTagChange")});
+//Favorite页面
 $(".LinkFavoriteRemove").live("click",function(){
 	var qid = $(this).parent().parent().parent().attr("quesid");
 	var obj = $("#FavoriteItems div[quesid='"+qid+"']");
@@ -142,8 +140,8 @@ $(".LinkFavoriteEdit").click(function(){
 //		});
 //		$("#PopupFavoriteEdit").dialog("open");
 		
-		$("#FavoriteTagsInput").separateInput({insert: ".separate-select", required: false });
-		Popup("PopupFavoriteEdit");
+		$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false });
+		Popup($("#PopupFavoriteEdit"));
 	//});
 });
 
@@ -178,7 +176,7 @@ if(g_param.favorite){
 	$("#FavoriteNot").hide();
 }
 //3.3点击添加到收藏夹的操作
-$("#LinkFavoriteAdd").click(function(){
+$("#LinkFavoriteAdd").bind("click",function(){
 	FavoriteTagAdd({
 		content:"#FavoriteAddSetting",
 		father:"#LinkFavoriteAdd",

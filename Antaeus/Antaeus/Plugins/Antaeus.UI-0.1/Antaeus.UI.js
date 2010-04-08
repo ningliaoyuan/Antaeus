@@ -123,28 +123,28 @@ function FormLoginSubmit(place) {
 })(jQuery); 
 
 //Popup函数用于执行基本的Dialog调用设置
-function Popup(id,fun){
-    $("#"+id).dialog({ //这是对话框的基本设置
-        autoOpen: false,
+function Popup(obj,fun){
+    obj.dialog({ //这是对话框的基本设置
+        autoOpen: true,
         width: 600,
         buttons: {
             "Ok": function() {
-				if(fun==null){
-					$(this).dialog("close");
-				}else{
-					fun();
-				}
+//				if(fun==null){
+//					$(this).dialog("close");
+//				}else{
+//					fun();
+//				}
             },
             "Cancel": function() {
                 $(this).dialog("close");
             }
         },
-		draggable: true,
-		modal: true,
-		resizable:true,
+		draggable: false,
+		modal: false,
+		resizable:false,
 		show:"slide"
     });
-	$("#"+id).dialog("open");
+	//obj.dialog("open");
 }
 
 //FavoriteTagAdd函数用于添加Tag
@@ -160,15 +160,16 @@ function FavoriteTagAdd(div){
 		$(div.father).addClass(div.hoverClass);
 		$(div.content).slideDown("slow");
 		//取消按钮的设置
-		$(div.cancel).click(function(){								 
+		$(div.cancel).bind("click",function(){								 
 			$(div.content).slideUp("fast");
 			$(div.father).removeClass(div.hoverClass);
 			//改变显示状态
 			$("#FavoriteNot").hide();
 			$("#FavoriteAlready").show();
 			g_param.favorite = true;
+			//$(div.cancel).unbind();
 		});
-		$(div.save).click(function(){
+		$(div.save).bind("click",function(){
 			var tags = $.trim($(div.input).val());
 			if(tags==""){
 				alert("标签输入不能为空！");
@@ -180,10 +181,11 @@ function FavoriteTagAdd(div){
 					$("#FavoriteNot").hide();
 					$("#FavoriteAlready").show();
 					g_param.favorite = true;
+					//$(div.save).unbind();
 				});			
 			}
 		});
-		
+		$("#LinkFavoriteAdd").unbind();
 	});
 	
 }

@@ -33,12 +33,13 @@
                 <li><a href="#">站点设置</a></li>
                 <li><a href="#">考试题型设置</a></li>
                 <li><a href="#">APP总控中心</a></li>
-                <li class="last"><a href="#">Widget总控中心</a></li>
+                <li><a href="#">Widget总控中心</a></li>
+				<li class="last current"><a href="/General/FavoriteTagRecommend/">收藏推荐标签设置</a></li>
             </ul>
             <p>用户中心</p>
             <ul class="current">
                 <li><a href="#">站点设置</a></li>
-                <li class="current"><a href="#">考试题型设置</a></li>
+                <li><a href="#">考试题型设置</a></li>
                 <li><a href="#">APP总控中心</a></li>
                 <li class="last"><a href="#">Widget总控中心</a></li>
             </ul>

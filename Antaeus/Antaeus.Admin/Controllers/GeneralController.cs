@@ -20,6 +20,10 @@ namespace Antaeus.Admin.Controllers
         {
             return View();
         }
+        public ActionResult FavoriteTagRecommend()
+        {
+            return View();
+        }
 
     }
 }

@@ -110,7 +110,7 @@
         <div class="box3 ggarea" style="height:168px;">Advertisement Area</div>
         <div class="blank10"></div>
         <div class="box3 w-filter" id="WidgetFilter">
-        	<uc1:FilterComponent ID="FilterComponent1" runat="server" />
+        	<uc1:FilterComponent ID="FilterComponent1" runat="server" test="c,b,a"/>
         </div>
         <div class="blank10"></div>
     </div>

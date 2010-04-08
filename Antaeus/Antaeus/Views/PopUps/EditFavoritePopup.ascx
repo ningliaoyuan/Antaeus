@@ -4,7 +4,7 @@
         <div class="formstyle">
             <div class="item item-one">
                 <div class="detail">
-                    <input type="text" id="FavoriteTagsInput" class="inp inp1 separate" name="tag" value="" />
+                    <input type="text" id="FavoriteTagsEditInput" class="inp inp1 separate" name="tag" value="" />
                     <div class="blank5"></div>
                     <div class="tips">请使用英文半角逗号,分隔标签，你也可以点击下面的推荐标签直接插入</div>
                     <div class="blank5 clear"></div>

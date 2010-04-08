@@ -345,23 +345,22 @@
 		}		
 		
 		//加了排重判断后在外面再包一个函数
-		function _judge(str){
+		function _judge(str){			
 			//判断是否为空的字符
-			if(str!=""){
-				//判读是否有排重
-				//var temp = _obj.val().indexOf(str);
-				//TODO：这个排重算法错了555要好好想想
-				if(opt.different && _obj.val().indexOf(str)>=0 && $.trim(_obj.val().replace(str,""))!=""){
-					
-					//if(_obj.val().substring())
-					
-					//如果有重复的则标红提示
-					$("."+attr.item).each(function(i){
-						if($.trim($(this).children().html())==str) $(this).css("border-color","#ff0000");
-					});
-				}else{
-					 _core($("#"+attr.main),str);
-				}
+			if($.trim(str)=="") return false;			
+			var dothat = true;
+			//判读是否有排重
+			if(opt.different && $.trim(_obj.val())!=""){
+				var temp = _obj.val().split(",");
+				for (var i=0;i<temp.length;i++)	if(temp[i]==str) dothat = false;		
+			}			
+			if(dothat){
+				_core($("#"+attr.main),str);
+			}else{
+				//如果有重复的则标红提示
+				$("."+attr.item).each(function(i){
+					if($.trim($(this).children().html())==str) $(this).css("border-color","#ff0000");
+				});
 			}
 		}
 		
