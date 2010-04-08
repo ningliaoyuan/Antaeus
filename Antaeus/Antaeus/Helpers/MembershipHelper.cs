@@ -9,17 +9,16 @@ namespace Antaeus
 {
     public static class MembershipHelper
     {
-        public static string GetUserName(this HttpContextBase httpContext)
+        public static string GetUserName()
         {
             //TODO: check null object
-            return httpContext.User.Identity.Name;
+            return HttpContext.Current.User.Identity.Name;
         }
 
-        public static NormalUser GetNormalUser(this HttpContextBase httpContext)
+        public static NormalUser GetNormalUser()
         {
-            return UserFactory.GetNormalUser(httpContext.GetUserName());
+            return UserFactory.GetNormalUser(GetUserName());
         }
-
 
     }
 }

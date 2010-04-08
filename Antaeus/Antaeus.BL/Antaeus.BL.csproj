@@ -78,6 +78,10 @@
       <Project>{157703CE-C1BA-4375-AA94-3C46A8B12255}</Project>
       <Name>Antaeus.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Antaeus.MongoDB\Antaeus.MongoDB.csproj">
+      <Project>{A4650BA7-6C97-43C3-9F13-F0D3CF276877}</Project>
+      <Name>Antaeus.MongoDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Antaeus.ORM\Antaeus.ORM.csproj">
       <Project>{90F2A1C6-6B02-45B5-890B-A765A287BB3F}</Project>
       <Name>Antaeus.ORM</Name>

@@ -147,19 +147,19 @@ dFunction["RateQuestion"] = function(param, callback){
 }
 dFunction["FavoriteAdd"] = function(param, callback){
 	//传入参数param.qID=1234,param.qType="question"
-	$.get("",
+    $.get("/NormalUser/FavoriteAdd", {key:param.qType, id: param.qID},
         function(data){ajaxCallback(data,callback);}
 	);
 }
 dFunction["FavoriteRemove"] = function(param, callback){
 	//传入参数param.qID=1234,param.qType="question"
-	$.get("",
+    $.get("/NormalUser/FavoriteRemove", {key:param.qType,id: param.qID},
         function(data){ajaxCallback(data,callback);}
 	);
 }
 dFunction["FavoriteAddTags"] = function(param, callback){
-	//传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
-	$.get("",
+    //传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
+    $.get("/NormalUser/FavoriteAddTags",{key:param.qType, id : param.qID, tags:param.tags},
         function(data){ajaxCallback(data,callback);}
 	);
 }

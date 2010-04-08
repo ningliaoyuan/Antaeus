@@ -15,11 +15,10 @@
 	    g_param.qid = <%= Html.Encode(Model.QuestionID)%>; //题目的ID
 		g_param.qCorrect = "<%=Html.Encode(Model.Meta["CorrectMark"])%>";  //题目的正确选项
 		g_param.currentTime = new Date(); //记录页面载入当前的时间
-		g_param.favorite = <%=Convert.ToBoolean(this.ViewData["Tagged"]).ToString().ToLower()%>;
+		g_param.favorite = "<%= MembershipHelper.GetNormalUser().HasFavorite("question", Model.QuestionID).ToString().ToLower()%>";
 	</script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">
-
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
@@ -189,7 +188,13 @@
         <div class="box3">
 			
             <div id="FavoriteAlready" class="hidden">
-            	<div class="btn-huge btn-huge-favorite btn-huge-already"><p><b>你已经收藏了此题目</b><span><a id="LinkFavoriteRemove">将此题从收藏夹移除</a><br /><a href="/Account/Favorite/" target="_blank">去个人中心编辑收藏标签</a></span></p></div>
+            	<div class="btn-huge btn-huge-favorite btn-huge-already">
+            	    <p> <b>你已经收藏了此题目</b>
+            	        <span><a id="LinkFavoriteRemove">将此题从收藏夹移除</a><br />
+            	            <a href="/Account/Favorite/" target="_blank">去个人中心编辑收藏标签</a>
+            	        </span>
+            	    </p>
+            	</div>
        		</div>
 			<div id="FavoriteNot">
                 <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p>

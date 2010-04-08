@@ -39,7 +39,7 @@ namespace Antaeus.Controllers
         public ActionResult Edit(string keyid, string wikiContent)
         {
             var ki = new KEYID(keyid);
-            var res = WikiService.AddWikiContent(HttpContext.GetUserName(), HttpUtility.UrlDecode(wikiContent), ki, false);
+            var res = WikiService.AddWikiContent(MembershipHelper.GetUserName(), HttpUtility.UrlDecode(wikiContent), ki, false);
 
             return Content(res.ToAjaxMessage());
         }

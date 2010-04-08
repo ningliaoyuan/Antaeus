@@ -12,6 +12,8 @@ namespace Antaeus.BL.Model
         public NormalUser(string username)
         {
             Username = username;
+
+            Favorite = UserFavoriteFactory.GetUserFavorite(username);
         }
 
         public string Username
@@ -20,33 +22,36 @@ namespace Antaeus.BL.Model
             private set;
         }
 
-        public void AddFavorite(string kid, string tags)
-        {
-            string key = new KEYID(kid).KEY;
-            long id= new KEYID(kid).ID;
+        UserFavorite Favorite;
 
-            FavoriteQuestion[id] = tags;
+        public void FavoriteAdd(string key,long id, string tags)
+        {
+            Favorite.Update(key, id, tags);
             return;
         }
+
+        public void FavoriteRemove(string key, long id)
+        {
+            Favorite.Remove(key, id);
+        }
+
 
 
         public void GetTags()
         {
         }
 
-        FavoriteSet FavoriteQuestion;
 
+        public bool HasFavorite(string key, long id)
+        {
+            return Favorite.HasFavorite(key, id);
+        }
+
+       
+       
     }
 
-        
-    class Favorite:Dictionary<string,FavoriteSet>
-    {
-    }
-
-    class FavoriteSet : Dictionary<long,stirng>
-    {
-    }
-
+   
 
     public class UserFactory
     {

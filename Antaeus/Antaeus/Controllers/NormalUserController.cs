@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Antaeus.BL.Model;
+using Antaeus.BL;
 
 namespace Antaeus.Controllers
 {
@@ -28,12 +29,24 @@ namespace Antaeus.Controllers
             return null;
         }
 
-        public ActionResult AddFavorite(string kid, string tags)
+        public ActionResult FavoriteAdd(string key, long id)
         {
-            HttpContext.GetNormalUser().AddFavorite(kid, tags);
-
-            return null;
+            MembershipHelper.GetNormalUser().FavoriteAdd(key, id, string.Empty);
+            return Content(Result.Success().ToAjaxMessage());
         }
+
+        public ActionResult FavoriteAddTags(string key, long id, string tags)
+        {
+            MembershipHelper.GetNormalUser().FavoriteAdd(key, id, tags);
+            return Content(Result.Success().ToAjaxMessage());
+        }
+
+        public ActionResult FavoriteRemove(string key, long id)
+        {
+            MembershipHelper.GetNormalUser().FavoriteRemove(key, id);
+            return Content(Result.Success().ToAjaxMessage());
+        }
+        
 
         public ActionResult Answer(string kid, string answer, int correct, int cost)
         {

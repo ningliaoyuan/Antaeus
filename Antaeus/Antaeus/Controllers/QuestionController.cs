@@ -43,9 +43,6 @@ namespace Antaeus.Controllers
         {
             Question question = QuestionModel.Find(id);
 
-            string username =  HttpContext.GetUserName();
-            ViewData["tagged"] = TagService.GetTagProvider().HasBeenTagged(username, question.GetKeyId());
-      
             return View(question);
         }
 
@@ -70,7 +67,7 @@ namespace Antaeus.Controllers
             {
                 string source = collection.GetString("Source");
                 string categoryIDString = collection.GetString("CategoryID");
-                string username = HttpContext.GetUserName();
+                string username = MembershipHelper.GetUserName();
 
                 Question question;
                 Result res = QuestionModel.CreateQuestion(categoryIDString, source, username, meta, out question);
@@ -154,7 +151,7 @@ namespace Antaeus.Controllers
         public ActionResult EditAnswer(long id, string wikiContent)
         {
             var ki = new KEYID("QuestionAnswer", id);
-            var res = WikiService.AddWikiContent(HttpContext.GetUserName(), HttpUtility.UrlDecode(wikiContent), ki, false);
+            var res = WikiService.AddWikiContent(MembershipHelper.GetUserName(), HttpUtility.UrlDecode(wikiContent), ki, false);
 
             return Content("obsolete:" + res.ToAjaxMessage());
         }
@@ -162,7 +159,7 @@ namespace Antaeus.Controllers
         [Authorize]
         public ActionResult Rate(long id, int rate)
         {
-            var username = HttpContext.GetUserName();
+            var username = MembershipHelper.GetUserName();
             var res = new RateService().Rate(username, new KEYID("Question", id), rate);
 
             return Content(res.ToAjaxMessage());
@@ -170,7 +167,7 @@ namespace Antaeus.Controllers
 
         public ActionResult GetAverage(long id)
         {
-            var username = HttpContext.GetUserName();
+            var username = MembershipHelper.GetUserName();
 
             Question question = QuestionModel.Find(id);
 
@@ -181,14 +178,14 @@ namespace Antaeus.Controllers
         [Authorize]
         public ActionResult Comment(long id, string content)
         {
-            var username = HttpContext.GetUserName();
+            var username = MembershipHelper.GetUserName();
             var res = new CommentService().AddComment(username, content, new KEYID("Question", id), "0");
             return RedirectToAction("Details", new { id = id });
         }
 
         public ActionResult Answer(long id, string answer, int correct,int cost)
-        { 
-            var username = HttpContext.GetUserName();
+        {
+            var username = MembershipHelper.GetUserName();
             var res = QuestionModel.Answer(id, answer, correct, cost, username);
             return Content(res.ToAjaxMessage());
         }

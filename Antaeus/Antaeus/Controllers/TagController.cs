@@ -30,7 +30,7 @@ namespace Antaeus.Controllers
         // /Tag/Question/1001/tag1,tag2
         public ActionResult Add(string key,long id, string tags)
         {
-            var username = HttpContext.GetUserName();
+            var username = MembershipHelper.GetUserName();
 
             var res = TagProvider.Add(username, new KEYID(key, id), tags);
 

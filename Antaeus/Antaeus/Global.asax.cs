@@ -17,6 +17,12 @@ namespace Antaeus
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               "NormalUser",
+               "NormalUser/{action}",
+               new { controller = "NormalUser" }
+           );
+
+            routes.MapRoute(
                 "TagController",
                 "Tag/{action}/{tag}",
                 new { controller = "tag" }                         // Parameter defaults

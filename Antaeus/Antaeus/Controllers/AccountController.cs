@@ -216,7 +216,7 @@ namespace Antaeus.Controllers
         }
         public ActionResult Favorite()
         {
-            string username = HttpContext.GetUserName();
+            string username = MembershipHelper.GetUserName();
 
             var tags = TagService.GetTagProvider().GetTagsByUserName(username, 20);
 
