@@ -150,6 +150,9 @@ $(".LinkFavoriteEdit").click(function(){
 // 整理后的代码
 // =========================================================================================================
 
+//0.必须要执行的一些东西
+$("*[ajax='loading']").hide();
+
 
 //1.顶端登陆，每个页面都要初始载入的------------------------------------------------
 //1.1.对文本输入框载入聚焦后的提示去除
@@ -168,8 +171,7 @@ $("#WidgetFilter").filter();
 
 //3.Details那里的Tag部分的全部操作
 //3.1datail页面收藏夹的显示
-$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50, insert: "#FavoriteTagRecommend", required: false });
-//$("#FavoriteTagAddInput").separateInput({ width: 250,widthMin:50,widthCss:24, insert: "#FavoriteTagRecommend", widthCssIE6: 2, required: false,tags:"a,b,c" });
+$("#InputFavoriteTagAdd").separateInput({ width: 250,widthMin:50, insert: "#FavoriteTagRecommend", required: false });
 //3.2初始状态的判断显示
 if(g_param.favorite){
 	$("#FavoriteAlready").show();
@@ -177,26 +179,97 @@ if(g_param.favorite){
 }
 //3.3点击添加到收藏夹的操作
 $("#LinkFavoriteAdd").bind("click",function(){
-	FavoriteTagAdd({
-		content:"#FavoriteAddSetting",
-		father:"#LinkFavoriteAdd",
-		save:"#FavoriteTagSave",
-		cancel:"#FavoriteTagCancel",
-		input:"#FavoriteTagAddInput",
-		hoverClass:"btn-huge-hover"
+	//转到loading状态
+	var objLoading = $(this).next();	
+	$(this).hide();
+	objLoading.show();
+	//首先执行将题目添加到收藏夹
+	dFunction["FavoriteAdd"]({qID:g_param.qid,qType:"question"},function(){
+		objLoading.hide();
+		$("#FavoriteEnduring").show();
+		//显示收藏夹设置
+		$("#FavoriteAddSetting").slideDown("slow");
 	});
 });
-//3.4从收藏夹移除
+//3.4保存按钮操作
+$("#BtnFavoriteTagSave").bind("click",function(){
+	//转到loading状态
+	var objLoading = $(this).next();
+	var objMain = $(this);
+	$(this).hide(function(){objLoading.show();});
+	
+	var tags = $.trim($("#InputFavoriteTagAdd").val());
+	if(tags==""){
+		alert("标签输入不能为空！");
+	}else{	
+		dFunction["FavoriteAddTags"]({qID:g_param.qid,qType:"question",tags:tags}, function(){
+			$("#FavoriteAddSetting").slideUp("fast");
+			$("#LinkFavoriteAdd").removeClass("btn-huge-hover");
+			
+			//改变显示状态
+			$("#FavoriteNot").hide();
+			$("#FavoriteAlready").show();
+			g_param.favorite = true;
+			objLoading.hide();
+			objMain.show();
+		});			
+	}
+});
+//3.5取消按钮操作
+$("#BtnFavoriteTagCancel").bind("click",function(){								 
+	$("#FavoriteAddSetting").slideUp("fast");
+	$("#LinkFavoriteAdd").removeClass("btn-huge-hover");
+	//改变显示状态
+	$("#FavoriteNot").hide();
+	$("#FavoriteAlready").show();
+	g_param.favorite = true;
+});
+//3.6从收藏夹移除的操作
 $("#LinkFavoriteRemove").click(function(){
 	dFunction["FavoriteRemove"]({qID:g_param.qid,qType:"question"}, function(){
 		//改变显示状态
 		$("#FavoriteNot").show();
 		$("#FavoriteAlready").hide();
-		$("#LinkFavoriteAdd #FA1").show();
-		$("#LinkFavoriteAdd #FA2").hide();
+		$("#LinkFavoriteAdd").show();
+		$("#LinkFavoriteAdd").next().hide();
+		$("#FavoriteEnduring").hide();
+		//改变全局变量
 		g_param.favorite = false;
+		//清除输入框内的内容
+		$("#InputFavoriteTagAdd").separateInput("reload");
 	});
 });
+//3.7修改收藏夹标签的操作
+$("#LinkFavoriteEdit").click(function(){
+	var objMain=$(this);
+	var objLoading = $(this).next();
+	rFunction["FavoriteTagsGet"]({qID:g_param.qid,qType:"question"}, function(data){
+		//TODO:这里的tags应该为传入的data
+		var tags = ["aaa","bbb","ccc"];
+		//清除输入框内的内容
+		$("#InputFavoriteTagAdd").separateInput("reload");
+		//把获得的Tags置入
+		$("#InputFavoriteTagAdd").separateInput("addtags",tags);
+		//改变显示状态
+		objMain.hide();
+		objLoading.show();
+		$("#FavoriteAddSetting").slideDown("slow");
+	});
+});
+
+
+//$("#LinkFavoriteAdd").bind("click",function(){
+//	FavoriteTagAdd({
+//		content:"#FavoriteAddSetting",
+//		father:"#LinkFavoriteAdd",
+//		save:"#FavoriteTagSave",
+//		cancel:"#FavoriteTagCancel",
+//		input:"#FavoriteTagAddInput",
+//		hoverClass:"btn-huge-hover"
+//	});
+//});
+//3.4从收藏夹移除
+
 
 
 //4.具体题目页的历史记录查看

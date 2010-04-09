@@ -127,9 +127,7 @@ rFunction["FormQuestionCreateLoad"] = function (param, callback) {
 
 rFunction["FavoriteTagsGet"] = function (param, callback) {
 	//传入参数param.qID=1234,param.qType="question"
-	$.get("",
-        function(data){ajaxCallback(data,callback);}
-	);
+	$.get("",callback);
 };
 rFunction["FavoriteItemsGet"] = function (param, callback) {
 	//传入参数param.qType="question"

@@ -195,40 +195,53 @@
                         	<a id="LinkFavoriteRemove">将此题从收藏夹移除</a>
                             <br />
                             <a id="LinkFavoriteEdit">编辑收藏使用的标签</a>
+                            <font ajax="loading">正在编辑收藏使用的标签</font>
             	        </span>
             	    </p>
             	</div>
        		</div>
 			<div id="FavoriteNot">
-                <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd"><p>
-                	<b>加入到收藏夹</b>
-                    <span>
-                    	<font id="FA1">整理出一个自己的小题库，以后可以随时不断复习强化</font>
-                        <font id="FA2" class="red hidden">题目已经成功添加到收藏夹！</font>
-                    </span>
-                </p></a>
-                <div class="favorite-setting hidden" id="FavoriteAddSetting">
-                    <div class="content">
-                        <p>收藏设置：输入标签</p>
-                        <input type="text" value="" tip="使用英文半角逗号(,)分隔标签" id="FavoriteTagAddInput">
-                        <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
-                        <p>常用标签推荐：</p>
-                        <div class="tags" id="FavoriteTagRecommend">
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <a title="点击添加到标签输入框">考前必看</a>
-                            <div class="clear"></div>
-                        </div>                    
-                    </div>
-                    <div class="clear"></div>
-                    <div class="btns">
-                        <a id="FavoriteTagSave" class="btn-form-blue">保存</a>
-                        <a id="FavoriteTagCancel">取消</a>
-                    </div>
-                </div>
+                <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd">
+                	<p>
+                        <b>加入到收藏夹</b>
+                        <span>整理出一个自己的小题库，以后可以随时不断复习强化</span>
+                	</p>
+                </a>
+                <a class="btn-huge btn-huge-favorite btn-huge-hover" ajax="loading">
+                	<p>
+                		<b>加入到收藏夹</b>
+                    	<span><font class="red">操作执行中，请稍候.....</font></span>
+                	</p>
+                </a>
+                <a class="btn-huge btn-huge-favorite btn-huge-hover" id="FavoriteEnduring">
+                	<p>
+                        <b>加入到收藏夹</b>
+                        <span class="red">题目已经成功添加到收藏夹！</span>
+                	</p>
+                </a>
             </div>
+            <div class="favorite-setting hidden" id="FavoriteAddSetting">
+                <div class="content">
+                    <p>收藏设置：输入标签</p>
+                    <input type="text" value="" tip="使用英文半角逗号(,)分隔标签" id="InputFavoriteTagAdd">
+                    <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
+                    <p>常用标签推荐：</p>
+                    <div class="tags" id="FavoriteTagRecommend">
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <a title="点击添加到标签输入框">考前必看</a>
+                        <div class="clear"></div>
+                    </div>                    
+                </div>
+                <div class="clear"></div>
+                <div class="btns">
+                    <a id="BtnFavoriteTagSave" class="btn-form-blue">保存</a>
+                    <a class="btn-form-gray" ajax="loading">保存中...</a>
+                    <a id="BtnFavoriteTagCancel">取消</a>
+                </div>
+            </div> 
 
 
             <a class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>

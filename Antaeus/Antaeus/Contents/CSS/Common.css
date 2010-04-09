@@ -135,15 +135,17 @@ a.btn-small:link, a.btn-small:visited, a.btn-small:hover{ text-decoration:none;}
 .btn-huge span{ display:block; font-size:12px; color:#888;}
 .btn-huge:hover span{ color:#FFF;}
 
-.btn-huge-already{filter:alpha(opacity=50);-moz-opacity:0.5;opacity: 0.5; cursor:text;}
-.btn-huge-already p,
-.btn-huge-already span{ color:#000;}
+.btn-huge-already{ cursor:text;}
+.btn-huge-already p{ color:#aaa;}
 .btn-huge-already:hover,
 .btn-huge-already:active{ text-decoration:none; background-color:#fff; border-top:1px solid #fff; border-bottom:1px solid #fff; color:#000;}
 .btn-huge-already:hover span{ color:#000;}
+.btn-huge-already span a{ color:#FF0000;}
 
 .btn-huge-hover{ text-decoration:none; background-color:#47b5ea; border-top:1px solid #1c78a4; border-bottom:1px solid #1c78a4; color:#FFF;}
 .btn-huge-hover b, .btn-huge-hover span{ color:#FFF;}
+.btn-huge-hover span.red{ color:#FF0000;}
+
 
 /* Toggle Button ---------------------------------------------------------------------------------------------------------------------*/
 .btn-toggle-show,
