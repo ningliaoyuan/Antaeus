@@ -189,9 +189,12 @@
 			
             <div id="FavoriteAlready" class="hidden">
             	<div class="btn-huge btn-huge-favorite btn-huge-already">
-            	    <p> <b>你已经收藏了此题目</b>
-            	        <span><a id="LinkFavoriteRemove">将此题从收藏夹移除</a><br />
-            	            <a href="/Account/Favorite/" target="_blank">去个人中心编辑收藏标签</a>
+            	    <p>
+                    	<b>你已经收藏了此题目</b>
+            	        <span>
+                        	<a id="LinkFavoriteRemove">将此题从收藏夹移除</a>
+                            <br />
+                            <a id="LinkFavoriteEdit">编辑收藏使用的标签</a>
             	        </span>
             	    </p>
             	</div>
@@ -207,7 +210,7 @@
                 <div class="favorite-setting hidden" id="FavoriteAddSetting">
                     <div class="content">
                         <p>收藏设置：输入标签</p>
-                        <input type="text" value="使用逗号(,)分隔标签" id="FavoriteTagAddInput">
+                        <input type="text" value="" tip="使用英文半角逗号(,)分隔标签" id="FavoriteTagAddInput">
                         <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
                         <p>常用标签推荐：</p>
                         <div class="tags" id="FavoriteTagRecommend">

@@ -185,7 +185,7 @@ function FavoriteTagAdd(div){
 				});			
 			}
 		});
-		$("#LinkFavoriteAdd").unbind();
+		//$("#LinkFavoriteAdd").unbind();
 	});
 	
 }

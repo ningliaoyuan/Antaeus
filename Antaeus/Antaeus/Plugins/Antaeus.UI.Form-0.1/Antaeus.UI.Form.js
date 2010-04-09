@@ -172,13 +172,15 @@
 // [必须]widthCss - 数字 - 每个块状元素显示时的CSS占位宽度
 // [必选]required - 是否 - 是否可以为空
 // [必选]requiredEl - 字符串 - 为空错误信息的selector
-// [可选]widthCssIE6 - 数字 - CSS中用于调整子父级元素magrin会翻倍的bug，为定义的CSS中的margin的一半
 // [可选]insert - 字符串 - 用于插入的链接们的父级元素选择容器，CSS选择器标准填写，例如#selector
 // [必选]different - 是否 - 是否必须不一样
-// [可选]tags - 字符串 - 初始载入的tag
+// Methods:
+// object.separateInput("reload") - 清空原来所有的输入，恢复到刚刚初始载入的时候
+// object.separateInput("addtags",["tag1","tag2","tagN"]) - 给现在的插件动态添加几个tag
+// object.separateInput("destory") - 摧毁原来的插件加载，解除所有的事件绑定，释放资源，一切恢复到原始状态
 (function($){  
 	$.fn.extend({   
-	separateInput: function(options){
+	separateInput: function(options,tags){
 		
 		//默认参数设置
 		var defaults = {  
@@ -189,83 +191,84 @@
 			required:true,
 			different:true
 		};
-		//将传入参数与默认参数对比，确定最终的参数
-		var opt = $.extend(defaults, options);
+		
+		var opt;
+		var operation="";
+		if(typeof(options)=="object"){		
+			//将传入参数与默认参数对比，确定最终的参数
+			opt = $.extend(defaults, options);
+			//将参数写入全局变量
+			g_param.AntaeusUIPluginsSeparate = opt;
+		}else{
+			operation = options;
+			//读取全局变量中这个插件的原先设置值
+			opt = g_param.AntaeusUIPluginsSeparate;
+		}
 		
 		//定义控件中所有用到ID和Class属性名
 		var attr = {
 			father : "separate-container",
 			main   : "separate-input",
 			item   : "separate-item",
-//			clear  : "separate-item-clear",
 			fix    : "separate-fix",
 			wrap   : "separate-input-wrap"
 		};
 		
 		//全局变量定义
 		var _obj = $(this);    //用于获得返回值控制返回值的地方		
-		var tip = _obj.val();  //定义原标签的默认提示文字
-		var width = opt.width; //用于随时获取当前宽度
-//		var lineFirst = true;       //定义是否第一行		
 		
 		
 		//初始载入时要执行的函数
-		var _init = function(obj,tip){
+		var _init = function(){
 			//在每次程序执行前清除一遍内容，避免刷新导致的缓存
 			_obj.val("");
 			//外包一个显示的DIV
-			obj.wrap("<div id='"+attr.father+"' style='width:"+String(opt.width+2)+"px;'></div>");
+			_obj.wrap("<div id='"+attr.father+"' style='width:"+String(opt.width+2)+"px;'></div>");
 			//增加一个inp用于显示并且执行所有操作
-			obj.after("<div id='"+attr.wrap+"'><input type='text' id='"+attr.main+"' style='width:"+String(opt.width)+"px' value='"+tip+"' /></div>");
+			_obj.after("<div id='"+attr.wrap+"'><input type='text' id='"+attr.main+"' style='width:"+String(opt.width)+"px' value='"+_obj.attr("tip")+"' /></div>");
 			//将原有的作为不可见元素
-			obj.hide();			
+			_obj.hide();			
 			//为了CSS调整增加一个html
 			$("#"+attr.wrap).after("<div id='"+attr.fix+"'></div>");
 			//如果设置了为空的话，将为空信息的element隐藏
 			if(opt.requiredEl!=null) $(opt.requiredEl).hide();
-
 		};
 		
-		//摧毁所有设置，让一切重回原样
-		var _destory = function(){
-			$(this).show();
-			$("#"+attr.father).before($(this).clone());
+		//再次初始地重新载入
+		function _reload(){
+			$("."+attr.item).remove();
+			_obj.val("");
+			$("#"+attr.main).val(_obj.attr("tip"));
+			$("#"+attr.main).css("color","#ccc");
+			$("#"+attr.main).css("width",String(Number($("#"+attr.father).css("width").replace("px",""))-2)+"px");
+		}
+		
+		//中途动态地添加tag
+		function _addtags(tags){
+			for(var i=0;i<tags.length;i++) _judge(tags[i]);
+		}
+		
+		//摧毁所有的加载项，让一切都恢复到原始状态
+		function _destory(){
+			$("#"+attr.father).before(_obj.clone());
+			//释放资源
+			$("#"+attr.main).unbind();
+			$("."+attr.item+" a").die();
+			if(opt.insert!=null) $(opt.insert).children("a").unbind();	
+			//恢复显示
+			$("#"+attr.father).prev().show();
+			//删除html
 			$("#"+attr.father).remove();
-			$(opt.insert).children("a").unbind();
-		};
+		}
 
 		//删除元素的函数
-		var _delete = function(){
-			
-//			var obj1=$(this).parent();
-//			var lineChange = false;					
-			
-			//TODO：重置宽度部分的代码=========================================================================================
-			//这里的原理是应该循环获得最后一行的宽度，然后判断最后一行宽度跟widthMin之间的比较，从而重置attr.main的宽度
-			$("."+attr.item).each(function(i){
-				
-			});
-			
-			//判断当前删除元素与input之间有没有折行
-//			do{
-//				obj1 = obj1.next();
-//				//通过折行标签判断是否折行
-//				if(obj1.css("clear")=="both") lineChange = true;
-//			}while(obj1.attr("id")!=$("#"+attr.main).attr("id"))			
-//			//如果没有折行的话，还要进行宽度的重新计算
-//			if(!lineChange){
-//				//获得宽度
-//				widthItem = $(this).parent().width();						
-//				//重新算一下宽度
-//				width = width + widthItem + opt.widthCss;				
-//				//执行宽度的重置
-//				$("#"+attr.main).css("width",String(width)+"px");
-//			}
-			
-			
-			
-			//删除最终值
-			var temp = $(this).prev().html();					
+		var _delete = function(){			
+			var temp = $(this).prev().html();
+			//删除元素
+			$(this).parent().remove();			
+			//重置宽度
+			rewidth();	
+			//删除最终值								
 			//针对只有唯一的元素时的特殊判断
 			if(_obj.val().indexOf(opt.separator)<0) {
 				_obj.val("");
@@ -277,14 +280,30 @@
 					//常规删除
 					_obj.val(_obj.val().replace(temp+opt.separator,""));
 				}
-			}
-			//删除元素
-			$(this).parent().remove();
+			}			
 		};
+		
+		//重置宽度的函数
+		function rewidth(){
+			var allwidth = 0;
+			//var objstr = $(this).prev().html();
+			$("."+attr.item).each(function(i){
+				//每次累加宽度
+				allwidth = allwidth + $(this).width() + opt.widthCss;
+				//如果累加到的宽度大于行宽度了，则要折行
+				if(allwidth > opt.width) allwidth=$(this).width() + opt.widthCss;
+			});
+			//判断删除后的最后一行的宽度和现在的宽度比如何
+			if((opt.width-allwidth)>opt.widthMin){
+				$("#"+attr.main).css("width",String(opt.width-allwidth)+"px");
+			}else{
+				$("#"+attr.main).css("width",String(opt.width)+"px");
+			}
+		}
 		
 		//聚焦的相关操作
 		var _focus = function(){
-			if($(this).val()==tip) $(this).val("");
+			if($(this).val()==_obj.attr("tip")) $(this).val("");
 			$(this).css("color","#000");
 		}
 		
@@ -321,34 +340,13 @@
 		};
 		
 		//这里是最核心的一个操作，因为要用两次，所以用函数包起来
-		function _core(str){
-			
+		function _core(str){			
 			//如果还有默认提示的话则去除
-			if($("#"+attr.main).val()==tip) $("#"+attr.main).val("");
+			if($("#"+attr.main).val()==_obj.attr("tip")) $("#"+attr.main).val("");
 			//添加一个特殊显示的Tag
 			$("#"+attr.wrap).before("<div class='"+attr.item+"'><span>"+str+"</span><a></a></div>");
-
-			//计算字符占位宽度
-			var widthItem = $("#"+attr.wrap).prev().width();				
-			//给新添加的html绑定事件
-			//TODO:这里有死循环，删除还要重写，因为已经没有折行的clear的判断了=====================================================================
-			//$("#"+attr.wrap).prev().children("a").bind("click",_delete);
-			//重新计算宽度
-			width = width - widthItem - opt.widthCss;				
-			//判断是否需要折行
-			if(width<opt.widthMin){
-				//如果需要折行，则需要重置宽度
-				//重置宽度的话，又分为两种模式，需要将新添加的item的宽度与input的宽度做对比				
-				if($("#"+attr.main).width()<(widthItem+opt.widthCss)){
-					//1.新添加的元素也折行,input也折行
-					width = opt.width - widthItem - opt.widthCss;
-				}else{
-					//2.新添加的元素不折行，input折行
-					width = opt.width;
-				}
-			}
-			//调整位置来显示
-			$("#"+attr.main).css("width",String(width)+"px");
+			//重置宽度
+			rewidth();
 			//将最终结果写入指定的地方
 			if(_obj.val()!=""){
 				_obj.val(_obj.val()+opt.separator+str);					
@@ -358,12 +356,10 @@
 		}		
 		
 		//加了排重判断后在外面再包一个函数
-		function _judge(str){
-			
+		function _judge(str){			
 			//判断是否为空的字符
 			if($.trim(str)=="") return false;
-			var dothat = true;
-			
+			var dothat = true;			
 			//为了防止用户输入得太快了，把分隔符也输入进去了
 			str = str.split(opt.separator);
 			for(var j=0;j<str.length;j++){				
@@ -387,49 +383,23 @@
 		
 		return this.each(function(){  	
 			
-			//执行初始化函数
-			_init(_obj,tip);					
-
-			//聚焦时删除提示文字
-			$("#"+attr.main).bind("focus",_focus);
-			//当键盘输入文字时
-			$("#"+attr.main).bind("keyup",_keyup);
-			//当输入框失去聚焦
-			$("#"+attr.main).bind("blur",_blur);
-//			//动态地给删除绑定事件
-			$("."+attr.item+" a").live("click",_delete);
-			
-			//如果定义了链接的点击插入模式的话，执行相应的操作
-			if(opt.insert!=null){
-				$(opt.insert).children("a").bind("click",function(){_judge($.trim($(this).html()));});
-			}
-			
-			
-
-			
-//			if(opt.tags!="" && opt.tags!=null){				
-//				var tag=opt.tags.split(opt.separator);
-//				for(var i=0;i<tag.length;i++) {coreInsert(tag[i]);}
-//			}
-			
-			
-			//这里的方法写得还是很有问题，咱时先不写了
-//			if(operate=="tag" || (opt.tags!="" && opt.tags!=null)){
-//				var tag=opt.tags.split(opt.separator);
-//				for(var i=0;i<tag.length;i++) coreInsert(tag[i]);
-//				if(_obj.val()!=""){
-//					_obj.val(_obj.val()+opt.separator+opt.tags);
-//				}else{
-//					_obj.val(opt.tags);
-//				}
-//			}
-			//用于清除所有已输入的标签
-//			if(operate=="clear"){
-//				$("#separate-container .separate-item").remove();
-//				$("#separate-container ."+attr.clear).remove();
-//				_obj.val("");
-//			}
-			
+			if(operation==""){			
+				//执行初始化函数
+				_init();
+				//聚焦时删除提示文字
+				$("#"+attr.main).bind("focus",_focus);
+				//当键盘输入文字时
+				$("#"+attr.main).bind("keyup",_keyup);
+				//当输入框失去聚焦
+				$("#"+attr.main).bind("blur",_blur);
+				//动态地给删除绑定事件
+				$("."+attr.item+" a").live("click",_delete);			
+				//如果定义了链接的点击插入模式的话，执行相应的操作
+				if(opt.insert!=null) $(opt.insert).children("a").bind("click",function(){_judge($.trim($(this).html()));});				
+			}			
+			if(operation=="reload") _reload();			
+			if(operation=="destory") _destory();	
+			if(operation=="addtags" && tags!=null && tags!="") _addtags(tags);			
 		});  
 	}  
 	});      
