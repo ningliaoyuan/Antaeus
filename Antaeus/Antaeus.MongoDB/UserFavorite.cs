@@ -154,7 +154,7 @@ namespace Antaeus
         {
             var res = from item in List.Values.OfType<Document>()
                       where item.Get<string>("key") == key && item.Get<string>("tags").Split(',').Contains(tag)
-                      orderby item.Get<long>("id")
+                      orderby item.Get<long>("id") descending
                       select item.Get<long>("id");
                       
             return res.ToList();
@@ -163,7 +163,7 @@ namespace Antaeus
         {
             var res = from item in List.Values.OfType<Document>()
                       where item.Get<string>("key") == key
-                      orderby item.Get<long>("id")
+                      orderby item.Get<long>("id") descending
                       select item.Get<long>("id");
 
             return res.ToList();
@@ -183,7 +183,19 @@ namespace Antaeus
             return item != null;
         }
 
+
+        public List<long> GetIds(string key, long minId, int count)
+        {
+            var res = from item in List.Values.OfType<Document>()
+                      where item.Get<string>("key") == key && item.Get<long>("id") < minId
+                      orderby item.Get<long>("id") descending
+                      select item.Get<long>("id");
+
+            return res.Take(count).ToList();
+        }
+
         #endregion
+
     }
 
 

@@ -37,8 +37,15 @@ namespace Antaeus.BL.Model
 
 
 
-        public void GetTags()
+        public string GetTags(string key)
         {
+            return Favorite.GetTags(key);
+
+        }
+
+        public string GetTags(string key, long id)
+        {
+            return Favorite.GetTags(key, id);
         }
 
 
@@ -47,8 +54,14 @@ namespace Antaeus.BL.Model
             return Favorite.HasFavorite(key, id);
         }
 
-       
-       
+
+
+
+
+        public List<long> GetIds(string key, long minId, int count)
+        {
+            return Favorite.GetIds(key, minId, count);
+        }
     }
 
    

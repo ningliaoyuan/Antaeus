@@ -220,6 +220,8 @@
                 	</p>
                 </a>
             </div>
+			
+
             <div class="favorite-setting hidden" id="FavoriteAddSetting">
                 <div class="content">
                     <p>收藏设置：输入标签</p>
@@ -227,11 +229,10 @@
                     <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
                     <p>常用标签推荐：</p>
                     <div class="tags" id="FavoriteTagRecommend">
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
-                        <a title="点击添加到标签输入框">考前必看</a>
+                        <%foreach (var tag in MembershipHelper.GetNormalUser().GetTags("question").Split(','))
+                          {%>
+                              <a title="点击添加到标签输入框"><%=Html.Encode(tag) %></a>
+                        <%  } %>
                         <div class="clear"></div>
                     </div>                    
                 </div>
@@ -241,8 +242,7 @@
                     <a class="btn-form-gray" ajax="loading">保存中...</a>
                     <a id="BtnFavoriteTagCancel">取消</a>
                 </div>
-            </div> 
-
+            </div>
 
             <a class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
             <a class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
