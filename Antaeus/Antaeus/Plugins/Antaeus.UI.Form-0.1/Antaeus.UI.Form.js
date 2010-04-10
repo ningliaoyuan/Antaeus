@@ -246,6 +246,7 @@
 		//中途动态地添加tag
 		function _addtags(tags){
 			for(var i=0;i<tags.length;i++) _judge(tags[i]);
+			rewidth();
 		}
 		
 		//摧毁所有的加载项，让一切都恢复到原始状态

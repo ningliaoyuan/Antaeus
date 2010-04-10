@@ -147,49 +147,6 @@ function Popup(obj,fun){
 	//obj.dialog("open");
 }
 
-//FavoriteTagAdd函数用于添加Tag
-function FavoriteTagAdd(div){
-	
-	//首先执行将题目添加到收藏夹
-	dFunction["FavoriteAdd"]({qID:g_param.qid,qType:"question"},function(){
-		//添加到收藏夹操作成功后
-		//首先改变提示文字
-		$("#LinkFavoriteAdd #FA1").hide();
-		$("#LinkFavoriteAdd #FA2").show();
-		//显示收藏夹设置
-		$(div.father).addClass(div.hoverClass);
-		$(div.content).slideDown("slow");
-		//取消按钮的设置
-		$(div.cancel).bind("click",function(){								 
-			$(div.content).slideUp("fast");
-			$(div.father).removeClass(div.hoverClass);
-			//改变显示状态
-			$("#FavoriteNot").hide();
-			$("#FavoriteAlready").show();
-			g_param.favorite = true;
-			//$(div.cancel).unbind();
-		});
-		$(div.save).bind("click",function(){
-			var tags = $.trim($(div.input).val());
-			if(tags==""){
-				alert("标签输入不能为空！");
-			}else{	
-				dFunction["FavoriteAddTags"]({qID:g_param.qid,qType:"question",tags:tags}, function(){
-					$(div.content).slideUp("fast");
-					$(div.father).removeClass(div.hoverClass);
-					//改变显示状态
-					$("#FavoriteNot").hide();
-					$("#FavoriteAlready").show();
-					g_param.favorite = true;
-					//$(div.save).unbind();
-				});			
-			}
-		});
-		//$("#LinkFavoriteAdd").unbind();
-	});
-	
-}
-
 //PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
 function PopupAJAX(target,fun){	
 	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
@@ -309,8 +266,7 @@ function TabActive(data) {
 		var options = $.extend(defaults, options);
 		return this.each(function(){ 
 			var opt = options;
-			var obj = $(this);			
-			
+			var obj = $(this);		
 			obj.bind("click",function(){
 				var DoTime = new Date();
 				var TheTime = parseInt((DoTime-opt.currentTime)/1000);
@@ -332,3 +288,12 @@ function TabActive(data) {
 	}
 	});      
 })(jQuery); 
+
+
+
+
+
+
+
+
+

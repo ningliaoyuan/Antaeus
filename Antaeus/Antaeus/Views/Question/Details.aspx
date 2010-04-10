@@ -186,41 +186,25 @@
     <div class="columnright">
     	<div class="blank10"></div>
         <div class="box3">
-			
-            <div id="FavoriteAlready" class="hidden">
-            	<div class="btn-huge btn-huge-favorite btn-huge-already">
-            	    <p>
-                    	<b>你已经收藏了此题目</b>
-            	        <span>
-                        	<a id="LinkFavoriteRemove">将此题从收藏夹移除</a>
-                            <br />
-                            <a id="LinkFavoriteEdit">编辑收藏使用的标签</a>
-                            <font ajax="loading">正在编辑收藏使用的标签</font>
-            	        </span>
-            	    </p>
-            	</div>
-       		</div>
-			<div id="FavoriteNot">
-                <a class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd">
-                	<p>
-                        <b>加入到收藏夹</b>
-                        <span>整理出一个自己的小题库，以后可以随时不断复习强化</span>
-                	</p>
-                </a>
-                <a class="btn-huge btn-huge-favorite btn-huge-hover" ajax="loading">
-                	<p>
-                		<b>加入到收藏夹</b>
-                    	<span><font class="red">操作执行中，请稍候.....</font></span>
-                	</p>
-                </a>
-                <a class="btn-huge btn-huge-favorite btn-huge-hover" id="FavoriteEnduring">
-                	<p>
-                        <b>加入到收藏夹</b>
-                        <span class="red">题目已经成功添加到收藏夹！</span>
-                	</p>
-                </a>
+                               
+            <div class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd">
+                <p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p>
             </div>
-			
+            <div class="btn-huge btn-huge-favorite btn-huge-hover" ajax="loading">
+                <p><b>加入到收藏夹</b><span><font class="red">操作执行中，请稍候.....</font></span></p>
+            </div>
+            <div class="btn-huge btn-huge-favorite btn-huge-hover hidden">
+                <p><b>加入到收藏夹</b><span><font class="red">题目已经成功添加到收藏夹！</font><br />你可以设置使用什么标签来分类</span></p>
+            </div>
+			<div class="btn-huge btn-huge-favorite btn-huge-already hidden" id="FavoriteAlready">
+                <p><b>你已经收藏了此题目</b><span><a id="LinkFavoriteRemove">将此题从收藏夹移除</a><br /><a id="LinkFavoriteEdit">编辑收藏使用的标签</a></span></p>
+            </div>
+            <div class="btn-huge btn-huge-favorite btn-huge-already" ajax="loading">
+                <p><b>你已经收藏了此题目</b><span><font class="red">操作执行中，请稍候.....</font></span></p>
+            </div>
+            <div class="btn-huge btn-huge-favorite btn-huge-hover hidden">
+                <p><b>编辑收藏用标签</b><span>使用标签整理自己的题目收藏，更加便于找到题目</span></p>
+            </div>		
 
             <div class="favorite-setting hidden" id="FavoriteAddSetting">
                 <div class="content">

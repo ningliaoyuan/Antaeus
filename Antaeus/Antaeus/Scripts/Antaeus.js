@@ -170,23 +170,24 @@ $("#WidgetFilter").filter();
 
 
 //3.Details那里的Tag部分的全部操作
-//3.1datail页面收藏夹的显示
-$("#InputFavoriteTagAdd").separateInput({ width: 250,widthMin:50, insert: "#FavoriteTagRecommend", required: false });
-//3.2初始状态的判断显示
+//3.1判断默认显示状态
 if(g_param.favorite){
 	$("#FavoriteAlready").show();
-	$("#FavoriteNot").hide();
+	$("#LinkFavoriteAdd").hide();
 }
+//3.2初始的separateInput插件的初始化
+$("#InputFavoriteTagAdd").separateInput({ width: 250,widthMin:50, insert: "#FavoriteTagRecommend", required: false });
 //3.3点击添加到收藏夹的操作
 $("#LinkFavoriteAdd").bind("click",function(){
-	//转到loading状态
-	var objLoading = $(this).next();	
-	$(this).hide();
-	objLoading.show();
+	//转到Loading状态
+	$("#LinkFavoriteAdd").hide();
+	$("#LinkFavoriteAdd").next().show();
 	//首先执行将题目添加到收藏夹
 	dFunction["FavoriteAdd"]({qID:g_param.qid,qType:"question"},function(){
-		objLoading.hide();
-		$("#FavoriteEnduring").show();
+		g_param.favorite = true;
+		//改变显示状态
+		$("#LinkFavoriteAdd").next().hide();
+		$("#LinkFavoriteAdd").next().next().show();
 		//显示收藏夹设置
 		$("#FavoriteAddSetting").slideDown("slow");
 	});
@@ -196,20 +197,21 @@ $("#BtnFavoriteTagSave").bind("click",function(){
 	//转到loading状态
 	var objLoading = $(this).next();
 	var objMain = $(this);
-	$(this).hide(function(){objLoading.show();});
-	
+	$(this).hide(function(){objLoading.show();});	
 	var tags = $.trim($("#InputFavoriteTagAdd").val());
 	if(tags==""){
 		alert("标签输入不能为空！");
 	}else{	
 		dFunction["FavoriteAddTags"]({qID:g_param.qid,qType:"question",tags:tags}, function(){
 			$("#FavoriteAddSetting").slideUp("fast");
-			$("#LinkFavoriteAdd").removeClass("btn-huge-hover");
-			
 			//改变显示状态
-			$("#FavoriteNot").hide();
-			$("#FavoriteAlready").show();
-			g_param.favorite = true;
+			$(".btn-huge-favorite").hide();
+			if(g_param.favorite){
+				$("#FavoriteAlready").show();
+			}else{
+				$("#LinkFavoriteAdd").show();
+			}
+			//改变本身的Loading状态
 			objLoading.hide();
 			objMain.show();
 		});			
@@ -217,32 +219,36 @@ $("#BtnFavoriteTagSave").bind("click",function(){
 });
 //3.5取消按钮操作
 $("#BtnFavoriteTagCancel").bind("click",function(){								 
+	//收起菜单
 	$("#FavoriteAddSetting").slideUp("fast");
-	$("#LinkFavoriteAdd").removeClass("btn-huge-hover");
 	//改变显示状态
-	$("#FavoriteNot").hide();
-	$("#FavoriteAlready").show();
-	g_param.favorite = true;
+	$(".btn-huge-favorite").hide();
+	if(g_param.favorite){
+		$("#FavoriteAlready").show();
+	}else{
+		$("#LinkFavoriteAdd").show();
+	}
 });
 //3.6从收藏夹移除的操作
 $("#LinkFavoriteRemove").click(function(){
+	//进入loading状态
+	$("#FavoriteAlready").hide();
+	$("#FavoriteAlready").next().show();
 	dFunction["FavoriteRemove"]({qID:g_param.qid,qType:"question"}, function(){
-		//改变显示状态
-		$("#FavoriteNot").show();
-		$("#FavoriteAlready").hide();
-		$("#LinkFavoriteAdd").show();
-		$("#LinkFavoriteAdd").next().hide();
-		$("#FavoriteEnduring").hide();
 		//改变全局变量
 		g_param.favorite = false;
 		//清除输入框内的内容
 		$("#InputFavoriteTagAdd").separateInput("reload");
+		//改变显示状态
+		$("#FavoriteAlready").next().hide();
+		$("#LinkFavoriteAdd").show();
 	});
 });
 //3.7修改收藏夹标签的操作
 $("#LinkFavoriteEdit").click(function(){
-	var objMain=$(this);
-	var objLoading = $(this).next();
+	//改变显示状态到Loading
+	$("#FavoriteAlready").hide();
+	$("#FavoriteAlready").next().show();	
 	rFunction["FavoriteTagsGet"]({qID:g_param.qid,qType:"question"}, function(data){
 		//TODO:这里的tags应该为传入的data
 		var tags = ["aaa","bbb","ccc"];
@@ -251,24 +257,11 @@ $("#LinkFavoriteEdit").click(function(){
 		//把获得的Tags置入
 		$("#InputFavoriteTagAdd").separateInput("addtags",tags);
 		//改变显示状态
-		objMain.hide();
-		objLoading.show();
+		$("#FavoriteAlready").next().hide();
+		$("#FavoriteAlready").next().next().show();
 		$("#FavoriteAddSetting").slideDown("slow");
 	});
 });
-
-
-//$("#LinkFavoriteAdd").bind("click",function(){
-//	FavoriteTagAdd({
-//		content:"#FavoriteAddSetting",
-//		father:"#LinkFavoriteAdd",
-//		save:"#FavoriteTagSave",
-//		cancel:"#FavoriteTagCancel",
-//		input:"#FavoriteTagAddInput",
-//		hoverClass:"btn-huge-hover"
-//	});
-//});
-//3.4从收藏夹移除
 
 
 

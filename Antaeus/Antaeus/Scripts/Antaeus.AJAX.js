@@ -112,6 +112,9 @@ $.ajaxSetup({
 	}
 });
 
+//var ajaxFunction = {};
+//ajaxFunction["RateAverge"] = function(param){var r;$.get("/Question/GetAverage/"+param.qID, function(data){r=data;});return r;}
+
 
 //rFunction系列函数用于执行各项refresh的AJAX操作
 var rFunction = {};
@@ -185,7 +188,34 @@ function ajaxCallback(data,callback){
 	callback();
 }
 
+function ajaxRequest(id,param,callback,opt){
+	//获得主控元素
+	var obj = $(opt.main);
+	//将主控元素写入全局变量，这个主要是给在任何地方控制出错回滚用的
+	g_param.ajaxEnduringObj = obj;
+	//进入loading状态
+	ajaxLoading();
+	//执行并获得ajax请求的结果
+	var result = ajaxFunction[id](param);
+	//对结果做错误处理
+	if(result.substring(0,6)=="error:"){
+		alert(result.replace("error:",""));
+		ajaxLoading();
+	}else{
+		if(callback=="refresh")	$("#"+obj.attr("refreshme")).html(data);
+		if(typeof(callback)=="function") callback(data,opt);
+		ajaxLoading();
+	}
+}
 
-
-
+//函数ajaxLoading用于执行让ajax请求的主控元素进入loading状态或者回滚
+function ajaxLoading(){
+	//从全局变量中获得主控元素
+	var obj=g_param.ajaxEnduringObj;
+	//判断主控元素有没有loading装态
+	if(obj.next().attr("ajax")=="loading"){
+		obj.next().toggle();
+		obj.toggle();
+	}
+}
 

@@ -38,20 +38,6 @@ a{ cursor:pointer;}
 a:link,a:visited{ color:#0479a7; text-decoration:none;}
 a:hover,a:active{ color:#FF0000; text-decoration:underline;}
 
-/* Define the most useful classes======================================================================================= */
-.clear{ clear:both; font-size:0px; line-height:0px; height:0px;}
-.hidden{ display:none;}
-.notvisable{ visibility:hidden;}
-.noborder{ border:0;}
-.nopadding{ padding:0;}
-.nomargin{ margin:0;}
-.blank5{ height:5px; font-size:5px; line-height:5px; clear:both;}
-.blank10{ height:10px; font-size:10px; line-height:10px; clear:both;}
-.blank15{ height:15px; font-size:15px; line-height:15px; clear:both;}
-.left{ float:left;}
-.right{ float:right;}
-#dialogCover{ display:none; position:absolute; left:0; top:0; width:100%; height:100%; background-color:#000; z-index:99;}
-
 /* Color Define =========================================================================================================================*/
 /* Define background-color type -------------------------------------------------------------------------------------------------------*/
 .bgc-red    { background-color:#df0101;}
@@ -268,3 +254,17 @@ a.btn-action:link, a.btn-action:visited, a.btn-action:hover{ color:#FFF; text-de
 #separate-input{ border:0; font-size:14px; height:14px; line-height:14px; color:#AAA;}
 #separate-input-wrap{ float:left; height:18px; padding-top:2px;}
 #separate-fix{clear:both; font-size:1px; line-height:1px; font-size:1px; height:1px;}
+
+/* Define the most useful classes======================================================================================= */
+.clear{ clear:both; font-size:0px; line-height:0px; height:0px;}
+.hidden{ display:none;}
+.notvisable{ visibility:hidden;}
+.noborder{ border:0;}
+.nopadding{ padding:0;}
+.nomargin{ margin:0;}
+.blank5{ height:5px; font-size:5px; line-height:5px; clear:both;}
+.blank10{ height:10px; font-size:10px; line-height:10px; clear:both;}
+.blank15{ height:15px; font-size:15px; line-height:15px; clear:both;}
+.left{ float:left;}
+.right{ float:right;}
+#dialogCover{ display:none; position:absolute; left:0; top:0; width:100%; height:100%; background-color:#000; z-index:99;}
