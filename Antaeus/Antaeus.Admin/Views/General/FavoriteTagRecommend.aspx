@@ -5,16 +5,18 @@
 </asp:Content>
 
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
+<% string tags = AdminParameters.Get(AdminParameters.SuggesttedTagsForUserFavorite); %>
+
     <h1>全局设置&nbsp;&gt;&nbsp;设置收藏默认推荐标签</h1>
     <div class="main">
     	<h2>当前正在使用的标签</h2>
-        <p>标签1,标签2,标签3</p>
+        <p><%=tags %></p>
         <h2>设置标签</h2>
-    	<form class="formstyle">
+    	<form class="formstyle" method="post">
         	<div class="item">
                 <div class="title">输入标签<span>*</span></div>
                 <div class="detail">
-                    <textarea class="textarea inp1"></textarea>
+                    <textarea name="tags" class="textarea inp1"><%=tags %></textarea>
                 </div>
                 <div class="clear"></div>                        
             </div>
