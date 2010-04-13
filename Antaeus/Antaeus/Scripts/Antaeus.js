@@ -73,10 +73,16 @@ jQuery(document).ready(function($) {
         captionEl: $("#RateCap"),
         cancelShow: false,
         callback: function(ui, type, value) {
-			dFunction["RateQuestion"](
-				{qID:g_param.qid,qValue:value},
-				function(){ajaxRefresh($("#RateAverge"),{qID:g_param.qid});}
-			);			
+			var obj=$("#Rate");
+
+			ajaxRequest(obj,{qID:g_param.qid,qValue:value},function(){
+				ajaxRefresh($("#RateAverge"),{qID:g_param.qid});
+			});
+			
+//			dFunction["RateQuestion"](
+//				{qID:g_param.qid,qValue:value},
+//				function(){ajaxRefresh($("#RateAverge"),{qID:g_param.qid});}
+//			);			
         }
     });
 	

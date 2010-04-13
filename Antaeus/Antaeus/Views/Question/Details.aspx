@@ -44,8 +44,8 @@
         </div>
         <div class="rateandnext right">
             <div class="rate">
-                <span>此题的价值为&nbsp;<b id="RateAverge" refreshme="RateAverge"><%=Model.GetAverage().ToString("0.0")%></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
-                <div id="Rate" rel="<%=Model.QuestionID %>">
+                <span>此题的价值为&nbsp;<b id="RateAverge" ajaxrefresh="RateAverge"><%=Model.GetAverage().ToString("0.0")%></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
+                <div id="Rate" ajaxrequest="RateQuestion">
 	                <%=Html.RateSelect(Model.GetAverage())%>
                 </div>
                 <!--<div id="Rating" class="hidden">正在投票中...</div> -->              
