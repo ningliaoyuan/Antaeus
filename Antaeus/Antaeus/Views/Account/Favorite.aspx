@@ -35,7 +35,7 @@
                 </div>
                 <%foreach (var item in Model)
                   {%>
-                       <div class="item3" quesid="<%= Html.Encode(item.QuestionID) %>">
+                <div class="item3" quesid="<%= Html.Encode(item.QuestionID) %>">
                 	<div class="title">
                     	<div class="left"><a href="#">Sentences Corrected:&nbsp;<%= Html.Encode(item.QuestionID) %></a></div>
                         <div class="right"><span>来自：</span><b><%= Html.Encode(item.Source) %></b></div>
@@ -58,14 +58,17 @@
 		                    <i><%=Html.Encode(tag) %></i>
 	                    <%}%>
                     	</div>
-                        <div class="right"><a class="btn-action btn-action-blue LinkFavoriteEdit">修改收藏设置</a><a class="LinkFavoriteRemove">移除收藏</a></div>
+                        <div class="right">
+                        	<a class="btn-action btn-action-blue LinkFavoriteEdit">修改收藏设置</a>
+                            <a class="LinkFavoriteRemove" ajaxrequest="FavoriteRemove">移除收藏</a>
+                            <a ajaxstatus="loading">操作中...</a></div>
                         <div class="clear"></div>
                     </div>                    
                 </div>
                 <%} %>
                 
                 <div class="item4 hidden" id="AfterFavoriteRemove">
-                	<div class="content">题目&nbsp;<a href="/Question/Details/%ID%/">Sentences Corrected-%ID%</a>&nbsp;已取消收藏，重新收藏请点击&nbsp;<a href="#" class="ReAddFavorite" quesid="%ID%">恢复收藏</a></div>
+                	<div class="content">题目&nbsp;<a href="/Question/Details/%ID%/">Sentences Corrected-%ID%</a>&nbsp;已取消收藏，重新收藏请点击&nbsp;<a class="ReAddFavorite" quesid="%ID%" ajaxrequest="FavoriteAddTags">恢复收藏</a><a ajaxstatus="loading">操作执行中...</a></div>
                 </div>
                                
             </div>

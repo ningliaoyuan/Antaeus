@@ -16,7 +16,7 @@
                 <span>
                     <%= Html.ViewData.ModelState.IsValid?string.Empty:"出错啦出错啦，看看下面哪里输错了！！！" %></span>
             </div>
-            <%using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "FormSubmit" }))
+            <%using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "FormRegister" }))
               {%>
             <div class="form">
                 <div class="item">
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="submit">
-                <a href="#" class="btn-big-2 FormSubmit">
+                <a class="btn-big-2" id="FormRegisterSubmit">
                     <p>
                         <b>马上注册</b><br />
                         <span>享受最全面的服务</span></p>

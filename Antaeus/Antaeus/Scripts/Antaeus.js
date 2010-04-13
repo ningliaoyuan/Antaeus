@@ -74,39 +74,13 @@ jQuery(document).ready(function($) {
         cancelShow: false,
         callback: function(ui, type, value) {
 			var obj=$("#Rate");
-
 			ajaxRequest(obj,{qID:g_param.qid,qValue:value},function(){
 				ajaxRefresh($("#RateAverge"),{qID:g_param.qid});
-			});
-			
-//			dFunction["RateQuestion"](
-//				{qID:g_param.qid,qValue:value},
-//				function(){ajaxRefresh($("#RateAverge"),{qID:g_param.qid});}
-//			);			
+			});		
         }
     });
 	
-//Favorite页面
-$(".LinkFavoriteRemove").live("click",function(){
-	var qid = $(this).parent().parent().parent().attr("quesid");
-	var obj = $("#FavoriteItems div[quesid='"+qid+"']");
-	dFunction["FavoriteRemove"]({qID:qid,qType:"question"}, function(){		
-		obj.after("<div class='item4'>"+$("#AfterFavoriteRemove").html().replaceAll("%ID%",qid)+"</div>");
-		obj.slideUp();
-	});
-});	
 
-$(".ReAddFavorite").live("click",function(){
-	var qid = $(this).attr("quesid");
-	var obj = $(this).parent().parent();
-	var tag = "";	
-	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
-	tag = tag.substring(1);
-	dFunction["FavoriteAddWithTags"]({qID:qid,qType:"question",tags:tag},function(){
-		$("#FavoriteItems div[quesid='"+qid+"']").slideDown();
-		obj.remove();
-	});	
-});
 
 //$("#GetMoreFavoriteItems").live("click",function(){
 //	var init = $(this).html();
@@ -115,8 +89,9 @@ $(".ReAddFavorite").live("click",function(){
 //});
 
 //这里还很有问题，明天写·~~
-$(".LinkFavoriteEdit").click(function(){
-	var qid = $(this).attr("quesid");
+
+//$(".LinkFavoriteEdit").click(function(){
+	//var qid = $(this).attr("quesid");
 	//首先请求这个题目的tags
 	//rFunction["FavoriteTagsGet"]({qID:qid,qType:"question"},function(data){
 		//请求到tags后，要载入到popup显示
@@ -146,10 +121,10 @@ $(".LinkFavoriteEdit").click(function(){
 //		});
 //		$("#PopupFavoriteEdit").dialog("open");
 		
-		$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false });
-		Popup($("#PopupFavoriteEdit"));
+//		$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false });
+//		Popup($("#PopupFavoriteEdit"));
 	//});
-});
+//});
 
 
 // =========================================================================================================
@@ -233,7 +208,8 @@ $("#LinkFavoriteRemove").click(function(){
 		//改变全局变量
 		g_param.favorite = false;
 		//清除输入框内的内容
-		$("#InputFavoriteTagAdd").separateInput("reload");	
+		$("#InputFavoriteTagAdd").separateInput("reload");
+		$("#InputFavoriteTagAdd").attr("tags","");
 		//改变显示状态
 		$("#FavoriteAlready").hide();
 		$("#LinkFavoriteAdd").show();
@@ -257,6 +233,49 @@ $("#LinkFavoriteEdit").click(function(){
 	$("#InputFavoriteTagAdd").separateInput("rewidth");
 });
 
+$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false });
+		
+
+//3.8Favorite页面移除收藏
+$(".LinkFavoriteRemove").live("click",function(){
+	var qid = $(this).parent().parent().parent().attr("quesid");
+	var obj = $("#FavoriteItems div[quesid='"+qid+"']");
+	var requestobj = $(this);
+	ajaxRequest(requestobj,{qID:qid,qType:"question"},function(){
+		obj.after("<div class='item4'>"+$("#AfterFavoriteRemove").html().replaceAll("%ID%",qid)+"</div>");
+		obj.slideUp();
+	});
+});	
+//3.9Favorite页面重新收藏
+$(".ReAddFavorite").live("click",function(){	
+	var qid = $(this).attr("quesid");
+	var obj = $(this).parent().parent();	
+	var tag = "";	
+	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
+	tag = tag.substring(1);	
+	var requestobj = $(this);
+	ajaxRequest(requestobj,{qID:qid,qType:"question",tags:tag},function(){
+		$("#FavoriteItems div[quesid='"+qid+"']").slideDown();
+		obj.remove();
+	});	
+});
+//3.10Favorite页面编辑收藏标签
+$(".LinkFavoriteEdit").live("click",function(){
+	//获得QuestionID
+	var qid = $(this).parent().parent().parent().attr("quesid");
+	//获得Tag
+	var tag = "";	
+	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
+	tag = tag.substring(1);
+	//首先清空输入框
+	$("#FavoriteTagsEditInput").separateInput("reload");
+	//将取到的Tag写入
+	if(tag!="") $("#FavoriteTagsEditInput").separateInput("addtags",tag.split(","));
+	
+	Popup($("#PopupFavoriteEdit"));
+	//$("#InputFavoriteTagAdd").attr("tags","");
+	
+});
 
 
 //4.具体题目页的历史记录查看
@@ -308,4 +327,13 @@ $("#CommentSubmit").click(function(){
 $(".QuestionChoiceSelect").questionRecord({qid:g_param.qid,currentTime:g_param.currentTime,correct:g_param.qCorrect});
 
 
+$("#FormRegisterSubmit").click(function(){
+	//alert("haha");
+	$("#FormRegister").submit();
 });
+
+
+
+
+});
+
