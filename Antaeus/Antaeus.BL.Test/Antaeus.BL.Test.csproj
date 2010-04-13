@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminParametersTest.cs" />
     <Compile Include="DBTemp.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

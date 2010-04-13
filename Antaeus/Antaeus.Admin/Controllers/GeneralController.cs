@@ -25,5 +25,16 @@ namespace Antaeus.Admin.Controllers
             return View();
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult FavoriteTagRecommend(string tags)
+        {
+            if (!string.IsNullOrEmpty(tags))
+            {
+                AdminParameters.Set(AdminParameters.SuggesttedTagsForUserFavorite, tags);
+            }
+
+            return RedirectToAction("FavoriteTagRecommend");
+        }
+
     }
 }

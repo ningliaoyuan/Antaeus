@@ -96,6 +96,7 @@
     <Content Include="Views\Category\Edit.aspx" />
     <Content Include="Views\Category\Index.aspx" />
     <Content Include="Views\Category\Sidebar.ascx" />
+    <Content Include="Views\General\FavoriteTagRecommend.aspx" />
     <Content Include="Views\General\Fliter.aspx" />
     <Content Include="Views\General\Index.aspx" />
     <Content Include="Web.config" />
@@ -121,6 +122,10 @@
     <ProjectReference Include="..\Antaeus.BL\Antaeus.BL.csproj">
       <Project>{176E0ECE-37C7-4587-A3AD-F403C800CE6A}</Project>
       <Name>Antaeus.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Antaeus.MongoDB\Antaeus.MongoDB.csproj">
+      <Project>{A4650BA7-6C97-43C3-9F13-F0D3CF276877}</Project>
+      <Name>Antaeus.MongoDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\Antaeus.ORM\Antaeus.ORM.csproj">
       <Project>{90F2A1C6-6B02-45B5-890B-A765A287BB3F}</Project>

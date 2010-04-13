@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminParameters.cs" />
     <Compile Include="FavoriteItem.cs" />
     <Compile Include="IFavoriteProvider.cs" />
     <Compile Include="ItemBase.cs" />
