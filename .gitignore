@@ -111,3 +111,9 @@
 /Antaeus/ExternalProjects/MongoDB.Driver/obj/Debug/MongoDB.Driver.csproj.FileListAbsolute.txt
 /Antaeus/ExternalProjects/MongoDB.Driver/obj/Debug/MongoDB.Driver.dll
 /Antaeus/ExternalProjects/MongoDB.Driver/obj/Debug/MongoDB.Driver.pdb
+/Antaeus/TestResults/
+/Antaeus/Antaeus.BL.Test/bin/
+/Antaeus/Antaeus.BL.Test/obj/Debug/TempPE/DBTemp.designer.cs.dll
+/Antaeus/Antaeus.MongoDB/obj/Debug/Refactor/Antaeus.MongoDB.dll
+/Antaeus/Antaeus/obj/Debug/Refactor/Antaeus.dll
+/Antaeus/ExternalProjects/MongoDB.Driver/obj/Debug/Refactor/MongoDB.Driver.dll
