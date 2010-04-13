@@ -60,6 +60,18 @@ namespace Antaeus.BL.Test
             mongo.Disconnect();
         }
 
+        public void FavoriteUpdate_Multiple()
+        {
+            string connstr = ConfigurationManager.AppSettings["mongoDBTest"];
+            var mongo = new Mongo(connstr);
+            mongo.Connect();
+
+            var testDB = mongo.GetDatabase("myTest");
+            UserFavorite fav = new UserFavorite(testDB, "lynn");
+
+            fav.Update("q", 1, "t1,t2,t2");
+        }
+
         bool Compare(string list1, string list2)
         {
             var l1 = list1.Split(',').Distinct().OrderBy(i => i);
