@@ -205,8 +205,8 @@
 
             <div class="favorite-setting hidden" id="FavoriteAddSetting">
                 <div class="content">
-                    <p>收藏设置：输入标签</p>
-                    <input type="text" value="" tip="使用英文半角逗号(,)分隔标签" id="InputFavoriteTagAdd">
+                    <p>收藏设置：输入标签</p>                    
+                    <input type="text" value="" tip="使用英文半角逗号(,)分隔标签" id="InputFavoriteTagAdd" tags="<%=MembershipHelper.GetNormalUser().GetTags("question",Model.QuestionID) %>" />
                     <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
                     <p>常用标签推荐：</p>
                     <div class="tags" id="FavoriteTagRecommend">
