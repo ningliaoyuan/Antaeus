@@ -109,113 +109,90 @@ $.ajaxSetup({
 		if(textStatus=="notmodified") s1="因为请求页面无变化，";
 		if(textStatus=="parsererror") s1="因为请求地址不存在，";
 		alert(s1+s2);
+		if(g_param.ajaxEnduringObj!=null && typeof(g_param.ajaxEnduringObj)=="object")	ajaxLoading(g_param.ajaxEnduringObj);
 	}
 });
 
-//var ajaxFunction = {};
-//ajaxFunction["RateAverge"] = function(param){var r;$.get("/Question/GetAverage/"+param.qID, function(data){r=data;});return r;}
+//所有AJAX的直接请求URL判断与控制
+var ajaxFunction = {};
+ajaxFunction["RateAverge"]             = function(param, callback){$.get("/Question/GetAverage/"+param.qID, callback);}
+ajaxFunction["LogonContent"]           = function(param, callback){$.get("/Account/LogOnUserControl", callback);};
+ajaxFunction["FormQuestionCreateLoad"] = function(param, callback){$.get("/Question/Form/" + param.type, callback);};
+ajaxFunction["FavoriteAdd"]            = function(param, callback){$.get("/NormalUser/FavoriteAdd", {key:param.qType, id: param.qID},callback);}
+ajaxFunction["FavoriteRemove"]         = function(param, callback){$.get("/NormalUser/FavoriteRemove", {key:param.qType,id: param.qID}, callback);}
+ajaxFunction["FavoriteAddTags"]        = function(param, callback){$.get("/NormalUser/FavoriteAddTags",{key:param.qType, id : param.qID, tags:param.tags},callback);}
 
-
-//rFunction系列函数用于执行各项refresh的AJAX操作
-var rFunction = {};
-rFunction["RateAverge"] = function(param, callback){
-    $.get("/Question/GetAverage/" + param.qID, callback);
-}
-rFunction["LogonContent"] = function (param, callback) {
-    $.get("/Account/LogOnUserControl", callback);
-};
-rFunction["FormQuestionCreateLoad"] = function (param, callback) {
-	$.get("/Question/Form/" + param.type, callback);
-};
-
-rFunction["FavoriteTagsGet"] = function (param, callback) {
-	//传入参数param.qID=1234,param.qType="question"
-	$.get("",callback);
-};
-rFunction["FavoriteItemsGet"] = function (param, callback) {
-	//传入参数param.qType="question"
-	$.get("",
-        function(data){ajaxCallback(data,callback);}
-	);
-};
-
-//dFunction系列函数用于执行各项post类执行的AJAX操作
-var dFunction = {};
-dFunction["RateQuestion"] = function(param, callback){
-	$.get("/Question/Rate/" + param.qID, { rate: param.qValue },
-        function(data){ajaxCallback(data,callback);}
-	);
-}
-dFunction["FavoriteAdd"] = function(param, callback){
-	//传入参数param.qID=1234,param.qType="question"
-    $.get("/NormalUser/FavoriteAdd", {key:param.qType, id: param.qID},
-        function(data){ajaxCallback(data,callback);}
-	);
-}
-dFunction["FavoriteRemove"] = function(param, callback){
-	//传入参数param.qID=1234,param.qType="question"
-    $.get("/NormalUser/FavoriteRemove", {key:param.qType,id: param.qID},
-        function(data){ajaxCallback(data,callback);}
-	);
-}
-dFunction["FavoriteAddTags"] = function(param, callback){
-    //传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
-    $.get("/NormalUser/FavoriteAddTags",{key:param.qType, id : param.qID, tags:param.tags},
-        function(data){ajaxCallback(data,callback);}
-	);
-}
-dFunction["FavoriteAddWithTags"] = function(param, callback){
-	//传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
-	$.get("",
-        function(data){ajaxCallback(data,callback);}
-	);
-}
+////rFunction系列函数用于执行各项refresh的AJAX操作
+//var rFunction = {};
+//
+//rFunction["FavoriteTagsGet"] = function (param, callback) {
+//	//传入参数param.qID=1234,param.qType="question"
+//	$.get("",callback);
+//};
+//rFunction["FavoriteItemsGet"] = function (param, callback) {
+//	//传入参数param.qType="question"
+//	$.get("",
+//        function(data){ajaxCallback(data,callback);}
+//	);
+//};
+//
+////dFunction系列函数用于执行各项post类执行的AJAX操作
+//var dFunction = {};
+//dFunction["RateQuestion"] = function(param, callback){
+//	$.get("/Question/Rate/" + param.qID, { rate: param.qValue },
+//        callback
+//	);
+//}
+//
+//dFunction["FavoriteAddWithTags"] = function(param, callback){
+//	//传入参数param.qID=1234,param.qType="question",param.tags="tag1,tag2,tag3"
+//	$.get("",
+//        function(data){ajaxCallback(data,callback);}
+//	);
+//}
 
 
 //Refresh函数用于调用AJAX来自我刷新
-function ajaxRefresh(eid, param) {
-    var f = eid.attr("refreshme");
-    $(eid).html("loading...");
-    rFunction[f](param, function(data) { $(eid).html(data); });
+function ajaxRefresh(obj, param) {
+    var f = obj.attr("ajaxrefresh");
+    obj.html("loading...");
+    ajaxFunction[f](param, function(data) { obj.html(data); });
 }
 
-function ajaxCallback(data,callback){
-//	if (data == "ok") {
-//		callback();
-//	} else {
-//		alert("操作失败！请重试，如果还是失败请联系管理员！");
-//	}
-	callback();
-}
+//obj发起请求的html上的obj
+//param要请求的url相关需要的参数
+//callback请求结束后要执行的函数
 
-function ajaxRequest(id,param,callback,opt){
-	//获得主控元素
-	var obj = $(opt.main);
+function ajaxRequest(obj,param,callback){
 	//将主控元素写入全局变量，这个主要是给在任何地方控制出错回滚用的
 	g_param.ajaxEnduringObj = obj;
-	//进入loading状态
-	ajaxLoading();
-	//执行并获得ajax请求的结果
-	var result = ajaxFunction[id](param);
-	//对结果做错误处理
-	if(result.substring(0,6)=="error:"){
-		alert(result.replace("error:",""));
-		ajaxLoading();
-	}else{
-		if(callback=="refresh")	$("#"+obj.attr("refreshme")).html(data);
-		if(typeof(callback)=="function") callback(data,opt);
-		ajaxLoading();
+	
+	if(obj.attr("ajaxrequest")!=null && obj.attr("ajaxrequest")!=""){
+		//发起请求的obj进入loading状态
+		ajaxLoading(obj);
+		//执行并获得ajax请求的结果
+		ajaxFunction[obj.attr("ajaxrequest")](param,function(data){
+			//请求结束了返回非loading状态
+			ajaxLoading(obj);
+			//判断请求返回的结果
+			if(data.substring(0,6)=="error:"){
+				alert(data.replace("error:",""));			
+			}else{
+				callback(data);
+			}
+		});	
 	}
 }
 
 //函数ajaxLoading用于执行让ajax请求的主控元素进入loading状态或者回滚
-function ajaxLoading(){
+function ajaxLoading(obj){
 	//从全局变量中获得主控元素
-	var obj=g_param.ajaxEnduringObj;
+	//var obj=g_param.ajaxEnduringObj;
 	//判断主控元素有没有loading装态
-	if(obj.next().attr("ajax")=="loading"){
+	if(obj.next().attr("ajaxstatus")=="loading"){
 		obj.next().toggle();
 		obj.toggle();
 	}
 }
+
 
