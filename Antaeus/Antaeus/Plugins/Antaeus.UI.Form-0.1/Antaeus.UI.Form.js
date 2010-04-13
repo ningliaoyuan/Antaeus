@@ -285,7 +285,7 @@
 		};
 		
 		//重置宽度的函数
-		function rewidth(){
+		function rewidth(){			
 			var allwidth = 0;
 			//var objstr = $(this).prev().html();
 			$("."+attr.item).each(function(i){
@@ -399,7 +399,8 @@
 				if(opt.insert!=null) $(opt.insert).children("a").bind("click",function(){_judge($.trim($(this).html()));});				
 			}			
 			if(operation=="reload") _reload();			
-			if(operation=="destory") _destory();	
+			if(operation=="destory") _destory();
+			if(operation=="rewidth") rewidth();
 			if(operation=="addtags" && tags!=null && tags!="") _addtags(tags);			
 		});  
 	}  

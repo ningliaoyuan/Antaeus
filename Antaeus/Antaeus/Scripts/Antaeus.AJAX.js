@@ -124,11 +124,7 @@ ajaxFunction["FavoriteAddTags"]        = function(param, callback){$.get("/Norma
 
 ////rFunction系列函数用于执行各项refresh的AJAX操作
 //var rFunction = {};
-//
-//rFunction["FavoriteTagsGet"] = function (param, callback) {
-//	//传入参数param.qID=1234,param.qType="question"
-//	$.get("",callback);
-//};
+
 //rFunction["FavoriteItemsGet"] = function (param, callback) {
 //	//传入参数param.qType="question"
 //	$.get("",
