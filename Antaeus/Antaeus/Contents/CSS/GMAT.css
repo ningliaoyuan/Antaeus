@@ -110,7 +110,7 @@ Version 0.1, Created by Lanslot at 2009/6/14 0:19
 .listresult .item3 .main .number b i{ font-size:12px; color:#000; font-style:normal;}
 .listresult .item3 .main .number span{ display:block;}
 .listresult .item3 .main .points{ float:left;}
-.listresult .item3 .main .update{ float:right; width:140px; text-align:right;}
+.listresult .item3 .main .update{ float:right; width:165px; text-align:right;}
 .listresult .item3 .operate{ background-color:#e2f6ff; height:32px; line-height:32px; margin-top:5px; padding-left:5px; padding-right:5px;}
 .listresult .item3 .operate span{ display:block; float:left; color:#aaa;}
 .listresult .item3 .operate b{ display:block; float:left; color:#666; font-weight:normal; padding-left:3px; padding-right:10px;}
