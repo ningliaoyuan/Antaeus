@@ -21,6 +21,7 @@ $.ajaxSetup({
 
 //所有AJAX的直接请求URL判断与控制
 var ajaxFunction = {};
+ajaxFunction["Login"]                  = function(param, callback){$.post("/Account/Logon/",{Username:param.un, Password: param.psd, RememberMe: param.remember}, callback);}
 ajaxFunction["RateAverge"]             = function(param, callback){$.get("/Question/GetAverage/"+param.qID, callback);}
 ajaxFunction["RateQuestion"]           = function(param, callback){$.get("/Question/Rate/" + param.qID, { rate: param.qValue },callback);}
 ajaxFunction["LogonContent"]           = function(param, callback){$.get("/Account/LogOnUserControl", callback);};
@@ -38,8 +39,9 @@ function ajaxRefresh(obj, param) {
 
 //obj发起请求的html上的obj
 //param要请求的url相关需要的参数
-//callback请求结束后要执行的函数
-function ajaxRequest(obj,param,callback){
+//callback请求结束成功后要执行的函数
+//error请求失败后要执行的函数
+function ajaxRequest(obj,param,callback,error){
 	//将主控元素写入全局变量，这个主要是给在任何地方控制出错回滚用的
 	g_param.ajaxEnduringObj = obj;
 	if(obj.attr("ajaxrequest")!=null && obj.attr("ajaxrequest")!=""){		
@@ -51,7 +53,11 @@ function ajaxRequest(obj,param,callback){
 			ajaxLoading(obj);
 			//判断请求返回的结果
 			if(data.substring(0,6)=="error:"){
-				alert(data.replace("error:",""));			
+				if(error==null){
+					alert(data.replace("error:",""));
+				}else{
+					error(data.replace("error:",""));
+				}
 			}else{
 				callback(data);
 			}
