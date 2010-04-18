@@ -24,6 +24,7 @@ var ajaxFunction = {};
 ajaxFunction["Login"]                  = function(param, callback){$.post("/Account/Logon/",{Username:param.un, Password: param.psd, RememberMe: param.remember}, callback);}
 ajaxFunction["RateAverge"]             = function(param, callback){$.get("/Question/GetAverage/"+param.qID, callback);}
 ajaxFunction["RateQuestion"]           = function(param, callback){$.get("/Question/Rate/" + param.qID, { rate: param.qValue },callback);}
+ajaxFunction["QuestionRecord"]         = function(param, callback){$.get("/Question/Answer/" + param.qID, {answer:param.answer, correct:param.correct, cost:param.time},callback);}
 ajaxFunction["LogonContent"]           = function(param, callback){$.get("/Account/LogOnUserControl", callback);};
 ajaxFunction["FormQuestionCreateLoad"] = function(param, callback){$.get("/Question/Form/" + param.type, callback);};
 ajaxFunction["FavoriteAdd"]            = function(param, callback){$.get("/NormalUser/FavoriteAdd", {key:param.qType, id: param.qID},callback);}

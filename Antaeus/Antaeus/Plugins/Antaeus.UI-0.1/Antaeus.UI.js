@@ -244,8 +244,8 @@ function TabActive(data) {
 				}else{
 					$(opt.wrongID).show();
 				}
-	
-				$.get("/Question/Answer/"+id,{answer:Answer, correct:Correct, cost:TheTime});
+				
+				ajaxFunction["QuestionRecord"]({qID:id,answer:Answer, correct:Correct, time:TheTime},function(){});
 				
 				$(opt.unbindSelecter).unbind("click");
 			});
