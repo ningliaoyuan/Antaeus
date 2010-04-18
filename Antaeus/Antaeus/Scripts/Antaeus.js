@@ -233,7 +233,7 @@ $("#LinkFavoriteEdit").click(function(){
 	$("#InputFavoriteTagAdd").separateInput("rewidth");
 });
 
-$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false });
+
 		
 
 //3.8Favorite页面移除收藏
@@ -260,6 +260,8 @@ $(".ReAddFavorite").live("click",function(){
 	});	
 });
 //3.10Favorite页面编辑收藏标签
+$("#PopupFavoriteEdit").popup();
+$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false, width:450 });
 $(".LinkFavoriteEdit").live("click",function(){
 	//获得QuestionID
 	var qid = $(this).parent().parent().parent().attr("quesid");
@@ -272,8 +274,8 @@ $(".LinkFavoriteEdit").live("click",function(){
 	//将取到的Tag写入
 	if(tag!="") $("#FavoriteTagsEditInput").separateInput("addtags",tag.split(","));
 	
-	Popup($("#PopupFavoriteEdit"));
-	//$("#InputFavoriteTagAdd").attr("tags","");
+	//打开Popup界面
+	$("#PopupFavoriteEdit").popup("open");
 	
 });
 

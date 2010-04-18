@@ -123,49 +123,49 @@ function FormLoginSubmit(place) {
 })(jQuery); 
 
 //Popup函数用于执行基本的Dialog调用设置
-function Popup(obj,fun){
-    obj.dialog({ //这是对话框的基本设置
-        autoOpen: true,
-        width: 600,
-        buttons: {
-            "Ok": function() {
-//				if(fun==null){
-//					$(this).dialog("close");
-//				}else{
-//					fun();
-//				}
-            },
-            "Cancel": function() {
-                $(this).dialog("close");
-            }
-        },
-		draggable: false,
-		modal: false,
-		resizable:false,
-		show:"slide"
-    });
-	//obj.dialog("open");
-}
+//function Popup(obj,fun){
+//    obj.dialog({ //这是对话框的基本设置
+//        autoOpen: true,
+//        width: 600,
+//        buttons: {
+//            "Ok": function() {
+////				if(fun==null){
+////					$(this).dialog("close");
+////				}else{
+////					fun();
+////				}
+//            },
+//            "Cancel": function() {
+//                $(this).dialog("close");
+//            }
+//        },
+//		draggable: false,
+//		modal: false,
+//		resizable:false,
+//		show:"slide"
+//    });
+//	//obj.dialog("open");
+//}
 
 //PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
-function PopupAJAX(target,fun){	
-	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
-	var divID="Dialog"+String(parseInt(Math.random()*100000));		
-	$("body").append("<div id='"+divID+"' class='hidden'></div>");
-	var divObj = $("#"+divID);
-	//为了避免网速问题，加入载入中的显示
-	divObj.attr("title","内容载入中...");
-	divObj.html("内容载入中...");
-	divObj.load(target.substring(1), {}, function() {
-		//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
-		divObj.attr("title",divObj.children().attr("title"));
-		$(".ui-dialog-title").html(divObj.children().attr("title"));				
-	});
-	//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
-	var Dialog = Popup(divID,fun);
-	divObj.dialog("open");
-	return false;
-}
+//function PopupAJAX(target,fun){	
+//	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
+//	var divID="Dialog"+String(parseInt(Math.random()*100000));		
+//	$("body").append("<div id='"+divID+"' class='hidden'></div>");
+//	var divObj = $("#"+divID);
+//	//为了避免网速问题，加入载入中的显示
+//	divObj.attr("title","内容载入中...");
+//	divObj.html("内容载入中...");
+//	divObj.load(target.substring(1), {}, function() {
+//		//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
+//		divObj.attr("title",divObj.children().attr("title"));
+//		$(".ui-dialog-title").html(divObj.children().attr("title"));				
+//	});
+//	//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
+//	var Dialog = Popup(divID,fun);
+//	divObj.dialog("open");
+//	return false;
+//}
 
 //TabActive方法用于Tab效果
 function TabActive(data) {
@@ -364,14 +364,21 @@ function TabActive(data) {
 			//在IE6的情况下，当windows窗口变化时自动调整cover的高度
 			//IE6不支持positon:fixed的属性，因此需要用absolute这样子来强制控制高度
 			if($.browser.msie && $.browser.version=="6.0"){
-				//调整cover的高度
+				//调整cover的高度和宽度
 				$("#"+_cid).css("position","absolute");
 				$("#"+_cid).height(_panelHeight());
-				$(window).resize(function(){$("#"+_cid).height(_panelHeight());});
+				$("#"+_cid).width($(window).width());
+				
 				//调整main的高度
 				$("#"+_id).css("position","absolute");
 				$("#"+_id).css("top",String(_scrollHeight())+"px");
-				$(window).resize(function(){$("#"+_id).css("top",String(_scrollHeight())+"px");});
+				
+				$(window).resize(function(){
+					$("#"+_cid).height(_panelHeight());
+					$("#"+_cid).width($(window).width());
+					$("#"+_id).css("top",String(_scrollHeight())+"px");
+				});
+				//TODO:出横向滚动条的时候的位置变化，现在只有纵向的
 				$(window).scroll(function(){$("#"+_id).css("top",String(_scrollHeight())+"px");});
 			}else{
 				//初始化cover的高度
@@ -414,16 +421,16 @@ function TabActive(data) {
 		
 		//打开popup
 		var _open = function(){
-			$("#"+_cid).show(function(){
-				$("#"+_cid).fadeTo("fast",0.5,function(){
-					$("#"+_id).fadeIn("fast");
-				});
+			$("#"+_cid).css("display","block");
+			//不知道为啥jQuery1.4.2的fadeTo失效了
+			$("#"+_cid).animate({opacity: '+0.5'}, "fast",function(){
+				$("#"+_id).fadeIn("fast");
 			});
 		};
 		//关闭popup
 		var _close = function(){
 			$("#"+_id).fadeOut("fast",function(){
-				$("#"+_cid).fadeTo("fast",0,function(){
+				$("#"+_cid).fadeOut("fast",function(){
 					$("#"+_cid).hide();
 				});
 			});
