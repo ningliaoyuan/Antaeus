@@ -260,7 +260,19 @@ $(".ReAddFavorite").live("click",function(){
 	});	
 });
 //3.10Favorite页面编辑收藏标签
-$("#PopupFavoriteEdit").popup();
+$("#PopupFavoriteEdit").popup({ajax:"FavoriteAddTags",submit:function(){
+	//读取ajax相关的东西
+	var o = $("#AntaeusUIPopupPopupFavoriteEdit .popup-save");
+	var tag=$("#FavoriteTagsEditInput").val();
+	var qid=$("#PopupFavoriteEdit").attr("quesid");
+	//执行AJAX的请求
+	ajaxRequest(o,{qID:qid,qType:"question",tags:tag},function(){
+		//自刷新原来应该显示tag的地方
+		
+		//关闭popup
+		$("#PopupFavoriteEdit").popup("close");
+	});
+}});
 $("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false, width:450 });
 $(".LinkFavoriteEdit").live("click",function(){
 	//获得QuestionID
@@ -274,6 +286,8 @@ $(".LinkFavoriteEdit").live("click",function(){
 	//将取到的Tag写入
 	if(tag!="") $("#FavoriteTagsEditInput").separateInput("addtags",tag.split(","));
 	
+	//将AJAX需要的qid写入到popup主控
+	$("#PopupFavoriteEdit").attr("quesid",qid);
 	//打开Popup界面
 	$("#PopupFavoriteEdit").popup("open");
 	

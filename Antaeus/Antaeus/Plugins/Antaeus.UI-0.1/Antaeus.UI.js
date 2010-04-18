@@ -298,6 +298,7 @@ function TabActive(data) {
 //[必须]save - 字符 - 保存按钮的文字
 //[必须]cancel - 字符 - 取消按钮的文字
 //[必须]submit - 函数 - 保存按钮的函数
+//[必须]ajax - 字符 - ajax操作的标识符，如果为空的话，则意味着没有ajax操作
 //[可选]cancel - 函数 - 取消按钮的函数
 //[可选]top - 数字 - 垂直方向位置。如果不写这个的话，将会默认在页面正中间显示，否则将按照这个参数值来显示位置
 (function($){  
@@ -307,7 +308,8 @@ function TabActive(data) {
 		var defaults = { 
 			width        : 500,
 			save         : "保&nbsp;&nbsp;存",
-			cancel       : "取消"
+			cancel       : "取消",
+			ajax         : ""
 		};                   
 		var opt;
 		var operation="";
@@ -331,7 +333,8 @@ function TabActive(data) {
 			button : "popup-button",
 			save   : "popup-save",
 			cancel : "popup-cancel",
-			cover  : "popup-cover"
+			cover  : "popup-cover",
+			loading: "popup-loading"
 		};
 		
 		//获得确定的页面的高度，IE6专用
@@ -358,7 +361,14 @@ function TabActive(data) {
 			
 			_obj.parent().wrap("<div id='"+_id+"' class='"+attr.main+"' style='width:"+String(opt.width)+"px; margin-left:-"+tempH+"px;'></div>");
 			$("#"+_id+" ."+attr.content).before("<div class='"+attr.title+"'><span>"+_obj.attr("title")+"</span><a class='"+attr.close+"'>&nbsp;</a></div>");
-			$("#"+_id+" ."+attr.content).after("<div class='"+attr.button+"'><a class='"+attr.save+"'>"+opt.save+"</a><a class='"+attr.cancel+"'>"+opt.cancel+"</a></div>");
+			//这里需要根据ajax的状态来判断写入什么样的按钮代码
+			var s1="<div class='"+attr.button+"'><a class='"+attr.save+"'>"+opt.save+"</a>";
+			var s2="<a class='"+attr.cancel+"'>"+opt.cancel+"</a></div>";
+			if(opt.ajax==""){
+				$("#"+_id+" ."+attr.content).after(s1+s2);
+			}else{
+				$("#"+_id+" ."+attr.content).after(s1+"<a class='"+attr.loading+"' ajaxstatus='loading' style='display:none'>操作中...</a>"+s2);
+			}
 			$("#"+_id).after("<div id='"+_cid+"' class='"+attr.cover+"'></div>");
 		
 			//在IE6的情况下，当windows窗口变化时自动调整cover的高度
@@ -396,13 +406,13 @@ function TabActive(data) {
 			
 			//绑定保存的函数
 			if(opt.submit!=null && typeof(opt.submit)=="function") {
-				$("#"+_id+" ."+attr.save).bind("click",opt.submit);
+				$("#"+_id+" ."+attr.save).bind("click",{obj:$(this)},opt.submit);
 			}else{
 				$("#"+_id+" ."+attr.save).bind("click",_close);
 			}
 			//绑定取消的函数
 			if(opt.withdraw!=null && typeof(opt.withdraw)=="function"){
-				$("#"+_id+" ."+attr.cancel).bind("click",opt.withdraw);
+				$("#"+_id+" ."+attr.cancel).bind("click",{obj:$(this)},opt.withdraw);
 			}else{
 				$("#"+_id+" ."+attr.cancel).bind("click",_close);
 			}
