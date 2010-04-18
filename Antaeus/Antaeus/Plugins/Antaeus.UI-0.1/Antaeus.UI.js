@@ -292,6 +292,154 @@ function TabActive(data) {
 
 
 
+//popup方法用于弹出popup选择窗口
+//Parameters:
+//[必须]width - 宽度 - popup窗口的宽度
+//[必须]save - 字符 - 保存按钮的文字
+//[必须]cancel - 字符 - 取消按钮的文字
+//[必须]submit - 函数 - 保存按钮的函数
+//[可选]cancel - 函数 - 取消按钮的函数
+//[可选]top - 数字 - 垂直方向位置。如果不写这个的话，将会默认在页面正中间显示，否则将按照这个参数值来显示位置
+(function($){  
+	$.fn.extend({   
+	popup: function(options){
+		//默认参数设置
+		var defaults = { 
+			width        : 500,
+			save         : "保&nbsp;&nbsp;存",
+			cancel       : "取消"
+		};                   
+		var opt;
+		var operation="";
+		if(typeof(options)=="object" || options==null){		
+			//将传入参数与默认参数对比，确定最终的参数
+			opt = $.extend(defaults, options);
+			//将参数写入全局变量
+			//g_param.AntaeusUIPluginsPopup = opt;
+		}else{
+			operation = options;
+			//读取全局变量中这个插件的原先设置值
+			//opt = g_param.AntaeusUIPluginsPopup;
+		}
+		
+		//定义控件中所有用到ID和Class属性名
+		var attr = {
+			main   : "popup",
+			title  : "popup-title",
+			close  : "popup-close",
+			content: "popup-content",
+			button : "popup-button",
+			save   : "popup-save",
+			cancel : "popup-cancel",
+			cover  : "popup-cover"
+		};
+		
+		//获得确定的页面的高度，IE6专用
+		var _panelHeight = function(){return ($(window).height()>$(document).height())?$(window).height():$(document).height();}
+		//获得滚动条高度，IE6专用
+		var _scrollHeight = function(){
+			var temp = (opt.top==null)?parseInt(($(window).height()-$("#"+_id).height())/2):opt.top;
+			return $(document).scrollTop()+temp;
+		}
+		
+		//确定当前控制元素
+		var _obj = $(this);
+		////这里加入一个ID的属性，用于在一个页面有多个Popup的情况下的区别
+		var _id = "AntaeusUIPopup"+_obj.attr("id");
+		//cover也要加入ID属性！
+		var _cid = "AntaeusUIPopupCover"+_obj.attr("id");
+		
+		//初始化popup
+		var _init = function(){
+			
+			//首先构建popup的dom结构代码
+			_obj.wrap("<div class='"+attr.content+"'></div>");
+			var tempH = String(parseInt(opt.width/2));
+			
+			_obj.parent().wrap("<div id='"+_id+"' class='"+attr.main+"' style='width:"+String(opt.width)+"px; margin-left:-"+tempH+"px;'></div>");
+			$("#"+_id+" ."+attr.content).before("<div class='"+attr.title+"'><span>"+_obj.attr("title")+"</span><a class='"+attr.close+"'>&nbsp;</a></div>");
+			$("#"+_id+" ."+attr.content).after("<div class='"+attr.button+"'><a class='"+attr.save+"'>"+opt.save+"</a><a class='"+attr.cancel+"'>"+opt.cancel+"</a></div>");
+			$("#"+_id).after("<div id='"+_cid+"' class='"+attr.cover+"'></div>");
+		
+			//在IE6的情况下，当windows窗口变化时自动调整cover的高度
+			//IE6不支持positon:fixed的属性，因此需要用absolute这样子来强制控制高度
+			if($.browser.msie && $.browser.version=="6.0"){
+				//调整cover的高度
+				$("#"+_cid).css("position","absolute");
+				$("#"+_cid).height(_panelHeight());
+				$(window).resize(function(){$("#"+_cid).height(_panelHeight());});
+				//调整main的高度
+				$("#"+_id).css("position","absolute");
+				$("#"+_id).css("top",String(_scrollHeight())+"px");
+				$(window).resize(function(){$("#"+_id).css("top",String(_scrollHeight())+"px");});
+				$(window).scroll(function(){$("#"+_id).css("top",String(_scrollHeight())+"px");});
+			}else{
+				//初始化cover的高度
+				$("#"+_cid).height($(window).height());
+				$(window).resize(function(){$("#"+_cid).height($(window).height());});			
+				//初始化popup的高度
+				tempH = String(parseInt($("#"+_id).height()/2));
+				if(opt.top==null){
+					$("#"+_id).css("top","50%");
+					$("#"+_id).css("margin-top","-"+tempH+"px");
+				}else{
+					$("#"+_id).css("top",String(opt.top)+"px");
+				}
+			}
+			
+			//绑定保存的函数
+			if(opt.submit!=null && typeof(opt.submit)=="function") {
+				$("#"+_id+" ."+attr.save).bind("click",opt.submit);
+			}else{
+				$("#"+_id+" ."+attr.save).bind("click",_close);
+			}
+			//绑定取消的函数
+			if(opt.withdraw!=null && typeof(opt.withdraw)=="function"){
+				$("#"+_id+" ."+attr.cancel).bind("click",opt.withdraw);
+			}else{
+				$("#"+_id+" ."+attr.cancel).bind("click",_close);
+			}
+			//绑定关闭的函数
+			$("#"+_id+" ."+attr.close).bind("click",_close);
+		};
+		
+		//废除popup
+		var _destory = function(){
+			//首先将内容克隆复制到底部
+			_obj.hide();
+			$("body").append(_obj.clone());
+			//然后删除html
+			$("#"+_id).remove();
+		};
+		
+		//打开popup
+		var _open = function(){
+			$("#"+_cid).show(function(){
+				$("#"+_cid).fadeTo("fast",0.5,function(){
+					$("#"+_id).fadeIn("fast");
+				});
+			});
+		};
+		//关闭popup
+		var _close = function(){
+			$("#"+_id).fadeOut("fast",function(){
+				$("#"+_cid).fadeTo("fast",0,function(){
+					$("#"+_cid).hide();
+				});
+			});
+		};
+
+		
+		return this.each(function(){ 
+			if(operation=="")        _init();
+			if(operation=="destory") _destory();
+			if(operation=="open")    _open();
+			if(operation=="close")   _close();			
+		});  
+	}
+	});      
+})(jQuery); 
+
 
 
 
