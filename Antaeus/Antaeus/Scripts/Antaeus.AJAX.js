@@ -53,7 +53,7 @@ function ajaxRequest(obj,param,callback,error){
 			ajaxLoading(obj);
 			//判断请求返回的结果
 			if(data.substring(0,6)=="error:"){
-				if(error==null){
+				if(error==null || typeof(error)!="function"){
 					alert(data.replace("error:",""));
 				}else{
 					error(data.replace("error:",""));

@@ -17,10 +17,11 @@
             <%= Html.TextBox("Username", "昵称或邮箱地址")%>
         </div>
         <div class="password">
-            <%= Html.Password("Password", "******")%>
+            <%= Html.Password("Password", "")%>
         </div>
         <div class="submit">
-            <a href="#" id="FormLoginHeaderSubmit"></a>
+            <a id="FormLoginHeaderSubmit" ajaxrequest="Login"></a>
+            <a ajaxstatus="loading">验证...</a>
         </div>
         <div class="auto">
             <span>

@@ -88,44 +88,6 @@ jQuery(document).ready(function($) {
 //	rFunction["FavoriteItemsGet"]();
 //});
 
-//这里还很有问题，明天写·~~
-
-//$(".LinkFavoriteEdit").click(function(){
-	//var qid = $(this).attr("quesid");
-	//首先请求这个题目的tags
-	//rFunction["FavoriteTagsGet"]({qID:qid,qType:"question"},function(data){
-		//请求到tags后，要载入到popup显示
-		
-//		$("#PopupFavoriteEdit").dialog({ //这是对话框的基本设置
-//			autoOpen: false,
-//			width: 600,
-//			buttons: {
-//				"Ok": function() {
-//					if(fun==null){
-//						$(this).dialog("close");
-//					}else{
-//						fun();
-//					}
-//				},
-//				"Cancel": function() {
-//					$(this).dialog("close");
-//				}
-//			},
-//			open:function(){
-//				
-//			},
-//			draggable: true,
-//			modal: true,
-//			resizable:true,
-//			show:"slide"
-//		});
-//		$("#PopupFavoriteEdit").dialog("open");
-		
-//		$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false });
-//		Popup($("#PopupFavoriteEdit"));
-	//});
-//});
-
 
 // =========================================================================================================
 // 整理后的代码
@@ -136,15 +98,20 @@ $("*[ajaxstatus='loading']").hide();
 
 
 //1.顶端登陆，每个页面都要初始载入的------------------------------------------------
+//1.0.初始的popup加载设置
+$("#PopupLoginForm").popup({
+	save   : "登&nbsp;&nbsp;录",
+	ajax   : "Login",
+	submit : function(){loginSubmitPopup();}
+});
 //1.1.对文本输入框载入聚焦后的提示去除
 $("#FormLoginHeader #Username, #FormLoginHeader #Password").removeDefault();
 //1.2.当聚焦在顶端导航部分的密码框内时，按回车键提交表单
-$("#FormLoginHeader input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Header"); });
+$("#FormLoginHeader input[type='password']").keyup(function(event) { if(event.keyCode == 13) loginSubmitHeader(); });
 //1.3.当聚焦在PopUp部分的密码框内时，按回车键提交表单
-$("#FormLoginPopup input[type='password']").keyup(function(event) { if (event.keyCode == 13) FormLoginSubmit("Popup"); });
+$("#FormLoginPopup input[type='password']").keyup(function(event) { if(event.keyCode == 13) loginSubmitPopup(); });
 //1.4.顶部登陆区域点击“登录”按钮提交表单
-$("#FormLoginHeaderSubmit").click(function() { FormLoginSubmit("Header"); });
-
+$("#FormLoginHeaderSubmit").bind("click",loginSubmitHeader);
 
 //2.WidgetFilter
 $("#WidgetFilter").filter();
@@ -176,7 +143,6 @@ $("#BtnFavoriteTagSave").bind("click",function(){
 	if(tags==""){
 		alert("标签输入不能为空！");
 	}else{
-		
 		ajaxRequest(obj,{qID:g_param.qid,qType:"question",tags:tags},function(){
 			$("#FavoriteAddSetting").slideUp("fast");
 			//改变显示状态

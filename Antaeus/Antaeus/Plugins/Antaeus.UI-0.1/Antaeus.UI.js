@@ -13,47 +13,57 @@ String.prototype.replaceSpecial=function(){
 	return this.replaceAll("\n", "").replaceAll(" ", "").replaceAll("\t", "").replaceAll("&nbsp;", "").toLowerCase().replaceAll("<p></p>", "");
 }
 
-//函数用于执行顶端导航的AJAX提交表单
-function FormLoginSubmit(place) {
-	sPopup = "#PopupLoginForm";
-	sUsername = $("#FormLogin" + place + " #Username").attr("value");
-	sPassword = $("#FormLogin" + place + " #Password").attr("value");
-	sRememberMe = $("#FormLogin" + place + " #RememberMe").attr("value");
-	if (sUsername == "" || sUsername == "昵称或邮箱地址" || sPassword == "") {
-		alert("用户名和密码都不能为空！");
-	} else {
-		$.post(
-			"/Account/Logon/",
-			{ Username: sUsername, Password: sPassword, RememberMe: sRememberMe },
-			function(data) {
-				//如果是顶端的用户登陆
-				if (place == "Header") {
-					if (data.indexOf("error:") >= 0) {
-						$(sPopup+" #LoginErrorMessage").html(data.replace("error:", ""));
-						$(sPopup+" input#Username").attr("value", sUsername);
-						Popup(sPopup.replace("#",""),function(){FormLoginSubmit("Popup");});
-						$(sPopup).dialog("open");
-						return false;
-					} else {
-					    //$("#logon").html(data);
-					    ajaxRefresh($("#LogonContent"));
-					}
-				//如果是Popup登陆
-				} else {
-					if (data.indexOf("error:") >= 0) {
-						alert("登录失败：" + data.replace("error:", ""));
-					} else {
-					    //$("#logon").html(data);
-					    ajaxRefresh($("#LogonContent"));
-						$(sPopup).dialog('close');
-						return false;
-					}
-				}
+//下面两个函数都是login操作的函数
+//当在popup提交登陆时
+var loginSubmitPopup = function(){
+	//获得ajax请求需要的值
+	var _un = $("#FormLoginPopup #Username").val();
+	var _psd = $("#FormLoginPopup #Password").val();
+	var _remember = $("#FormLoginPopup #RememberMe").val();
+	
+	//为空判断
+	if(_un==""||_psd==""){
+		$("#PopupLoginForm #LoginErrorMessage").html("用户名密码都不能为空！");
+	}else{	
+		ajaxRequest(
+			$("#AntaeusUIPopupPopupLoginForm .popup-save"),
+			{un:_un,psd:_psd,remember:_remember},
+			function(){
+				ajaxRefresh($("#LogonContent"));
+				$("#PopupLoginForm").popup("close");
 			},
-			"html"
+			function(data){
+				$("#PopupLoginForm #LoginErrorMessage").html(data);
+			}
 		);
 	}
-}
+};
+//当在顶端提交时
+var loginSubmitHeader = function(){
+	var _un = $("#FormLoginHeader #Username").val();
+	var _psd = $("#FormLoginHeader #Password").val();
+	var _remember = $("#FormLoginHeader #RememberMe").val();
+	
+	//为空判断
+	if(_un==""||_psd==""){
+		$("#PopupLoginForm #LoginErrorMessage").html("用户名密码都不能为空！");
+		$("#PopupLoginForm").popup("open");
+	}else{	
+		ajaxRequest(
+			$("#FormLoginHeaderSubmit"),
+			{un:_un,psd:_psd,remember:_remember},
+			function(){
+				ajaxRefresh($("#LogonContent"));			
+			},
+			function(data){
+				$("#PopupLoginForm #LoginErrorMessage").html(data);
+				$("#FormLoginPopup #Username").val(_un);
+				$("#FormLoginPopup #Password").val("");
+				$("#PopupLoginForm").popup("open");
+			}
+		);
+	}
+};
 
 //filter方法用于动态提供筛选
 //Parameters:
@@ -121,51 +131,6 @@ function FormLoginSubmit(place) {
 	}
 	});      
 })(jQuery); 
-
-//Popup函数用于执行基本的Dialog调用设置
-//function Popup(obj,fun){
-//    obj.dialog({ //这是对话框的基本设置
-//        autoOpen: true,
-//        width: 600,
-//        buttons: {
-//            "Ok": function() {
-////				if(fun==null){
-////					$(this).dialog("close");
-////				}else{
-////					fun();
-////				}
-//            },
-//            "Cancel": function() {
-//                $(this).dialog("close");
-//            }
-//        },
-//		draggable: false,
-//		modal: false,
-//		resizable:false,
-//		show:"slide"
-//    });
-//	//obj.dialog("open");
-//}
-
-//PopupAJAX函数用于AJAX性质地产生并且激发一个Popup
-//function PopupAJAX(target,fun){	
-//	//创建一个加载Popup的DIV，由于同页面可能有多个Popup，因此通过随机数产生ID
-//	var divID="Dialog"+String(parseInt(Math.random()*100000));		
-//	$("body").append("<div id='"+divID+"' class='hidden'></div>");
-//	var divObj = $("#"+divID);
-//	//为了避免网速问题，加入载入中的显示
-//	divObj.attr("title","内容载入中...");
-//	divObj.html("内容载入中...");
-//	divObj.load(target.substring(1), {}, function() {
-//		//还是因为滞后性因此两个都要写，一个直接改控件中的标题，一个是希望在控件在载入前改标题
-//		divObj.attr("title",divObj.children().attr("title"));
-//		$(".ui-dialog-title").html(divObj.children().attr("title"));				
-//	});
-//	//由于AJAX载入的滞后性，下面两行代码不能与前面判断相同的内容一起提取到if外面执行
-//	var Dialog = Popup(divID,fun);
-//	divObj.dialog("open");
-//	return false;
-//}
 
 //TabActive方法用于Tab效果
 function TabActive(data) {
@@ -455,7 +420,7 @@ function TabActive(data) {
 			if(operation=="")        _init();
 			if(operation=="destory") _destory();
 			if(operation=="open")    _open();
-			if(operation=="close")   _close();			
+			if(operation=="close")   _close();
 		});  
 	}
 	});      
