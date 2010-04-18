@@ -267,8 +267,10 @@ $("#PopupFavoriteEdit").popup({ajax:"FavoriteAddTags",submit:function(){
 	var qid=$("#PopupFavoriteEdit").attr("quesid");
 	//执行AJAX的请求
 	ajaxRequest(o,{qID:qid,qType:"question",tags:tag},function(){
-		//自刷新原来应该显示tag的地方
-		
+		//刷新原来应该显示tag的地方
+		$(".item3[quesid='"+qid+"'] .FavoriteItemTags i").remove();
+		var temp = tag.split(",");
+		for(var i=0;i<temp.length;i++) $(".item3[quesid='"+qid+"'] .FavoriteItemTags").append("<i>"+temp[i]+"</i>");
 		//关闭popup
 		$("#PopupFavoriteEdit").popup("close");
 	});

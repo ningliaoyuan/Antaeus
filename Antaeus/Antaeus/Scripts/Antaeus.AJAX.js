@@ -42,8 +42,7 @@ function ajaxRefresh(obj, param) {
 function ajaxRequest(obj,param,callback){
 	//将主控元素写入全局变量，这个主要是给在任何地方控制出错回滚用的
 	g_param.ajaxEnduringObj = obj;
-	
-	if(obj.attr("ajaxrequest")!=null && obj.attr("ajaxrequest")!=""){
+	if(obj.attr("ajaxrequest")!=null && obj.attr("ajaxrequest")!=""){		
 		//发起请求的obj进入loading状态
 		ajaxLoading(obj);
 		//执行并获得ajax请求的结果

@@ -362,12 +362,13 @@ function TabActive(data) {
 			_obj.parent().wrap("<div id='"+_id+"' class='"+attr.main+"' style='width:"+String(opt.width)+"px; margin-left:-"+tempH+"px;'></div>");
 			$("#"+_id+" ."+attr.content).before("<div class='"+attr.title+"'><span>"+_obj.attr("title")+"</span><a class='"+attr.close+"'>&nbsp;</a></div>");
 			//这里需要根据ajax的状态来判断写入什么样的按钮代码
-			var s1="<div class='"+attr.button+"'><a class='"+attr.save+"'>"+opt.save+"</a>";
+			var s1="<div class='"+attr.button+"'><a class='"+attr.save+"'%%%>"+opt.save+"</a>";
 			var s2="<a class='"+attr.cancel+"'>"+opt.cancel+"</a></div>";
+			var s3=" ajaxrequest='"+opt.ajax+"'";
 			if(opt.ajax==""){
-				$("#"+_id+" ."+attr.content).after(s1+s2);
+				$("#"+_id+" ."+attr.content).after(s1.replace("%%%","")+s2);
 			}else{
-				$("#"+_id+" ."+attr.content).after(s1+"<a class='"+attr.loading+"' ajaxstatus='loading' style='display:none'>操作中...</a>"+s2);
+				$("#"+_id+" ."+attr.content).after(s1.replace("%%%",s3)+"<a class='"+attr.loading+"' ajaxstatus='loading' style='display:none'>操作中...</a>"+s2);
 			}
 			$("#"+_id).after("<div id='"+_cid+"' class='"+attr.cover+"'></div>");
 		
@@ -389,7 +390,10 @@ function TabActive(data) {
 					$("#"+_id).css("top",String(_scrollHeight())+"px");
 				});
 				//TODO:出横向滚动条的时候的位置变化，现在只有纵向的
-				$(window).scroll(function(){$("#"+_id).css("top",String(_scrollHeight())+"px");});
+				$(window).scroll(function(){
+					$("#"+_id).css("top",String(_scrollHeight())+"px");
+					$("#"+_cid).width($(document).scrollLeft()+$(window).width());
+				});
 			}else{
 				//初始化cover的高度
 				$("#"+_cid).height($(window).height());
