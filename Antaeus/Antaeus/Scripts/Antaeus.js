@@ -5,33 +5,31 @@ jQuery(document).ready(function($) {
 
     //============================================================================
     //Question/Details页面代码
-    //定义编辑器的全局变量
-    var WikiEditor;
-    //定义初始的WIKI内容，用于用户提交判断
-    var WikiInitContent;
+
     //激发编辑模式
     $("#ButtonWikiEdit").click(function() {
-        WikiInitContent = $("#WikiContentEditArea").html().replaceSpecial();
-        if (!WikiEditor) WikiEditor = CKEDITOR.replace(document.getElementById("WikiContentEditArea"));
+		//将编辑器作为全局变量
+        g_param.WikiInitContent = $("#WikiContentEditArea").html().replaceSpecial();
+        if (!g_param.WikiEditor) g_param.WikiEditor = CKEDITOR.replace(document.getElementById("WikiContentEditArea"));
         $(".wiki-submit").show();
     });
     //用户取消编辑
     function WikiEditDestory() {
-        if (!WikiEditor) return;
-        WikiEditor.destroy();
-        WikiEditor = null;
-        $("#WikiContentEditArea").html(WikiInitContent);
+        if (!g_param.WikiEditor) return;
+        g_param.WikiEditor.destroy();
+        g_param.WikiEditor = null;
+        $("#WikiContentEditArea").html(g_param.WikiInitContent);
         $(".wiki-submit").hide();
     }
     $("#WikiEditDestroy").click(function() { WikiEditDestory(); });
     //用户提交编辑内容
     $("#WikiEditSubmit").click(function() {
-        content = WikiEditor.getData().replaceSpecial();
-        if (content == WikiInitContent) {
+        content = g_param.WikiEditor.getData().replaceSpecial();
+        if (content == g_param.WikiInitContent) {
             alert("你没有修改任何内容，将不会提交新的版本！");
             WikiEditDestory();
         } else {
-            content = encodeURI(WikiEditor.getData());
+            content = encodeURI(g_param.WikiEditor.getData());
             id = $("#QuestionID").html();
             $.post(
 				"/Question/EditAnswer/" + id,
@@ -51,9 +49,9 @@ jQuery(document).ready(function($) {
     //更新历史版本内容
     $(".WikiHistoryView").click(function() {
         var obj = $(this);
-        if (WikiEditor) {
-            WikiEditor.destroy();
-            WikiEditor = null;
+        if (g_param.WikiEditor) {
+            g_param.WikiEditor.destroy();
+            g_param.WikiEditor = null;
             $(".wiki-submit").hide();
         }
         var version = obj.attr("title");
@@ -62,7 +60,7 @@ jQuery(document).ready(function($) {
         $("#WikiAuthor").html(obj.parent().prev().prev().html());
         $("#WikiTime").html(obj.parent().prev().html());
         //$("#WikiContentEditArea").html(data);
-        $("#popup_wiki_history").dialog('close');
+        //$("#popup_wiki_history").dialog('close');
     });
 
 
@@ -99,171 +97,49 @@ $("*[ajaxstatus='loading']").hide();
 
 //1.顶端登陆，每个页面都要初始载入的------------------------------------------------
 //1.0.初始的popup加载设置
-$("#PopupLoginForm").popup({
-	save   : "登&nbsp;&nbsp;录",
-	ajax   : "Login",
-	submit : function(){loginSubmitPopup();}
-});
+$("#PopupLoginForm").popup({save:"登&nbsp;&nbsp;录",ajax:"Login",submit : function(){login["SubmitPopup"]();}});
 //1.1.对文本输入框载入聚焦后的提示去除
 $("#FormLoginHeader #Username, #FormLoginHeader #Password").removeDefault();
 //1.2.当聚焦在顶端导航部分的密码框内时，按回车键提交表单
-$("#FormLoginHeader input[type='password']").keyup(function(event) { if(event.keyCode == 13) loginSubmitHeader(); });
+$("#FormLoginHeader input[type='password']").keyup(function(event){if(event.keyCode==13)login["SubmitHeader"]();});
 //1.3.当聚焦在PopUp部分的密码框内时，按回车键提交表单
-$("#FormLoginPopup input[type='password']").keyup(function(event) { if(event.keyCode == 13) loginSubmitPopup(); });
+$("#FormLoginPopup input[type='password']").keyup(function(event){if(event.keyCode==13)login["SubmitPopup"]();});
 //1.4.顶部登陆区域点击“登录”按钮提交表单
-$("#FormLoginHeaderSubmit").bind("click",loginSubmitHeader);
+$("#FormLoginHeaderSubmit").bind("click",login["SubmitHeader"]);
 
 //2.WidgetFilter
 $("#WidgetFilter").filter();
 
 
-//3.Details那里的Tag部分的全部操作
+//3.与Favorite相关的全部操作，3.1-3.7为Details页面的操作，3.8-3.12为个人中心Favorite页面的操作。
 //3.1判断默认显示状态
-if(g_param.favorite){
-	$("#FavoriteAlready").show();
-	$("#LinkFavoriteAdd").hide();
-}
+if(g_param.favorite){$("#FavoriteAlready").show();$("#LinkFavoriteAdd").hide();}
 //3.2初始的separateInput插件的初始化
 $("#InputFavoriteTagAdd").separateInput({ width: 250,widthMin:50, insert: "#FavoriteTagRecommend", required: false });
 //3.3点击添加到收藏夹的操作
-$("#LinkFavoriteAdd").bind("click",function(){
-	var obj=$(this);
-	ajaxRequest(obj,{qID:g_param.qid,qType:"question"},function(){
-		g_param.favorite = true;
-		$("#LinkFavoriteAdd").hide();
-		$("#LinkFavoriteAdd").next().next().show();
-		//显示收藏夹设置
-		$("#FavoriteAddSetting").slideDown("slow");
-	});
-});
+$("#LinkFavoriteAdd").bind("click",favorite["Add"]);
 //3.4保存按钮操作
-$("#BtnFavoriteTagSave").bind("click",function(){
-	var obj = $(this);
-	var tags = $.trim($("#InputFavoriteTagAdd").val());
-	if(tags==""){
-		alert("标签输入不能为空！");
-	}else{
-		ajaxRequest(obj,{qID:g_param.qid,qType:"question",tags:tags},function(){
-			$("#FavoriteAddSetting").slideUp("fast");
-			//改变显示状态
-			$(".btn-huge-favorite").hide();
-			if(g_param.favorite){
-				$("#FavoriteAlready").show();
-			}else{
-				$("#LinkFavoriteAdd").show();
-			}
-		});	
-	}
-});
+$("#BtnFavoriteTagSave").bind("click",favorite["TagSave"]);
 //3.5取消按钮操作
-$("#BtnFavoriteTagCancel").bind("click",function(){								 
-	//收起菜单
-	$("#FavoriteAddSetting").slideUp("fast");
-	//改变显示状态
-	$(".btn-huge-favorite").hide();
-	if(g_param.favorite){
-		$("#FavoriteAlready").show();
-	}else{
-		$("#LinkFavoriteAdd").show();
-	}
-});
+$("#BtnFavoriteTagCancel").bind("click",favorite["TagCancel"]);
 //3.6从收藏夹移除的操作
-$("#LinkFavoriteRemove").click(function(){
-	var obj=$(this);
-	ajaxRequest(obj,{qID:g_param.qid,qType:"question"},function(){
-		//改变全局变量
-		g_param.favorite = false;
-		//清除输入框内的内容
-		$("#InputFavoriteTagAdd").separateInput("reload");
-		$("#InputFavoriteTagAdd").attr("tags","");
-		//改变显示状态
-		$("#FavoriteAlready").hide();
-		$("#LinkFavoriteAdd").show();
-	});
-});
+$("#LinkFavoriteRemove").bind("click",favorite["Remove"]);
 //3.7修改收藏夹标签的操作
-$("#LinkFavoriteEdit").click(function(){
-	//清除输入框内的内容
-	$("#InputFavoriteTagAdd").separateInput("reload");		
-	//获取用户当时添加的Tags
-	var tags = $("#InputFavoriteTagAdd").attr("tags");
-	if(tags!=""){
-		tag=tags.split(",");
-		//把获得的Tags置入
-		$("#InputFavoriteTagAdd").separateInput("addtags",tag);
-	}		
-	//改变显示状态
-	$("#FavoriteAlready").hide();
-	$("#FavoriteAlready").next().show();
-	$("#FavoriteAddSetting").slideDown("slow");	
-	$("#InputFavoriteTagAdd").separateInput("rewidth");
-});
-
-
-		
-
+$("#LinkFavoriteEdit").bind("click",favorite["TagEdit"]);
 //3.8Favorite页面移除收藏
-$(".LinkFavoriteRemove").live("click",function(){
-	var qid = $(this).parent().parent().parent().attr("quesid");
-	var obj = $("#FavoriteItems div[quesid='"+qid+"']");
-	var requestobj = $(this);
-	ajaxRequest(requestobj,{qID:qid,qType:"question"},function(){
-		obj.after("<div class='item4'>"+$("#AfterFavoriteRemove").html().replaceAll("%ID%",qid)+"</div>");
-		obj.slideUp();
-	});
-});	
+$(".LinkFavoriteRemove").live("click",favorite["Delete"]);	
 //3.9Favorite页面重新收藏
-$(".ReAddFavorite").live("click",function(){	
-	var qid = $(this).attr("quesid");
-	var obj = $(this).parent().parent();	
-	var tag = "";	
-	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
-	tag = tag.substring(1);	
-	var requestobj = $(this);
-	ajaxRequest(requestobj,{qID:qid,qType:"question",tags:tag},function(){
-		$("#FavoriteItems div[quesid='"+qid+"']").slideDown();
-		obj.remove();
-	});	
-});
+$(".ReAddFavorite").live("click",favorite["ReAdd"]);
 //3.10Favorite页面编辑收藏标签
-$("#PopupFavoriteEdit").popup({ajax:"FavoriteAddTags",submit:function(){
-	//读取ajax相关的东西
-	var o = $("#AntaeusUIPopupPopupFavoriteEdit .popup-save");
-	var tag=$("#FavoriteTagsEditInput").val();
-	var qid=$("#PopupFavoriteEdit").attr("quesid");
-	//执行AJAX的请求
-	ajaxRequest(o,{qID:qid,qType:"question",tags:tag},function(){
-		//刷新原来应该显示tag的地方
-		$(".item3[quesid='"+qid+"'] .FavoriteItemTags i").remove();
-		var temp = tag.split(",");
-		for(var i=0;i<temp.length;i++) $(".item3[quesid='"+qid+"'] .FavoriteItemTags").append("<i>"+temp[i]+"</i>");
-		//关闭popup
-		$("#PopupFavoriteEdit").popup("close");
-	});
-}});
+$("#PopupFavoriteEdit").popup({ajax:"FavoriteAddTags",submit:function(){favorite["TagModifySave"]();}});
+//3.11Popup里面的separate控件的初始化
 $("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false, width:450 });
-$(".LinkFavoriteEdit").live("click",function(){
-	//获得QuestionID
-	var qid = $(this).parent().parent().parent().attr("quesid");
-	//获得Tag
-	var tag = "";	
-	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
-	tag = tag.substring(1);
-	//首先清空输入框
-	$("#FavoriteTagsEditInput").separateInput("reload");
-	//将取到的Tag写入
-	if(tag!="") $("#FavoriteTagsEditInput").separateInput("addtags",tag.split(","));
-	
-	//将AJAX需要的qid写入到popup主控
-	$("#PopupFavoriteEdit").attr("quesid",qid);
-	//打开Popup界面
-	$("#PopupFavoriteEdit").popup("open");
-	
-});
+//3.2Favorite页面点击编辑标签
+$(".LinkFavoriteEdit").live("click",favorite["TagModify"]);
 
 
 //4.具体题目页的历史记录查看
-$("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });
+//$("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });
 
 //5.Tab的代码
 TabActive();
@@ -295,8 +171,6 @@ if ($("#FormQuestionCreate").length > 0) {
 	});
 }
 
-//8.管理收藏夹改Tag
-//$("#LinkFavoriteEdit").click(function(){FavoriteTagAdd("PopupFavoriteEdit");});
 
 //9.评论的提交
 $("#CommentSubmit").click(function(){
@@ -304,8 +178,6 @@ $("#CommentSubmit").click(function(){
 	if(c!="")  window.location=$(this).attr("rel")+c;
 });
 
-
-//$("#PopupFavoriteAdd .separate").separateInput({ width: 548, insert: ".separate-select", widthCssIE6: 2, required: false });
 
 //10.记录用户做题载入时间
 $(".QuestionChoiceSelect").questionRecord({qid:g_param.qid,currentTime:g_param.currentTime,correct:g_param.qCorrect});

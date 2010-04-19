@@ -14,8 +14,9 @@ String.prototype.replaceSpecial=function(){
 }
 
 //下面两个函数都是login操作的函数
+var login = {};
 //当在popup提交登陆时
-var loginSubmitPopup = function(){
+login["SubmitPopup"] = function(){
 	//获得ajax请求需要的值
 	var _un = $("#FormLoginPopup #Username").val();
 	var _psd = $("#FormLoginPopup #Password").val();
@@ -39,7 +40,7 @@ var loginSubmitPopup = function(){
 	}
 };
 //当在顶端提交时
-var loginSubmitHeader = function(){
+login["SubmitHeader"] = function(){
 	var _un = $("#FormLoginHeader #Username").val();
 	var _psd = $("#FormLoginHeader #Password").val();
 	var _remember = $("#FormLoginHeader #RememberMe").val();
@@ -254,9 +255,6 @@ function TabActive(data) {
 	});      
 })(jQuery); 
 
-
-
-
 //popup方法用于弹出popup选择窗口
 //Parameters:
 //[必须]width - 宽度 - popup窗口的宽度
@@ -426,6 +424,138 @@ function TabActive(data) {
 	});      
 })(jQuery); 
 
+
+//Favorite相关的全部函数
+var favorite = {};
+//添加到收藏夹
+favorite["Add"] = function(){
+	var obj=$(this);
+	ajaxRequest(obj,{qID:g_param.qid,qType:"question"},function(){
+		g_param.favorite = true;
+		$("#LinkFavoriteAdd").hide();
+		$("#LinkFavoriteAdd").next().next().show();
+		//显示收藏夹设置
+		$("#FavoriteAddSetting").slideDown("slow");
+	});
+};
+//给收藏的题目添加Tag
+favorite["TagSave"] = function(){
+	var obj = $(this);
+	var tags = $.trim($("#InputFavoriteTagAdd").val());
+	if(tags==""){
+		alert("标签输入不能为空！");
+	}else{
+		ajaxRequest(obj,{qID:g_param.qid,qType:"question",tags:tags},function(){
+			$("#FavoriteAddSetting").slideUp("fast");
+			//改变显示状态
+			$(".btn-huge-favorite").hide();
+			if(g_param.favorite){
+				$("#FavoriteAlready").show();
+			}else{
+				$("#LinkFavoriteAdd").show();
+			}
+		});	
+	}
+};
+//取消添加Tag
+favorite["TagCancel"] = function(){								 
+	//收起菜单
+	$("#FavoriteAddSetting").slideUp("fast");
+	//改变显示状态
+	$(".btn-huge-favorite").hide();
+	if(g_param.favorite){
+		$("#FavoriteAlready").show();
+	}else{
+		$("#LinkFavoriteAdd").show();
+	}
+};
+//删除Tag在detail页面
+favorite["Remove"] = function(){
+	var obj=$(this);
+	ajaxRequest(obj,{qID:g_param.qid,qType:"question"},function(){
+		//改变全局变量
+		g_param.favorite = false;
+		//清除输入框内的内容
+		$("#InputFavoriteTagAdd").separateInput("reload");
+		$("#InputFavoriteTagAdd").attr("tags","");
+		//改变显示状态
+		$("#FavoriteAlready").hide();
+		$("#LinkFavoriteAdd").show();
+	});
+};
+//修改Tag在Detail页面
+favorite["TagEdit"] = function(){
+	//清除输入框内的内容
+	$("#InputFavoriteTagAdd").separateInput("reload");		
+	//获取用户当时添加的Tags
+	var tags = $("#InputFavoriteTagAdd").attr("tags");
+	if(tags!=""){
+		tag=tags.split(",");
+		//把获得的Tags置入
+		$("#InputFavoriteTagAdd").separateInput("addtags",tag);
+	}		
+	//改变显示状态
+	$("#FavoriteAlready").hide();
+	$("#FavoriteAlready").next().show();
+	$("#FavoriteAddSetting").slideDown("slow");	
+	$("#InputFavoriteTagAdd").separateInput("rewidth");
+};
+//删除收藏在Favorite页面
+favorite["Delete"] = function(){
+	var qid = $(this).parent().parent().parent().attr("quesid");
+	var obj = $("#FavoriteItems div[quesid='"+qid+"']");
+	var requestobj = $(this);
+	ajaxRequest(requestobj,{qID:qid,qType:"question"},function(){
+		obj.after("<div class='item4'>"+$("#AfterFavoriteRemove").html().replaceAll("%ID%",qid)+"</div>");
+		obj.slideUp();
+	});
+};
+//重新收藏在Favorite页面
+favorite["ReAdd"] = function(){	
+	var qid = $(this).attr("quesid");
+	var obj = $(this).parent().parent();	
+	var tag = "";	
+	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
+	tag = tag.substring(1);	
+	var requestobj = $(this);
+	ajaxRequest(requestobj,{qID:qid,qType:"question",tags:tag},function(){
+		$("#FavoriteItems div[quesid='"+qid+"']").slideDown();
+		obj.remove();
+	});	
+};
+//修改Tag的popup的保存在Favorite页面
+favorite["TagModifySave"] = function(){
+	//读取ajax相关的东西
+	var o = $("#AntaeusUIPopupPopupFavoriteEdit .popup-save");
+	var tag=$("#FavoriteTagsEditInput").val();
+	var qid=$("#PopupFavoriteEdit").attr("quesid");
+	//执行AJAX的请求
+	ajaxRequest(o,{qID:qid,qType:"question",tags:tag},function(){
+		//刷新原来应该显示tag的地方
+		$(".item3[quesid='"+qid+"'] .FavoriteItemTags i").remove();
+		var temp = tag.split(",");
+		for(var i=0;i<temp.length;i++) $(".item3[quesid='"+qid+"'] .FavoriteItemTags").append("<i>"+temp[i]+"</i>");
+		//关闭popup
+		$("#PopupFavoriteEdit").popup("close");
+	});
+};
+//修改Tag在Favorite页面
+favorite["TagModify"] = function(){
+	//获得QuestionID
+	var qid = $(this).parent().parent().parent().attr("quesid");
+	//获得Tag
+	var tag = "";	
+	$("#FavoriteItems div[quesid='"+qid+"'] .FavoriteItemTags i").each(function(i){tag=tag+","+$(this).html();});
+	tag = tag.substring(1);
+	//首先清空输入框
+	$("#FavoriteTagsEditInput").separateInput("reload");
+	//将取到的Tag写入
+	if(tag!="") $("#FavoriteTagsEditInput").separateInput("addtags",tag.split(","));	
+	//将AJAX需要的qid写入到popup主控
+	$("#PopupFavoriteEdit").attr("quesid",qid);
+	//打开Popup界面
+	$("#PopupFavoriteEdit").popup("open");
+};
 
 
 
