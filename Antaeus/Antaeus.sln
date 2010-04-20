@@ -1,6 +1,21 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C6EDF131-9785-4F2B-93F3-9AD92F4626B8}"
+	ProjectSection(SolutionItems) = preProject
+		Antaeus.vsmdi = Antaeus.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtraBin", "ExtraBin", "{38845B12-FB3D-42B0-89EC-2E03D1CEADBE}"
+	ProjectSection(SolutionItems) = preProject
+		ExtraBin\log4net\log4net.dll = ExtraBin\log4net\log4net.dll
+		ExtraBin\log4net\log4net.xml = ExtraBin\log4net\log4net.xml
+		ExtraBin\NUnit252\nunit.framework.dll = ExtraBin\NUnit252\nunit.framework.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalProjects", "ExternalProjects", "{58B7E3EA-9D46-4F11-91A1-287072E31E4E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antaeus", "Antaeus\Antaeus.csproj", "{E2FBB8E7-B318-4863-9DE3-0F991250CB38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antaeus.Tests", "Antaeus.Tests\Antaeus.Tests.csproj", "{5E8BBC0C-F61A-4DAB-B6AF-3E94F6C61D4A}"
@@ -11,28 +26,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antaeus.ORM", "Antaeus.ORM\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antaeus.BL", "Antaeus.BL\Antaeus.BL.csproj", "{176E0ECE-37C7-4587-A3AD-F403C800CE6A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C6EDF131-9785-4F2B-93F3-9AD92F4626B8}"
-	ProjectSection(SolutionItems) = preProject
-		Antaeus.vsmdi = Antaeus.vsmdi
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antaeus.BL.Test", "Antaeus.BL.Test\Antaeus.BL.Test.csproj", "{A6762A76-1043-4B36-9341-8E9DCB7C56EA}"
 EndProject
 Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "Antaeus.Database", "Antaeus.Database\Antaeus.Database.dbproj", "{94353B0C-BBC2-4951-8465-D06ADA26A1F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antaeus.Common", "Antaeus.Common\Antaeus.Common.csproj", "{157703CE-C1BA-4375-AA94-3C46A8B12255}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtraBin", "ExtraBin", "{38845B12-FB3D-42B0-89EC-2E03D1CEADBE}"
-	ProjectSection(SolutionItems) = preProject
-		ExtraBin\log4net\log4net.dll = ExtraBin\log4net\log4net.dll
-		ExtraBin\log4net\log4net.xml = ExtraBin\log4net\log4net.xml
-		ExtraBin\NUnit252\nunit.framework.dll = ExtraBin\NUnit252\nunit.framework.dll
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antaeus.MongoDB", "Antaeus.MongoDB\Antaeus.MongoDB.csproj", "{A4650BA7-6C97-43C3-9F13-F0D3CF276877}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalProjects", "ExternalProjects", "{58B7E3EA-9D46-4F11-91A1-287072E31E4E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDB.Driver", "ExternalProjects\MongoDB.Driver\MongoDB.Driver.csproj", "{B125BBA6-BFFD-44FA-9254-9B1754CD8AF3}"
 EndProject

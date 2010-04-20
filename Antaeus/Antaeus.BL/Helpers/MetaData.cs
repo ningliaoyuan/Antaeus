@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using System.Web.Mvc;
 using Antaeus.ORM;
+using System.Web;
 
 namespace Antaeus.BL.Helpers
 {
@@ -90,18 +91,15 @@ namespace Antaeus.BL.Helpers
         {
             var dic = new Dictionary<string,string>();
 
-            foreach (string key in bindingContext.ValueProvider.Keys)
+            foreach (string key in HttpContext.Current.Request.Form.AllKeys)
             {
                 string pureKey;
                 if (matchKey(key, out pureKey))
                 {
-                    ValueProviderResult valueResult;
-                    if (bindingContext.ValueProvider.TryGetValue(key, out valueResult))
+                    var val = HttpContext.Current.Request.Form.Get(key);
+                    if (!string.IsNullOrEmpty(val))
                     {
-                        if (!string.IsNullOrEmpty(valueResult.AttemptedValue))
-                        {
-                            dic.Add(pureKey, valueResult.AttemptedValue);
-                        }
+                        dic.Add(pureKey, val);
                     }
                 }
             }
