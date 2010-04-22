@@ -30,7 +30,7 @@
                     <label>
                         登录邮箱</label>
                     <%= Html.TextBox("email") %>
-                    <% if (string.IsNullOrEmpty(Html.ValidationMessage("email")))
+                    <% if (MvcHtmlString.IsNullOrEmpty(Html.ValidationMessage("email")))
                        {%>
                     <span>这是你登陆、找回密码的唯一凭证</span>
                     <%}
