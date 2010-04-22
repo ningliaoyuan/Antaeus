@@ -131,9 +131,9 @@ $(".LinkFavoriteRemove").live("click",favorite["Delete"]);
 //3.9Favorite页面重新收藏
 $(".ReAddFavorite").live("click",favorite["ReAdd"]);
 //3.10Favorite页面编辑收藏标签
-$("#PopupFavoriteEdit").popup({ajax:"FavoriteAddTags",submit:function(){favorite["TagModifySave"]();}});
+$("#PopupFavoriteEdit").popup({ajax:"FavoriteAddTags",width:470,submit:function(){favorite["TagModifySave"]();}});
 //3.11Popup里面的separate控件的初始化
-$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false, width:450 });
+$("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required: false, width:430 });
 //3.2Favorite页面点击编辑标签
 $(".LinkFavoriteEdit").live("click",favorite["TagModify"]);
 

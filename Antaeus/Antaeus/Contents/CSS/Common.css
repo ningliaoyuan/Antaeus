@@ -246,7 +246,7 @@ a.btn-action:link, a.btn-action:visited, a.btn-action:hover{ color:#FFF; text-de
 .tab-content{ clear:both; color:#666;}
 
 /* SeparateInput Define =========================================================================================================================*/
-#separate-container{ border:1px solid #666; padding:2px 0 0 2px;}
+#separate-container{ border:1px solid #0479a7; padding:2px 0 0 2px;}
 .separate-item{ display:block; margin:0; padding:3px; border:1px solid #AAA; float:left; background-color:#F1F1F1; margin-right:2px; margin-bottom:2px; *padding-bottom:1px;}
 .separate-item span{ display:block; float:left; font:"微软雅黑", "宋体"; font-size:12px; color:#333; padding-right:3px; height:12px; *height:14px; line-height:12px; *line-height:14px;}
 .separate-item a{ display:block; float:left; width:11px; height:12px; font-size:12px; background-color:#DDD; overflow:hidden; cursor:pointer; background-image:url(../Images/separate-input.gif);}
