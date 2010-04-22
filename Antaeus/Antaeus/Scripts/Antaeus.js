@@ -97,7 +97,7 @@ $("*[ajaxstatus='loading']").hide();
 
 //1.顶端登陆，每个页面都要初始载入的------------------------------------------------
 //1.0.初始的popup加载设置
-$("#PopupLoginForm").popup({save:"登&nbsp;&nbsp;录",ajax:"Login",submit : function(){login["SubmitPopup"]();}});
+$("#PopupLoginForm").popup({save:"登&nbsp;&nbsp;录",ajax:"Login",btnLeft:75,width:400, submit : function(){login["SubmitPopup"]();}});
 //1.1.对文本输入框载入聚焦后的提示去除
 $("#FormLoginHeader #Username, #FormLoginHeader #Password").removeDefault();
 //1.2.当聚焦在顶端导航部分的密码框内时，按回车键提交表单
