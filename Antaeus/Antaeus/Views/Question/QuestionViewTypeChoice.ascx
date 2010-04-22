@@ -2,14 +2,14 @@
 
 <div class="ques_content">
 	<% if(Model.Meta["QuestionPlace"]=="0"){ %>          
-         <%= Model.Meta["Content"]%>
+         <p><%= Model.Meta["Content"]%></p>
     <%}
     else if (Model.Meta["QuestionPlace"] == "1")
     {%>
     	<b><%=Html.Encode(Model.Meta["Question"])%></b>
-    	<%= Model.Meta["Content"]%>
+    	<p><%= Model.Meta["Content"]%></p>
     <%}else{%>
-    	<%= Model.Meta["Content"]%>
+    	<p><%= Model.Meta["Content"]%></p>
     	<b><%=Html.Encode(Model.Meta["Question"])%></b>
     <%}%>
 </div>
