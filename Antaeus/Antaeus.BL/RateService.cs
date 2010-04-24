@@ -69,7 +69,7 @@ namespace Antaeus.BL
                 RateID = IDProvider.GetNewId("Rate"),
                 CrUserName = userName,
                 CreatedTime = TimeProvider.Now,
-                KID = keyId.ToString(),
+                KID = keyId,
                 Score = score
             };
             return rate;
@@ -117,6 +117,26 @@ namespace Antaeus.BL
         public override string ToString()
         {
             return string.Format("{0}_{1}", KEY, ID.ToString());
+        }
+
+        public static implicit operator string(KEYID ki)
+        {
+            return ki.ToString();
+        }
+
+        public static implicit operator KEYID( string kiStr)
+        {
+            return new KEYID(kiStr);
+        }
+
+        public static bool operator ==(KEYID ki1, KEYID ki2)
+        {
+            return ki1.ToString() == ki2.ToString();
+        }
+
+        public static bool operator !=(KEYID ki1, KEYID ki2)
+        {
+            return ki1.ToString() != ki2.ToString();
         }
     }
     public class Score
