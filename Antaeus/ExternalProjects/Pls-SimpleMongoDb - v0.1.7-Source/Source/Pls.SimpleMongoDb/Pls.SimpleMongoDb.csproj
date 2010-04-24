@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{420920E1-A1C6-49F8-A330-4C988F13D3A5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pls.SimpleMongoDb</RootNamespace>
+    <AssemblyName>Pls.SimpleMongoDb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\NewtonsoftJson\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\DropCollectionCommand.cs" />
+    <Compile Include="Commands\DropDatabaseCommand.cs" />
+    <Compile Include="Commands\GetLastErrorCommand.cs" />
+    <Compile Include="Commands\GetMoreCommand.cs" />
+    <Compile Include="Commands\ISimoResponseCommand.cs" />
+    <Compile Include="Commands\SimoCommandResponse.cs" />
+    <Compile Include="DataTypes\MongoDbErrorMessage.cs" />
+    <Compile Include="DataTypes\SimoKeyValues.cs" />
+    <Compile Include="Commands\SimoResponseCommand.cs" />
+    <Compile Include="EntityMetadata.cs" />
+    <Compile Include="IoC\ArgsExtensions.cs" />
+    <Compile Include="IoC\IoCInitializer.cs" />
+    <Compile Include="IoC\IoCRegistration.cs" />
+    <Compile Include="IoC\ISimoIoC.cs" />
+    <Compile Include="IoC\ResolverKey.cs" />
+    <Compile Include="IoC\SimoIoC.cs" />
+    <Compile Include="ISimoSessionFactory.cs" />
+    <Compile Include="ISimoEngine.cs" />
+    <Compile Include="Querying\EqualsExtensions.cs" />
+    <Compile Include="Querying\ExistsExtensions.cs" />
+    <Compile Include="Querying\ILimitingQueryOptions.cs" />
+    <Compile Include="Querying\IQueryOptions.cs" />
+    <Compile Include="Querying\ISchemaQueryOptions.cs" />
+    <Compile Include="Querying\SimoRegex.cs" />
+    <Compile Include="MongoSystem.cs" />
+    <Compile Include="Querying\AllExtensions.cs" />
+    <Compile Include="Querying\InExtensions.cs" />
+    <Compile Include="Querying\LtGtExtensions.cs" />
+    <Compile Include="Querying\ModExtensions.cs" />
+    <Compile Include="Querying\NotEqualExtensions.cs" />
+    <Compile Include="Querying\Query.cs" />
+    <Compile Include="Querying\QueryOperator.cs" />
+    <Compile Include="Querying\QueryProperty.cs" />
+    <Compile Include="Querying\SizeExtensions.cs" />
+    <Compile Include="Querying\WhereExtensions.cs" />
+    <Compile Include="Querying\WhereQueryProperty.cs" />
+    <Compile Include="Querying\QueryOptions.cs" />
+    <Compile Include="Serialization\Converters\SimoRegexJsonConverter.cs" />
+    <Compile Include="Serialization\IDocumentReader.cs" />
+    <Compile Include="Serialization\IDocumentWriter.cs" />
+    <Compile Include="Serialization\ISelectorWriter.cs" />
+    <Compile Include="Serialization\ISimoBsonWriter.cs" />
+    <Compile Include="Serialization\SelectorWriter.cs" />
+    <Compile Include="SimoEngine.cs" />
+    <Compile Include="SimoHelper.cs" />
+    <Compile Include="SimoSessionFactory.cs" />
+    <Compile Include="SimoEntityStore.cs" />
+    <Compile Include="ISimoEntityStore.cs" />
+    <Compile Include="DataTypes\SimoAutoId.cs" />
+    <Compile Include="Commands\DeleteDocumentsCommand.cs" />
+    <Compile Include="Commands\InferedCommandFactory.cs" />
+    <Compile Include="Commands\InsertDocumentsCommand.cs" />
+    <Compile Include="Commands\SimoCommand.cs" />
+    <Compile Include="Commands\SimoCommandException.cs" />
+    <Compile Include="Commands\OpCodes.cs" />
+    <Compile Include="Commands\QueryDocumentsCommand.cs" />
+    <Compile Include="Commands\QueryCommandOptions.cs" />
+    <Compile Include="Commands\DatabaseCommand.cs" />
+    <Compile Include="Commands\UpdateDocumentsCommand.cs" />
+    <Compile Include="Commands\UpdateModes.cs" />
+    <Compile Include="SimoConnectionInfo.cs" />
+    <Compile Include="ISimoConnectionInfo.cs" />
+    <Compile Include="ISimoCollection.cs" />
+    <Compile Include="ISimoConnection.cs" />
+    <Compile Include="ISimoDatabase.cs" />
+    <Compile Include="ISimoSession.cs" />
+    <Compile Include="SimoCollection.cs" />
+    <Compile Include="Exceptions\SimoCommunicationException.cs" />
+    <Compile Include="SimoConnection.cs" />
+    <Compile Include="SimoDatabase.cs" />
+    <Compile Include="Exceptions\SimoException.cs" />
+    <Compile Include="DataTypes\SimoId.cs" />
+    <Compile Include="DataTypes\SimoIdBytesGenerator.cs" />
+    <Compile Include="DataTypes\SimoIdCounterPart.cs" />
+    <Compile Include="Serialization\Converters\SimoIdJsonConverter.cs" />
+    <Compile Include="DataTypes\SimoJson.cs" />
+    <Compile Include="DataTypes\SimoIdMachinePart.cs" />
+    <Compile Include="DataTypes\SimoIdProcessPart.cs" />
+    <Compile Include="DataTypes\SimoIdTimePart.cs" />
+    <Compile Include="DataTypes\SimoReference.cs" />
+    <Compile Include="Serialization\Converters\SimoReferenceJsonConverter.cs" />
+    <Compile Include="SimoSession.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ExceptionMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\BodyWriter.cs" />
+    <Compile Include="Serialization\DocumentReader.cs" />
+    <Compile Include="Serialization\DocumentWriter.cs" />
+    <Compile Include="Serialization\Request.cs" />
+    <Compile Include="Serialization\RequestWriter.cs" />
+    <Compile Include="Serialization\Response.cs" />
+    <Compile Include="Serialization\ResponseStreamReader.cs" />
+    <Compile Include="Serialization\SerializationConsts.cs" />
+    <Compile Include="Globalization\ISimoPluralizer.cs" />
+    <Compile Include="Globalization\SimoPluralizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ExceptionMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionMessages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
