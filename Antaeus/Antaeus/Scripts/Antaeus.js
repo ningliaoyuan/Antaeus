@@ -138,6 +138,7 @@ $("#FavoriteTagsEditInput").separateInput({insert: ".separate-select", required:
 $(".LinkFavoriteEdit").live("click",favorite["TagModify"]);
 
 
+
 //4.具体题目页的历史记录查看
 //$("#PopupHistory").click(function() { PopupAJAX($(this).attr("href")); });
 

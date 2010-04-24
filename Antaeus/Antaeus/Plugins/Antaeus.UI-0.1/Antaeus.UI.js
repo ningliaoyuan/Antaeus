@@ -195,7 +195,7 @@ favorite["TagModify"] = function(){
 	//将AJAX需要的qid写入到popup主控
 	$("#PopupFavoriteEdit").attr("quesid",qid);
 	//打开Popup界面
-	$("#PopupFavoriteEdit").popup("open");
+	$("#PopupFavoriteEdit").popup("open",{openAfter:function(){$("#FavoriteTagsEditInput").separateInput("rewidth");}});
 };
 
 //filter方法用于动态提供筛选
@@ -398,9 +398,13 @@ function TabActive(data) {
 //[必须]btnLeft - 数字 - 按钮距离左边的位置
 //[可选]cancel - 函数 - 取消按钮的函数
 //[可选]top - 数字 - 垂直方向位置。如果不写这个的话，将会默认在页面正中间显示，否则将按照这个参数值来显示位置
+// "open" Method的参数
+//[可选]openAfter - 函数 - Popup打开后要执行的函数
+// "close" Method的参数
+//[可选]closeAfter - 函数 - 关闭后要执行的函数
 (function($){  
 	$.fn.extend({   
-	popup: function(options){
+	popup: function(options,param){
 		//默认参数设置
 		var defaults = { 
 			width        : 500,
@@ -408,7 +412,8 @@ function TabActive(data) {
 			cancel       : "取消",
 			ajax         : "",
 			btnLeft      : 0,
-			button       : "save"
+			button       : "save",
+			submit       : function(){}
 		};                   
 		var opt;
 		var operation="";
@@ -420,7 +425,7 @@ function TabActive(data) {
 		}else{
 			operation = options;
 			//读取全局变量中这个插件的原先设置值
-			//opt = g_param.AntaeusUIPluginsPopup;
+			opt = param;
 		}
 		
 		//定义控件中所有用到ID和Class属性名
@@ -541,14 +546,14 @@ function TabActive(data) {
 			$("#"+_cid).css("display","block");
 			//不知道为啥jQuery1.4.2的fadeTo失效了
 			$("#"+_cid).animate({opacity: '+0.5'}, "fast",function(){
-				$("#"+_id).fadeIn("fast");
+				$("#"+_id).fadeIn("fast",function(){opt.openAfter();});
 			});
 		};
 		//关闭popup
 		var _close = function(){
 			$("#"+_id).fadeOut("fast",function(){
 				$("#"+_cid).fadeOut("fast",function(){
-					$("#"+_cid).hide();
+					$("#"+_cid).hide(function(){opt.closeAfter();});
 				});
 			});
 		};
