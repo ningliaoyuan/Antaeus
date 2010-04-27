@@ -53,6 +53,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Schema, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.Data.Schema.UnitTesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -73,6 +74,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -107,6 +109,10 @@
       <Project>{176E0ECE-37C7-4587-A3AD-F403C800CE6A}</Project>
       <Name>Antaeus.BL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Antaeus.Common\Antaeus.Common.csproj">
+      <Project>{157703CE-C1BA-4375-AA94-3C46A8B12255}</Project>
+      <Name>Antaeus.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Antaeus.MongoDB\Antaeus.MongoDB.csproj">
       <Project>{A4650BA7-6C97-43C3-9F13-F0D3CF276877}</Project>
       <Name>Antaeus.MongoDB</Name>
@@ -114,6 +120,10 @@
     <ProjectReference Include="..\Antaeus.ORM\Antaeus.ORM.csproj">
       <Project>{90F2A1C6-6B02-45B5-890B-A765A287BB3F}</Project>
       <Name>Antaeus.ORM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Antaeus.SimpleMongoDb\Antaeus.SimpleMongoDb.csproj">
+      <Project>{053D3E4A-1217-4D84-9DC4-23C2332E3BDB}</Project>
+      <Name>Antaeus.SimpleMongoDb</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Antaeus.BL.Model;
+using System.Web.Caching;
 
 namespace Antaeus
 {
@@ -19,6 +20,5 @@ namespace Antaeus
         {
             return UserFactory.GetNormalUser(GetUserName());
         }
-
-    }
+    }   
 }

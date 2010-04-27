@@ -71,6 +71,7 @@
     <Compile Include="FavoriteItem.cs" />
     <Compile Include="IFavoriteProvider.cs" />
     <Compile Include="ItemBase.cs" />
+    <Compile Include="MongoIDProvider.cs" />
     <Compile Include="MongoUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserFavorite.cs" />

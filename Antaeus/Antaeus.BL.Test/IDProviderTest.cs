@@ -47,11 +47,12 @@ namespace Antaeus.BL.Test
         //}
         //
         //Use TestInitialize to run code before running each test
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
+        [TestInitialize()]
+        public void MyTestInitialize()
+        {
+            SMUtility.DB = "SMAntaeus_Test";
+        }
+        
         //Use TestCleanup to run code after each test has run
         //[TestCleanup()]
         //public void MyTestCleanup()
@@ -70,13 +71,7 @@ namespace Antaeus.BL.Test
             SimpleIDProvider target = new SimpleIDProvider();
             string key = "GetNewIdTest";
 
-            List<long> IDs = new List<long>(1000);
-            for (int i = 0; i < 2102; i++)
-            {
-                IDs.Add(target.GetNewId(key));
-            }
-
-            CollectionAssert.AllItemsAreUnique(IDs, "存在一样的ID");
+            TestIIDProvider(target, key);
         }
 
         /// <summary>
@@ -88,6 +83,20 @@ namespace Antaeus.BL.Test
             DBIDProvider target = new DBIDProvider();
             string key = "GetNewIdTestForDBProvider";
 
+            TestIIDProvider(target, key);
+        }
+
+        [TestMethod()]
+        public void GetNewIdTestForSMIDProvider()
+        {
+            IIDProvider target = new SMIDProvider();
+            string key = "GetNewIdTestForSMIDProvider";
+
+            TestIIDProvider(target, key);
+        }
+
+        private void TestIIDProvider(IIDProvider target, string key)
+        {
             List<long> IDs = new List<long>(1000);
             for (int i = 0; i < 2102; i++)
             {
@@ -96,5 +105,8 @@ namespace Antaeus.BL.Test
 
             CollectionAssert.AllItemsAreUnique(IDs, "存在一样的ID");
         }
+
+       
+
     }
 }

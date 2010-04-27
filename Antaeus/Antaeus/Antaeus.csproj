@@ -94,6 +94,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CacheHelper.cs" />
+    <Compile Include="Helpers\ICacheHelper.cs" />
     <Compile Include="Helpers\MembershipHelper.cs" />
     <Compile Include="Helpers\ViewDataHelper.cs" />
     <Compile Include="Helpers\ViewHelper.cs" />
