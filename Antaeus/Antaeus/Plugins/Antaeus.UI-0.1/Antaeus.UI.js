@@ -569,7 +569,72 @@ function TabActive(data) {
 	});      
 })(jQuery); 
 
+(function($){  
+	$.fn.extend({   
+	tab: function(options){
+		//默认参数设置
+		var defaults = {  
+			trigger : "click"
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);		
+			
+			//隐藏所有的内容Tab
+			obj.children(".tab-content").hide();
+			//获得当前显示的Tab
+			var current = obj.children(".tab-header").children(".tab-current").attr("tab");
+			//显示这个Tab
+			obj.children(".tab-content[tab='"+current+"']").show();
+			
+			obj.children(".tab-header").children("li").bind("click",function(){
+				obj.children(".tab-header").children(".tab-current").removeClass("tab-current");
+				$(this).addClass("tab-current");
+				
+				var n = $(this).attr("tab");
+				obj.children(".tab-content").hide();
+				obj.children(".tab-content[tab='"+n+"']").slideDown("slow");
+				
+			});
+			
+		});  
+	}
+	});      
+})(jQuery); 
 
+(function($){  
+	$.fn.extend({   
+	accordion: function(options){
+		//默认参数设置
+		var defaults = {  
+			trigger : "click"
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);		
+			
+			//首先隐藏所有内容
+			obj.children(".accordion-content").hide();
+			//显示当前显示的accordion
+			obj.children(".accordion-current").next().show();
+			//obj.children(".accordion-current").children("i").html("▲");
+			//点击的滑动效果
+			
+			obj.children(".accordion-title").click(function(){
+				if(!$(this).hasClass("accordion-current")){
+					obj.children(".accordion-title").removeClass("accordion-current");
+					obj.children(".accordion-content").hide();
+					$(this).next().slideDown("slow");
+					$(this).addClass("accordion-current");
+				}
+			});
+			
+		});  
+	}
+	});      
+})(jQuery); 
 
 
 

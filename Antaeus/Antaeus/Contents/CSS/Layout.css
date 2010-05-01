@@ -66,8 +66,6 @@ property:value !important; ---- FF,IE7,IE8
 
 .footer{ height:110px; border-top:1px solid #bdbdbd; background-color:#333;}
 
-.content{background-color:#dddddd;}
-
 /* Box Description ---------------------------------------------------------
 Use box for mainly layout setup, All box are float-left and precise width
 
