@@ -23,6 +23,8 @@
 .new-box-bottom .incorrect span{ color:#ff0000; font-weight:bold;}
 
 .new-box-title{ background-color:#24a4e3; font-size:14px; color:#FFF; height:36px; line-height:36px; padding:0 10px; font-weight:bold;}
+.new-box-title2{ background-color:#fff; font-size:14px; color:#888; height:36px; line-height:36px; padding:0 10px; border-bottom:2px solid #ddd;}
+.new-box-title2 a{ font-size:12px;}
 
 .new-box2 .accordion{ border-bottom:1px solid #c1c1c1;}
 .new-box2 .accordion-title{ background-color:#ddd; border:1px solid #c1c1c1; border-bottom:0; color:#666; line-height:20px; padding-left:5px; cursor:pointer;}
@@ -34,3 +36,9 @@
 .new-box2 li{ padding:5px; border-bottom:1px dotted #ccc;}
 .new-box2 li span{ color:#888;}
 .new-box2 li.last{ border-bottom:0;}
+
+.new-ques .description, .question{ padding-bottom:10px; font-size:14px; line-height:22px;}
+.new-ques .choices input{ display:block; float:left; margin-top:5px;}
+.new-ques .choices p{ display:block; float:left; width:640px; padding-bottom:5px; padding-left:5px; font-size:14px; line-height:22px;}
+.new-ques span.underline{ text-decoration:underline;}
+.new-ques span.highlight{ background-color:#FFFF00;}

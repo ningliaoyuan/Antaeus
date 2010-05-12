@@ -413,7 +413,9 @@ function TabActive(data) {
 			ajax         : "",
 			btnLeft      : 0,
 			button       : "save",
-			submit       : function(){}
+			submit       : function(){},
+			openAfter    : function(){},
+			closeAfter   : function(){}
 		};                   
 		var opt;
 		var operation="";
@@ -546,14 +548,22 @@ function TabActive(data) {
 			$("#"+_cid).css("display","block");
 			//不知道为啥jQuery1.4.2的fadeTo失效了
 			$("#"+_cid).animate({opacity: '+0.5'}, "fast",function(){
-				$("#"+_id).fadeIn("fast",function(){opt.openAfter();});
+				if(operation=="open" && opt!=null){
+					$("#"+_id).fadeIn("fast",function(){opt.openAfter();});
+				}else{
+					$("#"+_id).fadeIn("fast");
+				}
 			});
 		};
 		//关闭popup
 		var _close = function(){
 			$("#"+_id).fadeOut("fast",function(){
 				$("#"+_cid).fadeOut("fast",function(){
-					$("#"+_cid).hide(function(){opt.closeAfter();});
+					if(operation=="close" && opt!=null){
+						$("#"+_cid).hide(function(){opt.closeAfter();});
+					}else{
+						$("#"+_cid).hide();
+					}
 				});
 			});
 		};
