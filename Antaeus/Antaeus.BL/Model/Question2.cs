@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Antaeus.BL;
 
 namespace Antaeus
 {
@@ -24,11 +25,16 @@ namespace Antaeus
     /// 
     /// 
     /// </summary>
-    public class Question2
+    public class Question2 : IEntity
     {
         public Question2(long id)
         {
             ID = id;
+        }
+
+        public Question2()
+        {
+            // TODO: Complete member initialization
         }
 
 
@@ -37,6 +43,16 @@ namespace Antaeus
         // CrTime CrUser
 
         // 
+
+        public string Title { get; set; }
+
+        public string CrUserName { get; set; }
+
+        public string Content { get; set; }
+
+        public DateTime CrTime { get; set; }
+
+        public long _id { get; set; }
     }
 
     public class Question2Helper

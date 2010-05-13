@@ -80,10 +80,13 @@
     <Compile Include="JB8MembershipProvider.cs" />
     <Compile Include="Model\BaseRepository.cs" />
     <Compile Include="Model\CategoryRepository.cs" />
+    <Compile Include="Model\IEntity.cs" />
+    <Compile Include="Model\IRepo.cs" />
     <Compile Include="Model\IRepository.cs" />
     <Compile Include="Model\NormalUser.cs" />
     <Compile Include="Model\Question.cs" />
     <Compile Include="Model\Question2.cs" />
+    <Compile Include="Model\Question2Repo.cs" />
     <Compile Include="Model\QuestionFactory.cs" />
     <Compile Include="Model\QuestionModel.cs" />
     <Compile Include="Model\QuestionRepository.cs" />

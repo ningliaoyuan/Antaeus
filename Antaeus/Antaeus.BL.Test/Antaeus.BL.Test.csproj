@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminParametersTest.cs" />
+    <Compile Include="IDProviderTest.cs" />
     <Compile Include="DBTemp.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,7 +100,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionModelTest.cs" />
     <Compile Include="RateServiceTest.cs" />
-    <Compile Include="IDProviderTest.cs" />
+    <Compile Include="Question2Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
