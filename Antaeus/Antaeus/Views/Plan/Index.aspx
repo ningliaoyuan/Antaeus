@@ -3,12 +3,12 @@
 <%@ Register src="EnduringPlan.ascx" tagname="EnduringPlan" tagprefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">Plan</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
-<script type="text/javascript" src="/Plugins/JsCharts/jscharts.js"></script>
+    <script type="text/javascript" src="/Plugins/JsCharts/jscharts.js"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LinkContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
-<form id="form1" runat="server">
+    <form id="form1" runat="server">
 
 <div class="blank10"></div>
 

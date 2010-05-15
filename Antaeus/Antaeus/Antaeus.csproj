@@ -130,6 +130,7 @@
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Views\Plan\CreatePlan.ascx" />
+    <Content Include="Views\Plan\EnduringPlan.ascx" />
     <Content Include="Views\Plan\Index.aspx" />
     <Content Include="Views\Plan\Edit.aspx" />
     <Content Include="Views\Plan\Process.aspx" />

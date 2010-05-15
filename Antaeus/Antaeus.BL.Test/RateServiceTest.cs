@@ -39,5 +39,22 @@ namespace Antaeus.BL.Test
             Assert.AreEqual(score.Average, 2);
         }
 
+        [TestMethod]
+        public void KEYIDImplicitOperatorTest()
+        {
+            KEYID ki = new KEYID("k", 1);
+
+            string kiStr = "k_1";
+
+            Assert.AreEqual(ki.ToString(), kiStr);
+
+            KEYID ki2 = kiStr;
+
+            Assert.IsTrue(ki.ToString() == ki2.ToString());
+            Assert.IsTrue(ki == ki2);
+            Assert.IsTrue(ki == kiStr);
+        }
+        
+
     }
 }
