@@ -54,6 +54,7 @@ a:hover,a:active{ color:#FF0000; text-decoration:underline;}
 .blue   { color:#0479a7;}
 .purple { color:#df0193;}
 .orange { color:#df6901;}
+.white  { color:#FFF;}
 /* Define the Revert Text colors*/
 .rbgc-red    { background-color:#df0101; color:#FFF; font-weight:bold; font-size:14px;}
 .rbgc-blue   { background-color:#0479a7; color:#FFF; font-weight:bold; font-size:14px;}
