@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* YUI Reset ===========================================================================================
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 2.7.0
+--------------------------------------------------------------------------------------------------------*/ 
+html {color: #000;background: #F1F1F1;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing: 0;}
+fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup {font-style:inherit;font-weight:inherit;}
+del,ins { text-decoration: none;}
+li {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight: normal;}
+q:before,q:after {content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+sup{vertical-align:baseline;}
+sub{vertical-align:baseline;}
+/*because legend doesn't inherit in IE */
+legend {color: #000;}
+input,button,textarea,select,optgroup,option {font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+/*@purpose To enable resizing for IE */
+/*@branch For IE6-Win, IE7-Win */
+input,button,textarea,select{*font-size: 100%;}
+/* YUI Reset End =======================================================================================*/
+
+html{ background-color:#e8e8e8;}
+body{ background-color:#e8e8e8; font-size:14px; font-family:"微软雅黑", "宋体", Arial; color:#333; padding-bottom:20px;}
+.wrap{ width:980px; margin-left:auto; margin-right:auto;}
+.left{ float:left;}
+.right{ float:right;}
+.clear{ clear:both;}
+
+.header{ padding-top:30px; padding-bottom:30px;}
+.header .left{ width:450px;}
+.header .right{ padding-top:10px; color:#666;}
+
+.content .left{ width:210px;}
+.content .right{ width:750px; background-color:#F1F1F1; border:1px solid #CCC; margin-bottom:20px;}
+
+.menu a:link, .menu a:visited{ color:#438099; text-decoration:none;}
+.menu a:hover{ color:#FF9000;}
+
+.menu div, .menu p{ background-color:#b9d1db; border:1px solid #6e9eb2; font-size:16px; font-weight:bold; color:#062e3e; line-height:35px; height:35px; display:block; padding-left:15px; cursor:pointer;}
+.menu div a{ display:block;}
+.menu div a:link, .menu div a:visited, .menu div a:hover{ color:#062e3e; text-decoration:none;}
+.menu p{ display:block; margin-top:15px;}
+.menu ul{ border:1px solid #6e9eb2; border-top:0; display:none;}
+.menu ul.current{ display:block;}
+.menu ul li{ line-height:30px; height:30px; background-color:#dae5ea; border-bottom:1px solid #b9d1db; padding-left:15px;}
+.menu ul li a{ display:block; *display:inline;}
+.menu ul li.last{ border:0;}
+.menu ul li.current{ background-color:#ff9000; color:#FFF;}
+.menu ul li.current a:link, .menu ul li.current a:visited, .menu ul li.current a:hover{color:#FFF;}
+
+h1{ height:35px; line-height:35px; font-size:16px; color:#333; background-color:#e0e0e0; padding-left:15px; font-weight:bold;}
+h2{ font-weight:bold; line-height:30px; display:block; margin:5px 0; background-color:#666; color:#fff; clear:both; padding-left:10px;}
+.blank5{ height:5px; font-size:5px; line-height:5px; clear:both;}
+.main{ padding:15px; background-color:#FFF;}
+.main p{ padding:5px 0;}

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Antaeus Developer Document Center</title>
+
+<link type="text/css" rel="stylesheet" href="Contents/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="Contents/shThemeDefault.css"/>
+<link type="text/css" rel="stylesheet" href="Contents/style.css"/>
+
+<script language="javascript" type="text/javascript" src="Scripts/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	
+	
+	
+	//左侧菜单效果
+	$(".menu p").click(function(){
+		$(this).next().slideToggle("fast");
+	});
+
+	
+	//加载初始的代码
+	$("#Content").load("Home.html");
+	//点击跳转加载
+	$("#Sidebar ul li a").click(function(){
+		$("#Sidebar .current").removeClass("current");
+		$(this).parent().addClass("current");
+		$(this).parent().parent().addClass("current");
+		$("#Content").load($(this).attr("title")+".html",function(){
+			jQuery.getScript("/Scripts/shAll.js", function(){
+				//代码高亮显示的设置
+				SyntaxHighlighter.config.clipboardSwf = '/Scripts/clipboard.swf';
+				SyntaxHighlighter.all();
+			});
+		});
+	});
+
+	
+	
+    
+	
+});
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+	<div class="wrap">
+    	<div class="left"><a href="index.html"><img src="Contents/logo.gif" width="543" height="76" /></a></div>
+    	<div class="right">
+        	<p>前端：刘庆逊,lanslot.liu@gmail.com</p>
+            <p>后端：宁辽源,ningliaoyuan@gmail.com</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="content">
+	<div class="wrap">
+    	<div class="left menu" id="Sidebar">
+            <div><a href="index.html">首页</a></div>
+            <p>Antaeus.UI.Plugins</p>
+            <ul>
+                <li><a href="#" title="Antaeus.UI.Plugins.popup">Plugins.popup</a></li>
+                <li class="last"><a href="#" title="Antaeus.UI.Plugins.separate">Plugins.separate</a></li>
+            </ul>
+        </div>
+        <div id="Content" class="right">
+        
+        </div>
+        
+    	
+    </pre>
+        <div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>

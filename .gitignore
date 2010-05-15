@@ -151,7 +151,14 @@
 /Antaeus/ExternalProjects/Pls-SimpleMongoDb - v0.1.7-Source/Source/Pls.SimpleMongoDb/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /Antaeus/ExternalProjects/Pls-SimpleMongoDb - v0.1.7-Source/Pls-SimpleMongoDb.suo
 /Antaeus/Antaeus.BL.Test/obj/
+<<<<<<< HEAD
+/Antaeus/Antaeus/Plugins/CKEditor-3.0.1/_notes/dwsync.xml
+/Antaeus/Antaeus/Plugins/UI.Stars-2.1/_notes/dwsync.xml
+/Antaeus/Antaeus/Plugins/jQuery.UI-1.7.2/_notes/dwsync.xml
+/Antaeus/Antaeus/Plugins/Antaeus.UI.Form-0.1/_notes/dwsync.xml
+=======
 /Antaeus/Antaeus.SimpleMongoDb/obj/
 /Antaeus/ExternalProjects/Pls-SimpleMongoDb - v0.1.7-Source/Source/Pls.SimpleMongoDb/bin/
 /Antaeus/Antaeus.SimpleMongoDb/bin/
 /Antaeus/ExternalProjects/Pls-SimpleMongoDb - v0.1.7-Source/Source/Pls.SimpleMongoDb/obj/
+>>>>>>> c2199c1708306513841db31f62a0f90c5f17827f

@@ -25,6 +25,7 @@
     <link href="/Contents/CSS/Common.css" rel="stylesheet" media="screen" type="text/css" />
     <link href="/Contents/CSS/Layout.css" rel="stylesheet" media="screen" type="text/css" />
     <link href="/Contents/CSS/GMAT.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="/Contents/CSS/New.css" rel="stylesheet" media="screen" type="text/css" />
 	<link href="/Plugins/jQuery.UI-1.7.2/jquery-ui-1.7.2.custom.css" rel="stylesheet" media="screen" type="text/css" />
     <link href="/Plugins/UI.Stars-2.1/crystal-stars.css" rel="stylesheet" media="screen" type="text/css" />
 	<asp:ContentPlaceHolder ID="LinkContent" runat="server" />
@@ -53,6 +54,7 @@
                 <div class="link">
                     <a href="/" class="current">主页</a> <a href="/Question">题库</a> <a href="/Knowledge">知识点</a>
                     <a href="/Article">文章</a>
+					<a href="/Plan">计划</a>
                 </div>
                 <div class="search">
                     <input type="text" value="输入题目编号直接浏览题目" />
@@ -70,14 +72,14 @@
             </div>
         </div>
     </div>
-    <div class="footer">
+<!--    <div class="footer">
         <div class="wrap">
             <div class="copyright">
             </div>
             <div class="links">
             </div>
         </div>
-    </div>
+    </div>-->
 <uc1:LoginPopup ID="LoginPopup1" runat="server" />
 </body>
 </html>

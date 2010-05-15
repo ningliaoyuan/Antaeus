@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+.new-box{ background-color:#FFF; padding:10px 10px 0;}
+.new-box2{ background-color:#FFF; padding:10px;}
+.new-box-bottom{ border-top:1px solid #e9e9e9; background-color:#f8f8f8; padding:10px;}
+
+
+.new-index-question h2{ font-size:16px; font-weight:bold; line-height:28px;}
+.new-index-question .tab-header{ margin-top:-20px;}
+.new-index-question .tab-header li{ display:block; float:right; padding:0 10px; margin:0 5px; background-color:#DDD; border:1px solid #e9e9e9; line-height:22px; border-bottom:0; cursor:pointer;}
+.new-index-question .tab-header li.tab-current{ background-color:#FFF;}
+.new-index-question .tab-content{ border:1px solid #e9e9e9; padding:10px; border-bottom:0;}
+
+.new-index-question .description, .question{ padding-bottom:10px; font-size:14px; line-height:22px;}
+.new-index-question .choices input{ display:block; float:left; margin-top:5px;}
+.new-index-question .choices p{ display:block; float:left; width:640px; padding-bottom:5px; padding-left:5px; font-size:14px; line-height:22px;}
+.new-index-question span.underline{ text-decoration:underline;}
+.new-index-question span.highlight{ background-color:#FFFF00;}
+
+.new-box-bottom .right{ padding-top:5px;}
+.new-box-bottom .correct span{ color:#5f8b1b; font-weight:bold;}
+.new-box-bottom .incorrect span{ color:#ff0000; font-weight:bold;}
+
+.new-box-title{ background-color:#24a4e3; font-size:14px; color:#FFF; height:36px; line-height:36px; padding:0 10px; font-weight:bold;}
+.new-box-title2{ background-color:#fff; font-size:14px; color:#888; height:36px; line-height:36px; padding:0 10px; border-bottom:2px solid #ddd;}
+.new-box-title2 a{ font-size:12px;}
+
+.new-box2 .accordion{ border-bottom:1px solid #c1c1c1;}
+.new-box2 .accordion-title{ background-color:#ddd; border:1px solid #c1c1c1; border-bottom:0; color:#666; line-height:20px; padding-left:5px; cursor:pointer;}
+.new-box2 .accordion-title span{ display:block; float:left;}
+.new-box2 .accordion-title i{ display:block; float:right; font-style:normal; color:#888; padding:0 5px;}
+.new-box2 .accordion-content{ background-color:#eee; border:1px solid #c1c1c1; border-bottom:0;}
+
+.new-box2 ul{ border:1px solid #fff;}
+.new-box2 li{ padding:5px; border-bottom:1px dotted #ccc;}
+.new-box2 li span{ color:#888;}
+.new-box2 li.last{ border-bottom:0;}
+
+.new-ques .description, .question{ padding-bottom:10px; font-size:14px; line-height:22px;}
+.new-ques .choices input{ display:block; float:left; margin-top:5px;}
+.new-ques .choices p{ display:block; float:left; width:640px; padding-bottom:5px; padding-left:5px; font-size:14px; line-height:22px;}
+.new-ques span.underline{ text-decoration:underline;}
+.new-ques span.highlight{ background-color:#FFFF00;}

@@ -25,301 +25,58 @@
 
 <form id="form1" runat="server">
 
-<div class="ques_know column2">
-	
-    <div class="blank10"></div>
-        
-    <div class="box1 subheader">
-        <div class="logo_question"></div>
-        <div class="left">
-            <h1>Sentences Corrected:&nbsp;<span id="QuestionID"><%= Html.Encode(Model.QuestionID) %></span></h1>
-            <span><%= Html.Encode(Model.CreatedUserName) %>&nbsp;创建于&nbsp;<%= Html.Encode(Model.CreatedTime.ToStr())%>；&nbsp;浏览量<%= Html.Encode(Model.ViewedCount) %>；题目来自于<%= Html.Encode(Model.Source) %></span>
-            <ul>
-                <li>题目标签：</li>
-                <%foreach (var tag in Model.GetTags(6).Split(','))
-                  {%>
-                     <li><a href="/tag/detail/<%=tag%>"><%=tag%></a></li>
-                <%}%>
-            </ul>
-        </div>
-        <div class="rateandnext right">
-            <div class="rate">
-                <span>此题的价值为&nbsp;<b id="RateAverge" ajaxrefresh="RateAverge"><%=Model.GetAverage().ToString("0.0")%></b>&nbsp;/&nbsp;5&nbsp;&nbsp;</span>
-                <div id="Rate" ajaxrequest="RateQuestion">
-	                <%=Html.RateSelect(Model.GetAverage())%>
-                </div>
-                <!--<div id="Rating" class="hidden">正在投票中...</div> -->              
+<div class="blank10"></div>
+<div class="column2">    
+    <div class="columnleft">
+    	<div class="new-box-title2">
+        	<div class="left">Reading Comprehension&nbsp;&gt;&nbsp;<b class="orange">13442</b></div>
+            <div class="right">
+                <span>来自：</span>
+                <b class="orange">GWD</b>
+                <a>查看详情</a>
             </div>
-            <div class="redirect">
-                <a href="#" class="next">下一题（随机抽取）</a>
-                <a href="#" class="previous">上一题</a>
+            <div class="clear"></div>
+        </div>   
+        <div class="new-box new-ques">
+            <div class="description">
+                <p>According to a theory advanced by researcher Paul Martin, the wave of species extinctions that occurred in North America about 11,000 years ago, at the end of the Pleistocene era, can be directly attributed to the arrival of humans, i.e., the Paleoindians, who were ancestors of modern Native Americans.  However, anthropologist Shepard Krech points out that large animal species vanished even in areas where there is no evidence to demonstrate that Paleoindians hunted them. Nor were extinctions confined to large animals:  small animals, plants, and insects disappeared, presumably not all through human consumption.  Krech also contradicts Martin's exclusion of climatic change as an explanation by asserting that widespread climatic change did indeed occur at the end of the Pleistocene.  Still, Krech attributes secondary if not primary responsibility for the extinctions to the Paleoindians, arguing that humans have produced local extinctions elsewhere.  But, according to historian Richard White, even the attribution of secondary responsibility may not be supported by the evidence.  White observes that Martin's thesis depends on coinciding dates for the arrival of humans and the decline of large animal species, and Krech, though aware that the dates are controversial, does not challenge <span class="highlight">them; yet recent archaeological discoveries are providing evidence</span> that the date of human arrival was much earlier than 11,000 years ago.</p>
             </div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    
-	<div class="columnleft">    
-        
-        <div class="blank10"></div>
-        
-        <div class="box2">
-            <% Html.RenderPartial(Model.Category.QuestionMetaObj.DetailsForm, Model); %>
-        </div>
-        <div class="blank10"></div>
-        
-        <div class="box2 answer">
-        <%Antaeus.ORM.Wiki anwser =Model.Meta.GetWiki("Answer");  %>
-            <div class="bar2">
-            	<div class="left">
-                	<h2>题目解答过程</h2>
-                    <div class="information">
-                    	当前版本&nbsp;<span class="red" id="WikiVersion"><%=Html.Encode(anwser.WikiContent.Reversion)%></span>&nbsp;由&nbsp;<span class="blue" id="WikiAuthor"><%= Html.Encode(anwser.WikiContent.CrUserName)%></span>&nbsp;更新于&nbsp;<span class="orange" id="WikiTime"><%= Html.Encode(String.Format("{0:g}",  anwser.WikiContent.CreatedTime))%></span>&nbsp;最新版本是&nbsp;<span class="green" id="WikiVersion"><%=Html.Encode(anwser.WikiContent.Reversion)%></span>
-                    </div>
-                	<div class="information">感谢&nbsp;
-                	<%for (int i=0;i<anwser.Contributors.Count; i++)
-                   {%>
-                      <span class="blue"> <%=Html.Encode(anwser.Contributors[i])%></span>
-                      <%if(i<anwser.Contributors.Count){ %>
-                      &nbsp;,&nbsp;
-                    <% }
-                   } %>
-                	&nbsp;对此题目的解答所做出的贡献</div>
-                </div>
-                <div class="right">
-                	<a class="btn-small btn-edit" id="ButtonWikiEdit">编辑此题的解答过程</a>
-                    <div class="clear"></div><div class="blank10"></div>
-                    <a class="btn-small btn-history" id="PopupHistory"  href="#/wiki/history/<%= anwser.KID%>">查看历史版本</a>                   
-                </div>
+            <div class="question">In the last sentence of the passage, the author refers to <b>"recent archaeological discoveries"</b> most probably in order to</div>
+            <div class="choices">
+                <input type="radio" name="choice" value="A" />
+                <p>refute White's suggestion that neither Maritn nor Krech adequately account for Paleoindians' contributions to the Pleistocene extinctions</p>
+                <div class="clear"></div>
+                <input type="radio" name="choice" value="B" />
+                <p>cast doubt on the possibility that a more definitive theory regarding the causes of the Pleistocene extinctions may be forthcoming</p>
+                <div class="clear"></div>
+                <input type="radio" name="choice" value="C" />
+                <p>suggest that Martin's, Krech's, and White's theories regarding the Pleistocene extinctions are all open to question</p>
+                <div class="clear"></div>
+                <input type="radio" name="choice" value="D" />
+                <p>call attention to the most controversial aspect of all the current theories regarding the Pleistocene extinctions</p>
+                <div class="clear"></div>
+                <input type="radio" name="choice" value="E" />
+                <p>provide support for White's questioning of both Martin's and Krech's positions regarding the role of Paleoindians in the Pleistocene extinctions</p>
                 <div class="clear"></div>
             </div>
-            <div class="wiki" id="WikiContent">
-            	<%if(string.IsNullOrEmpty(anwser.WikiContent.Content)){ %>
-                    <div class="nocontent">这道题目目前还没有题目解答，你如果正确地完成了这道题目，我们非常欢迎你把你的解答过程分享给大家。<a href="#" id="LinkWikiEdit">点击这里立即编辑题目</a></div>
-                <%} %>
-            	<div id="WikiContentEditArea">
-                	<p><%= anwser.WikiContent.Content%></p>
-            	</div>
-                <div class="wiki-submit hidden">
-                	<a class="btn-form-green" href="#" id="WikiEditSubmit">提交</a>
-                    <a class="btn-form-gray" href="#" id="WikiEditDestroy">取消</a>
-                </div>
-                <div class="clear blank15"></div>
-
-            </div>
         </div>
-        <div class="blank10"></div>
-        <div class="box2 survey">
-            <div class="bar2">
-            	<h2>请你对这道题作出评价</h2>
-                <div class="information">作出评价将可以获得积分哦，将更有助于我们了解你并对你做出推荐</div>
-            </div>
-            <div class="context">
-            	<div class="sur_form">
-                	<h4>这道题你自己做得怎么样？</h4>                    
-                    <span><input type="radio" name="do" />额。。。我是蒙对的</span>                    
-                    <span><input type="radio" name="do" />这么简单必然做对啊</span>                    
-                    <span><input type="radio" name="do" />虽然当时不肯定答案还是做对了</span>                    
-                    <span><input type="radio" name="do" />完全不懂蒙错了</span>                    
-                    <span><input type="radio" name="do" />气死我了，又粗心</span>
-                    <div class="clear"></div>
-                    <div class="blank10"></div>
-                </div>
-                <div class="blank10"></div>
-                <div class="sur_form">
-                	<h4>这道题看完解答后懂了不？</h4>                    
-                    <span><input type="radio" name="do" />懂！！！原来如此啊！</span>                    
-                    <span><input type="radio" name="do" />还是不懂。。。我能力不够吧</span>                    
-                    <span><input type="radio" name="do" />还是不懂。。。解答太烂了</span>
-                    <div class="clear"></div>
-                    <div class="blank10"></div>
-                </div>
-            </div>
+        <div class="new-box-bottom">
+        	<b>恭喜你做对了！</b><br />
+            <span>做完此题你的感觉如何？</span>
+            <input type="radio" /><label>我<b>完全理解</b>了这道题目</label>
+            <input type="radio" /><label>虽然做对，但我还有<b>不理解</b>的地方</label><br />
+            <span>记录下你做题的感觉，将有助于我们分析你学习中的问题从而向你推荐更适合你的题目。</span>
         </div>
-        <div class="blank10"></div>
-        <div class="box2 comment">
-            <div class="bar2">
-            	<div class="left">
-                	<h2>讨论题目</h2>
-                    <div class="information">如果你有任何问题，欢迎在这里发表，大家一起来解决题目问题</div>
-                </div>
-                <div class="right">
-                	<a class="btn-small btn-comment" href="#">发表一个新的评论</a>
-                </div>
-                <div class="clear"></div>
-            </div>
-            
-            <div class="context">            
-            <%
-                int floor = 0;
-                foreach (var com in Model.GetComments())
-              {
-                  floor++;
-                  %>
-            	<div class="comm_item">
-                	<div class="left"><span class="blue"><%=com.CrUserName %></span>&nbsp;发布于&nbsp;<span class="orange"><%=com.CreatedTime.ToStr() %></span></div>
-                    <div class="right"><span class="green"><%=floor.ToString() %></span>&nbsp;楼</div>
-                    <div class="clear"></div>
-                    <p><%=Html.Encode(com.Content) %></p>
-                </div>
-             <%}
-                if (floor == 0)
-                { %>
-            	<div class="comm_no">目前还没有人对这个题目提出问题和讨论，您如果对于这道题有任何的问题，请一定在下面提出来，热心的其它用户们一定会马上为您解答的。</div>
-              <%} %>             
-                <div class="comm_form">
-                	<textarea id="CommentContent" name="content"></textarea>
-                    <br /><a class="btn-form-green" id="CommentSubmit" rel="/Question/comment/<%=Model.QuestionID %>?content=">提交新的讨论发言</a>
-                </div>
-                               
-            </div>
-            <div class="bar1 indexbottom">
-                <div class="barpage">
-                    <span>讨论翻页：</span>
-
-                </div>
-                
-            </div> 
+        <div class="new-box-bottom">
+        	<b>你做错了！正确答案是C！</b><br />
+            <span>赶紧看看下面的解答过程，学习一下吧。</span>
         </div>
-        <div class="blank10"></div>
-    </div>
-    
-    <div class="columnright">
-    	<div class="blank10"></div>
-        <div class="box3">
-                               
-            <div class="btn-huge btn-huge-favorite" id="LinkFavoriteAdd" ajaxrequest="FavoriteAdd">
-                <p><b>加入到收藏夹</b><span>整理出一个自己的小题库，以后可以随时不断复习强化</span></p>
-            </div>
-            <div class="btn-huge btn-huge-favorite btn-huge-hover" ajaxstatus="loading">
-                <p><b>加入到收藏夹</b><span><font class="red">操作执行中，请稍候.....</font></span></p>
-            </div>
-            <div class="btn-huge btn-huge-favorite btn-huge-hover hidden">
-                <p><b>加入到收藏夹</b><span><font class="red">题目已经成功添加到收藏夹！</font><br />你可以设置使用什么标签来分类</span></p>
-            </div>
-			<div class="btn-huge btn-huge-favorite btn-huge-already hidden" id="FavoriteAlready">
-                <p><b>你已经收藏了此题目</b><span><a id="LinkFavoriteRemove" ajaxrequest="FavoriteRemove">将此题从收藏夹移除</a><a ajaxstatus="loading">操作执行中，请稍候.....</a><br /><a id="LinkFavoriteEdit" ajaxrequest="FavoriteTagsGet">编辑收藏使用的标签</a><a ajaxstatus="loading">操作执行中，请稍候.....</a></span></p>
-            </div>
-            <div class="btn-huge btn-huge-favorite btn-huge-hover hidden">
-                <p><b>编辑收藏用标签</b><span>使用标签整理自己的题目收藏，更加便于找到题目</span></p>
-            </div>		
-
-            <div class="favorite-setting hidden" id="FavoriteAddSetting">
-                <div class="content">
-                    <p>收藏设置：输入标签</p>                    
-                    <input type="text" value="" tip="使用英文半角逗号(,)分隔标签" id="InputFavoriteTagAdd" tags="<%=MembershipHelper.GetNormalUser().GetTags("question",Model.QuestionID) %>" />
-                    <span class="tips">提示:添加标签可更方便地在收藏夹中找到本题目</span>
-                    <p>常用标签推荐：</p>
-                    <div class="tags" id="FavoriteTagRecommend">
-                    <% List<string> suggestedTags = AdminParameters.Get(AdminParameters.SuggesttedTagsForUserFavorite).Split(',').ToList();
-
-                       suggestedTags.AddRange(MembershipHelper.GetNormalUser().GetTags("question").Split(','));
-                        
-                       foreach (var tag in suggestedTags.Distinct())
-                       { if(!string.IsNullOrEmpty(tag))
-                         {%>
-                              <a title="点击添加到标签输入框"><%=Html.Encode(tag) %></a>
-                       <%}
-                       } %>
-                        <div class="clear"></div>
-                    </div>                    
-                </div>
-                <div class="clear"></div>
-                <div class="btns">
-                    <a id="BtnFavoriteTagSave" class="btn-form-blue" ajaxrequest="FavoriteAddTags">保存</a>
-                    <a class="btn-form-gray" ajaxstatus="loading">保存中...</a>
-                    <a id="BtnFavoriteTagCancel">取消</a>
-                </div>
-            </div>
-
-            <a class="btn-huge btn-huge-email"><p><b>EMAIL发送给朋友</b><span>分享给朋友或让朋友来帮助你解答问题</span></p></a>
-            <a class="btn-huge btn-huge-print"><p><b>打印本页的题目和解答</b><span>将题目打印出来，拿在手上看，随时复习</span></p></a>
-        </div>
-        <div class="blank10"></div>
-        <div class="box3 w-precentage">
-        	<h3 class="box-title">
-            	题目统计数据
-                <div class="right">
-                	<span>正确率</span>
-                    <b>45%</b>
-                </div>
-            </h3>
-            <div class="context">
-            	<div class="col1"><div style="height:45px;"></div><span>45%</span><b>选A</b></div>
-				<div class="col2"><div style="height:5px;"></div><span>5%</span><b>选B</b></div>
-                <div class="col3"><div style="height:20px;"></div><span>20%</span><b>选C</b></div>
-                <div class="col4"><div style="height:13px;"></div><span>13%</span><b>选D</b></div>
-                <div class="col5"><div style="height:17px;"></div><span>17%</span><b>选E</b></div>
-            </div>
-        </div>
-        <div class="blank10"></div>
-        <div class="box3 w-related">
-            <h3 class="box-title">相关的知识点</h3>
-            <div class="context">
-            	<div class="item">
-                	<b>知识点的标题</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>知识点的标题</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>知识点的标题</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>知识点的标题</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>知识点的标题</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-            </div>
-            <div class="blank10"></div>
-        </div>
-        <div class="blank10"></div>
-        <div class="box3 w-related">
-            <h3 class="box-title">相关的其它题目</h3>
-            <div class="context">
-            	<div class="item">
-                	<b>阅读：28393</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>阅读：28393</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>阅读：28393</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>阅读：28393</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-                <div class="item">
-                	<b>阅读：28393</b>
-                    <span>价值3.5</span>
-                    <p>标签：核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛,&nbsp;核设,&nbsp;哈哈,&nbsp;很多嘛</p>
-                </div>
-            </div>
-            <div class="blank10"></div>
-        </div>
-        <div class="blank10"></div>
-    </div>
+        
+    </div>    
     
     <div class="clear"></div>
 </div>
+<div class="blank10"></div>
 <uc1:QuestionReportPopup ID="QuestionReportPopup" runat="server" />
 <uc2:AddFavoritePopup ID="AddFavoritePopup" runat="server" />
 

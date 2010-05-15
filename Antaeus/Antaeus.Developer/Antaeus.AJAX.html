@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Antaeus Developer Document Center</title>
+
+<script type="text/javascript" src="Scripts/shCore.js"></script>
+<script type="text/javascript" src="Scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="Scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="Scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="Scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="Scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="Scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="Scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="Contents/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="Contents/shThemeDefault.css"/>
+<link type="text/css" rel="stylesheet" href="Contents/style.css"/>
+
+<script language="javascript" type="text/javascript" src="Scripts/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+						   
+	$("#Sidebar").load("Sidebar.html",function(){
+	  //左侧菜单效果
+		$(".menu p").click(function(){
+			$(this).next().slideToggle("fast");
+		});
+		//获取当前的页面
+		var cur = window.location.href.split("/");
+		cur = cur[cur.length-1];
+		cur = cur.replace(".html","");
+		var o = $("#Sidebar li a[title="+cur+"]").parent();
+		o.addClass("current");
+		o.parent().addClass("current");
+
+	});	
+	
+	//代码高亮显示
+	SyntaxHighlighter.config.clipboardSwf = 'Scripts/clipboard.swf';
+    SyntaxHighlighter.all();
+	
+});
+</script>
+
+</head>
+
+<body>
+
+<div class="header">
+	<div class="wrap">
+    	<div class="left"><a href="/"><img src="Contents/logo.gif" width="543" height="76" /></a></div>
+    	<div class="right">
+        	<p>前端：刘庆逊,lanslot.liu@gmail.com</p>
+            <p>后端：宁辽源,ningliaoyuan@gmail.com</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="content">
+	<div class="wrap">
+    	<div class="left menu" id="Sidebar"></div>
+        <div class="right">
+        	<h1>Javascript&nbsp;&gt;&nbsp;Antaeus.AJAX</h1>
+            <div class="main">
+            	<h2>基本理念说明</h2>
+                <p>在Antaeus.AJAX的设计中，我们将所有的AJAX请求定义为两种：向服务器端请求执行某个行为，获得服务器端的反馈为成功与否（以下简称<b>行为请求</b>）；向服务器端请求某些内容，获得服务器端返回这个内容的html（以下简称<b>内容请求</b>）。</p>
+                <p>而在这两种不同的请求模式下，将有两种不同的做法，其对应两种函数调用方式为<b>ajaxRequest()</b>和<b>ajaxRefresh()</b>。对于行为请求也就是ajaxRequest，调用函数的时候将传入callback函数用于在操作成功时执行某些其它操作，而操作失败的话，将alert提示用户然后自动回溯状态到请求前。对于内容请求也就是ajaxRefresh()，将执行某个区块html的自刷新。</p>
+                <p>对于行为请求，我们同时认为其必须有一个页面上的元素是用户的某种操作的对象，而用户对这个对象进行某种操作，则将激发AJAX请求。因此为了避免重复请求和延时的loading状态提示，我们加入ajaxstatus="loading"这样的html要求，这些都将在下文中详细说明。</p>
+                <h2>AJAX调用时HTML代码的要求</h2>
+                <p>如果一个元素要激发AJAX<b>行为请求</b>，则这个元素的HTML代码要求：</p>
+                <pre class="brush:html">
+                	<a ajaxrequest="FavoriteAdd">添加到收藏夹</a>
+                    <a ajaxstatus="loading">操作执行中...</a>
+                </pre>
+                <p>上面是一个a标签，当点击后将激发AJAX操作，那么这个激发将请求具体哪个URL，将作为属性值<b>ajaxrequest</b>写到html代码中，具体对应哪个请查阅<b>Antaeus.AJAX.js</b>文件，严格大小写。另外，还将在请求的元素后紧跟写一个用于提示loading状态的具有同样结构的标签，其要求具有属性值<b>ajaxstatus</b>为loading。</p>
+            	<p>如果一个元素将有AJAX的<b>内容请求</b>，则这个元素的HTML代码要求：</p>
+                <pre class="brush:html">
+                	<div ajaxrefresh="LogonContent">你还没有登录</div>
+                </pre>
+                <p>上面是一个div标签，其意味着这个元素将需要请求AJAX来自刷新其内部的html内容，所请求的服务器端为LogonContent，具体对应哪个请查阅<b>Antaeus.AJAX.js</b>文件，严格大小写。</p>
+                <h2>关于Loading状态的默认隐藏</h2>
+                <p>ajaxstatus="loading"的元素要求是默认状况下隐藏的，要做到这一点有很多种方式，可以通过css代码或者jQuery代码来实现。</p>
+                <p><b>CSS</b></p>
+                <pre class="brush:css">
+                	*[ajaxstatus='loading']{display:none;}
+                    /*如果在html中对于这类的元素都使用统一的class例如ajax-loading*/
+                    .ajax-loading{display:none;}
+                </pre>
+                <p><b>Javascript</b></p>
+                <pre class="brush:javascript">
+                	$("*[ajaxstatus='loading']").hide();
+                </pre>
+                <p>&nbsp;</p>
+                <h2>ajaxRequest()：行为请求</h2>
+                <pre class="brush:javascript">
+                    function ajaxRequest(obj,param,callback,error){}
+                    
+                    //obj参数：激发请求的object对象
+                    //param参数：JSON数据，ajax请求的时候必须要传入的参数，具体不同的函数对应的传入参数请看ajaxFunction定义的源码
+                    //callback参数：传入一整个函数，服务器端执行成功后，在前端要执行的操作
+                    //error参数：传入一整个函数，可为空，服务器执行失败时，在前端要执行的操作
+                </pre>
+                <p>以下将以加入到收藏夹这个操作举例：</p>
+                <pre class="brush:javascript">                
+                    $("#LinkFavoriteAdd").bind("click",function(){
+                        var obj=$(this);
+                        ajaxRequest(obj,{qID:g_param.qid,qType:"question"},function(){
+                            g_param.favorite = true;
+                            $("#LinkFavoriteAdd").hide();
+                            $("#LinkFavoriteAdd").next().next().show();
+                            //显示收藏夹设置
+                            $("#FavoriteAddSetting").slideDown("slow");
+                        });
+                    });
+                </pre>
+                <h2>ajaxRefresh()：内容请求</h2>
+                <pre class="brush:javascript">
+                	function ajaxRefresh(obj, param) {}
+                    
+                    //obj参数：要执行自刷新的元素object
+                    //param参数：为了ajax请求要传入的必须参数
+                </pre>
+                <p>下面以用户登录成功后需要做在页面顶端更新用户状态的请求为例：</p>
+                <pre class="brush:javascript">
+                	//首先用户点击登录按钮后先激发ajaxRequest让系统执行登录验证
+                    $("#Login").bind("click",function(){
+                    	ajaxRequest($(this),{username:Username,password:Password},function(){
+                        	//当登录成功的话，将执行刷新元素的操作
+                            ajaxRefresh($("#LoginContent"),{status:"Login"});
+                        });
+                    });
+                </pre>
+                <h2>错误处理</h2>
+                <p>Antaeus.Ajax建立了通用的出错处理方式。出错分为两种，一种是服务器连接错误，例如500或者404。另一种则是由于传入参数不正确，服务器端执行得不到想要的信息，而由服务器端返回的错误。</p>
+                <p><b>服务器连接错误</b>：错误的处理在ajax全局设定内</p>
+                <pre class="brush:javascript">
+               		//AJAX的全局设定
+                    $.ajaxSetup({
+                        async    : true,
+                        cache    : false,
+                        dataType : "text",
+                        timeout  : 5000,
+                        error    : function(XMLHttpRequest, textStatus, errorThrown){
+                            var s1 = "";
+                            var s2 = "你对于"+this.url+"的请求失败。";
+                            if(textStatus=="timeout")     s1="因为超时，";
+                            if(textStatus=="error")       s1="因为其它错误，";
+                            if(textStatus=="notmodified") s1="因为请求页面无变化，";
+                            if(textStatus=="parsererror") s1="因为请求地址不存在，";
+                            alert(s1+s2);
+                            if(g_param.ajaxEnduringObj!=null && typeof(g_param.ajaxEnduringObj)=="object")	ajaxLoading(g_param.ajaxEnduringObj);
+                        }
+                    });
+                </pre>
+                <p><b>服务器端处理错误</b>：我们定义服务器返回的信息永远只有两种，首先无论是行为请求还是内容请求，当请求错误的时候，都会返回以"error:"开头的错误信息字符串；而如果请求成功，则内容请求返回html代码，行为请求返回字符串"ok"。</p>
+            	<p>对于ajaxRequest()函数的请求方式，请把错误处理方式作为函数传入，这个函数将可以获得参数data。</p>
+                <pre class="brush:javascript">
+                	//定义一个用于错误处理的函数
+                    var errorFunction = function(data){}
+                    //将上面的错误处理函数在ajaxRequest请求的时候传入
+                    ajaxRequest(obj,param,callback,errorFunction);
+                    //又或者可以这么写
+                    ajaxRequest(obj,param,callback,function(data){});                    
+                </pre>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>

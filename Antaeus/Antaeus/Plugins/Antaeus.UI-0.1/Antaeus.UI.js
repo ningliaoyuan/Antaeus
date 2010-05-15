@@ -413,7 +413,9 @@ function TabActive(data) {
 			ajax         : "",
 			btnLeft      : 0,
 			button       : "save",
-			submit       : function(){}
+			submit       : function(){},
+			openAfter    : function(){},
+			closeAfter   : function(){}
 		};                   
 		var opt;
 		var operation="";
@@ -546,14 +548,22 @@ function TabActive(data) {
 			$("#"+_cid).css("display","block");
 			//不知道为啥jQuery1.4.2的fadeTo失效了
 			$("#"+_cid).animate({opacity: '+0.5'}, "fast",function(){
-				$("#"+_id).fadeIn("fast",function(){opt.openAfter();});
+				if(operation=="open" && opt!=null){
+					$("#"+_id).fadeIn("fast",function(){opt.openAfter();});
+				}else{
+					$("#"+_id).fadeIn("fast");
+				}
 			});
 		};
 		//关闭popup
 		var _close = function(){
 			$("#"+_id).fadeOut("fast",function(){
 				$("#"+_cid).fadeOut("fast",function(){
-					$("#"+_cid).hide(function(){opt.closeAfter();});
+					if(operation=="close" && opt!=null){
+						$("#"+_cid).hide(function(){opt.closeAfter();});
+					}else{
+						$("#"+_cid).hide();
+					}
 				});
 			});
 		};
@@ -569,7 +579,72 @@ function TabActive(data) {
 	});      
 })(jQuery); 
 
+(function($){  
+	$.fn.extend({   
+	tab: function(options){
+		//默认参数设置
+		var defaults = {  
+			trigger : "click"
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);		
+			
+			//隐藏所有的内容Tab
+			obj.children(".tab-content").hide();
+			//获得当前显示的Tab
+			var current = obj.children(".tab-header").children(".tab-current").attr("tab");
+			//显示这个Tab
+			obj.children(".tab-content[tab='"+current+"']").show();
+			
+			obj.children(".tab-header").children("li").bind("click",function(){
+				obj.children(".tab-header").children(".tab-current").removeClass("tab-current");
+				$(this).addClass("tab-current");
+				
+				var n = $(this).attr("tab");
+				obj.children(".tab-content").hide();
+				obj.children(".tab-content[tab='"+n+"']").slideDown("slow");
+				
+			});
+			
+		});  
+	}
+	});      
+})(jQuery); 
 
+(function($){  
+	$.fn.extend({   
+	accordion: function(options){
+		//默认参数设置
+		var defaults = {  
+			trigger : "click"
+		}                   
+		var options = $.extend(defaults, options);
+		return this.each(function(){ 
+			var opt = options;
+			var obj = $(this);		
+			
+			//首先隐藏所有内容
+			obj.children(".accordion-content").hide();
+			//显示当前显示的accordion
+			obj.children(".accordion-current").next().show();
+			//obj.children(".accordion-current").children("i").html("▲");
+			//点击的滑动效果
+			
+			obj.children(".accordion-title").click(function(){
+				if(!$(this).hasClass("accordion-current")){
+					obj.children(".accordion-title").removeClass("accordion-current");
+					obj.children(".accordion-content").hide();
+					$(this).next().slideDown("slow");
+					$(this).addClass("accordion-current");
+				}
+			});
+			
+		});  
+	}
+	});      
+})(jQuery); 
 
 
 
