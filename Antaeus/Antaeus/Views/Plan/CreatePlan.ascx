@@ -6,7 +6,7 @@
         <div class="item">
             <div class="title">选择考试时间<span>*</span></div>
             <div class="detail">
-                 <input name="date" type="text" class="inp inp1" value="" />
+                 <input name="date" type="text" class="inp inp1" required="true" value="" />
                  <div class="blank5"></div>
                  <div class="tips">输入格式：年-月-日，例如2010-5-24</div>
             </div>
@@ -16,12 +16,13 @@
             <div class="title">复习模式<span>*</span></div>
             <div class="detail">
                 <div class="check check1">
-                    <div><input type="radio" value="all" checked="checked" /><span>全面复习：将平均分配不同题型的复习时间</span></div>
-                    <div><input type="radio" value="verbal" /><span>偏重语文：语文部分的复习时间将占多数</span></div>
-                    <div><input type="radio" value="sc" /><span>偏重SC：语法题（Sentences Corrected）的复习时间将会加长</span></div>
-                    <div><input type="radio" value="cr" /><span>偏重CR：逻辑题（Critical Reasoning）的复习时间将会加长</span></div>
-                    <div><input type="radio" value="rc" /><span>偏重RC：阅读题（Reading Comprehension）的复习时间将会加长</span></div>
-                    <div><input type="radio" value="math" /><span>偏重数学：数学题（Data Sufficient & Problem Solving）的复习时间将会加长</span></div>
+                    <div><input type="radio" name="mode" value="all" checked="checked" /><span>全面复习：将平均分配不同题型的复习时间</span></div>
+                    <div><input type="radio" name="mode" value="verbal" /><span>偏重语文：语文部分的复习时间将占多数</span></div>
+                    <div><input type="radio" name="mode" value="sc" /><span>偏重SC：语法题（Sentences Corrected）的复习时间将会加长</span></div>
+                    <div><input type="radio" name="mode" value="cr" /><span>偏重CR：逻辑题（Critical Reasoning）的复习时间将会加长</span></div>
+                    <div><input type="radio" name="mode" value="rc" /><span>偏重RC：阅读题（Reading Comprehension）的复习时间将会加长</span></div>
+                    <div><input type="radio" name="mode" value="math" /><span>偏重数学：数学题（Data Sufficient & Problem Solving）的复习时间将会加长</span></div>
+                    <div class="hidden"><input type="radio" name="mode" value="customize" /><span>自定义：自己决定各个部分的时间</span></div>
                 </div>
             </div>
             <div class="clear"></div>  
@@ -29,24 +30,26 @@
         <div class="item noborder">
             <div class="title">&nbsp;</div>
             <div class="detail">
-                <input type="button" class="btn-form-green" value="继续下一步" />
+                <input type="button" id="BtnCreatePlanNext" class="btn-form-green" value="继续下一步" />
             </div>
             <div class="clear"></div>  
         </div>
-        <div class="item">
+        <div class="item hidden">
             <div class="title">每日复习时间<span>*</span></div>
             <div class="detail">
                 <div class="check">
-                    <div><input type="radio" checked="checked" /><span>每天大约6小时</span></div>
-                    <div><input type="radio" /><span>每天大约4小时</span></div>
-                    <div><input type="radio" /><span>每天大约2小时</span></div>
+                    <div><input type="radio" name="time" checked="checked" /><span>每天大约6小时</span></div>
+                    <div><input type="radio" name="time" /><span>每天大约4小时</span></div>
+                    <div><input type="radio" name="time" /><span>每天大约2小时</span></div>
                 </div>                        
             </div>
             <div class="clear"></div>  
         </div>
-        <div class="item">
+        <div class="item hidden">
             <div class="title">具体考试计划<span>*</span></div>
             <div class="detail">
+            	<div class="correct">离考试你总共有&nbsp;<b>35天</b>&nbsp;的复习时间，目前的计划使用了&nbsp;<b>35天</b></div>
+                <div class="warn">离考试你总共有&nbsp;<b>35天</b>&nbsp;的复习时间，目前的计划使用了&nbsp;<b>40天</b></div>
                 <table class="tablestyle" cellspacing="0">
                     <tr>
                         <th scope="col" abbr="Configurations" class="nobg">编号</th>
@@ -279,7 +282,7 @@
             </div>
             <div class="clear"></div>  
         </div>
-        <div class="item">
+        <div class="item hidden">
             <div class="title">休息时间<span>*</span></div>
             <div class="detail">
                 <select class="inp inp1">
@@ -291,10 +294,12 @@
                     <option value="5">每周五休息</option>
                     <option value="6">每周六休息</option>
                 </select>
+                <div class="blank5"></div>
+                <div class="tips">经科学研究，每周休息一天有助于知识沉淀</div>
             </div>
             <div class="clear"></div>                        
         </div>
-        <div class="item noborder">
+        <div class="item noborder hidden">
             <div class="title">&nbsp;</div>
             <div class="detail">
                 <input type="button" class="btn-form-green" value="保存计划" />

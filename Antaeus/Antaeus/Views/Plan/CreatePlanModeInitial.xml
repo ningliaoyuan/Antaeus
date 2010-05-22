@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CreatePlanFormMode>
+	<mode value="all">
+		<data id="1" precentage="30" type="sc"/>
+		<data id="2" precentage="30" type="review"/>
+		<data id="3" precentage="30" type="cr"/>
+		<data id="4" precentage="30" type="review"/>
+		<data id="5" precentage="30" type="rc"/>
+		<data id="6" precentage="30" type="review"/>
+		<data id="7" precentage="30" type="ps"/>
+		<data id="8" precentage="30" type="review"/>
+		<data id="9" precentage="30" type="ds"/>
+		<data id="10" precentage="30" type="review"/>
+		<data id="11" precentage="30" type="writing"/>
+		<data id="12" precentage="30" type="emulate"/>
+	</mode>
+	
+	<type>
+		<sc unit="题">
+			<hours number="2" value="60"/>
+			<hours number="4" value="120"/>
+			<hours number="6" value="180"/>
+		</sc>
+		<cr unit="题">
+			<hours number="2" value="60"/>
+			<hours number="4" value="120"/>
+			<hours number="6" value="180"/>
+		</cr>
+		<rc unit="题">
+			<hours number="2" value="60"/>
+			<hours number="4" value="120"/>
+			<hours number="6" value="180"/>
+		</rc>
+		<ds unit="题">
+			<hours number="2" value="60"/>
+			<hours number="4" value="120"/>
+			<hours number="6" value="180"/>
+		</ds>
+		<ps unit="题">
+			<hours number="2" value="60"/>
+			<hours number="4" value="120"/>
+			<hours number="6" value="180"/>
+		</ps>
+		<writing unit="篇">
+			<hours number="2" value="60"/>
+			<hours number="4" value="120"/>
+			<hours number="6" value="180"/>
+		</writing>
+		<emulate unit="套">
+			<hours number="2" value="1"/>
+			<hours number="4" value="1"/>
+			<hours number="6" value="1"/>
+		</emulate>
+	</type>
+
+</CreatePlanFormMode>

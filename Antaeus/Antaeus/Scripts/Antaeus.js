@@ -194,9 +194,20 @@ $("#FormRegisterSubmit").click(function(){
 //For New Prototype Begin
 //===================================================================================================
 
-$("#Tab").tab();
-$("#Accordion").accordion();
+	$("#Tab").tab();
+	$("#Accordion").accordion();
+	
+	//Plan Part
+	$("#BtnCreatePlanNext").click(function(){
+		
+		//alert($(this).parents(".item").html());
+		$(this).parents(".item").hide();
+		$(this).parents(".item").siblings(".hidden").show();
+	
+	});
 
 
 });
+
+
 

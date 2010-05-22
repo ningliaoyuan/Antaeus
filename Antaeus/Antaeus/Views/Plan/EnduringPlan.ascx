@@ -25,9 +25,9 @@
     </div>
 	<div id="chart">学习计划正在载入中...</div>
     <script type="text/javascript">
-		var myChart = new JSChart('chart', 'line');
-		myChart.setDataXML("/Plugins/JsCharts/data.xml");
-		myChart.draw();
-		myChart.resize(680,500);
+//		var myChart = new JSChart('chart', 'line');
+//		myChart.setDataXML("/Plugins/JsCharts/data.xml");
+//		myChart.draw();
+//		myChart.resize(680,500);
 	</script>
 </div>
