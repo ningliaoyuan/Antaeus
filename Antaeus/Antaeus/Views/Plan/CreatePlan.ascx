@@ -13,6 +13,27 @@
             <div class="clear"></div>                        
         </div>
         <div class="item">
+            <div class="title">复习模式<span>*</span></div>
+            <div class="detail">
+                <div class="check check1">
+                    <div><input type="radio" value="all" checked="checked" /><span>全面复习：将平均分配不同题型的复习时间</span></div>
+                    <div><input type="radio" value="verbal" /><span>偏重语文：语文部分的复习时间将占多数</span></div>
+                    <div><input type="radio" value="sc" /><span>偏重SC：语法题（Sentences Corrected）的复习时间将会加长</span></div>
+                    <div><input type="radio" value="cr" /><span>偏重CR：逻辑题（Critical Reasoning）的复习时间将会加长</span></div>
+                    <div><input type="radio" value="rc" /><span>偏重RC：阅读题（Reading Comprehension）的复习时间将会加长</span></div>
+                    <div><input type="radio" value="math" /><span>偏重数学：数学题（Data Sufficient & Problem Solving）的复习时间将会加长</span></div>
+                </div>
+            </div>
+            <div class="clear"></div>  
+        </div>
+        <div class="item noborder">
+            <div class="title">&nbsp;</div>
+            <div class="detail">
+                <input type="button" class="btn-form-green" value="继续下一步" />
+            </div>
+            <div class="clear"></div>  
+        </div>
+        <div class="item">
             <div class="title">每日复习时间<span>*</span></div>
             <div class="detail">
                 <div class="check">
@@ -23,250 +44,241 @@
             </div>
             <div class="clear"></div>  
         </div>
-        <div class="item noborder">
-            <div class="title">&nbsp;</div>
-            <div class="detail">
-                <input type="button" class="btn-form-green" value="确认" />
-            </div>
-            <div class="clear"></div>  
-        </div>
-        <div class="item noborder">
+        <div class="item">
             <div class="title">具体考试计划<span>*</span></div>
             <div class="detail">
+                <table class="tablestyle" cellspacing="0">
+                    <tr>
+                        <th scope="col" abbr="Configurations" class="nobg">编号</th>
+                        <th scope="col" abbr="Dual 1.8GHz">题型</th>
+                        <th scope="col" abbr="Dual 2GHz">数量</th>
+                        <th scope="col" abbr="Dual 2GHz">时长</th>
+                        <th scope="col" abbr="Dual 2.5GHz">开始时间</th>
+                        <th scope="col" abbr="Dual 2.5GHz">结束时间</th>
+                        <th scope="col" abbr="Dual 2.5GHz">推荐描述</th>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="spec">1</th>
+                        <td>
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td>754题</td>
+                        <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td>2010-5-24</td>
+                        <td>2010-6-11</td>
+                        <td>覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="specalt">2</th>
+                        <td class="alt">
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td class="alt">754</td>
+                        <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td class="alt">2010-5-24</td>
+                        <td class="alt">2010-6-11</td>
+                        <td class="alt">覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="spec">3</th>
+                        <td>
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td>754题</td>
+                        <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td>2010-5-24</td>
+                        <td>2010-6-11</td>
+                        <td>覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="specalt">4</th>
+                        <td class="alt">
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td class="alt">754</td>
+                        <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td class="alt">2010-5-24</td>
+                        <td class="alt">2010-6-11</td>
+                        <td class="alt">覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="spec">5</th>
+                        <td>
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td>754题</td>
+                        <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td>2010-5-24</td>
+                        <td>2010-6-11</td>
+                        <td>覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="specalt">6</th>
+                        <td class="alt">
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td class="alt">754</td>
+                        <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td class="alt">2010-5-24</td>
+                        <td class="alt">2010-6-11</td>
+                        <td class="alt">覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="spec">7</th>
+                        <td>
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td>754题</td>
+                        <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td>2010-5-24</td>
+                        <td>2010-6-11</td>
+                        <td>覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="specalt">8</th>
+                        <td class="alt">
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td class="alt">754</td>
+                        <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td class="alt">2010-5-24</td>
+                        <td class="alt">2010-6-11</td>
+                        <td class="alt">覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="spec">9</th>
+                        <td>
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td>754题</td>
+                        <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td>2010-5-24</td>
+                        <td>2010-6-11</td>
+                        <td>覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="specalt">10</th>
+                        <td class="alt">
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td class="alt">754</td>
+                        <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td class="alt">2010-5-24</td>
+                        <td class="alt">2010-6-11</td>
+                        <td class="alt">覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="spec">11</th>
+                        <td>
+                            <select>
+                                <option value="sc" selected="selected">SC语法</option>
+                                <option value="rc">RC阅读</option>
+                                <option value="cr">CR逻辑</option>
+                                <option value="ps">PS数学</option>
+                                <option value="ds">DS数学</option>
+                                <option value="wr">AWA作文</option>
+                                <option value="re">综合复习</option>
+                            </select>
+                        </td>
+                        <td>754题</td>
+                        <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
+                        <td>2010-5-24</td>
+                        <td>2010-6-11</td>
+                        <td>覆盖90%必须题目</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" class="specalt">12</th>
+                        <td class="alt">模考</td>
+                        <td class="alt">5套</td>
+                        <td class="alt"><input type="text" style="width:15px" value="5" />&nbsp;天</td>
+                        <td class="alt">2010-5-24</td>
+                        <td class="alt">2010-6-11</td>
+                        <td class="alt">控制很好的pace</td>
+                    </tr>
+                </table>
             </div>
             <div class="clear"></div>  
         </div>
-    
-
-        <table class="tablestyle" cellspacing="0">
-            <tr>
-                <th scope="col" abbr="Configurations" class="nobg">编号</th>
-                <th scope="col" abbr="Dual 1.8GHz">题型</th>
-                <th scope="col" abbr="Dual 2GHz">题目数</th>
-                <th scope="col" abbr="Dual 2GHz">时长</th>
-                <th scope="col" abbr="Dual 2.5GHz">开始时间</th>
-                <th scope="col" abbr="Dual 2.5GHz">结束时间</th>
-                <th scope="col" abbr="Dual 2.5GHz">推荐描述</th>
-            </tr>
-            <tr>
-                <th scope="row" class="spec">1</th>
-                <td>
-                    <select>
-                        <option value="sc" selected="selected">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re">Review</option>
-                    </select>
-                </td>
-                <td>754</td>
-                <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td>2010-5-24</td>
-                <td>2010-6-11</td>
-                <td>覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="specalt">2</th>
-                <td class="alt">
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re" selected="selected">Review</option>
-                    </select>
-                </td>
-                <td class="alt">754</td>
-                <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td class="alt">2010-5-24</td>
-                <td class="alt">2010-6-11</td>
-                <td class="alt">覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="spec">3</th>
-                <td>
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc" selected="selected">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re">Review</option>
-                    </select>
-                </td>
-                <td>754</td>
-                <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td>2010-5-24</td>
-                <td>2010-6-11</td>
-                <td>覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="specalt">4</th>
-                <td class="alt">
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re" selected="selected">Review</option>
-                    </select>
-                </td>
-                <td class="alt">754</td>
-                <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td class="alt">2010-5-24</td>
-                <td class="alt">2010-6-11</td>
-                <td class="alt">覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="spec">5</th>
-                <td>
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr" selected="selected">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re">Review</option>
-                    </select>
-                </td>
-                <td>754</td>
-                <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td>2010-5-24</td>
-                <td>2010-6-11</td>
-                <td>覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="specalt">6</th>
-                <td class="alt">
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re" selected="selected">Review</option>
-                    </select>
-                </td>
-                <td class="alt">754</td>
-                <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td class="alt">2010-5-24</td>
-                <td class="alt">2010-6-11</td>
-                <td class="alt">覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="spec">7</th>
-                <td>
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps" selected="selected">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re">Review</option>
-                    </select>
-                </td>
-                <td>754</td>
-                <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td>2010-5-24</td>
-                <td>2010-6-11</td>
-                <td>覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="specalt">8</th>
-                <td class="alt">
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re" selected="selected">Review</option>
-                    </select>
-                </td>
-                <td class="alt">754</td>
-                <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td class="alt">2010-5-24</td>
-                <td class="alt">2010-6-11</td>
-                <td class="alt">覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="spec">9</th>
-                <td>
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds" selected="selected">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re">Review</option>
-                    </select>
-                </td>
-                <td>754</td>
-                <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td>2010-5-24</td>
-                <td>2010-6-11</td>
-                <td>覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="specalt">10</th>
-                <td class="alt">
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr">Writing</option>
-                        <option value="re" selected="selected">Review</option>
-                    </select>
-                </td>
-                <td class="alt">754</td>
-                <td class="alt"><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td class="alt">2010-5-24</td>
-                <td class="alt">2010-6-11</td>
-                <td class="alt">覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="spec">11</th>
-                <td>
-                    <select>
-                        <option value="sc">Sentences Corrected</option>
-                        <option value="rc">Reading Comprehension</option>
-                        <option value="cr">Critical Reasoning</option>
-                        <option value="ps">Problem Solving</option>
-                        <option value="ds">Data Sufficient</option>
-                        <option value="wr" selected="selected">Writing</option>
-                        <option value="re">Review</option>
-                    </select>
-                </td>
-                <td>754</td>
-                <td><input type="text" style="width:15px" value="3" />&nbsp;天</td>
-                <td>2010-5-24</td>
-                <td>2010-6-11</td>
-                <td>覆盖到90%必须复习的题目</td>
-            </tr>
-            <tr>
-                <th scope="row" class="specalt">12</th>
-                <td class="alt">模考</td>
-                <td class="alt">5套</td>
-                <td class="alt"><input type="text" style="width:15px" value="5" />&nbsp;天</td>
-                <td class="alt">2010-5-24</td>
-                <td class="alt">2010-6-11</td>
-                <td class="alt">控制很好的pace和临场感</td>
-            </tr>
-        </table>
         <div class="item">
             <div class="title">休息时间<span>*</span></div>
             <div class="detail">
