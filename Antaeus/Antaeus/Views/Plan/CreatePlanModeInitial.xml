@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CreatePlanFormMode>
 	<mode value="all">
-		<data id="1" precentage="30" type="sc"/>
-		<data id="2" precentage="30" type="review"/>
-		<data id="3" precentage="30" type="cr"/>
-		<data id="4" precentage="30" type="review"/>
-		<data id="5" precentage="30" type="rc"/>
-		<data id="6" precentage="30" type="review"/>
-		<data id="7" precentage="30" type="ps"/>
-		<data id="8" precentage="30" type="review"/>
-		<data id="9" precentage="30" type="ds"/>
-		<data id="10" precentage="30" type="review"/>
-		<data id="11" precentage="30" type="writing"/>
-		<data id="12" precentage="30" type="emulate"/>
+		<data id="1" number="500" days="5" desc="覆盖90%重要题" type="sc" />
+		<data id="2" number="500" days="5" desc="覆盖90%重要题" type="review"/>
+		<data id="3" number="500" days="5" desc="覆盖90%重要题" type="cr"/>
+		<data id="4" number="500" days="5" desc="覆盖90%重要题" type="review"/>
+		<data id="5" number="500" days="5" desc="覆盖90%重要题" type="rc"/>
+		<data id="6" number="500" days="5" desc="覆盖90%重要题" type="review"/>
+		<data id="7" number="500" days="5" desc="覆盖90%重要题" type="ps"/>
+		<data id="8" number="500" days="5" desc="覆盖90%重要题" type="review"/>
+		<data id="9" number="500" days="5" desc="覆盖90%重要题" type="ds"/>
+		<data id="10" number="500" days="5" desc="覆盖90%重要题" type="review"/>
+		<data id="11" number="500" days="5" desc="覆盖90%重要题" type="writing"/>
+		<data id="12" number="500" days="5" desc="覆盖90%重要题" type="emulate"/>
 	</mode>
 	
 	<type>
