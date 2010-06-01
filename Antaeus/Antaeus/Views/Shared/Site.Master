@@ -22,10 +22,10 @@
 	<asp:ContentPlaceHolder ID="ScriptContent" runat="server" />   
     <script src="/Scripts/antaeus.js" type="text/javascript"></script>
     
-    <link href="/Contents/CSS/Common.css" rel="stylesheet" media="screen" type="text/css" />
-    <link href="/Contents/CSS/Layout.css" rel="stylesheet" media="screen" type="text/css" />
-    <link href="/Contents/CSS/GMAT.css" rel="stylesheet" media="screen" type="text/css" />
-	<link href="/Contents/CSS/New.css" rel="stylesheet" media="screen" type="text/css" />
+    <link href="/Contents/Styles/Common.css" rel="stylesheet" media="screen" type="text/css" />
+    <link href="/Contents/Styles/Layout.css" rel="stylesheet" media="screen" type="text/css" />
+    <link href="/Contents/Styles/GMAT.css" rel="stylesheet" media="screen" type="text/css" />
+	
 	<link href="/Plugins/jQuery.UI-1.7.2/jquery-ui-1.7.2.custom.css" rel="stylesheet" media="screen" type="text/css" />
     <link href="/Plugins/UI.Stars-2.1/crystal-stars.css" rel="stylesheet" media="screen" type="text/css" />
 	<asp:ContentPlaceHolder ID="LinkContent" runat="server" />
