@@ -13,6 +13,7 @@
     </script>
 	
 	<script src="/Scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+	<script src="/Scripts/jquery.tools.min.js" type="text/javascript"></script>
 	<script src="/Plugins/jQuery.UI-1.7.2/jquery-ui-1.7.2.custom.min.js" type="text/javascript"></script>
     <script src="/Plugins/UI.Stars-2.1/ui.stars.min.js" type="text/javascript"></script>
 	<script src="/Scripts/Antaeus.AJAX.js" type="text/javascript"></script>

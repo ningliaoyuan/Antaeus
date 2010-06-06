@@ -254,8 +254,19 @@ $("#FormRegisterSubmit").click(function(){
 	$("#RadioMode input[type='radio']").click(function(){
 		//alert("haha");
 	});
+	
+//	$(".InputPlanDays").tooltip({position:"bottom right",offset:[0,-30]});
+//	$(".TablePlanDays tr").click(function(){
+//		alert($(this).children().children().html());
+//		$(this).parent().parent().parent().children(".InputPlanDays").val($(this).children().children().html());
+//	});
 
 
+	$(".InputPlanDays").tip({trigger:"focus",interactive:true,width:250,left:-20});
+	$("#DivPlanDays1 tr").click(function(){
+		$(".InputPlanDays").tip("hide");
+	});
+	
 });
 
 

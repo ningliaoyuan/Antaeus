@@ -647,6 +647,117 @@ function TabActive(data) {
 })(jQuery); 
 
 
+//tip方法用于做实时提示
+//parameters:
+//[必须]trigger - 字符 - 触发的行为，支持focus, click, mouseover
+//[必须]width - 数字 - 提示框的宽度
+//[必须]place - 字符 - 三角指示符的位置，共有left,top,right和none四个
+//[必须]position - 数字 - 三角指示符针对边缘的距离，单位为px，如果place是top的话，就是针对tip的left距离，如果是left或者right的话，就是针对top的距离
+//[必须]shadow - 字符 - "all"四边包裹全阴影, "topright"上和右有阴影，"topleft", "bottomleft", "bottomright"
+//[必须]top - 数字 - tip对应在Y轴与触发元素的偏移像素值
+//[必须]left - 数字 - tip对应在X轴与触发元素的偏移像素值
+//[可选]showAfter - 函数 - 显示Tips后要执行的函数
+//[可选]interActive - 是否 - 是则不执行默认的关闭方式，否则执行默认的关闭方式
 
+
+//注意在html中，trigger的元素有tipsource属性，属性有两种写法，一种是"#div"意味着内容从本页面的一个div中获得，非#开头的意味着将ajax请求这个地址获得tip的html
+(function($){  
+	$.fn.extend({   
+	tip: function(options){
+		//默认参数设置
+		var defaults = {  
+			trigger : "click",
+			width : 200,
+			place : "top",
+			position : 20,
+			shadow : "all",
+			top : 0,
+			left : 0,
+			interactive: false
+		}
+		
+		if(typeof(options)!="string"){
+			var options = $.extend(defaults, options);
+		}
+		
+		var opt = options;
+		var obj = $(this);
+		
+		var _hidden = function(){
+			$(obj.attr("tipsource")).hide();
+			$(".tip-black, .tip-triangle").hide();
+		};
+		
+//		var _area = function(){
+//			return [event.offsetX,event.offsetX];		
+//		};
+		
+		return this.each(function(){ 
+			
+			if(opt=="hide") _hidden();					
+			
+			obj.bind(opt.trigger,function(){
+				
+				var obj_tip = $(obj.attr("tipsource"));
+				
+				//获得当前元素的位置
+				var offset = obj.offset();
+				//得出tip的绝对位置
+				var left = offset.left + opt.left;
+				var top = offset.top + obj.height() + opt.top;
+				
+				//确定三角形的位置
+				var tri_left, tri_top;
+				if(opt.place=="top"){
+					tri_left = left + opt.position;
+					tri_top = top-4;
+				}
+				//TODO:当三角形在左右的时候的位置定位
+				//写入div的html代码
+				//首先定义tip的核心内容				
+				obj_tip.css("position","absolute");
+				obj_tip.css("display","block");
+				obj_tip.css("z-index","100");
+				obj_tip.offset({top:top+10,left:left+10});
+				obj_tip.width(opt.width);
+				//判断有没有底部覆盖的层
+				if($(".tip-black").length>0){
+					$(".tip-black").offset({top:top,left:left});
+					$(".tip-black").width(opt.width+20);
+					$(".tip-black").height(obj_tip.height()+20);
+					$(".tip-black").show();
+				}else{
+					$("body").append("<div class=\"tip-black\" style=\"position:absolute; top:"+String(top)+"px; left:"+String(left)+"px; background-color:#000; width:"+String(opt.width+20)+"px; height:"+String(obj_tip.height()+20)+"px; filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.3; z-index:99;\"></div>");
+				}
+				//判断有没有三角形
+				if(opt.place!="none"){
+					//判断有没有三角形定位层
+					if($(".tip-triangle").length>0){
+						$(".tip-triangle").offset({top:tri_top,left:tri_left});
+						$(".tip-triangle").show();
+					}else{
+						$("body").append("<div class=\"tip-triangle\" style=\"position:absolute; top:"+String(tri_top)+"px; left:"+String(tri_left)+"px; z-index:100; width:15px; height:15px; font-size:15px; line-height:15px; text-align:center; overflow:hidden; color:#fff;\">▲</div>");
+					}
+					//根据位置定义三角形符号
+					if(opt.place=="right") $(".tip-triangle").html("◀");
+					if(opt.place=="left") $(".tip-triangle").html("▶");					
+				}
+				
+			});
+			
+			//关闭Tip
+			if(opt.trigger=="click"){
+				//TODO：在Tip显示出来的时候，点击任何地方都关闭这个Tip
+			}
+			//TODO:鼠标移动到TIP上时不隐藏TIP
+			if(opt.trigger=="mouseover") obj.bind("mouseout",_hidden);
+			
+						
+			if(opt.trigger=="focus" && !opt.interactive) obj.bind("blur",_hidden);
+
+		});  
+	}
+	});      
+})(jQuery);
 
 
