@@ -647,114 +647,164 @@ function TabActive(data) {
 })(jQuery); 
 
 
-//tip方法用于做实时提示
+//tipInput方法用于做实时提示
 //parameters:
-//[必须]trigger - 字符 - 触发的行为，支持focus, click, mouseover
 //[必须]width - 数字 - 提示框的宽度
-//[必须]place - 字符 - 三角指示符的位置，共有left,top,right和none四个
-//[必须]position - 数字 - 三角指示符针对边缘的距离，单位为px，如果place是top的话，就是针对tip的left距离，如果是left或者right的话，就是针对top的距离
-//[必须]shadow - 字符 - "all"四边包裹全阴影, "topright"上和右有阴影，"topleft", "bottomleft", "bottomright"
+//[必须]position - 数字 - 三角指示符针对边缘的距离，单位为px，针对tip的left距离
 //[必须]top - 数字 - tip对应在Y轴与触发元素的偏移像素值
 //[必须]left - 数字 - tip对应在X轴与触发元素的偏移像素值
-//[可选]showAfter - 函数 - 显示Tips后要执行的函数
-//[可选]interActive - 是否 - 是则不执行默认的关闭方式，否则执行默认的关闭方式
+//[必须]list - 字符 - list的CSS选择符
+//[必须]selector - 字符 - 数值的CSS选择符
+//[可选]regex - 正则表达式 - 限制输入使用的正则表达式
+//[可选]afterBlur - 函数 - 当blur时要执行的操作，输入参数为input的value
 
-
-//注意在html中，trigger的元素有tipsource属性，属性有两种写法，一种是"#div"意味着内容从本页面的一个div中获得，非#开头的意味着将ajax请求这个地址获得tip的html
+//注意在html中，trigger的元素有tipsource属性，属性写法是"#div"意味着内容从本页面的一个div中获得
 (function($){  
 	$.fn.extend({   
-	tip: function(options){
+	tipInput: function(options){
 		//默认参数设置
 		var defaults = {  
-			trigger : "click",
 			width : 200,
-			place : "top",
 			position : 20,
-			shadow : "all",
 			top : 0,
 			left : 0,
-			interactive: false
+			list : "li",
+			selector : "span"
 		}
 		
-		if(typeof(options)!="string"){
-			var options = $.extend(defaults, options);
-		}
-		
+
+		var options = $.extend(defaults, options);		
 		var opt = options;
 		var obj = $(this);
+		//提示框obj
+		var obj_tip = $(obj.attr("tipsource"));
+		//用于判断是否应该blur
+		var hasBlur = true;
 		
+		//隐藏提示的函数
 		var _hidden = function(){
-			$(obj.attr("tipsource")).hide();
+			obj_tip.hide();
 			$(".tip-black, .tip-triangle").hide();
 		};
 		
-//		var _area = function(){
-//			return [event.offsetX,event.offsetX];		
-//		};
+		//函数用于获得提示框的绝对位置
+		var p = function(){
+			//获得当前元素的位置
+			var offset = obj.offset();
+			return {
+				left    : offset.left + opt.left,
+				top     : offset.top + obj.height() + opt.top,
+				triLeft : offset.left + opt.left + opt.position,
+				triTop  :  offset.top + obj.height() + opt.top -4
+			};
+		};
+		
 		
 		return this.each(function(){ 
-			
-			if(opt=="hide") _hidden();					
-			
-			obj.bind(opt.trigger,function(){
+							
+			//当input聚焦的时候激发提示框
+			obj.bind("focus",function(){
 				
-				var obj_tip = $(obj.attr("tipsource"));
-				
-				//获得当前元素的位置
-				var offset = obj.offset();
-				//得出tip的绝对位置
-				var left = offset.left + opt.left;
-				var top = offset.top + obj.height() + opt.top;
-				
-				//确定三角形的位置
-				var tri_left, tri_top;
-				if(opt.place=="top"){
-					tri_left = left + opt.position;
-					tri_top = top-4;
-				}
-				//TODO:当三角形在左右的时候的位置定位
 				//写入div的html代码
 				//首先定义tip的核心内容				
 				obj_tip.css("position","absolute");
 				obj_tip.css("display","block");
 				obj_tip.css("z-index","100");
-				obj_tip.offset({top:top+10,left:left+10});
+				obj_tip.offset({top:p().top+10,left:p().left+10});
 				obj_tip.width(opt.width);
+				
 				//判断有没有底部覆盖的层
 				if($(".tip-black").length>0){
-					$(".tip-black").offset({top:top,left:left});
+					$(".tip-black").css("top",String(p().top)+"px");
+					$(".tip-black").css("left",String(p().left)+"px");
 					$(".tip-black").width(opt.width+20);
 					$(".tip-black").height(obj_tip.height()+20);
 					$(".tip-black").show();
 				}else{
-					$("body").append("<div class=\"tip-black\" style=\"position:absolute; top:"+String(top)+"px; left:"+String(left)+"px; background-color:#000; width:"+String(opt.width+20)+"px; height:"+String(obj_tip.height()+20)+"px; filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.3; z-index:99;\"></div>");
+					$("body").append("<div class=\"tip-black\" style=\"position:absolute; top:"+String(p().top)+"px; left:"+String(p().left)+"px; background-color:#000; width:"+String(opt.width+20)+"px; height:"+String(obj_tip.height()+20)+"px; filter:alpha(opacity=30); opacity:0.3; -moz-opacity:0.3; z-index:99;\"></div>");
 				}
-				//判断有没有三角形
-				if(opt.place!="none"){
-					//判断有没有三角形定位层
-					if($(".tip-triangle").length>0){
-						$(".tip-triangle").offset({top:tri_top,left:tri_left});
-						$(".tip-triangle").show();
-					}else{
-						$("body").append("<div class=\"tip-triangle\" style=\"position:absolute; top:"+String(tri_top)+"px; left:"+String(tri_left)+"px; z-index:100; width:15px; height:15px; font-size:15px; line-height:15px; text-align:center; overflow:hidden; color:#fff;\">▲</div>");
-					}
-					//根据位置定义三角形符号
-					if(opt.place=="right") $(".tip-triangle").html("◀");
-					if(opt.place=="left") $(".tip-triangle").html("▶");					
+
+				//判断有没有三角形定位层
+				if($(".tip-triangle").length>0){
+					$(".tip-triangle").css("top",String(p().triTop)+"px");
+					$(".tip-triangle").css("left",String(p().triLeft)+"px");
+					$(".tip-triangle").show();
+				}else{
+					$("body").append("<div class=\"tip-triangle\" style=\"position:absolute; top:"+String(p().triTop)+"px; left:"+String(p().triLeft)+"px; z-index:100; width:15px; height:15px; font-size:15px; line-height:15px; text-align:center; overflow:hidden; color:#fff;\">▲</div>");
 				}
 				
 			});
 			
-			//关闭Tip
-			if(opt.trigger=="click"){
-				//TODO：在Tip显示出来的时候，点击任何地方都关闭这个Tip
-			}
-			//TODO:鼠标移动到TIP上时不隐藏TIP
-			if(opt.trigger=="mouseover") obj.bind("mouseout",_hidden);
+			//提示框内条目的hover效果
+			$(obj.attr("tipsource")+" "+opt.list).hover(
+				function(){$(this).addClass("hover");},
+				function(){$(this).removeClass("hover");}
+			);
+			//当鼠标在提示区域内点击时，不激发blur事件
+			$(obj.attr("tipsource")+" "+opt.list).mousedown(function(){hasBlur=false;});
 			
-						
-			if(opt.trigger=="focus" && !opt.interactive) obj.bind("blur",_hidden);
-
+			//关闭Tip
+			obj.bind("blur",function(){
+				//避免点击触发blur事件
+				if(hasBlur) {
+					//隐藏Tip
+					_hidden();
+					//执行定义blur函数
+					opt.afterBlur(obj.val());
+				}
+			});
+			
+			//当选择框点击时的操作
+			$(obj.attr("tipsource")+" "+opt.list).bind("click",function(){				
+				//获取选中的天数
+				var n = $(this).find(opt.selector).html();
+				//写入到input
+				obj.val(n);
+				//将避免激发blur的参数重置
+				hasBlur = true;
+				//隐藏那个提示
+				_hidden();
+				//执行定义blur函数
+				opt.afterBlur(obj.val());
+			});
+			
+			//在浏览器窗口大小发生变化时重定位提示框位置
+			$(window).resize(function(){
+				obj_tip.offset({top:p().top+10,left:p().left+10});
+				$(".tip-black").css("top",String(p().top)+"px");
+				$(".tip-black").css("left",String(p().left)+"px");
+				$(".tip-triangle").css("top",String(p().triTop)+"px");
+				$(".tip-triangle").css("left",String(p().triLeft)+"px");
+			});
+			
+			//键盘输入的限制
+			if(opt.regex!=null){			
+				//不允许直接输入规定正则表达式的内容
+				obj.bind("keyup",function(){obj.val(obj.val().replace(opt.regex,''));});				
+				//不允许通过复制粘贴来输入正则表达式规定的内容，通过动态委派事件onbeforepaste
+				if(window.addEventListener){//非IE浏览器
+					obj.addEventListener("onbeforepaste",function(){clipboardData.setData('text',clipboardData.getData('text').replace(opt.regex,''));},false);
+				}else{
+					obj.attachEvent('onbeforepaste',function(){clipboardData.setData('text',clipboardData.getData('text').replace(opt.regex,''));});
+				}
+			}
+			
+//		    TODO : 键盘的上下和回车操作
+//			obj.keydown(function(e){
+//				switch(e.keyCode){
+//				  case 38: // 向上按键
+//					break;
+//				  case 40: // 向下按键
+//					break;
+//				  case 13: // 回车键
+//					break;
+//				  case 27: // ESC键
+//					break;
+//				  default:
+//					break;
+//				}
+//			});
+			
 		});  
 	}
 	});      

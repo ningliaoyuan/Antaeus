@@ -10,5 +10,5 @@ Version 0.1, Created by Lanslot at 2009/5/30
 #PlanDetail .plan-days table{ width:100%;}
 #PlanDetail .plan-days td{ border-bottom:1px solid #CCC; line-height:22px; text-align:center;}
 #PlanDetail .plan-days tr{ cursor:pointer;}
-#PlanDetail .plan-days tr:hover{ background-color:#FFC;}
+#PlanDetail .plan-days tr.hover{ background-color:#FFC;}
 #PlanDetail .plan-days tr.delete td{ color:#ff0000;}

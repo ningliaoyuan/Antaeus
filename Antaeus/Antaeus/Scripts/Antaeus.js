@@ -262,10 +262,10 @@ $("#FormRegisterSubmit").click(function(){
 //	});
 
 
-	$(".InputPlanDays").tip({trigger:"focus",interactive:true,width:250,left:-20});
-	$("#DivPlanDays1 tr").click(function(){
-		$(".InputPlanDays").tip("hide");
-	});
+	$(".InputPlanDays").tipInput({width:250,left:-20,regex:/[^\d]/g,list:"tr",afterBlur:function(val){alert(val);}});
+//	$("#DivPlanDays1 tr").click(function(){
+//		$(".InputPlanDays").tip("hide");
+//	});
 	
 });
 
