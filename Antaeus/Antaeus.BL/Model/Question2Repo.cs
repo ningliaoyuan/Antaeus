@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Caching;
 
 namespace Antaeus.BL
 {
@@ -15,12 +16,12 @@ namespace Antaeus.BL
             this.idprovider = idprovider;
         }
 
-        public Question2 GetOne(KEYID id)
+        public Question2 GetOne(long id)
         {
             return null;
         }
 
-        public List<Question2> GetList(List<KEYID> ids)
+        public List<Question2> GetList(List<long> ids)
         {
             return null;
         }
@@ -34,6 +35,7 @@ namespace Antaeus.BL
         public Question2 Save(Question2 q)
         {
             q._id = idprovider.GetNewId("Question2");
+            
             return q;
         }
     }

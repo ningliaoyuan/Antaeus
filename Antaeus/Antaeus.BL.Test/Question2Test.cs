@@ -71,12 +71,28 @@ namespace Antaeus.BL.Test
 
             Assert.IsNotNull(q._id);
             Assert.AreEqual("testTitle", q.Title); 
-
         }
 
-      
+        [TestMethod]
+        public void GetOneQuestion2Test()
+        {
+            IIDProvider idprovider = new SMIDProvider();
+            var repo = new Question2Repo(idprovider);
+            Question2 q = repo.Create();
+            q.Title = "testTitle";
+            q.CrUserName = "lynn";
+            q.Content = "content";
+            q.CrTime = DateTime.Now;
 
-       
+            q = repo.Save(q);
+            var repo2 = new Question2Repo(idprovider);
 
+            Question2 q2 = repo2.GetOne(q._id);
+
+            Assert.AreEqual("testTitle", q2.Title); 
+            
+
+            
+        }
     }
 }

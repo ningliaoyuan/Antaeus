@@ -5,7 +5,7 @@ namespace Antaeus.BL
     interface IRepo<TEntity> where TEntity:IEntity
     {
         TEntity Create();
-        List<TEntity> GetList(List<KEYID> ids);
-        TEntity GetOne(KEYID id);
+        List<TEntity> GetList(List<long> ids);
+        TEntity GetOne(long id);
     }
 }
