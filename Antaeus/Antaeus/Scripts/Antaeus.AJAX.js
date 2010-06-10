@@ -30,6 +30,7 @@ ajaxFunction["FormQuestionCreateLoad"] = function(param, callback){$.get("/Quest
 ajaxFunction["FavoriteAdd"]            = function(param, callback){$.get("/NormalUser/FavoriteAdd", {key:param.qType, id: param.qID},callback);};
 ajaxFunction["FavoriteRemove"]         = function(param, callback){$.get("/NormalUser/FavoriteRemove", {key:param.qType,id: param.qID}, callback);};
 ajaxFunction["FavoriteAddTags"]        = function(param, callback){$.get("/NormalUser/FavoriteAddTags",{key:param.qType, id : param.qID, tags:param.tags},callback);};
+ajaxFunction["ReviewMode"]             = function(param, callback){$.get("/Review/GetTable",{days:param.days, mode: param.mode, time:param.time},callback);};
 
 //Refresh函数用于调用AJAX来自我刷新
 function ajaxRefresh(obj, param) {

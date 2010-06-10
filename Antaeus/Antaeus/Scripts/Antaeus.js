@@ -204,6 +204,12 @@ $("#FormRegisterSubmit").click(function(){
 			$("#InputDate").siblings().hide();
 			$(this).parents(".item").hide();
 			$(this).parents(".item").siblings(".hidden").show();
+			
+			var p_days = $("#ReviewDetail .correct b").html().replace("天","");
+				var p_mode = $("#RadioMode input[type='radio']:checked").val();
+				var p_time = $("#DivCreateReviewTime input[type='radio']:checked").val();
+				ajaxRefresh($("#TableReviewDetail"),{days:p_days,mode:p_mode,time:p_time});
+			
 		}else{
 			$("#InputDate").siblings().show();
 		}
@@ -248,8 +254,10 @@ $("#FormRegisterSubmit").click(function(){
 	$("#RadioMode input[type='radio']").click(function(){
 		//首先判断表单是否已经展开
 		if($("#DivCreateReviewTime:visible").length>0 && $("#RadioMode input[type='radio']:checked").val()!=$(this).val()){
-
-//				ajaxRefresh($("#TableReviewDetail"),{status:"Login"});
+				var p_days = $("#ReviewDetail .correct b").html().replace("天","");
+				var p_mode = $(this).val();
+				var p_time = $("#DivCreateReviewTime input[type='radio']:checked").val();
+				ajaxRefresh($("#TableReviewDetail"),{days:p_days,mode:p_mode,time:p_time});
 
 		}
 	});
