@@ -9,7 +9,7 @@
 	<div class="box-content">
     	<div class="formstyle">
             <div class="item">
-                <div class="title">选择考试时间<span>*</span></div>
+                <div class="title">复习结束时间<span>*</span></div>
                 <div class="detail">
                      <input name="date" type="text" class="inp inp2" id="InputDate" required="true" value="" readonly="readonly" />
                 </div>
@@ -154,24 +154,6 @@
                             <td class="alt">覆盖90%必须题目</td>
                             <td class="alt">2010-5-24</td>
                             <td class="alt">2010-6-11</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="spec">11</th>
-                            <td>作文</td>
-                            <td><input type="text" style="width:15px" value="3" maxlength="2" />&nbsp;天</td>
-                            <td>754题</td>
-                            <td>覆盖90%必须题目</td>
-                            <td>2010-5-24</td>
-                            <td>2010-6-11</td>
-                        </tr>                        
-                        <tr>
-                            <th scope="row" class="specalt">12</th>
-                            <td class="alt">模考</td>
-                            <td class="alt"><input type="text" style="width:15px" value="5" maxlength="2" />&nbsp;天</td>
-                            <td class="alt">5套</td>
-                            <td class="alt">控制很好的pace</td>
-                            <td class="alt">2010-16-11</td>
-                            <td class="alt">2010-15-24</td>
                         </tr>
                     </table>
                     <div class="plan-days hidden" id="DivPlanDays1">

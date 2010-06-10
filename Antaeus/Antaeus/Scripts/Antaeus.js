@@ -213,24 +213,24 @@ $("#FormRegisterSubmit").click(function(){
 	
 	
 	//填写完日期
-//	$("#InputDate").blur(function(){
-//		//首先将输入的日期转换为时间
-//		var str = $(this).val();
-//		var _date = new Date(str);
-//		var _year = _date.getFullYear();
-//		var _month = _date.getMonth()+1;
-//		var _day = _date.getDate();
-//		var _week = _date.getDay();
-//		
-//		//计算今天与输入的考试日期之间有多少天
-//		var today = new Date();
-//		//间隔天数
-//		var between = parseInt((_date-today)/1000/60/60/24);
-//		//TODO:这里要根据周几休息来具体判断
-//		//现在就是简单每7天减去一天
-//		between = between - ((between-(between%7))/7);
-//		//更改PlanDetail里面的日期设置
-//		$("#PlanDetail .correct b").html(String(between)+"天");
+	$("#InputDate").blur(function(){
+		//首先将输入的日期转换为时间
+		var str = $(this).val();
+		var _date = new Date(str);
+		var _year = _date.getFullYear();
+		var _month = _date.getMonth()+1;
+		var _day = _date.getDate();
+		var _week = _date.getDay();
+		
+		//计算今天与输入的考试日期之间有多少天
+		var today = new Date();
+		//间隔天数
+		var between = parseInt((_date-today)/1000/60/60/24);
+		//TODO:这里要根据周几休息来具体判断
+		//现在就是简单每7天减去一天
+		between = between - ((between-(between%7))/7);
+		//更改PlanDetail里面的日期设置
+		$("#PlanDetail .correct b").html(String(between)+"天");
 		
 		//获得xml的配置数据
 //		 $.ajax({
@@ -247,8 +247,8 @@ $("#FormRegisterSubmit").click(function(){
 //		}}); 
 //		
 //		alert(String(between));
-		//alert(_year+","+_month+","+_day+","+_week);		
-//	});
+//		alert(_year+","+_month+","+_day+","+_week);		
+	});
 	
 	//选择模式
 	$("#RadioMode input[type='radio']").click(function(){
@@ -262,7 +262,7 @@ $("#FormRegisterSubmit").click(function(){
 //	});
 
 
-	$(".InputPlanDays").tipInput({width:250,left:-20,regex:/[^\d]/g,list:"tr",afterBlur:function(val){alert(val);}});
+	$(".InputPlanDays").tipInput({width:250,left:-20,regex:/[^\d]/g,list:"tr",afterBlur:function(val){}});
 //	$("#DivPlanDays1 tr").click(function(){
 //		$(".InputPlanDays").tip("hide");
 //	});
