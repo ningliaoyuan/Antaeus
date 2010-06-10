@@ -200,10 +200,13 @@ $("#FormRegisterSubmit").click(function(){
 	//Review Part
 	$("#BtnCreateReviewNext").click(function(){
 		
-		//alert($(this).parents(".item").html());
-		$(this).parents(".item").hide();
-		$(this).parents(".item").siblings(".hidden").show();
-	
+		if($("#InputDate").val()!=""){
+			$("#InputDate").siblings().hide();
+			$(this).parents(".item").hide();
+			$(this).parents(".item").siblings(".hidden").show();
+		}else{
+			$("#InputDate").siblings().show();
+		}
 	});
 	
 	//日期Date Picker效果
@@ -214,45 +217,41 @@ $("#FormRegisterSubmit").click(function(){
 	
 	//填写完日期
 	$("#InputDate").blur(function(){
-		//首先将输入的日期转换为时间
+		
 		var str = $(this).val();
-		var _date = new Date(str);
-		var _year = _date.getFullYear();
-		var _month = _date.getMonth()+1;
-		var _day = _date.getDate();
-		var _week = _date.getDay();
 		
-		//计算今天与输入的考试日期之间有多少天
-		var today = new Date();
-		//间隔天数
-		var between = parseInt((_date-today)/1000/60/60/24);
-		//TODO:这里要根据周几休息来具体判断
-		//现在就是简单每7天减去一天
-		between = between - ((between-(between%7))/7);
-		//更改ReviewDetail里面的日期设置
-		$("#ReviewDetail .correct b").html(String(between)+"天");
-		
-		//获得xml的配置数据
-//		 $.ajax({
-//			type: "GET",
-//			url: "/Review/CreateReviewModeInitial.xml",
-//			dataType: "xml",
-//			success: function(data) {　　　
-//				var name="";　　　　　　　　　　　　　　　
-//				$(data).find('student').each(function(){　　　　　　　　　　　　　　　　　　
-//				name += $(this).children("name").text();
-//				name += '<br>';
-//				$('#dic').html(name);
-//			});
-//		}}); 
-//		
-//		alert(String(between));
-//		alert(_year+","+_month+","+_day+","+_week);		
+		//首先做为空判断
+		if($.trim(str)==""){
+			//TODO:显示为空提示
+			//$(this).siblings().show();
+		}else{
+			//首先将输入的日期转换为时间
+			var _date = new Date(str);
+			var _year = _date.getFullYear();
+			var _month = _date.getMonth()+1;
+			var _day = _date.getDate();
+			var _week = _date.getDay();
+			
+			//计算今天与输入的考试日期之间有多少天
+			var today = new Date();
+			//间隔天数
+			var between = parseInt((_date-today)/1000/60/60/24);
+			//TODO:这里要根据周几休息来具体判断
+			//现在就是简单每7天减去一天
+			between = between - ((between-(between%7))/7);
+			//更改ReviewDetail里面的日期设置
+			$("#ReviewDetail .correct b").html(String(between)+"天");		
+		}
 	});
 	
 	//选择模式
 	$("#RadioMode input[type='radio']").click(function(){
-		//alert("haha");
+		//首先判断表单是否已经展开
+		if($("#DivCreateReviewTime:visible").length>0 && $("#RadioMode input[type='radio']:checked").val()!=$(this).val()){
+
+//				ajaxRefresh($("#TableReviewDetail"),{status:"Login"});
+
+		}
 	});
 	
 //	$(".InputReviewDays").tooltip({position:"bottom right",offset:[0,-30]});
