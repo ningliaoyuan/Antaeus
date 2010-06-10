@@ -33,7 +33,7 @@
             <div class="item noborder">
                 <div class="title">&nbsp;</div>
                 <div class="detail">
-                    <input type="button" id="BtnCreatePlanNext" class="btn-form-green" value="继续下一步" />
+                    <input type="button" id="BtnCreateReviewNext" class="btn-form-green" value="继续下一步" />
                 </div>
                 <div class="clear"></div>  
             </div>
@@ -50,7 +50,7 @@
             </div>
             <div class="item hidden">
                 <div class="title">具体考试计划<span>*</span></div>
-                <div class="detail" id="PlanDetail">
+                <div class="detail" id="ReviewDetail">
                     <div class="correct">离考试你总共有&nbsp;<b>35天</b>&nbsp;的复习时间，目前的计划使用了&nbsp;<b>35天</b></div>
                     <table class="tablestyle" cellspacing="0">
                         <tr>
@@ -66,7 +66,7 @@
                             <th scope="row" class="spec">1</th>
                             <td>SC语法</td>
                             <td>
-                            	<input type="text" class="InputPlanDays" tipsource="#DivPlanDays1" style="width:15px" value="3" maxlength="2" />&nbsp;天
+                            	<input type="text" class="InputReviewDays" tipsource="#DivReviewDays1" style="width:15px" value="3" maxlength="2" />&nbsp;天
                                 
                             </td>
                             <td>754题</td>
@@ -156,7 +156,7 @@
                             <td class="alt">2010-6-11</td>
                         </tr>
                     </table>
-                    <div class="plan-days hidden" id="DivPlanDays1">
+                    <div class="Review-days hidden" id="DivReviewDays1">
                         <table>
                             <tr><td><span>15</span>&nbsp;天</td><td>900题</td><td>覆盖100%重要的题目</td></tr>
                             <tr><td><span>25</span>&nbsp;天</td><td>900题</td><td>覆盖100%重要的题目</td></tr>

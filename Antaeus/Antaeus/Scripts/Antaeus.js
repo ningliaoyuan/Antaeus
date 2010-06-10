@@ -197,8 +197,8 @@ $("#FormRegisterSubmit").click(function(){
 	$("#Tab").tab();
 	$("#Accordion").accordion();
 	
-	//Plan Part
-	$("#BtnCreatePlanNext").click(function(){
+	//Review Part
+	$("#BtnCreateReviewNext").click(function(){
 		
 		//alert($(this).parents(".item").html());
 		$(this).parents(".item").hide();
@@ -229,13 +229,13 @@ $("#FormRegisterSubmit").click(function(){
 		//TODO:这里要根据周几休息来具体判断
 		//现在就是简单每7天减去一天
 		between = between - ((between-(between%7))/7);
-		//更改PlanDetail里面的日期设置
-		$("#PlanDetail .correct b").html(String(between)+"天");
+		//更改ReviewDetail里面的日期设置
+		$("#ReviewDetail .correct b").html(String(between)+"天");
 		
 		//获得xml的配置数据
 //		 $.ajax({
 //			type: "GET",
-//			url: "/Plan/CreatePlanModeInitial.xml",
+//			url: "/Review/CreateReviewModeInitial.xml",
 //			dataType: "xml",
 //			success: function(data) {　　　
 //				var name="";　　　　　　　　　　　　　　　
@@ -255,16 +255,16 @@ $("#FormRegisterSubmit").click(function(){
 		//alert("haha");
 	});
 	
-//	$(".InputPlanDays").tooltip({position:"bottom right",offset:[0,-30]});
-//	$(".TablePlanDays tr").click(function(){
+//	$(".InputReviewDays").tooltip({position:"bottom right",offset:[0,-30]});
+//	$(".TableReviewDays tr").click(function(){
 //		alert($(this).children().children().html());
-//		$(this).parent().parent().parent().children(".InputPlanDays").val($(this).children().children().html());
+//		$(this).parent().parent().parent().children(".InputReviewDays").val($(this).children().children().html());
 //	});
 
 
-	$(".InputPlanDays").tipInput({width:250,left:-20,regex:/[^\d]/g,list:"tr",afterBlur:function(val){}});
-//	$("#DivPlanDays1 tr").click(function(){
-//		$(".InputPlanDays").tip("hide");
+	$(".InputReviewDays").tipInput({width:250,left:-20,regex:/[^\d]/g,list:"tr",afterBlur:function(val){}});
+//	$("#DivReviewDays1 tr").click(function(){
+//		$(".InputReviewDays").tip("hide");
 //	});
 	
 });

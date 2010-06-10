@@ -12,7 +12,7 @@
     	
         <div class="new-box-title2">
         	<div class="left">复习做题ing（第<b>5</b>题/共<b>20</b>题）</div>
-			<div class="right"><a href="/Plan/">中止复习</a></div>
+			<div class="right"><a href="/Review/">中止复习</a></div>
             <div class="clear"></div>
         </div>
         <div class="new-box">

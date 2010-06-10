@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Antaeus.Controllers
 {
-    public class PlanController : Controller
+    public class ReviewController : Controller
     {
         //
-        // GET: /Plan/
+        // GET: /Review/
 
         public ActionResult Index()
         {

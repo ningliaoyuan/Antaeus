@@ -55,7 +55,7 @@
                 <div class="link">
                     <a href="/" class="current">主页</a> <a href="/Question">题库</a> <a href="/Knowledge">知识点</a>
                     <a href="/Article">文章</a>
-					<a href="/Plan">计划</a>
+					<a href="/Review">计划</a>
                 </div>
                 <div class="search">
                     <input type="text" value="输入题目编号直接浏览题目" />

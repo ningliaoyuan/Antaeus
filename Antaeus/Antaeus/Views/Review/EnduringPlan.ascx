@@ -2,7 +2,7 @@
 
 <div class="new-box-title2">
 	<div class="left">当前正在进行的学习计划</div>
-    <div class="right"><a href="/Plan/Edit/">查看计划详情与修改计划</a></div>
+    <div class="right"><a href="/Review/Edit/">查看计划详情与修改计划</a></div>
 </div>
 <div class="new-box">
 	<div class="info">
@@ -20,7 +20,7 @@
                 <option value="35">35题</option>
                 <option value="40">40题</option>
             </select>
-            <a href="/Plan/Process/" class="btn-form-green">开始复习</a>
+            <a href="/Review/Process/" class="btn-form-green">开始复习</a>
         </div>
     </div>
 	<div id="chart">学习计划正在载入中...</div>

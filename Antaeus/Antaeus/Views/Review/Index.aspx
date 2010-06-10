@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
-<%@ Register src="CreatePlan.ascx" tagname="CreatePlan" tagprefix="uc1" %>
+<%@ Register src="CreateReview.ascx" tagname="CreateReview" tagprefix="uc1" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">Plan</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">Review</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
     <script type="text/javascript" src="/Plugins/Antaeus.UI-0.1/Calendar.js"></script>
 </asp:Content>
@@ -13,7 +13,7 @@
   
     <div class="column-left">        
     	
-        <uc1:CreatePlan ID="CreatePlan1" runat="server" />
+        <uc1:CreateReview ID="CreateReview1" runat="server" />
 
     	
     </div>
