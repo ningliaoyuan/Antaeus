@@ -1,0 +1,14 @@
+/*==========================================================================
+ANTAEUS.Common.CSS
+This File is for all pages of site GMAT used and defined specific content
+Version 0.1, Created by Lanslot at 2009/5/30
+============================================================================*/
+
+.header{ background:#000 url(../Images/BG_GMAT.jpg) scroll repeat-x center top;}
+
+#PlanDetail .plan-days{ background-color:#fff; font-size:12px;}
+#PlanDetail .plan-days table{ width:100%;}
+#PlanDetail .plan-days td{ border-bottom:1px solid #CCC; line-height:22px; text-align:center;}
+#PlanDetail .plan-days tr{ cursor:pointer;}
+#PlanDetail .plan-days tr.hover{ background-color:#FFC;}
+#PlanDetail .plan-days tr.delete td{ color:#ff0000;}
