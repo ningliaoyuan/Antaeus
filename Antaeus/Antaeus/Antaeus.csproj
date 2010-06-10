@@ -131,6 +131,8 @@
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Views\Review\CreateReview.ascx" />
     <Content Include="Views\Review\EnduringReview.ascx" />
+    <Content Include="Views\Review\GetTable.ascx" />
+    <Content Include="Views\Review\GetTimeTable.ascx" />
     <Content Include="Views\Review\Index.aspx" />
     <Content Include="Views\Review\Edit.aspx" />
     <Content Include="Views\Review\Process.aspx" />
