@@ -33,7 +33,7 @@ namespace Antaeus.Controllers
         // 获取整个表格
         // 传入参数：总复习天数，模式，每日复习时间
         // 返回：整个Table的html 
-        public ActionResult GetTable(int days=60, int mode=0, int time=4)
+        public ActionResult GetTable(int days=60, string mode="all", int time=4)
         {
             ViewData["days"] = days;
             return View();
@@ -48,7 +48,7 @@ namespace Antaeus.Controllers
         /// <param name="time"></param>
         /// <param name="periods">分号分隔的时间数组</param>
         /// <returns></returns>
-        public ActionResult GetDesc(int mode = 0, int time = 4, string periods ="1;2")
+        public ActionResult GetDesc(string mode = "all", int time = 4, string periods = "1;2")
         {
             var res = periods.Split(';').Select(s => int.Parse(s)).Select(
                 t =>
@@ -61,7 +61,7 @@ namespace Antaeus.Controllers
         // 获取单个时长的推荐描述
         // 传入参数：总复习天数，每日复习时间，项名称
         // 返回：Table的html 
-        public ActionResult GetTimeTable(int days = 60, int time = 4, int mode = 0)
+        public ActionResult GetTimeTable(int days = 60, int time = 4, string part = "sc")
         {
             ViewData["days"] = days;
             return View();
